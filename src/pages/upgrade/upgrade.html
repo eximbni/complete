@@ -1,0 +1,179 @@
+<ion-header>
+    <ion-navbar color="orangebtn"  class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><ion-icon name="menu" color="dark" class="hamberg-icon" icon-start></ion-icon><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content class="container"> 
+    <ion-row>
+    <ion-col style="padding: 0;">
+      <table border="1"  style="color:#252f6a; font-weight: bold;" width="100%">
+        <tr>
+          <th>S.No</th>
+          <th>Package PLANS FEATURES</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Banners</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Chapter 01 to 99</td>
+        </tr>
+        <tr>
+          <td>2.a</td>
+          <td>Select Options</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>HS Code Access</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Chat Options</td>
+        </tr>
+        <tr>
+          <td>4.a</td>
+          <td>Buyers</td>
+        </tr>
+        <tr>
+          <td>4.b</td>
+          <td>Sellers</td>
+        </tr>
+        <tr>
+          <td>4.c</td>
+          <td>Audio & Video Calls</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Webinar</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Inbox</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Lead Posting</td>
+        </tr>
+        <tr>
+          <td>7.a</td>
+          <td>Buy Leads</td>
+        </tr>
+        <tr>
+          <td>7.b</td>
+          <td>Sell Leads</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>RFQ</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Credits</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Duration</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+    </ion-col>
+    <ion-col  style="padding: 0;" class="fea-values" *ngFor="let subdata of upgradeplans; let i = index;">
+      <table border="1" style="color: green;" width="100%">
+        <tr  style="color:#252f6a; font-weight: bold;">
+            <th width="33%">{{subdata.plan_name}}</th>
+        </tr>
+          <tr>
+              <td class="red_{{subdata.banners}}">{{subdata.banners}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.chapters}}">{{subdata.chapters}}</td>
+          </tr>
+          <tr>
+            <td class="red_{{subdata.selectOption}}">{{subdata.selectOption}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.hscodes}}">{{subdata.hscodes}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.chat}}"><span *ngIf="subdata.chat==1">YES</span><span *ngIf="subdata.chat==0">NO</span></td>
+          </tr>
+          <tr>
+            <td class="red_{{subdata.chat_buyers}}">{{subdata.chat_buyers}}</td>
+          </tr>
+          <tr>
+            <td class="red_{{subdata.chat_sellers}}">{{subdata.chat_sellers}}</td>
+          </tr>
+          <tr>
+            <td class="red_{{subdata.chat_audioVideoCalls}}">{{subdata.chat_audioVideoCalls}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.webinar}}">{{subdata.credits}}</td>
+          </tr> 
+          <tr>
+              <td class="red_{{subdata.inbox}}">{{subdata.inbox}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.leadpost}}">{{subdata.leadpost}}</td>
+          </tr>
+          <tr>
+            <td class="red_{{subdata.buyLeads}}">{{subdata.buyLeads}}</td>
+          </tr>
+          <tr>
+            <td class="red_{{subdata.sellLeads}}">{{subdata.sellLeads}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.rfq}}">{{subdata.rfq}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.credits}}">{{subdata.credits}}</td>
+          </tr>
+          <tr>
+              <td class="red_{{subdata.plan_duration}}">{{subdata.plan_duration}}</td>
+          </tr>
+          <tr>
+              <td><button ion-button small round outline color="orangebtn" class="pay-btn" (click)="free(i)">Get</button></td>
+          </tr>
+      </table>
+  </ion-col>
+  </ion-row>
+    
+  
+  <div *ngIf="showchapters">
+   <p style="color:red;"> 
+    you are eligible to select {{pack_id}} chapters and press upgrade </p>
+  <ng-multiselect-dropdown 
+  [placeholder]="'Select Chapters'" 
+  [data]="chapters" 
+  [(ngModel)]="selectedItems"
+  [settings]="dropdownSettings"
+  (onSelect)="onItemSelect($event)"
+  (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
+  <!-- <div style="margin-bottom: 2%;">
+    <p style="color:red;">  You Can Select Unlimited HS Codes of Your selected Chapters.</p>
+      <ng-multiselect-dropdown class="ngselect fs_select"
+      [placeholder]="'Select HS Codes'" 
+      [data]="hsdetails" 
+      [(ngModel)]="selectedhscodes"
+      [settings]="dropdownSettings1"
+      (onSelect)="onhscodeselect($event)"
+      (onSelectAll)="onallhscodes($event)"></ng-multiselect-dropdown>
+    </div> -->
+  <div class="upgrade-btn"><button ion-button small round color="orangebtn"   (click)="upgrade()">Upgrade</button></div>
+</div>
+  </ion-content>
+  <ion-footer class="ftr">
+    <ion-row class="ftr-row">
+      <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+      <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+      <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+      <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
+      <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+      </ion-row>
+   </ion-footer>
+  

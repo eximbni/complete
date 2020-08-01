@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar color="orangebtn"  class="padding-top:10px;">
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+
+
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row class="flist" >
+      <ion-col class="bg-color mg5" (click)="frlist()">
+        <div> <img class="cat-img" src="../assets/imgs/userlist.jpg"> </div>
+        <div class="txt">User List</div>
+      </ion-col>
+      <ion-col class="bg-color mg5" (click)="subscriber()">
+        <div> <img class="cat-img" src="../assets/imgs/userlist.jpg"> </div>
+        <div class="txt">Subscribers </div>
+      </ion-col>
+      <ion-col class="bg-color mg5" (click)="tvsa()">
+        <div> <img class="cat-img" src="../assets/imgs/target.png"> </div>
+        <div class="txt">Achievement</div>
+      </ion-col>      
+    </ion-row>
+    <ion-row class="flist">
+      <ion-col class="bg-color mg5" (click)="Targets()">
+        <div> <img class="cat-img" src="../assets/imgs/target.png"> </div>
+        <div class="txt"> Target </div>
+      </ion-col>
+      <ion-col class="bg-color mg5" (click)="forecasting()">
+        <div> <img class="cat-img" src="../assets/imgs/forecasting.jpg"> </div>
+        <div class="txt"> Forecasting</div>
+      </ion-col>
+      <ion-col class="bg-color mg5" (click)="coupons()"> 
+        <div> <img class="cat-img" src="../assets/imgs/coupon.jpg"> </div>
+        <div class="txt"> Coupons </div>
+      </ion-col>      
+    </ion-row>
+    <ion-row class="flist">
+      <ion-col class="bg-color mg5" (click)="promotions()">
+        <div> <img class="cat-img" src="../assets/imgs/events.png"> </div>
+        <div class="txt">Sales Events </div>
+      </ion-col>
+      <ion-col class="bg-color mg5" (click)="promorequest()">
+        <div> <img class="cat-img" src="../assets/imgs/events.png"> </div>
+        <div class="txt"> Request for event</div>
+      </ion-col>
+      <ion-col class="bg-color mg5" (click)="track()">
+        <div> <img class="cat-img" src="../assets/imgs/tracking.png"> </div>
+        <div class="txt"> Request Tracking</div>
+      </ion-col>      
+    </ion-row>    
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,161 @@
+page-mylead-details {
+    text-align: center;
+    .pro-img{
+        border-radius: 50%;
+        height: 8em;
+    }
+    .profile-div{
+        text-align: center;
+        width:100%;
+    }
+    .opt-btns{
+        text-align: center;
+        width:100%;
+    }
+    .head{
+        margin: 0px;
+        background: rgb(244, 242, 247);
+        background: linear-gradient(180deg, rgba(54,17,106,1) 0%, rgba(178,47,48,1) 100%);      
+    }
+            .back{
+                margin: 0px;
+                background: rgb(241, 239, 243);
+                background: linear-gradient(180deg, rgb(247, 246, 248) 0%, rgb(241, 241, 241) 100%);      
+               } 
+               .username{
+                font-size: 1.3em;
+                width:100%;
+                text-align: center;
+                color:black;
+               }
+               .black-bg{
+                background-color: rgb(255, 255, 255);
+                  
+                   width: 100%;
+               }
+               .white-bg{
+                background-color: rgba(255, 255, 255, 0.993);
+                  
+                   width: 100%;
+               }
+               .crd-style-response{
+                border: 1px solid rgba(248, 248, 248, 0.5);
+                 margin: 1px 4px 1px 4px;
+                border-radius: 6px;
+               }               
+            //    .crd-style-response{
+            //     border: 1px solid black;
+            //      margin: 1px 4px 1px 4px;
+            //     border-radius: 6px;
+            //    }
+               .responsedcountry{
+                float:left;
+                font-size: 1.5em;
+                width:100%;
+                padding-left: 2%;
+                text-align: left;
+                color:black;
+               }
+               .responsedate{
+                float:right;
+                font-size: 1.2em;
+                width:100%;
+                padding-right: 2%;
+                text-align: right;
+                color:black;
+               }
+               
+                .card-title{
+                    font-size: 1.2em;
+                    width:100%;
+                    text-align: left;
+                    color:black;
+                }
+                .card-title1{
+                    font-size: 1.7em;
+                    width:100%;
+                    color:black;
+                    text-align: center;
+                }
+                .card-desc{
+                    font-size: 1em;
+                    width:100%;
+                    color:black;
+    
+                }
+          
+        
+        .toolbar-title-md
+        {
+            color: #fff;
+        }
+        
+        
+        .panel-body{
+            word-break: break-all;
+        }
+        .date-row{
+            width:100%;padding: 0;
+            margin: 0;
+            font-size: 1rem;
+        }
+        .nav-title {
+            font-size: 18px;
+        
+            text-align: center;
+        }
+    
+        .user-btn{
+            color:black;
+          
+            background: transparent !important;
+        }
+        .description{
+            font-size: 1.4em;
+            width:100%;
+            color:black;
+            text-align: center;
+        }
+        .content-md hr {
+            background-color:black;
+        }
+        
+/*     .ftr{
+        background-color: transparent !important;
+        height:10%;
+        margin-bottom: 0%;
+      
+      }
+      .ftr-row{
+        background-color: transparent !important;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      .ftr-icon{
+        font-size: 25px;
+        margin-top: 10%;
+        width: 35%;
+      }
+      .ftr-col{
+        background-color: transparent !important;
+        padding: 0;
+        margin-top: 5px;
+        margin: 0;
+        height:10%;
+        text-align: center;
+        //border-right: 1px solid #e0dede;;
+      }
+      .name-footer{
+        margin-top: 5px;
+        margin-bottom: 0;
+        color:black !important;
+        font-size: 12px;
+      } */
+      
+    }
+        
+    
+    

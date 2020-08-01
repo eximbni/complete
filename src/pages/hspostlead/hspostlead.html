@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-navbar color="orangebtn" class="padding-top:10px;">
+    <ion-col
+      col-2
+      style="font-size: 2.5em;padding-top: 31px;"
+      (click)="menuCtrl.toggle()"
+      color="dark"
+      float-right
+      ><ion-icon
+        name="menu"
+        color="dark"
+        class="hamberg-icon"
+        icon-start
+      ></ion-icon
+    ></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"
+      ><img src="../assets/imgs/logos.png" style="height:70px;"
+    /></ion-col>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="form-container" padding>
+  <ion-input type="hidden" #chap value="{{chapter_id | slice:0:2}}"></ion-input>
+  <p>Chapter :{{chapter_id | slice:0:2}}</p>
+  <p>HS Code :{{hsncode}}</p>
+  <p>Description: {{hsndescription}}</p>
+  <ion-grid>
+    <ion-list>
+      <ion-label stacked class="stack-label">Lead Type *</ion-label>
+      <!-- lead type-->
+      <ng-multiselect-dropdown
+        [placeholder]="'Select'"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems1"
+        [settings]="dropdownSettings6"
+        (onSelect)="onItemSelect1($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+      <!--categories-->
+      <!-- UOM -->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Unit of Measure*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="uoms"
+          [(ngModel)]="selecteduom"
+          [settings]="dropdownSettings4"
+          (onSelect)="showuom($event)"
+          (onSelectAll)="onSelectAll($event)"
+        ></ng-multiselect-dropdown>
+      </div>
+
+      <!-- Country -->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Country*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="countries"
+          [(ngModel)]="selectedItems"
+          [settings]="dropdownSettings5"
+          (onSelect)="onselectcountry($event)"
+          (onSelectAll)="onSelectAll($event)"
+        ></ng-multiselect-dropdown>
+      </div>
+      <ion-label stacked class="stack-label">Quantity*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input
+          type="number"
+          #quantity
+          class="box-inpt"
+          placeholder="Numbers Only Ex:250"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Expiry Date</ion-label>
+        <ion-datetime
+          displayFormat="MMM DD YYYY"
+          min="{{cslot | date: 'yyyy-MM-dd'}}"
+          #edate
+        ></ion-datetime>
+      </ion-item>
+      <ion-label stacked class="stack-label">Description*</ion-label>
+      <ion-item class="dropitm">
+        <ion-textarea #description placeholder="Write something"></ion-textarea>
+      </ion-item>
+
+      <ion-item class="dropitm">
+        <ion-row>
+          <ion-col col-3>
+            <button ion-button block outline color="danger" (click)="Doc1()">
+              Doc1
+            </button></ion-col
+          >
+          <ion-col col-3
+            ><button ion-button block outline color="danger" (click)="Doc2()">
+              Doc2
+            </button></ion-col
+          >
+          <ion-col col-3
+            ><button ion-button block outline color="danger" (click)="Doc3()">
+              Doc3
+            </button></ion-col
+          >
+          <ion-col col-3
+            ><button ion-button block outline color="danger" (click)="Doc4()">
+              Doc4
+            </button></ion-col
+          >
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        {{Document1}} {{Document2}} {{Document3}} {{Document4}}
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+  <div class="btn-div">
+    <button
+      text-center
+      ion-button
+      class="btton-small-md"
+      round
+      outline
+      block
+      (click)="rfqsend()"
+    >
+      Submit
+    </button>
+  </div>
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"
+      ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Leads</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="chatting()"
+      ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="webinar()"
+      ><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiosVision</p></ion-col
+    >
+    <ion-col class="ftr-col-active" (click)="quotes()"
+      ><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon >
+      <p class="name-footer">Post Lead</p></ion-col
+    >
+  </ion-row>
+</ion-footer>

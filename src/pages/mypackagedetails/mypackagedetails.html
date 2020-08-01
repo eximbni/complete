@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-navbar color="orangebtn"  class="padding-top:10px;">
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+
+
+
+</ion-header>
+
+<ion-content padding>
+ 
+  <ion-grid text-capitalize text-center *ngFor="let pro of packs">
+    <ion-row>
+      <ion-item text-capitalize text-center>
+        My Subscription Plan <strong>{{pro.plan_name}} </strong>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-col style="background: green; color:white; border: 1px solid white;">
+        <div> <strong> Description </strong> </div>
+      </ion-col>
+      <ion-col  style="background: green; color:white; border: 1px solid white;">
+        <div> <strong> Count </strong> </div>
+      </ion-col>
+     
+    </ion-row>
+     <ion-row>
+      <ion-col text-left>
+        <div> Total Leads Posted </div>
+      </ion-col>
+      <ion-col>
+        <div>{{pro.posted_leads}}</div>
+      </ion-col>
+     
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-left>
+        <div> Total Purchase Buy Leads </div>
+      </ion-col>
+      <ion-col>
+        <div>{{pro.purchase_buys}}</div>
+      </ion-col>
+     
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-left>
+        <div> Total Purchase Sell Leads </div>
+      </ion-col>
+      <ion-col>
+        <div>{{pro.purchase_sales}}</div>
+      </ion-col>
+     
+    </ion-row>  
+
+    <ion-row>
+      <ion-col text-left>
+        <div> No Of Banners posted </div>
+      </ion-col>
+      <ion-col>
+        <div> {{pro.posted_banners}} </div>
+      </ion-col>
+    
+    </ion-row>
+    <ion-row>
+      <ion-col text-left>
+        <div> No Of RFQs</div>
+      </ion-col>
+      <ion-col>
+        <div> {{pro.rfq}} </div>
+      </ion-col>
+    
+    </ion-row>
+    <ion-row>
+      <ion-col text-left>
+        <div> No Of Chapters </div>
+      </ion-col>
+      <ion-col>
+        <div> {{pro.chapters}} </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-left>
+        <div> No Of Chat Users Added</div>
+      </ion-col>
+      <ion-col>
+        <div> {{pro.chatusers}}</div>
+      </ion-col>
+     
+    </ion-row>
+    <ion-row>
+      <ion-col text-left>
+        <div> Credit Balance </div>
+      </ion-col>
+      <ion-col>
+        <div>{{pro.credits}}</div>
+      </ion-col>
+    
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-left>
+        <div> No Of Webinars Hosted </div>
+      </ion-col>
+      <ion-col>
+        <div> {{pro.webinars}}</div>
+      </ion-col>
+     </ion-row>
+    <ion-row>
+      <ion-col text-left>
+        <div> Package Duration </div>
+      </ion-col>
+      <ion-col>
+        <div>{{pro.plan_duration}}</div>
+      </ion-col>
+    
+    </ion-row>  
+  </ion-grid>
+
+
+</ion-content>
+
+
+
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+  <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+  <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+  <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+  <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+  <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+  </ion-row>
+  </ion-footer>
+  

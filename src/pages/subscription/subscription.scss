@@ -1,0 +1,42 @@
+page-subscription{
+  text-align: center;
+  .subdiv{
+    border: 1px solid #eb3e18;
+    border-radius: 4px;
+    margin: 0.7em 0.7em 0.7em 0.7em;
+  }
+  .lefttr{
+    font-size: 1.1em;
+    text-align: left;
+  color:#eb3e18;
+  }
+  .pay-btn{
+    padding: 0 1em;
+    border-color: #eb3e18;
+    color: #eb3e18;
+  }
+  .lefttable .th .td{
+      text-align: left;
+  }
+  th{
+    text-align: center;
+    height: 5em;
+}
+
+  td {
+    height: 5em;
+    font-size: 1em;
+    text-align: center;
+  } 
+
+  .red_0,.red_NO
+  {
+    color: red;
+  }
+  
+.container{
+  height:100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+  
+}

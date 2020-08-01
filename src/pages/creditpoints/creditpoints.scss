@@ -1,0 +1,66 @@
+page-creditpoints {
+    .b_bold{
+        text-align: center;
+    font-size: 1.5em;
+    color: #252f6a;
+    font-weight: bold;
+    }
+    .points-div{
+        text-align: center;
+        height: 50px;
+        width: 100px;
+        font-size: 3em;
+        line-height: 100px;
+        margin: 10px;
+       // padding-top: 5%;
+        border: 1px solid violet;
+        border-radius: 100px;
+        background-color: indigo; /* For browsers that do not support gradients */
+        background-image: linear-gradient(to bottom right, red, indigo, violet);
+        color: white;
+
+
+    }
+
+    .orange-div{
+        text-align: center;
+        height: 50px;
+        width: 40px;
+        font-size: 2em;
+        line-height: 40px;
+        margin: 0 10px 10px 10px;
+       // padding-top: 5%;
+        border: 1px solid #e85d2a;
+        border-radius: 100px;
+        background:#e85d2a;
+        color: white;
+
+
+    }
+
+    .green-div{
+        text-align: center;
+        height: 50px;
+        width: 100px;
+        font-size: 2em;
+        line-height: 40px;
+        margin: 0 10px 10px 10px;
+       // padding-top: 5%;
+        border: 1px solid #408942;
+        border-radius: 100px;
+       background: #408942;
+        color: white;
+
+    }
+
+    .cr-s {
+        text-align: center;
+    padding-top: 10%;
+    font-size: 35px;
+    }
+    .btn-p{
+        text-align: center;
+        margin-top: 4%;
+    }
+    
+}

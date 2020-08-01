@@ -1,0 +1,63 @@
+page-payment-success {
+
+
+    .cnt-color{
+        margin: 0px;
+        background: rgb(54,17,106);
+        background: linear-gradient(180deg, rgba(54,17,106,1) 0%, rgba(178,47,48,1) 100%);      
+       } 
+       .thankyou-bg{
+           margin:15%;
+       }
+       .thankyou{
+        position: absolute;
+        top: 20%;
+        left: 35%;
+       }
+       
+       .thank{text-align: center;
+        font-size: 3em;
+        color: white;
+       }
+       .requset{text-align: center;
+        font-size: 1.4em;
+        color: white; 
+       }
+
+       .ftr{
+        background-color: transparent !important;
+        height:10%;
+        margin-bottom: 0%;
+      
+      }
+      .ftr-row{
+        background-color: transparent !important;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      .ftr-icon{
+        font-size: 25px;
+        margin-top: 10%;
+        width: 35%;
+      }
+      .ftr-col{
+        background-color: transparent !important;
+        padding: 0;
+        margin-top: 5px;
+        margin: 0;
+        height:10%;
+        text-align: center;
+        //border-right: 1px solid #e0dede;;
+      }
+      .name-footer{
+        margin-top: 5px;
+        margin-bottom: 0;
+        color:white !important;
+        font-size: 12px;
+      }
+      
+
+}

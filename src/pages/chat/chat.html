@@ -1,0 +1,86 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+      </ion-header>
+      <ion-content class="bg-style">
+        <div padding>
+          <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="Chat" style="background-color: orange; color: white;">
+             Chat
+            </ion-segment-button>
+            <ion-segment-button value="Mygroups"  style="background-color: orange; color: white;">
+             Mygroups
+            </ion-segment-button>
+            <ion-segment-button value="Chapters"  style="background-color: orange; color: white;">
+              Chapters
+             </ion-segment-button>
+          </ion-segment>
+        </div>
+        
+        <div [ngSwitch]="pet">
+          <ion-list *ngSwitchCase="'Chat'">
+            <ion-item *ngFor="let room of singleroomlist | chatusers: terms;  let i=index;" (click)="individualchatpg(i)">
+              <ion-row > 
+                 <ion-col col-2>
+                   <div *ngIf="room.user_image == 0">
+                     <p style="background: red; color:#fff; text-align: center; width: 30px; height: 30px; padding:7px; border-radius:50%;">{{room.business_name | slice:0:1}}</p>
+                   </div>
+                   <div *ngIf="room.user_image != 0">
+                     <img src="https://eximbin.com/api/uploads/{{room.user_image}}" class="groupicon"/>
+                   </div>
+                   
+                   
+                 </ion-col>
+                 <ion-col col-8 class="groupname">{{room.business_name}} </ion-col>
+                 <ion-col col-2 class="groupname" *ngIf="room.unread_messages > 0"><button ion-button round color="danger" small>{{room.unread_messages}}</button> </ion-col>
+               </ion-row>
+             </ion-item>
+          </ion-list>
+        
+          <ion-list *ngSwitchCase="'Mygroups'">
+            <ion-item style="padding:0;" *ngFor="let group of groupslist | groupchatusers: terms;  let i=index;" (click)="groupchatpg(i)">
+              <ion-row style="margin:0">
+                <ion-col  style="margin:0" col-2><img src="../assets/imgs/teamwork.svg" class="groupicon"/></ion-col>
+                <ion-col  style="margin:0" col-10 class="groupname">  {{group.chatroom}}</ion-col>
+              </ion-row>
+                
+               </ion-item> 
+          </ion-list>
+          <ion-list *ngSwitchCase="'Chapters'">
+            <ion-card  *ngFor="let chat of chapterslist;let i= index;" style="text-align: left !important;" >
+              <ion-card-header color="danger" style="background: #dad8d9; height:30px; padding:0px !important; text-align: center;" >
+               {{chat.chapter_name}} 
+              </ion-card-header>
+              <ion-card-content>
+                SECTION : {{chat.category_id}} <br>
+                DETAILS : {{chat.ch_description}}<br>
+                <button ion-button  color="palegreen" (click)="chpaterchatpg(i)" small round float-right>Show Groups</button>
+              </ion-card-content>
+            </ion-card>
+          </ion-list>
+        </div>
+        <ion-fab bottom right>
+          <button ion-fab mini (click)="create()" color="danger" class="add-btn fab[mini]"><ion-icon name="add" class="add-icon"></ion-icon></button>
+        </ion-fab>
+      </ion-content>
+
+      <ion-footer class="ftr">
+          <ion-row class="ftr-row">
+            <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+            <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+            <ion-col class="ftr-col-active" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="danger"></ion-icon><p class="name-footer-active">Chat</p></ion-col>
+            <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+            <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+            </ion-row>
+         </ion-footer>
+       
+        
+    

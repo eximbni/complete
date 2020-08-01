@@ -1,0 +1,50 @@
+page-upgrade {
+    
+    text-align: center;
+        .container{
+          height :100%;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        .pay-btn{
+          padding: 0 1em;
+          border-color: #eb3e18;
+          color: #eb3e18;
+        }
+        .lefttr{
+            font-size: 1.1em;
+            text-align: left;
+          }
+          .lefttable .th .td{
+            text-align: left;
+        }
+        th{
+            text-align: center;
+            height: 5em;
+        }
+        
+          td {
+            height: 5em;
+            font-size: 1em;
+            text-align: center;
+          } 
+          .subdiv{
+            border: 2px solid #096161;
+            border-radius: 12px;
+            margin: 0.7em 0.7em 0.7em 0.7em;
+          }  
+          .upgrade-btn{
+             text-align: center;
+          }
+          .home-icon{
+
+            padding-top: 15px;
+        }
+        .home-icon1{
+            font-size: 2.5em;
+            padding-top: 25px;
+        }
+        .red_0,.red_NO
+        {
+          color: red;
+        }
+}

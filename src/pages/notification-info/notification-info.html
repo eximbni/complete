@@ -1,0 +1,25 @@
+
+
+<ion-content class="cnt-color">
+    <div><img src="../assets/designs/thankyou/group.svg" class="thankyou-bg"/>
+      <img src="../assets/designs/thankyou/group2.svg" class="thankyou"/>
+    <div class="thank">Thank You!</div>
+    <div class="requset"> Franchise request sent Successfully.<br> Your franchise request id is {{ requestid }} <br>
+      Keep this id for future reference.
+    </div>
+    </div>
+    </ion-content>
+    <ion-footer class="ftr">
+      <ion-row class="ftr-row">
+        <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+          <p class="name-footer">Home</p></ion-col>
+        <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+          <p class="name-footer">Leads</p></ion-col>
+        <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+          <p class="name-footer">Chat</p></ion-col>
+        <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+          <p class="name-footer">MiiVision</p></ion-col>
+        <ion-col class="ftr-col" (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon >
+          <p class="name-footer">Post Lead</p></ion-col>
+      </ion-row>
+    </ion-footer>

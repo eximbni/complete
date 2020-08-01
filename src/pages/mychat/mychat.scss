@@ -1,0 +1,95 @@
+page-mychat {
+
+
+    
+    .mobile{
+        width: 100%;
+        border: 1px solid green;
+        text-align: center;
+        padding: 2% 6%;
+        border-radius: 0.8em;
+        height: 3.6em;
+        font-size: 1.3em;
+    }
+    .send-icon{
+        font-size: 3.2em;
+        padding-top: 20%;
+}
+    
+    .user-bubble{
+        text-align: left;
+        width: 90%;
+        overflow-wrap: break-word;
+        margin-bottom: 2%;
+        padding: 5%;
+        margin-right: 8%;
+        height: auto;
+        border: 1px solid #faebd7;
+        border-top-left-radius: 19px;
+        border-top-right-radius: 19px;
+        border-bottom-right-radius: 19px;
+        background: #faebd7;
+    }
+    .user-bubble1{
+        text-align: left;
+        width: 90%;
+        overflow-wrap: break-word;
+        margin-bottom: 2%;
+        padding: 5%;
+        margin-left: 8%;
+        height: auto;
+        border: 1px solid #b9b8b7;
+        border-top-left-radius: 19px;
+        border-top-right-radius: 19px;
+        border-bottom-left-radius: 19px;
+        background: #b9b8b7;
+    }
+    .rnd-btn{   
+         background: blue;
+        text-align: center;
+        border-radius: 50%;
+    }
+    
+    .chat-footer{
+        height: auto;
+        background: #eb3e18;
+    }
+    .chat{
+        height: auto;
+        width:100%;
+     }
+    .chatreplybox{
+        height: auto;
+        width:100%;
+        text-align: left;
+    }
+    .chat-inputbox{
+        height: auto;
+                }
+    .chatinput .text-input-md {
+        text-align: left;
+        color:white;
+        font-size: 1.6rem;
+    }
+    .chatsendcol{
+        margin: auto;
+        text-align: center;
+    }
+    .chatsend{
+text-align: center;
+margin: auto;
+font-size: 2em;
+    }
+    .chattextareadiv{
+        border:1px solid white;
+        border-radius: 13px;
+    }
+    .divider{
+        text-align: center;
+        border:0;
+    }
+}
+
+
+
+

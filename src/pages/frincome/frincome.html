@@ -1,0 +1,196 @@
+
+  <ion-header>
+      <ion-navbar color="orangebtn"  class="padding-top:10px;" hideBackButton>
+          <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+          <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+        </ion-navbar>
+  
+
+  <div padding>
+    <ion-segment #segments mode="md" [(ngModel)]="page" color="white">
+      <ion-segment-button value="0" (click)="selectedTab(0)">
+        <div>Franchise</div>
+      </ion-segment-button>
+  <ion-segment-button value="1" (click)="selectedTab(1)">
+        <div>Lead</div>
+      </ion-segment-button>
+      <ion-segment-button value="2" (click)="selectedTab(2)">
+        <div>Banners</div>
+      </ion-segment-button>
+      <ion-segment-button value="3" (click)="selectedTab(3)">
+        <div>Users</div>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+
+
+<ion-content class="bg-style">
+
+  
+
+  <ion-grid>
+    <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+     
+      <ion-slide>
+        <ion-card style="text-align: center">
+          <ion-row>
+            <ion-col col-12 class="list-text">
+          
+              <div style="color: chocolate; font-size: 25px;"> Total :{{frincometotal}} </div>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-row>
+            <ion-item><label>From Date</label><ion-input type="date" #frstart_date></ion-input></ion-item>
+            <ion-item><label>To Date</label><ion-input type="date" #frend_date></ion-input></ion-item>
+            <ion-item float="right"><button ion-button (click)="franchiseIncome()">Check</button></ion-item>
+          </ion-row>
+        <div>
+            <p>Franchise Income</p>
+          <table >
+            <tr style="border-bottom:0.5px solid black">
+              <th>Date</th>
+              <th>Franchise</th>
+              <th>Income</th>
+            </tr>
+            <tr style="border-bottom:1px solid black" *ngFor="let income of franchiseincome; let i= index;">
+              <td>{{income.payment_date}}</td>
+              <td>{{income.username}}</td>
+              <td>{{income.amount}}</td>
+            </tr>
+
+          </table>
+        </div>
+      </ion-slide>
+      <!-- leads-->
+      <ion-slide>
+        <ion-card style="text-align: center">
+          <ion-row>
+            <ion-col col-12 class="list-text">
+                <div style="color: chocolate; font-size: 25px;"> Total :{{frleadsincometotal}} </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-card>
+        <ion-row>
+          <ion-item>
+              <label>From Date</label><ion-input type="date" #leadstart_date></ion-input>
+          </ion-item>
+          <ion-item>
+              <label>To Date</label><ion-input type="date" #leadend_date></ion-input>
+          </ion-item>
+          <ion-item>
+              <button ion-button (click)="leadsIncome()">Check</button>
+          </ion-item>
+            
+          </ion-row>
+        <div>
+            <p>Lead Income</p>
+          <table>
+            <tr >
+              <th>Date</th>
+              <th>Income</th>
+            </tr>
+            <tr style="border-bottom:1px solid black" *ngFor="let income of leadsincome; let i= index;">
+                <td>{{income.payment_date}}</td>
+                <td>{{income.amount}}</td>
+              </tr>
+          </table>
+        </div>
+      </ion-slide>
+
+      <!--banner-->
+
+      <ion-slide>
+        <ion-card style="text-align: center">
+          <ion-row>
+            <ion-col col-12 class="list-text">
+                <div style="color: chocolate; font-size: 25px;" > Total :{{frbannerincometotal}} </div>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-row>
+            <ion-item>
+                <label>From Date</label><ion-input type="date" #bannerstart_date></ion-input>
+
+            </ion-item>
+            <ion-item>
+                <label>To Date</label><ion-input type="date" #bannerend_date></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button (click)="bannerIncome()">Check</button>
+            </ion-item>
+          
+          </ion-row>
+        <div >
+            <p>Banner Income</p>
+          <table >
+            <tr>
+              <td>Date</td>
+              <td>User Name</td>
+              <td>Income</td>
+            </tr>
+            <tr style="border-bottom:1px solid black" *ngFor="let income of bannerincome; let i= index;">
+                <td>{{income.payment_date}}</td>
+                <td>{{income.username}}</td>
+                <td>{{income.amount}}</td>
+              </tr>
+          </table>
+        </div>
+      </ion-slide>
+
+
+      <!--subscription-->
+      <ion-slide>
+        <ion-card style="text-align: center">
+          <ion-row>
+            <ion-col col-12 class="list-text">
+                <div style="color: chocolate; font-size: 25px;"> Total :{{frsubscriptionincometotal}} </div>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-row>
+          <ion-item>
+              <label>From Date</label><ion-input type="date" #userstart_date></ion-input>
+          </ion-item>
+          <ion-item>
+              <label>To Date</label><ion-input type="date" #userend_date></ion-input>
+          </ion-item>
+          <ion-item>
+              <button ion-button (click)="subscriptionIncome()">Check</button>
+          </ion-item>
+         
+          </ion-row>
+        <div >
+            <p>User Subscription Income</p>
+          <table >
+            <tr>
+              <th>Date</th>
+              <th>UserName</th>
+              <th>Income</th>
+            </tr>
+            <tr style="border-bottom:1px solid black" *ngFor="let sub of subincome;let i= index;">
+                <td>{{sub.payment_date}}</td>
+                <td>{{sub.username}}</td>
+                <td>{{sub.amount}}</td>
+              </tr>
+          </table>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ion-grid>
+  <ion-grid>
+   
+  </ion-grid>
+ 
+</ion-content>
+<ion-footer class="ftr">
+    <ion-row class="ftr-row">
+      <ion-col class="ftr-col" (click)="home()"><img src="../assets/franchise/profile/footerhome.png" class="ftr-icon1"><p class="name-footer1">Home</p></ion-col>
+       <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footerbuyleads.png" class="ftr-icon1"><p class="name-footer1">Buy Leads</p></ion-col>
+      <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footersellleads.png" class="ftr-icon1"><p class="name-footer1">Sell Leads</p></ion-col>
+      <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footerincome.png" class="ftr-icon1"><p class="name-footer1">Income</p></ion-col>
+      <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footerreports.png" class="ftr-icon1"><p class="name-footer1">Reports</p></ion-col>
+    </ion-row>
+   </ion-footer>

@@ -1,0 +1,8 @@
+<svg id="Back_Button" data-name="Back Button" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Bounding_Boxes">
+    <path id="Path_5" data-name="Path 5" d="M0,0H24V24H0Z" fill="none" opacity="0.87"/>
+  </g>
+  <g id="Rounded">
+    <path id="Path_6" data-name="Path 6" d="M16.62,2.99h0a1.249,1.249,0,0,0-1.77,0L6.54,11.3a1,1,0,0,0,0,1.41l8.31,8.31a1.249,1.249,0,0,0,1.77,0h0a1.249,1.249,0,0,0,0-1.77L9.38,12l7.25-7.25A1.246,1.246,0,0,0,16.62,2.99Z" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<ion-content style="background-image: url('../assets/imgs/blurred.jpg');  background-repeat: no-repeat;background-attachment: fixed;background-position: center;" padding>
+ <h1 style="color:rgb(243, 102, 21)">MiiVision</h1>
+ <div class="login" style="margin-top:40%; padding:10%">
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Your Name</ion-label>
+      <ion-input type="text" #name></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label fixed>Meeting ID</ion-label>
+      <ion-input type="mobile" #meeting_id></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label fixed>Password</ion-label>
+      <ion-input type="mobile" #password></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  <button ion-button small (click)="login()" block round>Start</button>
+ </div>
+ <br>
+ <h2 style="color:rgb(243, 102, 21)" (click)="gotoApp()">Proceed to Main App</h2>
+</ion-content>

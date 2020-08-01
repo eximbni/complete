@@ -1,0 +1,67 @@
+page-franchise-dash-board {  
+    font-family: 'Source Sans Pro', sans-serif !important;   
+    text-align: center;
+    
+    .details{
+        margin-top: -20%;
+        text-align: center;
+    }
+.pro-header{
+    background: rgb(70,40,170);
+background: linear-gradient(360deg, rgba(70,40,170,1) 0%, rgba(7,120,207,1) 100%);
+}
+    .pro-bg{
+        height:20em;
+        background: rgb(70,40,170);
+        background: linear-gradient(360deg, rgba(70,40,170,1) 0%, rgba(7,120,207,1) 100%);
+        text-align: center;
+//background-image:Url("../assets/franchise/profile/rectangle.svg")
+    }
+    .flist{
+        text-align: center;
+        margin-top : 10%;
+    }
+   .pro-name{
+    font-size: 1em;
+    text-align: center;
+   }
+   .business{
+       text-align: center;
+       font-size: 1em;
+   }
+    .profile{
+        width: 8em;
+    margin-top: 2em;
+    height: 8em;
+    border-radius: 50%;
+}
+.pro_name
+{
+    color: #fff;
+    font-size: 14pt;
+    line-height: 14pt;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.pro_bus
+{
+    color: #fff;
+    font-size: 14pt;
+    line-height: 22pt;
+}
+.pro_loc
+{
+    color: #fff;
+    font-size: 12pt;
+    line-height: 5pt;
+}
+.ham
+{
+    font-size: 2em;
+    color:#fff;
+}
+.mg5
+{
+    margin: 5px;;
+}
+}

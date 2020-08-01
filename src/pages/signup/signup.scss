@@ -1,0 +1,125 @@
+page-signup {
+   
+    .text-input::-webkit-input-placeholder {
+        text-indent: 0;
+        color: rgb(243, 75, 75);
+      }
+
+    
+    ion-content {
+        position: absolute;
+        height: 100%;
+    }
+    .button-block-md {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+   .button-md{
+    background-color: #009856;
+
+   }
+   .button-block {
+       width: 80%;
+   }
+   
+    .toolbar-title-md {
+        font-family: 'Source Sans Pro', sans-serif !important;
+        font-size: 1.8rem;
+    }
+
+    .txt-font{
+        font-family: 'Source Sans Pro', sans-serif !important;
+    }
+ .container{
+        height: 100%;
+    }
+    .alert-danger{
+color: red;
+    }
+   
+    .signin-div{
+        padding-top: 2%;
+    margin-top: 4%;
+    margin-bottom: 5%;
+    }
+    .img-col{   
+        padding-top: 7%;
+       text-align: right;
+       padding-right: 0;
+       max-width: 10%;
+   }
+  
+   .form-item{
+       font-size: 1.5rem;
+       padding-left: 0;
+   }
+   .field-image{
+       width:20px;
+       height:30px;
+   }
+ 
+
+#mobile{
+    width: 100%;
+    border: 1px solid #A5A5A5;
+   text-align: left;
+    border-radius: 4px;
+    height: 2.6em;}
+}
+.signupButton{
+    text-align: center;
+}
+.country-div{
+    margin-top: 2%;
+}
+.zipcode-col{
+    padding: 0;
+}
+#country{
+    border-radius: 9px
+}
+
+.buttoncss{
+    color: red;
+}
+/* .alert-md .alert-title {
+    font-size: 22px;
+    text-align: left;
+}
+.alert-wrapper{
+    opacity: 1;
+    border-radius: 16px !important;
+    background: linear-gradient(180deg, rgba(54,17,106,1) 0%, rgba(178,47,48,1) 100%);
+    color: white;
+    text-align: left;
+    transform: scale(1);
+}
+.alert-md .alert-button {
+    text-align: left;
+    border: 1px solid white;
+    border-radius: 9px !important;
+    color: white;
+    background-color: transparent;
+
+}
+.alert-md .alert-radio-label {
+color: white;
+} */
+.multiselect-dropdown[_ngcontent-c0] .dropdown-btn[_ngcontent-c0] {
+    display: inline-block;
+    border-bottom: 1px solid #adadad;
+    width: 100%;
+    padding: 14px 12px;
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.52857143;
+    text-align: left;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border-radius: 4px;
+}
+
+.selected {text-shadow: 0 0 1px #F48F0A; font-size:35px;}
+  

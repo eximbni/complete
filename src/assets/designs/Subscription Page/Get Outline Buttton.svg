@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="54.808" height="25" viewBox="0 0 54.808 25">
+  <g id="Get_Outline_Buttton" data-name="Get Outline Buttton" transform="translate(-165 -690)">
+    <g id="Rectangle_1446" data-name="Rectangle 1446" transform="translate(165 690)" fill="none" stroke="#009814" stroke-width="1">
+      <rect width="54.808" height="25" rx="12.5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="53.808" height="24" rx="12" fill="none"/>
+    </g>
+    <text id="Get" transform="translate(179 709)" fill="#009714" font-size="18" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Get</tspan></text>
+  </g>
+</svg>

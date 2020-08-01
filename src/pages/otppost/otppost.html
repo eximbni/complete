@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="danger" hideBackButton>
+    <ion-row>
+      <ion-col><ion-title>OTP Verification</ion-title></ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="otp-container" padding>
+
+  <div class="otp-maindiv">
+    <h3>
+      Enter the verification code that <br />
+      we sent on your registered email
+    </h3>
+
+    <p class="otprow" text-center>
+      <ng-otp-input
+        (onInputChange)="onOtpChange($event)"
+        [config]="{length:4,allowNumbersOnly:true,inputClass:cnfotp}"
+      ></ng-otp-input>
+      <a href="#" class="otp-resend" (click)="resend()">Resend OTP</a>
+    </p>
+    <!-- <div class="otp-field"><ng-otp-input [config]="{length:4}" placeholder="*" #otp></ng-otp-input>  </div> -->
+    <p class="otprow" text-center *ngIf="impexpdiv">
+      <ion-label  stacked >Importer/Exporter OTP*</ion-label>
+      <ion-label > OTP send on {{ impexpmail }} email id.</ion-label>
+      <ng-otp-input
+        (onInputChange)="onimpexpOtpChange($event)"
+        [config]="{length:4,allowNumbersOnly:true,inputClass:cnfotp}"
+      ></ng-otp-input>
+      <a href="#" class="otp-resend" (click)="resendimpexp()">Resend OTP</a>
+    </p>
+
+
+    <div class="otp-btn">
+      <button ion-button round color="orangebtn" (click)="confirm()">
+        Verify
+      </button>
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="295" height="45" viewBox="0 0 295 45">
+  <g id="User_name_" data-name="User name " transform="translate(-40 -392)">
+    <g id="Rectangle_108" data-name="Rectangle 108" transform="translate(40 392)" fill="#f6f6f6" stroke="#a5a5a5" stroke-width="0.25">
+      <rect width="295" height="45" rx="22.5" stroke="none"/>
+      <rect x="0.125" y="0.125" width="294.75" height="44.75" rx="22.375" fill="none"/>
+    </g>
+    <text id="Email" transform="translate(137 422.5)" fill="#373737" font-size="22" font-family="SourceSansPro-Regular, Source Sans Pro"><tspan x="0" y="0">User Name</tspan></text>
+  </g>
+</svg>

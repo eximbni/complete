@@ -1,0 +1,47 @@
+<ion-header>
+        <ion-navbar color="orangebtn"  class="padding-top:10px;">
+            <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+            <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+          </ion-navbar>
+      </ion-header>
+
+
+<ion-content>
+    <div class="item-div">
+      <ion-item>
+        <!--chapters-->
+        <ng-multiselect-dropdown class="ngselect fs_select"  
+        [placeholder]="'chapters list'" 
+        [data]="chapterslist" 
+        [(ngModel)]="selectedchapter"
+        [settings]="dropdownSettings" 
+        (onSelect)="getchapter($event)"></ng-multiselect-dropdown>
+      </ion-item>
+                <!--country-->
+             <ion-item>
+                   <ng-multiselect-dropdown class="ngselect fs_select"  
+                     [placeholder]="'users list'" 
+                     [data]="chapteruserslist" 
+                     [(ngModel)]="selectedusers"
+                     [settings]="dropdownSettings1" 
+                     (onSelect)="getusers($event)"></ng-multiselect-dropdown>
+                   </ion-item>
+             <!--state-->
+           <button ion-button block  round class="btn" color="orangebtn" (click)="invite()">Create</button>
+      
+         </div>
+         
+         
+   </ion-content>
+   
+   <ion-footer class="ftr">
+     <ion-row class="ftr-row">
+       <ion-col class="ftr-col" (click)="home()"><img src="../assets/designs/footer/home.png" class="ftr-icon"/><p class="name-footer">Home</p></ion-col>
+       <ion-col class="ftr-col" (click)="leads()"><img src="../assets/designs/footer/leads.png" class="ftr-icon"/><p class="name-footer">Leads</p></ion-col>
+       <ion-col class="ftr-col" (click)="chatting()"><img src="../assets/designs/footer/chat.png" class="ftr-icon"/><p class="name-footer">Chat</p></ion-col>
+       <ion-col class="ftr-col" (click)="webinar()"><img src="../assets/designs/footer/webinar.png" class="ftr-icon"/><p class="name-footer">MiiVision</p></ion-col>
+       <ion-col class="ftr-col"  (click)="quotes()"><img src="../assets/designs/footer/postlead.png" class="ftr-icon"/><p class="name-footer">Post Lead</p></ion-col>
+       </ion-row>
+    </ion-footer>
+   
+   

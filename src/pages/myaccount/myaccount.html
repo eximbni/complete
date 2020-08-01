@@ -1,0 +1,217 @@
+<ion-header>
+  <ion-navbar color="orangebtn" class="padding-top:10px;" >
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"
+      ><img src="../assets/imgs/logos.png" style="height:70px;"
+    /></ion-col>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="grid-1">
+    <ion-row *ngFor="let user of userdata;let i=index;"> 
+      <ion-col col-4><span class="pro"> <img src="../assets/imgs/verified.png" style="height:40px;"/> </span></ion-col>
+      <ion-col col-8 style="text-align:right">
+        <div end >
+          <p *ngIf="user.stars==5">  
+
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span>      
+          </p>
+          <p *ngIf="user.stars==4">  
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span>      
+            
+          </p>
+          <p *ngIf="user.stars==3">  
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span>      
+            
+          </p>
+          <p *ngIf="user.stars==2">  
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span>      
+            
+          </p>
+          <p *ngIf="user.stars==1">  
+
+            <span class="fa fa-star checked fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span>                    
+          </p>
+          <p *ngIf="user.stars=='none'">  
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span> 
+            <span class="fa fa-star fa-2x"></span>      
+            
+          </p>                                   
+          
+   
+      </div>  
+      </ion-col>
+      <ion-col col-4 class="image-bg">
+        <img *ngIf="user_image" src="https://eximbin.com/api/uploads/{{user.user_image}}" class="img-bg"/>
+        <div *ngIf="!user_image"style="font-size:4.5em; text-align:center; background:  none; border-radius: 50%;" (click)="cameraon()"><ion-icon ios="ios-camera" md="md-camera" color="danger"></ion-icon></div>
+        
+      </ion-col>
+      <ion-col col-8 class="image-bg1">
+         <span class="pro-name">{{ user.name }}</span>
+        <span class="pro-name">{{ user.mobile }}</span>
+        <span class="pro-name">{{ user.email }}</span>
+        <span class="pro-name">{{ user.business}}</span>     
+        <span class="pro-name">Ref Code:<b style="color: red; text-decoration: underline;">{{ user.ref_code}}</b></span> 
+           
+        <button ion-button small round float-left (click)="edit()">
+          <ion-icon name="create" color="light" (click)="cameraon()"></ion-icon>
+          &nbsp; Edit
+        </button>
+       
+         
+      <!-- <span class="fa fa-star "></span><span class="fa fa-star "></span><span class="fa fa-star"></span> -->
+      </ion-col>
+      
+    </ion-row>
+
+  </div>
+<br>
+<h4 style="color:green">Selected Chapters</h4>
+<ion-row>
+  <ion-col col-4 *ngFor="let ch of chapters"><span style="background: #e85d2a; padding: 15px; color: #fff; font-weight: bold; border-radius: 10px;">{{ch.chapter_name}}</span></ion-col>
+</ion-row>
+  <ion-grid class="grid-mt">
+    <div class="pro-crd">
+      <ion-row class="pro-options" (click)="mypackage()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/credits.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>My Package Details</ion-col>
+      </ion-row>
+      <ion-row class="pro-options" (click)="myfav()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/credits.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>My Favorites</ion-col>
+      </ion-row>
+      <ion-row class="pro-options" (click)="credit()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/credits.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>Credits (RFQ Wallet & Lead Credits)</ion-col>
+      </ion-row>
+
+      <ion-row class="pro-options" (click)="notification()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/notifications.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>Notifications</ion-col>
+      </ion-row>
+      <ion-row class="pro-options" (click)="rfqbanner()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/banner.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>Post a Banner</ion-col>
+      </ion-row>
+      <ion-row class="pro-options" (click)="fgtpwd()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/password.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>change Password</ion-col>
+      </ion-row>
+      <ion-row class="pro-options" (click)="settings()">
+        <ion-col col-2>
+          <ion-avatar item-start
+            ><img
+              src="../assets/designs/profile/settings.svg"
+              class="ionic-icon"
+            /> </ion-avatar
+        ></ion-col>
+        <ion-col col-10>Settings</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-center>
+          <p>Tell your Friends about EXIMBNI</p>
+          <div *ngFor="let user of userdata;let i=index;">
+            <p class="ref-code">{{user.ref_code}}</p>
+            </div>
+          <p>invite your friends on EXIMBI App using your referal code and you and your friend earns 3 leads</p>
+          <p><button (click)="Share()" ionButton color="success" class="ref-button"><ion-icon ios="ios-share" md="md-share"></ion-icon> &nbsp; Refer now</button></p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h2 style="color: goldenrod; text-align: center;">Your Total Referral Count: {{scount}}</h2>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="pro-options" (click)="signout()">
+                <ion-col col-2>
+                  <ion-avatar item-start><ion-icon name="power" class="ionic-icon"></ion-icon>    </ion-avatar></ion-col>
+                <ion-col col-10>Sign out</ion-col>
+        </ion-row> -->
+    </div>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ftr" opacity="0.5">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"
+      ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Leads</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="chatting()"
+      ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="webinar()"
+      ><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiosVision</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="quotes()"
+      ><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon >
+      <p class="name-footer">Post Lead</p></ion-col
+    >
+  </ion-row>
+</ion-footer>

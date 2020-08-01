@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-navbar color="orangebtn"  class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"
+      ><img src="../assets/imgs/logos.png" style="height:70px;"
+    /></ion-col>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="form-container" padding>
+
+  <ion-grid>
+    <ion-list>
+    <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Category*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="categories"
+          [(ngModel)]="selectedcategory"
+          [settings]="dropdownSettings"
+          (onSelect)="getchapterslist($event)"
+          (onSelectAll)="onSelectAll($event)"
+        ></ng-multiselect-dropdown>
+      </div>
+
+      <!--chapters-->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Chapter*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'select'"
+          [data]="chapters1"
+          [(ngModel)]="selectedchapter"
+          [settings]="dropdownSettings1"
+          (onSelect)="gethsnlist($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <!--hsncodes-->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label"> HS Code*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'select'"
+          [data]="hsdetails"
+          [(ngModel)]="selectedhsncodes"
+          [settings]="dropdownSettings2"
+          (onSelect)="productlist($event)">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <!-- UOM -->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Unit of Measure*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="uoms"
+          [(ngModel)]="selecteduom"
+          [settings]="dropdownSettings4"
+          (onSelect)="showuom($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <!-- Country -->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Select Seller Country</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="countries"
+          [(ngModel)]="selectedItems"
+          [settings]="dropdownSettings5"
+          (onSelect)="onselectcountry($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Select Seller</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="sellers"
+          [(ngModel)]="selectedsellers"
+          [settings]="dropdownSellers"
+          (onSelect)="onselectseller($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+    
+      <ion-label stacked class="stack-label">Target Price*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="number" #price class="box-inpt" placeholder="Numbers Only Ex:250"></ion-input>
+      </ion-item>
+
+     
+      <ion-label stacked class="stack-label">Quantity*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="number" #quantity class="box-inpt" placeholder="Numbers Only Ex:250"></ion-input>
+      </ion-item><br>
+
+      <ion-label stacked class="stack-label">Description*</ion-label>
+      <ion-item class="dropitm">
+        <ion-textarea #description placeholder="Please Enter Detailed Description" rows="5"> </ion-textarea>
+      </ion-item>
+    </ion-list>
+    <button text-center ion-button class="btton-small-md" round small color="danger" block (click)="rfqsend()"> Post RFQ</button>
+  </ion-grid>
+   
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiVision</p></ion-col>
+    <ion-col class="ftr-col-active" (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="danger"></ion-icon >
+      <p class="name-footer-active">Post Lead</p></ion-col>
+  </ion-row>
+</ion-footer>

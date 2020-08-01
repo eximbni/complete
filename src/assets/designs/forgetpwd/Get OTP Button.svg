@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="45" viewBox="0 0 119 45">
+  <g id="Get_OTP_Button" data-name="Get OTP Button" transform="translate(-128 -635)">
+    <g id="Symbol_69_4" data-name="Symbol 69 – 4" transform="translate(128 635)">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="119" height="45" rx="22.5" fill="#009814"/>
+    </g>
+    <text id="Get_OTP" data-name="Get OTP" transform="translate(150 665)" fill="#fff" font-size="22" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">Get OTP</tspan></text>
+  </g>
+</svg>

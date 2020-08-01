@@ -1,0 +1,28 @@
+<!-- <ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Create Mobile Pin</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content  style="background-color: #fe5200;">
+  <div style="background :#ffffff; border-radius:10px; margin:5%; height: 90%; position: absolute;" text-center>
+  
+    <div class="logo-div"><img src="../assets/imgs/logos.png" width="60%" class="logo-image"/></div>
+    <div style="padding-top: 30%;">
+    <h3 style="color:#1f2d80;"> Choose a 4 digit pin which you can use for your future logins</h3>
+    <ion-list>
+    <ion-item>
+      <ion-label floating>4 Digit Login PIN</ion-label>
+      <ion-input type="mobile" maxlength="4" #mpin></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Confirm Login PIN</ion-label>
+      <ion-input type="mobile" maxlength="4" #cmpin></ion-input>
+    </ion-item>
+  
+  </ion-list>
+</div>
+  <button ion-button button-block round color="danger" small (click)="creatempin()">Submit</button>
+  </div>
+</ion-content>

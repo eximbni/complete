@@ -1,0 +1,127 @@
+page-notification {
+    .dte{
+        float: right;
+        opacity: 0.6;
+        font-size: 11px;
+        font-weight:bold;
+    }
+    .head-txt{
+        font-size: 12px;
+        padding: 5px;
+        margin: 10px;
+        
+    }
+    .sub-txt{
+    font-size: 12px;
+    }
+    .dat{
+        margin: 9px;
+        color: #949292 !important;
+        font-size: 13px !important;
+        float: right !important;
+    
+    }
+    .bg-color{
+        background-color: #ffff;
+        
+    }
+    .bcrd
+    {
+        border-left: 6px solid rgb(127, 248, 220);
+        //border-left-color: rgb(50, 158, 158);
+        background-color: rgb(225, 247, 236);
+        border-radius: 6px;   
+    }
+    .bcrd1
+    {
+        border-left: 6px solid rgb(153, 168, 248);
+        //border-left-color: rgb(50, 158, 158);
+        background-color: rgb(236, 237, 252);
+        border-radius: 6px;   
+    }
+    .bcrd2
+    {
+        border-left: 6px solid rgb(243, 118, 212);
+        //border-left-color: rgb(50, 158, 158);
+        background-color: rgb(250, 232, 244);
+        border-radius: 6px;   
+    }
+    .bcrd3{
+        border-left: 6px solid rgb(251, 253, 117);
+        //border-left-color: rgb(50, 158, 158);
+        background-color: rgb(253, 253, 232);
+        border-radius: 6px;   
+    }
+    .bcrd5{
+        border-left: 6px solid rgb(248, 138, 118);
+        //border-left-color: rgb(50, 158, 158);
+        background-color: rgb(241, 215, 215);
+        border-radius: 6px;   
+    }
+
+    
+.subtxt{
+    font-size: 13px;
+    color: #a09e9e;
+    padding: 3px;
+}
+.titletxt{
+    font-size: 15px;
+    color:#4a4a4a;
+    padding: 3px;
+}
+.crd{
+    border-radius: 10px;
+    padding-bottom: 0%;
+    margin-top: 10px;
+}
+.dat{
+    font-size: smaller;
+    opacity: 0.7;
+}
+.noti-txt{
+    font-size: 13px;
+    opacity: 0.7;
+    
+}
+.av-icon {
+   // min-width: 35px;
+    width: 15%;
+    height: 15%;
+    opacity: 0.7;
+   // min-height: 40px;
+}
+}
+
+.ftr{
+    background-color: #ffffff;;
+    height:10%;
+    margin-bottom: 0%;
+  
+  }
+  .ftr-row{
+    background-color: #ffffff;;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  .ftr-icon{
+    font-size: 25px;
+    margin-top: 10%;
+  }
+  .ftr-col{
+    background-color: #ffffff;;
+    padding: 0;
+    margin-top: 5px;
+    margin: 0;
+    height:10%;
+    text-align: center;
+    //border-right: 1px solid #e0dede;;
+  }
+  .name-footer{
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 12px;
+  }

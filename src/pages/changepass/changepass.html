@@ -1,0 +1,39 @@
+
+<ion-header>
+  <ion-navbar color="orangebtn"  class="padding-top:10px;">
+     
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logo.svg" style="height:70px;" ></ion-col>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="container" padding>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+
+
+<ion-grid *ngIf="Grid1" class="grid-container">
+
+  <ion-row class="row2">
+    <ion-col>
+      <ion-input type="text" placeholder="Old Password" #OldPwd class="mob-input"></ion-input>
+    </ion-col>
+  </ion-row> 
+  <ion-row class="row3">
+    <ion-col>
+      <ion-input type="text" placeholder="New Password" #NewPwd class="mob-input"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row class="row3">
+    <ion-col>
+       <ion-input type="text" placeholder="Re-enter Password" #RePwd class="mob-input"></ion-input>
+   </ion-col>
+  </ion-row>
+  <ion-row class="row3">
+    <ion-col>
+      <button ion-button small round color="warning" (click)="ChangePwd()" class="btn-bg3 btn-inr3">Submit</button>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+</ion-content>

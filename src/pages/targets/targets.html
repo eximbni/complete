@@ -1,0 +1,25 @@
+<!--
+  Generated template for the TargetsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color='danger'>
+    <ion-title>Your Target List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<h2>Target Description</h2>
+<ion-grid>
+  <ion-row>
+    <ion-col col-6 style="background: orangered; color: #fff;"> Month</ion-col>
+    <ion-col col-6 style="background: orangered; color: #fff;"> Target</ion-col>
+  </ion-row>
+  <ion-row *ngFor="let qa of targetdata; let i = index;">
+    <ion-col col-6 style="background: rgb(185, 183, 183); color: #111;"> {{ qa.month }}</ion-col>
+    <ion-col col-6 style="background: rgb(185, 183, 183); color: #111;"> {{ qa.target }}</ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

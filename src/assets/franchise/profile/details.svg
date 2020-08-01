@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="126" height="89" viewBox="0 0 126 89">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="19" height="19" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_17814" data-name="Group 17814" transform="translate(-139 -256.449)">
+    <text id="John_Wick" data-name="John Wick" transform="translate(144 281.449)" fill="#fff" font-size="23" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">John Wick</tspan></text>
+    <text id="Gold_Merchant" data-name="Gold Merchant" transform="translate(139 311.449)" fill="#fff" font-size="19" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Gold Merchant</tspan></text>
+    <g id="Group_250" data-name="Group 250" transform="translate(151.041 321.816)">
+      <g id="Places" transform="translate(-0.041 3.633)" clip-path="url(#clip-path)">
+        <rect id="Rectangle_305" data-name="Rectangle 305" width="19" height="19" transform="translate(0 0)" fill="none"/>
+        <path id="Path_114" data-name="Path 114" d="M7.917,11.413a3.355,3.355,0,0,0,3.361-3.361A3.458,3.458,0,0,0,7.917,4.571,3.355,3.355,0,0,0,4.556,7.932,3.543,3.543,0,0,0,7.917,11.413ZM2.276,2.291A7.978,7.978,0,0,1,13.559,13.574L7.917,19.215,2.276,13.574A8.2,8.2,0,0,1,2.276,2.291Z" transform="translate(1.179 0.05)" fill="#fff" fill-rule="evenodd"/>
+      </g>
+      <text id="Denmark" transform="translate(21.959 18.633)" fill="#fff" font-size="19" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Denmark</tspan></text>
+    </g>
+  </g>
+</svg>

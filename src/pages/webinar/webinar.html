@@ -1,0 +1,85 @@
+<ion-header>
+    <ion-navbar color="orangebtn"  class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+  <ion-input type="hidden" value="{{datetoday | date:'yyyy-MM-dd'}}" #cdate></ion-input>
+
+  <ion-list>
+    <ion-item-divider text-center style="color:white; background: red;">Schedule a Webinar </ion-item-divider>
+      <ion-item>
+  <ion-label>Title</ion-label>
+  <ion-input type="text" #title></ion-input>
+</ion-item>
+<ion-item>
+<ion-label>Webinar Date</ion-label>
+<ion-input type="date" #webdate></ion-input>
+</ion-item>
+
+<ion-item>
+    <ion-label>Start Time</ion-label>
+    <ion-datetime displayFormat="H:mm" pickerFormat="H mm" #webtime></ion-datetime>
+  </ion-item>
+<ion-item>
+<ion-label>Duration</ion-label>
+<ion-input type="number" placeholder="in minutes" #duration></ion-input>
+</ion-item>
+<ion-item>
+    <ion-label>Description</ion-label>
+    <ion-textarea type="text" #description></ion-textarea>
+    </ion-item>
+<button ion-button block round color="danger" small (click)="create()">Create</button>
+    </ion-list>
+    
+    <ion-grid class="table-grid">
+      <ion-list>
+        <ion-item *ngFor="let schedule of schedules; let i= index;" class="schedule">
+            <div class="stitle" style="background: #EB3E16;color:#ffffff;">{{schedule.title}}</div>
+          <ion-row class="" >
+            <ion-col col-6 >Meeting Date : </ion-col> <ion-col col-6 >{{schedule.webinar_date}}</ion-col>
+          </ion-row>
+          <ion-row class="" >
+            <ion-col col-6 >Meeting Time : </ion-col> <ion-col col-6 >{{schedule.webinar_time}}</ion-col>
+          </ion-row>
+          <ion-row class="" >
+            <ion-col col-6 >Meeting ID : </ion-col> <ion-col col-6 >{{schedule.meeting_id}}</ion-col>
+          </ion-row>
+          <ion-row class="" >
+            <ion-col col-6 >Password : </ion-col> <ion-col col-6 >{{schedule.meeting_pass}}</ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>{{schedule.webinar_link}}</ion-col>
+          </ion-row>
+          <ion-row class="srow">
+            <ion-col> Description </ion-col>
+        </ion-row>
+          <ion-row >
+            <ion-col >{{schedule.description}}</ion-col>
+        </ion-row>
+  
+          <ion-row>
+            <ion-col ><button ion-button (click)="startwebinar(i)" color="success" small round *ngIf="schedule.status ==0">Start Meeting</button></ion-col>
+            <ion-col ><button ion-button (click)="endwebinar(i)"  color="success" small round *ngIf="schedule.status ==1">End Meeting</button></ion-col>
+            <ion-col ><button ion-button (click)="delete(i)"  color="red" small round >Delete </button></ion-col>
+            <ion-col ><button ion-button (click)="sharewebinar(i)" color="warning" small round>Share</button></ion-col>
+        </ion-row>
+        </ion-item>
+      </ion-list>
+      
+    </ion-grid>
+
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col-active" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="danger"></ion-icon><p class="name-footer-active">MiiVisoin</p></ion-col>
+    <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+    </ion-row>
+ </ion-footer>
+

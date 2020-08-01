@@ -1,0 +1,41 @@
+<ion-menu id="sideMenu" [content]="content" type="overlay">
+    <ion-header>
+     <ion-toolbar color="danger">
+      <br><br>
+   <ion-row class="prorow" *ngFor="let user of userprofile; let i=index;">
+     <ion-col col-4 menuClose (click)="profilepg()"><img [src]="userimage" class="pro-image" width="30%" height="30%" alt="User Image"> </ion-col>
+     <ion-col col-6><h2 class="name"> {{user.name}} </h2></ion-col>
+     <ion-col col-2 style="color:white; text-align:center"> <img src="../assets/designs/sidemenu/menu.png" menuClose class="menu-icon"/>Menu</ion-col>
+   </ion-row>  
+   
+      </ion-toolbar>
+    </ion-header>
+
+<ion-content class="side-container">
+  <div id="google_translate_element" style="width:100%; height:50px"></div>
+    <div class="side-menu" *ngIf="userdb">
+      <button *ngIf="franchisebtn" menuClose ion-button round class="fr-btn" (click)="franchisedb()" > Franchise Dashboard </button>
+        <ion-list class="side-menu" nolines>
+            <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" class="side-btn">
+             {{p.title}}
+            </button>
+           </ion-list>
+          
+    </div>
+   
+
+    <div class="side-menu" *ngIf="frdb">
+        <button menuClose ion-button round class="fr-btn" (click)="userdashboard()"> User Dashboard </button>
+        <ion-list class="side-menu" nolines>
+            <button menuClose ion-item *ngFor="let f of fpages" (click)="openfrPage(f)" class="side-btn">
+             {{f.title}}
+            </button>
+           </ion-list>
+    </div> 
+    
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav> 

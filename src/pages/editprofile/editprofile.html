@@ -1,0 +1,39 @@
+
+  <ion-header>
+      <ion-navbar color="orangebtn"  class="padding-top:10px;">
+          <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+          <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+        </ion-navbar>
+    </ion-header>
+<ion-content padding>
+<ion-list>
+  <ion-item>
+  <ion-label floating>First Name</ion-label>
+    <ion-input type="text" #firstname></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Last Name</ion-label>
+      <ion-input type="text" #lastname></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Business Name</ion-label>
+        <ion-input type="text" #company></ion-input>
+      </ion-item>
+      <ion-item class="dropitm">
+          <button ion-button block outline color="danger" (click)="fileUpload()">Upload Document</button>
+         </ion-item>
+         <div>
+            <img  [src]="DPhoto" class="text-form-item2" *ngIf="DPhoto">
+        </div>
+        <button ion-button block (click)="update()">Update</button>
+</ion-list>
+</ion-content>
+<ion-footer class="ftr">
+    <ion-row class="ftr-row">
+      <ion-col class="ftr-col" (click)="home()"><img src="../assets/designs/footer/home.svg" class="ftr-icon"/><p class="name-footer">Home</p></ion-col>
+      <ion-col class="ftr-col" (click)="leads()"><img src="../assets/designs/footer/leads.svg" class="ftr-icon"/><p class="name-footer">Leads</p></ion-col>
+      <ion-col class="ftr-col" (click)="chatting()"><img src="../assets/designs/footer/chat.svg" class="ftr-icon"/><p class="name-footer">Chat</p></ion-col>
+      <ion-col class="ftr-col" (click)="webinar()"><img src="../assets/designs/footer/webinar.svg" class="ftr-icon"/><p class="name-footer">MiiosVision</p></ion-col>
+      <ion-col class="ftr-col"  (click)="quotes()"><img src="../assets/designs/footer/postlead.svg" class="ftr-icon"/><p class="name-footer">Post Lead</p></ion-col>
+      </ion-row>
+   </ion-footer>

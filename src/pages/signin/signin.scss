@@ -1,0 +1,75 @@
+page-signin {
+    text-align: center;
+.logo-image{
+margin-top: 5%;
+text-align: center;
+}
+.scroll-content {
+    padding-bottom: 0 !important;
+ }
+.text-input-md
+{
+    font-size: 2rem;
+    border: 0;
+    border-bottom: 1px solid #252f6a;
+    padding: 5px;
+}
+.iosinput{
+    text-align: center;
+    font-size: 3rem;
+    border-bottom: 1px solid grey;
+}
+
+// .text-input
+// {
+//     border: 1px solid #cacaca;
+//     width: 80%;
+//     padding: 11px;
+//     border-radius: 10px;
+//     margin: 5px;
+// }
+
+.tx_20_w_c {
+    font-size: 2rem;
+    text-align: center;
+    color: #fff;
+    font-weight: 400;
+}
+
+.video-icons
+{
+    position: absolute;
+    left: 0.2em;
+    background: #fff;
+    border-radius: 50%;
+    color: #6c7acd;
+    width: 1.3em;
+    height: 1.3em;
+    padding: 0.2em
+}
+
+.groups-icons
+{
+    position: absolute;
+    right: 0.2em;
+    background: #fff;
+    border-radius: 50%;
+    color: #6c7acd;
+    width: 1.3em;
+    height: 1.3em;
+    padding: 0.2em;
+    top: 0.5em;
+}
+
+.search-icons
+{
+    position: absolute;
+    left: 0.2em;
+    background: #fff;
+    border-radius: 50%;
+    color: #6c7acd;
+    width: 1.3em;
+    height: 1.3em;
+    padding: 0.2em
+}
+}

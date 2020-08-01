@@ -1,0 +1,66 @@
+
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+  <div id="google_translate_element"></div>
+    <ion-grid>
+         <ion-row class="news rgb(125, 125, 223)">
+            <!--ion-col col-3 class="col-xs-12 col-sm-12 col-md-2 col-lg-2 message-box-title1  visible-md visible-lg" style="padding:0px;margin:0px; "><span>Seller</span></ion-col-->
+            <ion-col col-3><img src="../assets/designs/categories/seller.png"></ion-col>
+             <ion-col col-9 style="background: rgb(255, 94, 0);color:#ffffff"><span class="marqtext"><marquee direction="left" speed="1" onmouseup="this.start()" onmousedown="this.stop()"><u *ngFor="let scroll of sellleads, let i = index;" (click)="sellleaddetails(i)" class="mtxt-bold" >{{scroll.leadref_id | slice:0:6}}XXXX-{{scroll.description}}&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>   </marquee></span></ion-col>
+          </ion-row>
+          <ion-slides  *ngIf="banners && banners.length" class="slide-container" style="height:100%" autoplay="4000" loop="true" speed="10000" >
+            <ion-slide class="slide-image" *ngFor="let banner of banners; let i=index;">
+                 <img src="https://eximbin.com/api/uploads/{{banner.banner_image}}" style="height:130px;width:100%; margin-top:80px; margin-bottom: 80px;"/>
+               </ion-slide>
+            </ion-slides>
+
+              <ion-row class="news sellsha rgb(125, 125, 223)">
+                  <!--ion-col col-3 class="col-xs-12 col-sm-12 col-md-2 col-lg-2 message-box-title2  visible-md visible-lg" style="padding:0px;margin:0px; ">Buyer</ion-col-->
+                  <ion-col col-3><img src="../assets/designs/categories/buyer.png"></ion-col> 
+                  <ion-col col-9 style="background: rgb(65, 140, 69); color:#ffff">
+                     <span  class="marqtext">
+                     <marquee direction="left" speed="2"><u *ngFor="let bscroll of buyleads, let i = index;" (click)="buyleaddetails(i)" class="mtxt-bold">{{bscroll.leadref_id | slice:0:6}}XXXX-{{bscroll.description}}&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>  </marquee>
+                     </span>
+                    </ion-col>
+                 </ion-row>
+    </ion-grid>
+    <ion-row style="margin-top:-20px">
+      <ion-col col-6><button style="background: rgb(255, 94, 0); height:10px; width:10px"></button> Sell Leads</ion-col>
+      <ion-col col-6><button style="background: rgb(65, 140, 69); height:10px; width:10px"></button> Buy Leads</ion-col>
+    </ion-row>
+    <ion-searchbar (click)="globalSearch()"></ion-searchbar>
+    
+     <ion-grid class="bg-style">
+        <ion-row>
+          <ion-col col-4 class="bg-color" *ngFor="let category of catdetails,let i= index;"  (click)="Chapters(i)">  
+              <img class="cat-img" src="../assets/designs/categories/{{category.id}}.svg" width="60px" height="60px" color="rgb(248, 108, 108);"> 
+              <p class="txt">{{category.category_name}}</p>
+              <ion-row class="badge-md-warning">
+                <ion-col col-6 style="background: rgb(255, 94, 0); height:25px !important">
+                 {{category.sell_leads}}
+                </ion-col>
+                <ion-col col-6 style="background: rgb(65, 140, 69); height:25px !important">
+                  {{category.buy_leads}}
+                </ion-col>
+              </ion-row>
+              
+              
+          </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  </ion-content>
+<ion-footer class="ftr">
+ <ion-row class="ftr-row">
+   <ion-col class="ftr-col-active" (click)="home()"><ion-icon name="home" color="danger" class="ftr-icon"></ion-icon><p class="name-footer-active">Home</p></ion-col>
+   <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+   <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><ion-badge id="cart-badge">{{showcount}}</ion-badge><p class="name-footer">Chat</p></ion-col>
+   <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
+   <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+   </ion-row>
+</ion-footer>

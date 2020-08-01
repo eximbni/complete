@@ -1,0 +1,47 @@
+page-webinar {
+    @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+      
+        to {
+          opacity: 1;
+        }
+      }
+      .fadeIn {
+        animation-name: fadeIn;
+        animation-duration: 4s;
+      }
+  .schedule{
+    border: 1px solid #f1f1f1;
+    margin-bottom: 2%;
+    border-radius: 9px;
+    padding-top: 4%;
+    background: #f1f1f1;
+  }
+.stitle{
+    text-align: center;
+    font-size: 1.2em;
+    border-bottom: 1px solid #cac4c3;
+}
+.srow{
+    text-align: center;
+}
+.link{
+    text-decoration: underline;
+    color: blue;
+}
+
+.shead{
+    font-size: 2em;;
+}
+.home-icon{
+
+  padding-top: 15px;
+}
+.home-icon1{
+  font-size: 2.5em;
+  padding-top: 25px;
+}
+
+}

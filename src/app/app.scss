@@ -1,0 +1,112 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+.tabs-md .tab-button {
+    border-right: 1px solid #e6e6e6;
+}
+.tabs-md .tabbar {
+    background: #fff;
+}
+.pro-image{
+border-radius:10px;
+height: 100%;
+float:left;
+    width: 70%;
+}
+
+.name{
+    float: left;
+    color: white;
+    font-size: 1.4rem;
+    margin-top: 5px !important;
+    padding-top: 0 !important;
+}
+.menu-icon{
+    margin-top:20%;
+    width: 80%;
+    float: right;
+}.side-container{
+    background: rgb(226, 223, 223);
+    color: #111;
+    font-family: 'Source Sans Pro', sans-serif;
+   
+}
+.side-menu{
+background-color: rgb(226, 223, 223);
+color: #111;
+width: 95%;
+}
+
+.fr-btn{
+    width: 90%;
+    margin: 2rem 1.5rem;
+    text-align: center;
+    background: rgb(226, 223, 223);
+    border: 1px solid #f7f7f7;
+    color:#111;
+    height: 4.5rem;
+    
+}
+.up-btn{
+    height: 4.5rem;
+    width: 40%;
+    margin: 0.2rem 1.5rem;
+    text-align: center;
+    background: rgb(226, 223, 223);
+    border: 1px solid #f7f7f7;
+    color:#111;
+}
+
+.side-btn{
+    background: rgb(226, 223, 223);
+    color: #1f2d80;
+    font-weight:bold;
+    text-transform:capitalize;
+}
+#goog-gt-tt html, #goog-gt-tt body, #goog-gt-tt div, #goog-gt-tt span, #goog-gt-tt iframe, #goog-gt-tt h1, #goog-gt-tt h2, #goog-gt-tt h3, #goog-gt-tt h4, #goog-gt-tt h5, #goog-gt-tt h6, #goog-gt-tt p, #goog-gt-tt a, #goog-gt-tt img, #goog-gt-tt ol, #goog-gt-tt ul, #goog-gt-tt li, #goog-gt-tt table, #goog-gt-tt form, #goog-gt-tt tbody, #goog-gt-tt tr, #goog-gt-tt td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-align: left;
+    line-height: normal;
+    display: none;
+}   
+.goog-tooltip skiptranslate{
+    display: none !important;
+}
+
+#goog-gt-tt{
+    display: none !important;
+}
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    } 
+body {
+    top: 0px !important; 
+    }
+    /*  span {
+        display: none !important;
+    } */
+   .goog-te-combo, .goog-te-banner *, .goog-te-ftab *, .goog-te-menu *, .goog-te-menu2 *, .goog-te-balloon * {
+    font-family: arial;
+    font-size: 10pt;
+    width: 100%;
+    height: 38px;
+    background: #e2dfdf;
+}

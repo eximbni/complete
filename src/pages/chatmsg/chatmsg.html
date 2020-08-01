@@ -1,0 +1,86 @@
+
+  <!-- <ion-header>
+      <ion-navbar color="danger" class="padding-top:10px;" style="color:#ffffff; font-size: 20px;" hideBackButton>
+        
+      </ion-navbar>
+    </ion-header> -->
+
+  
+  <ion-content>
+    <ion-row style="background: green; color: #fff;  height:3em">
+      <ion-col col-1 style="font-size: 1.4em; padding:0.4em 0px 0 10px;" (click)="BackPage()">
+        <ion-icon name="md-arrow-round-back" ></ion-icon>
+      </ion-col>
+      <ion-col col-1 style="padding:0">
+        <span *ngIf="user_image == 0">
+          <p style="background: red; color:#fff; text-align: center; width: 30px; height: 30px; padding:7px; margin-top:5px; border-radius:50%;">{{business_name | slice:0:1}}</p>
+        </span>
+        <div *ngIf="user_image != 0">
+          <img style="width:2.5em; height:2.5em; border-radius: 50%; margin:4px;" src="https://eximbin.com/api/uploads/{{user_image}}" class="groupicon"/>
+        </div>
+      </ion-col>
+      <ion-col col-8 style="padding-left:10px;">
+        <div>{{business_name}}</div>
+        <div style="font-size: 15px !important;">{{chat_status}}</div>
+      </ion-col>
+      <ion-col col-1 (click)="callUser()">
+        <ion-icon name="call" color="light" style="font-size: 1.5em; padding: 0.25em; float: right;" ></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-refresher (ionRefresh)="doRefresh($event)"></ion-refresher>  
+    <div class="main" id="condiv" #scrollElement >
+      <ion-list no-lines  *ngFor="let msg of chatdata" style="padding-right: 2.5%; padding-left: 2.5%;"> 
+        <div class="message received" *ngIf="user_id != msg.posted_by">
+            {{ msg.message }}
+            <img  *ngIf="msg.file_type=='image'"src="https://eximbni.com/api/uploads/{{msg.file_path}}" height="200" width="60%"/>
+            <span class="metadata"><!-- <span class="time">{{ msg.posted_time  | date:'h:mm'}}</span> --></span>
+        </div>
+        <div class="message sent" *ngIf="user_id == msg.posted_by">
+            {{ msg.message }}
+            <img  *ngIf="msg.file_type=='image'" src="https://eximbni.com/api/uploads/{{msg.file_path}}" height="200" width="100%"/>
+            <span class="metadata"><!-- <span class="time">{{ msg.posted_time | date:'h:mm'}}</span> --></span>
+        </div>
+    </ion-list>
+    </div>
+    <div class="second">
+      <div *ngIf="attachments" style="background-color: rgb(229, 230, 228); z-index:9999;">
+  <b style="color:red" (click)="closeDiv()"><ion-icon name="close-circle" style="font-size: 1.5em;" color="red" float-right></ion-icon></b>
+<ion-row style="text-align: center;">
+  <ion-col col-3 (click)="attachFile()"><ion-icon name="camera" style="font-size: 3em;" color="danger"></ion-icon><br>Photos</ion-col>
+  <ion-col col-3 (click)="uploadVideo()"><ion-icon name="videocam" style="font-size: 3em;" color="danger"></ion-icon><br> Videos</ion-col>
+  <ion-col col-3 (click)="uploadAudio()"> <ion-icon name="mic" style="font-size: 3em;" color="danger"></ion-icon><br> Audio</ion-col>
+  <ion-col col-3 (click)="uploadFile()"><ion-icon name="document" style="font-size: 3em;" color="danger"></ion-icon><br> Files</ion-col>
+</ion-row>
+</div>
+      <ion-row style="border-top: 1px solid green; background:#fff">
+        <ion-col col-9 style="padding:0">
+          <ion-input  placeholder="Type Your Message Here"[(ngModel)]="message" style="margin:2px; border-radius:20px 0 0 20px; border:1px solid #ccc; border-right: 0; padding-left: 4%; font-size: 16px; color: grey; padding:10px;" #inputmsg  (keyup.enter)="sendMessage()"></ion-input>
+        </ion-col>
+        <ion-col col-1 style="border: 1px solid #cccccc; border-right: 0; border-left: 0; margin: 2px 0; padding: 9px;" (click)="uploadImage()">
+          <ion-icon name="md-attach" color="primary" style="font-size: 2em;"></ion-icon>
+        </ion-col>
+        <ion-col col-2 style="border: 1px solid #cccccc; border-right: 0; border-left: 0; margin: 2px 0; padding: 9px 20px; border-radius: 0 18px 18px 0;" (click)="sendMessage()">
+          <ion-icon name="md-send" color="danger" style="font-size: 2em;"></ion-icon>
+        </ion-col>
+      </ion-row>
+      
+    </div>
+      <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+  </ion-content>
+  <!-- <ion-footer>  
+    <ion-toolbar class="no-border" color="light">
+      <ion-input  placeholder="Write your message ..." style="padding-left: 4%;" #inputmsg value=""></ion-input>
+      <ion-buttons end>
+        <button ion-button (click)="attachFile()" round>
+          <ion-icon name="md-attach" color="primary" style="font-size: 2em;"></ion-icon>
+        </button>
+      </ion-buttons> 
+      <ion-buttons end>
+        <button ion-button (click)="sendMessage()" color="danger" round>
+          <ion-icon name="md-send" color="danger" style="font-size: 3em;"></ion-icon>
+        </button>
+      </ion-buttons>
+    
+     </ion-toolbar>
+  </ion-footer>
+   -->

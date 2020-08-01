@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="64" viewBox="0 0 340 64">
+  <defs>
+    <filter id="Rectangle_119" x="0" y="0" width="340" height="64" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_17814" data-name="Group 17814" transform="translate(-18 -125)">
+    <text id="Select_Country" data-name="Select Country" transform="translate(54 160)" fill="#373737" font-size="20" font-family="SourceSansPro-Regular, Source Sans Pro"><tspan x="0" y="0">Select Country</tspan></text>
+    <g transform="matrix(1, 0, 0, 1, 18, 125)" filter="url(#Rectangle_119)">
+      <g id="Rectangle_119-2" data-name="Rectangle 119" transform="translate(9 6)" fill="none" stroke="#000" stroke-width="1" opacity="0.15">
+        <rect width="322" height="46" rx="23" stroke="none"/>
+        <rect x="0.5" y="0.5" width="321" height="45" rx="22.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

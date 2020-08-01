@@ -1,0 +1,114 @@
+    
+    <ion-header>
+      <ion-navbar color="danger"  class="padding-top:10px;" >
+          <ion-title>Subscribers List</ion-title>
+        </ion-navbar>
+
+</ion-header>
+<ion-content class="bg-style">
+  <ion-grid>
+    <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+      <ion-slide> 
+          <ion-label float="right"> Search Subscribers  Datewise</ion-label>
+        <!--  <ion-select float="right" #filter>
+            <ion-option>Most Active</ion-option>
+            <ion-option>Least Active</ion-option>
+          </ion-select> -->
+          <ion-card>
+            <ion-item style="border:1px solid grey"> 
+              <ion-label>From Date *</ion-label>
+              <ion-datetime displayFormat="MMM DD YYYY"  #sdate></ion-datetime>
+            </ion-item>            
+            <ion-item style="border:1px solid grey"> 
+              <ion-label>To Date *</ion-label>
+              <ion-datetime displayFormat="MMM DD YYYY"  #edate></ion-datetime>
+            </ion-item>   
+              <ion-row> 
+                <button ion-button block (click)="submit()">Search</button>
+              </ion-row>
+
+        </ion-card>
+
+        <ion-card class="list-card"  *ngFor="let request of userslist; let i = index;">
+
+          <ion-row>
+            <ion-col class="list-text">
+                <ion-grid>
+                    <ion-row>
+                      <ion-col col-5>
+                        Name 
+                      </ion-col>
+                      <ion-col col-1>
+                        :
+                      </ion-col>
+                      <ion-col col-6>
+                         {{request.name}}
+                      </ion-col>
+                      <ion-col col-5>
+                          Business Name 
+                        </ion-col>
+                        <ion-col col-1>
+                            :
+                          </ion-col>
+                        <ion-col col-6>
+                            {{request.business_name}}
+                        </ion-col>
+                       
+                    </ion-row>
+                    </ion-grid>
+             
+            </ion-col>
+          </ion-row>
+        </ion-card>
+       
+      </ion-slide>
+      <ion-slide>
+          <ion-searchbar [(ngModel)]="terms" ></ion-searchbar>
+        <ion-card class="list-card" *ngFor="let request of inactiveuserslist; let i = index;">
+          <ion-row>
+              <ion-col class="list-text">
+                  <ion-grid>
+                      <ion-row>
+                        <ion-col col-5>
+                          Name 
+                        </ion-col>
+                        <ion-col col-1>
+                          :
+                        </ion-col>
+                        <ion-col col-6>
+                           {{request.name}}
+                        </ion-col>
+                        <ion-col col-5>
+                            Business Name 
+                          </ion-col>
+                          <ion-col col-1>
+                              :
+                            </ion-col>
+                          <ion-col col-6>
+                              {{request.business_name}}
+                          </ion-col>
+                          
+                          
+                      </ion-row>
+                      </ion-grid>
+              </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-slide>
+      
+    </ion-slides>
+  </ion-grid>
+
+
+</ion-content>
+
+
+<!-- <ion-footer class="ftr1">
+  <ion-row class="ftr-row1">
+    <ion-col class="ftr-col1" (click)="home()"><img src="../assets/franchise/profile/footerhome.png" class="ftr-icon1"><p class="name-footer1">Home</p></ion-col>
+     <ion-col class="ftr-col1" (click)="buylist()"><img src="../assets/franchise/profile/footerbuyleads.png" class="ftr-icon1"><p class="name-footer1">Buy Leads</p></ion-col>
+    <ion-col class="ftr-col1" (click)="selllist()"><img src="../assets/franchise/profile/footersellleads.png" class="ftr-icon1"><p class="name-footer1">Sell Leads</p></ion-col>
+    <ion-col class="ftr-col1" (click)="income()"><img src="../assets/franchise/profile/footerincome.png" class="ftr-icon1"><p class="name-footer1">Income</p></ion-col>
+    <ion-col class="ftr-col1" (click)="reports()"><img src="../assets/franchise/profile/footerreports.png" class="ftr-icon1"><p class="name-footer1">Reports</p></ion-col>
+  </ion-row>
+ </ion-footer> -->

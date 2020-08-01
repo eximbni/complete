@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="353" height="50" viewBox="0 0 353 50">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1803" data-name="Rectangle 1803" width="85" height="50" transform="translate(25.6 165)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_17858" data-name="Group 17858" transform="translate(-11 -165)">
+    <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(-14.6)" clip-path="url(#clip-path)">
+      <rect id="Rectangle_1793" data-name="Rectangle 1793" width="292" height="40" rx="20" transform="translate(25.6 170)" fill="#009814"/>
+    </g>
+    <g id="Rectangle_1804" data-name="Rectangle 1804" transform="translate(42 170)" fill="none" stroke="#009814" stroke-width="1">
+      <rect width="322" height="40" rx="20" stroke="none"/>
+      <rect x="0.5" y="0.5" width="321" height="39" rx="19.5" fill="none"/>
+    </g>
+    <text id="Full_Name" data-name="Full Name" transform="translate(178 196)" fill="#009814" font-size="16" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">State</tspan></text>
+    <text id="Full_Name-2" data-name="Full Name" transform="translate(25 196)" fill="#fff" font-size="16" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Regional</tspan></text>
+    <text id="Full_Name-3" data-name="Full Name" transform="translate(235 196)" fill="#009814" font-size="16" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">HSN</tspan></text>
+    <text id="Full_Name-4" data-name="Full Name" transform="translate(292 196)" fill="#009814" font-size="16" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">Country</tspan></text>
+    <text id="Full_Name-5" data-name="Full Name" transform="translate(106 196)" fill="#009814" font-size="16" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">Chapter</tspan></text>
+    <line id="Line_139" data-name="Line 139" y2="40" transform="translate(169.5 170.5)" fill="none" stroke="#009814" stroke-width="1"/>
+    <line id="Line_140" data-name="Line 140" y2="40" transform="translate(223.5 170.5)" fill="none" stroke="#009814" stroke-width="1"/>
+    <line id="Line_141" data-name="Line 141" y2="40" transform="translate(276.5 170.5)" fill="none" stroke="#009814" stroke-width="1"/>
+  </g>
+</svg>

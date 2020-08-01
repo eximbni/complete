@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"
+      ><img src="../assets/imgs/logos.png" style="height:70px;"
+    /></ion-col>
+  </ion-navbar>
+  <div class="spacer" style="height:0.1em"></div>
+</ion-header>
+
+<ion-content class="bg-style-leads">
+  <ion-grid>
+        <!-- <ion-searchbar [(ngModel)]="terms"></ion-searchbar> -->
+         <div class="errmsg">{{requestmsg}}</div>
+         <ion-card  *ngFor="let request of qrequest | leadsearch: terms;  let i=index;">
+           <div > 
+            <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
+              <ion-col >Business Name: {{request.business_name }} </ion-col> 
+            </ion-row>
+            <ion-row>
+              <ion-col class="pro-name" col-3 >Chapter </ion-col><ion-col class="pro-name" col-3 style="border-right: 0.5px solid grey;" > : {{request.chapter_id}}</ion-col>
+              <ion-col class="pro-name" col-3> HSCode </ion-col> <ion-col class="pro-name" col-3> : {{request.hscode}} </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col class="pro-name" col-3 >Quantity </ion-col><ion-col class="pro-name" col-3 style="border-right: 0.5px solid grey;" > : {{request.req_quantity}}</ion-col>
+              <ion-col class="pro-name" col-3> Target Price </ion-col> <ion-col class="pro-name" col-3> : {{request.req_quantity}} {{request.uom}} </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="pro-name" col-3> Description </ion-col> <ion-col col-9>: {{request.description }} </ion-col> 
+            </ion-row>
+<!--             <ion-row>
+              <ion-col class="pro-name" col-5 > Requested Date  </ion-col> <ion-col class="pro-name" col-7> : {{request.posted_date | date:'dd-MM-yyy'}} </ion-col>
+            </ion-row> -->
+              <ion-row>
+              <ion-col class="date" col-8> </ion-col>
+              <ion-col class="date" col-4><button ion-button round small color="primary"  (click)="createchat(i)"> Chat</button></ion-col>
+            </ion-row>
+       
+        </div>
+
+
+        </ion-card>
+
+  </ion-grid>
+</ion-content>
+
+
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"
+      ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col
+    >
+    <ion-col class="ftr-col-active" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="danger"></ion-icon>
+      <p class="name-footer-active">Leads</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="chatting()"
+      ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="webinar()"
+      ><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiVision</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="quotes()"
+      ><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon >
+      <p class="name-footer">Post Lead</p></ion-col
+    >
+  </ion-row>
+</ion-footer>

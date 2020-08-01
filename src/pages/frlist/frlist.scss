@@ -1,0 +1,136 @@
+page-frlist {
+    
+    .ftr1{
+        background-color: #096161 !important;
+        height:10%;
+        margin-bottom: 0%;
+      
+      }
+      .ftr-row1{
+        background-color: #096161 !important;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        margin-bottom: 0;
+        margin-top: 0;
+      }
+      .ftr-icon1{
+        font-size: 1.3em;
+        margin-top: 1%;
+        width: 2em;
+        height: 2em;
+      }
+      .ftr-col1{
+        background-color: #096161 !important;
+        padding: 0;
+        margin-top: 5px;
+        margin: 0;
+        height:10%;
+        text-align: center;
+        //border-right: 1px solid #e0dede;;
+      }
+      .name-footer1{
+        font-family: Source Sans Pro;
+        margin-top: 0px;
+        margin-bottom: 0;
+        color: white !important;
+        font-size: 1em;
+      }
+
+
+
+    .time
+    {font-size: 12px;
+    color:#000;
+    padding-left: 12%;
+    }
+    
+    .title
+    {font-size: 14px !important;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    display: block;
+    color: #000 !important;}
+    .sub-title
+    {font-size: 12px !important;
+    width: 100%;
+    color: #000 !important;
+    text-align: left;
+    display: block;}
+    .status-text
+    {font-size: 12px  !important;
+    color:#000  !important;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-align: center;
+    display: block;}
+    .status-time
+    {
+        color:#3f51b5 !important;
+        font-size: 14px;
+        text-align: center !important;
+        margin-top: 10% !important;
+    }
+    .small-text
+{
+    font-size: 10px  !important;
+    width: 100%;
+    text-align:left;
+    display: block;
+    color: #000 !important;
+    word-wrap: break-word;
+}
+.status-text
+{font-size: 12px  !important;
+color:#000  !important;
+width: 100%;
+font-weight: 600;
+margin-bottom: 15px;
+text-align: center;
+display: block;}
+.big-icon
+{font-size: 3.0em;}
+.loaded
+{border-right:5px solid #333333;
+    border-radius:10px;}
+}
+
+.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated
+{
+    border-color:#009814 !important;
+    color: #373737;
+    text-transform: capitalize;
+    font-size: 1.8rem;
+    border-bottom-width:4px;
+}
+.segment-md .segment-button
+{
+    color: #373737;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+}
+
+.thumb
+{
+    border: 1px solid #c1c1c1;
+    padding: 10px;
+    margin: 10px 5px;
+    border-radius: 50%;
+}
+
+.list-text
+{
+    padding: 4% 8%;
+    line-height: 2.5rem;
+    font-size: 12pt;
+    color: #373737;
+    text-align: left;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.title-md
+{
+    padding-right: 20%;
+}

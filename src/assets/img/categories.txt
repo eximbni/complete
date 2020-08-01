@@ -1,0 +1,260 @@
+<!--
+  Generated template for the CategoriesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="text-small">
+    
+      <ion-grid>
+          <ion-row class="news blue">
+              <ion-col col-3 class="seller"><span (click)="seller()">SELLER</span></ion-col>
+               <ion-col col-9><span class="text1"><marquee direction="right" >Seller information</marquee></span></ion-col>
+            </ion-row>
+          <ion-slides autoplay="2000" loop="true">
+               <ion-slide style="background-color: green;height:100px;">
+                    <img src="assets/imgs/japan.jpg"/>
+                  </ion-slide>
+                
+                  <ion-slide style="background-color: blue; height:100px;">
+                    <img src="assets/imgs/usa.jpg"/>
+                  </ion-slide>
+                
+                  <ion-slide style="background-color: red;height:100px;">
+                    <img src="assets/imgs/china.jpg"/>
+                  </ion-slide>
+                </ion-slides>
+                <ion-row class="news blue">
+                    <ion-col col-3 class="buyer" (click)="buyer()">BUYER</ion-col>
+                     <ion-col col-9><span class="text1"><marquee>Buyer information</marquee></span></ion-col>
+                   </ion-row>
+      </ion-grid>
+                   
+   <ion-grid class="cate"  (click)="Chapters()">
+     <ion-row> 
+<ion-col class="col1">
+  
+    <div class="logo"><img src="assets/imgs/gold.svg" class="logo-img"></div>
+  <div class="sub">Gold</div>
+
+</ion-col>
+
+<ion-col class="col1"> 
+    <div class="logo2"><img src="assets/imgs/rice.svg" class="logo-img"></div>
+    <div class="sub">Rice</div>
+  </ion-col>
+
+  <ion-col class="col1"> 
+      <div class="logo3"><img src="assets/imgs/medical.svg" class="logo-img"></div>
+      <div class="sub">Medical</div>
+    </ion-col>
+
+</ion-row>
+
+<ion-row>
+    <ion-col class="col1"> 
+        <div class="logo4"><img src="assets/imgs/car.svg" class="logo-img"></div>
+        <div class="sub">Automobile</div>
+    </ion-col>
+    
+    <ion-col class="col1"> 
+        <div class="logo5"><img src="assets/imgs/bottle.svg" class="logo-img" ></div>
+        <div class="sub">Plastic</div>
+      </ion-col>
+    
+      <ion-col class="col1"> 
+          <div class="logo6"><img src="assets/imgs/food.svg" class="logo-img" ></div>
+          <div class="sub">Food</div>
+        </ion-col>
+    
+    </ion-row>
+
+    <ion-row>
+        <ion-col class="col1"> 
+            <div class="logo7"><img src="assets/imgs/phone.svg" class="logo-img" ></div>
+            <div class="sub">Phones</div>
+        </ion-col>
+        
+        <ion-col class="col1"> 
+            <div class="logo8"><img src="assets/imgs/hardware.svg" class="logo-img" ></div>
+
+            <div class="sub">Hardware</div>
+          </ion-col>
+        
+          <ion-col class="col1"> 
+              <div class="logo9"><img src="assets/imgs/duck.svg" class="logo-img" ></div>
+              <div class="sub">Toys</div>
+            </ion-col>
+        
+        </ion-row>
+    </ion-grid>
+    
+    </ion-content>
+
+CSS
+page-categories {
+    *{
+        font-size: 12px;
+    }
+   
+    blue {
+        background: #347fd0;
+        
+    }
+    .seller{
+        background-color:green;
+        border-radius: 3px;
+        color:white;
+        text-align: center;
+    }
+    .buyer{
+        background-color: red;
+        border-radius: 3px;
+        color:white;
+        text-align: center;
+    }
+    .news {
+        box-shadow: inset 0 -10px 20px rgba(35, 82, 143, 0.4), 0 5px 10px rgba(67, 87, 69, 0.5);
+          width:100%;
+        margin: 1px auto;
+        overflow: hidden;
+        border-radius: 2px;
+        -webkit-user-select: none;
+    } 
+    
+    .news span {
+        float: left;
+       
+        position: relative;
+        top: 1%;
+        width:100%;
+        box-shadow: inset 0  rgba(89, 173, 212, 0.4);
+        font: 10px 'Raleway', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -webkit-user-select: none;
+        cursor: pointer;
+    }
+    
+   
+    .col1{ 
+       // background-color: sienna; 
+        padding: 0px;
+         margin: 4px;
+    }
+    .logo{
+    height:80px;
+    width:100%;
+    background: rgb(226, 151, 151);
+}
+.logo2{
+height:80px;
+width:100%;
+background: rgb(166, 209, 166);
+}
+.logo3{
+    height:80px;
+    width:100%;
+    background: rgb(151, 161, 216);
+    }
+    .logo4{
+        height:80px;
+        width:100%;
+        background: rgb(228, 159, 197);
+        }
+        .logo5{
+            height:80px;
+            width:100%;
+            background: rgb(151, 212, 216);
+            }
+            .logo6{
+                height:80px;
+                width:100%;
+                background: rgb(207, 100, 106);
+                }
+                .logo7{
+                    height:80px;
+                    width:100%;
+                    background: rgb(95, 226, 165);
+                    }
+                    .logo8{
+                        height:80px;
+                        width:100%;
+                        background: rgb(195, 206, 103);
+                        }
+                        .logo9{
+                            height:80px;
+                            width:100%;
+                            background: rgb(57, 97, 77);
+                            }
+
+.sub{
+    height:30px;
+    width: 100%;
+    background: rgb(241, 241, 241);
+    text-align: center;
+    padding: 9px;
+}
+.logo-img{
+    width: 50px;
+    height: 50px;
+margin: 10px;
+    opacity: 0.3;
+  filter: alpha(opacity=40);
+  
+}
+.cate{
+    text-align: center;
+    border-radius: 50%;
+
+    
+}
+
+}
+
+TS
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { ChaptersPage } from '../chapters/chapters';
+import { LeadsPage } from '../leads/leads';
+import { LeadDetailsPage } from '../lead-details/lead-details';
+
+/**
+ * Generated class for the CategoriesPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@Component({
+  selector: 'page-categories',
+  templateUrl: 'categories.html',
+})
+export class CategoriesPage {
+  categories:any;
+  Goods:any;
+  catimages:any;
+  Codes:any;
+  policies:any [] = [
+    {id: "gold.png", name: "Gold"},
+    {id: "jwellary.jpg", name: "Jwelary"},
+    {id: "rice.jpg", name: "Rice"},
+   
+];
+  constructor(public navCtrl: NavController, public navParams: NavParams){
+
+  }
+  
+  
+  ionViewDidLoad(){
+    console.log(CategoriesPage);
+  }
+  seller(){
+    this.navCtrl.push(LeadsPage);
+  }
+  buyer(){
+    this.navCtrl.push(LeadsPage);
+  }
+  Chapters(){
+    this.navCtrl.push(ChaptersPage);
+  }
+}

@@ -1,0 +1,107 @@
+
+<ion-header>
+    <ion-navbar color="orangebtn"  class="padding-top:10px;">
+       
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+<ion-content class="container" padding>
+  
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
+  <ion-grid *ngIf="Grid1" class="grid-container">
+    
+    <ion-row>
+      <ion-col><img src="../assets/designs/forgetpwd/forgetpwd.png" height= "75px"/></ion-col>
+  </ion-row>
+    <ion-row class="row2">
+      <ion-col class="text-style">Enter the mobile number<br/>Associated with your Account<br/>
+    </ion-col>
+    </ion-row>
+
+    <ion-row class="row3">
+      <ion-col col-12>
+        <ng-multiselect-dropdown
+        [placeholder]="'Country Code'"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems"
+        [settings]="dropdownSettings"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+        
+      </ion-col>
+     <ion-col>
+       <ion-input type="number" maxlength="10" placeholder="Mobile no" #mobile value="{{mobileno_id}}" class="mob-input"></ion-input>
+     </ion-col>
+    </ion-row>
+    <ion-row class="row3">
+      <ion-col radio-group class="text-style">Select OTP Method
+        <ion-item>
+          <ion-label>Mobile</ion-label>
+          <ion-radio (ionSelect)="getmethod()"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Email</ion-label>
+          <ion-radio (ionSelect)="getmailmethod()"></ion-radio>
+        </ion-item>
+        <button ion-button round small color="warning" (click)="GetOtp()" class="btn-bg1">Get OTP</button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-grid *ngIf="Grid2" class="grid-container">
+      
+        <ion-row style="text-align: center;"> 
+          <ion-col><img src="../assets/imgs/verification.svg" height= "100%" /></ion-col>
+      </ion-row>
+    <ion-row class="row2">
+      <ion-col class="text-style">Enter the  Verification code<br/>we just sent you on your mobile</ion-col>
+    </ion-row>
+    <ion-row style="text-align: center;">
+      <ion-col> 
+      <ng-otp-input  (onInputChange)="onOtpChange($event)" [config]="{length:4,allowNumbersOnly:true,inputClass:cnfotp}"></ng-otp-input>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row style="text-align: center;">
+      <ion-col>
+      <div style="text-align: center;">
+        <button ion-button small round color="warning"(click)="ResetPwd()" class="btn-bg2 btn-inr2">Verify</button>
+      </div>
+
+        <div style="text-align: center;font-size: 13px;" (click)="resend()">
+          if you didn't receive a code! <span style="color:red;text-align: center;">Resend</span>
+        </div>
+      </ion-col>
+      </ion-row> 
+  </ion-grid>
+
+  <ion-grid *ngIf="Grid3" class="grid-container">
+      
+<!--     <ion-row class="row2">
+      <ion-col>
+        <ion-input type="text" placeholder="Old Password" #OldPwd class="mob-input"></ion-input>
+      </ion-col>
+    </ion-row> -->
+    <ion-row class="row3">
+      <ion-col>
+        <ion-input type="text" placeholder="New Password" #NewPwd class="mob-input"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="row3">
+      <ion-col>
+         <ion-input type="text" placeholder="Re-enter Password" #RePwd class="mob-input"></ion-input>
+     </ion-col>
+    </ion-row>
+    <ion-row class="row3">
+      <ion-col>
+        <button ion-button small round color="warning" (click)="ChangePwd()" class="btn-bg3 btn-inr3">Submit</button>
+      </ion-col>
+    </ion-row>
+ 
+ </ion-grid>
+
+</ion-content>

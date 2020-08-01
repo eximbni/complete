@@ -1,0 +1,43 @@
+<ion-header>
+        <ion-navbar color="orangebtn"  class="padding-top:10px;" hideBackButton>
+            <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+            <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+          </ion-navbar>
+      </ion-header>
+  
+  
+      <ion-content class="bg-color" padding>
+          <ion-list>
+            
+              <ion-item class="crd">
+                  <p class="dte">reponse_date</p>
+                  <p class="noti-txt" text-wrap> {{name}}</p>
+                  <p class="noti-txt" text-wrap> {{business_name}}</p>
+                  <p class="noti-txt" text-wrap> {{response_quantity}}</p>
+                  <p class="noti-txt" text-wrap> {{reponse_date}}</p>
+                  <p class="noti-txt" text-wrap> {{req_type}}</p>
+                  <p class="noti-txt" text-wrap> {{description}}</p>
+                  <br>
+                  
+              </ion-item>
+              <ion-item class="crd">
+                  <p class="dte">reponse_date</p>
+                  <p class="noti-txt" text-wrap> name</p>
+                  <p class="noti-txt" text-wrap> business_name</p>
+                  <p class="noti-txt" text-wrap> response_quantity</p>
+                  <p class="noti-txt" text-wrap> reponse_date</p>
+                  <p class="noti-txt" text-wrap> req_type</p>
+                  <p class="noti-txt" text-wrap> description</p>
+                  <br>
+                  
+              </ion-item>
+        </ion-list>
+   
+  </ion-content>
+  <ion-footer>
+      <ion-row> 
+        <div class="txt-div" col-9 > <textarea cols="20" placeholder="Type Something here" class="mobile"></textarea></div>
+            <button ion-fab mini side="right edge" class="icn-sz" color="orangebtn" float-right><ion-icon name="send" class="sndicn-sz"></ion-icon></button>
+      </ion-row>
+  </ion-footer>
+  

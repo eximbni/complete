@@ -1,0 +1,327 @@
+<ion-header>
+    <ion-navbar color="orangebtn"  class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+  <ion-content class="containers" padding>
+    <div>
+      <h2 style="text-align: center;">Franchise Request Form</h2>
+      <div class="contact_form">
+        <form #funnyDayaForm="ngForm">
+
+          <!--Start Franchise Type #type="ngModel" -->
+          <ion-row>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="type"
+                  [placeholder]="'Type'" 
+                  [data]="frnchisetypes" 
+                  [(ngModel)]="selectedtype"
+                  [settings]="dropdownSettings2"
+                  (onSelect)="onselecttype($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="type.errors && type.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!type.errors.required">
+                    Type is required*
+                  </div>
+                </div> --> 
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End Franchise Type-->
+
+          <!--Start Continent #continents="ngModel" -->
+          <ion-row *ngIf='continentrow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="continents"
+                  
+                  [placeholder]="'Select Continent'" 
+                  [data]="continent" 
+                  [(ngModel)]="selectedcontinent"
+                  [settings]="dropdownContinent"
+                  (onSelect)="onselectcontinent($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="continents.errors && continents.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!continents.errors.required">
+                    Continent is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End Continent-->
+
+          <!--Start Regional #regionals="ngModel" -->
+          <ion-row *ngIf='regionalrow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="regionals"
+                  
+                  [placeholder]="'Select Regional'" 
+                  [data]="regional" 
+                  [(ngModel)]="selectedregional"
+                  [settings]="dropdownRegional"
+                  (onSelect)="onselectregional($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="regionals.errors && regionals.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!regionals.errors.required">
+                    Regional is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End Regional-->
+
+          <!--Start Country #country="ngModel" -->
+          <ion-row *ngIf='countryrow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="country"
+                  
+                  [placeholder]="'Select Country'" 
+                  [data]="countries" 
+                  [(ngModel)]="selectedItems"
+                  [settings]="dropdownSettings"
+                  (onSelect)="getstates($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="country.errors && country.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!country.errors.required">
+                    Country is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End Country-->
+                    
+          <!--Start Zone #zone="ngModel" -->
+          <ion-row *ngIf='zonerow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="zone"
+                  
+                  [placeholder]="'Select Zone'" 
+                  [data]="zones" 
+                  [(ngModel)]="selectedzone"
+                  [settings]="dropdownZone"
+                  (onSelect)="onselectzone($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="zone.errors && zone.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!zone.errors.required">
+                    Zone is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End Zone-->
+
+          <!--Start State #state="ngModel" -->
+          <ion-row *ngIf='staterow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="state"
+                  
+                  [placeholder]="'Select State'" 
+                  [data]="states" 
+                  [(ngModel)]="selectedstate"
+                  [settings]="dropdownSettings1"
+                  (onSelect)="onselectstate($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="state.errors && state.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!state.errors.required">
+                    State is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End State-->
+
+          <!--Start Chapter #chapter="ngModel" -->
+          <ion-row *ngIf='chapterrow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="chapter"
+                  
+                  [placeholder]="'Select Chapter'" 
+                  [data]="chapters" 
+                  [(ngModel)]="selectedchapter"
+                  [settings]="dropdownSettings3"
+                  (onSelect)="onselectchapter($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="chapter.errors && chapter.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!chapter.errors.required">
+                    Chapter is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End Chapter-->
+
+          <!--Start HSCODE #hscode="ngModel" -->
+          <ion-row *ngIf='hscoderow'>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  required
+                  name="hscode"
+                  
+                  [placeholder]="'Select HSCODE'" 
+                  [data]="hscodes" 
+                  [(ngModel)]="selectedhscode"
+                  [settings]="dropdownHscode"
+                  (onSelect)="onselecthscode($event)"
+                > </ng-multiselect-dropdown>
+<!--                  <div
+                  *ngIf="hscode.errors && hscode.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!hscode.errors.required">
+                    HSCODE is required*
+                  </div>
+                </div> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <!--End HSCODE-->
+          <ion-row style="text-align: center;">
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <button ion-button  round small (click)="franchisemap()" color="danger" style="color:white">Check Availability </button>
+              </div>
+            </ion-col>
+          </ion-row>
+          <p style="text-align: center; font-weight: bold; color: green;">{{smessage}}</p>
+          <p style="text-align: center; font-weight: bold; color: red;">{{emessage}}</p>
+          <ion-row>
+            <ion-col class="txt-font">
+              <div class="form-group" >
+                <ion-item>
+                  <ion-label floating>Message to EximBNI</ion-label><br>
+                <ion-textarea type="text" #description  style="border:1px solid green"></ion-textarea>
+              </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-item>
+            <ion-label floating>Business Background</ion-label>
+            <ion-input type="text" #business_background></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Country Of Origin</ion-label>
+            <ion-input type="text" #countryof_origin></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>What Kind of Business you are into</ion-label>
+            <ion-input type="text" #business_info></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Website link</ion-label>
+            <ion-input type="url" #url></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Ownership Type</ion-label>
+            <ion-select #ownership_type>
+              <ion-option value="Proprietor">Proprietor</ion-option>
+              <ion-option value="Partnership">Partnership</ion-option>
+              <ion-option value="Private Limited">Private Limited</ion-option>
+              <ion-option value="Public limited">Public limited</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Infrastructure Description</ion-label><br>
+            <ion-textarea type="text" #infrastructure style="border:1px solid green"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label>Willing to setup Infrastructure</ion-label>
+            <ion-select #willing_tosetup>
+              <ion-option value="Yes">Yes</ion-option>
+              <ion-option value="No">No</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Approx Anual Turnover</ion-label>
+            <ion-input type="text" #anual_turnover></ion-input>
+          </ion-item>
+         </form>
+      </div>
+
+      <ion-row>
+        <ion-col class="txt-font">
+          <div class="form-group" >
+            <button ion-button block round small (click)="submit()" color="danger" style="color:white">Submit</button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+     
+
+    </div>
+
+  </ion-content> 
+
+
+
+
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+    <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+    </ion-row>
+ </ion-footer>
+
+
+

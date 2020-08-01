@@ -1,0 +1,43 @@
+page-franchiselogin {
+    
+        .maincontainer{
+    background-image: Url("../assets/imgs/signin_back.jpg");
+    background-size: cover;
+    background-position: center;
+    
+        }    
+    .te-size{
+            font-size: 16px;
+        }
+    .grid-pos{
+        position: absolute;
+        top: 30%;
+        border-radius: 10px;
+        padding: 10px;
+        
+    }
+    .btn-text{
+        color:white;
+    }
+    .item-md
+    {
+        background: transparent !important;
+    }
+    
+    input[type=text] {font-size: 20px;
+    
+    }
+    .button-inner {
+        padding: 0%;
+        font-size: 16px;
+        text-transform: initial;
+    }
+
+
+    .title-head{
+        font-size: 24px;
+        text-align: center;
+        font-weight:400;
+    }
+    }
+    

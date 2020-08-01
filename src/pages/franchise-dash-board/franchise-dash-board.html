@@ -1,0 +1,47 @@
+
+
+<ion-header>
+    <ion-navbar color="orangebtn" hideBackButton  class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()"  float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+      
+  </ion-header>
+<ion-content>
+  <ion-row style="text-align: center !important;">
+    <ion-col col-12>
+     <h2>{{frtype}}Dash Board</h2> 
+    </ion-col>
+  </ion-row>
+    <div class="pro-bg">
+  
+  <ion-grid *ngFor="let frdetails of frdata;">
+    <ion-row >
+      <ion-col class="pro_name">Franchise Code: {{frdetails.frcode}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngFor="let details of userdetails;">
+    <ion-row >
+      <ion-col class="pro_name">{{details.name}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="pro_bus">{{details.business_name}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="pro_loc"><ion-icon ios="ios-pin" md="md-pin"></ion-icon> {{details.business_address}}</ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>
+  
+
+  <div class="flist">
+    <ion-row>
+      <ion-col col-6  (click)="usermodule()">
+        <img class="cat-img" src="../assets/franchise/profile/users.png" style="height:60px"> <br>User Module
+      </ion-col>
+      <ion-col col-6 (click)="accounts()">
+        <img class="cat-img" src="../assets/franchise/profile/accounts.png" style="height:60px"><br> Accounts Module
+      </ion-col>
+    </ion-row>
+    </div>
+</ion-content>

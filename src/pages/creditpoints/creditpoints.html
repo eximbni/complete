@@ -1,0 +1,83 @@
+
+  <ion-header>
+      <ion-navbar color="orangebtn"  class="padding-top:10px;">
+          <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+          <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+        </ion-navbar>
+
+
+
+    </ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col col-6 class="b_bold">Lead Credits</ion-col>
+    <ion-col col-6 class="b_bold">RFQ Credits</ion-col>
+    <ion-col  class=orange-div>
+      {{credits}} 
+    </ion-col>
+    <ion-col class="green-div">
+      {{rfqcredits}} 
+    </ion-col>
+  </ion-row>
+
+  <ion-toolbar>
+    <ion-segment class="btn-p" [(ngModel)]="creditstab">
+      <ion-segment-button value="recharge">
+        Recharge
+      </ion-segment-button>
+      <ion-segment-button value="history">
+        History
+      </ion-segment-button>
+      <ion-segment-button value="rfqhistory">
+       RFQ History
+      </ion-segment-button>
+    </ion-segment>
+    
+  </ion-toolbar>
+
+  <div [ngSwitch]="creditstab">
+    <ion-list *ngSwitchCase="'recharge'">
+      <ion-item *ngFor="let rd of rechargedata; let i=index">
+         <strong> {{rd.amount}} </strong> 
+        <p> credits:{{rd.credits}} , Banners:{{rd.banners}}, RFQ: {{rd.rfq}} </p>
+        <button ion-button item-end btn-success>Select{{rd.amount}}</button>  
+      </ion-item>
+    
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'history'">
+      <ion-item *ngFor="let rh of rechargehistory; let i=index;">
+         Trans.ID : <strong>{{rh.txn_id}}</strong> 
+         <p> Transaction Date : <strong>{{rh.txn_date}} </strong> </p>
+         <p>Transaction Details: <strong>{{rh.txn_for}}- </strong></p> 
+         <p>Other Perticulars: <strong>{{rh.lead_ref_id}}</strong></p>
+         <strong item-end>{{rh.txn_amount}} </strong> 
+      </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'rfqhistory'">
+        <ion-item *ngFor="let rh of rechargehistory; let i=index;">
+           Trans.ID : <strong>{{rh.txn_id}}</strong> 
+           <p> Transaction Date : <strong>{{rh.txn_date}} </strong> </p>
+           <p>Transaction Details: <strong>{{rh.txn_for}}- </strong></p> 
+           <p>Other Perticulars: <strong>{{rh.lead_ref_id}}</strong></p>
+           <strong item-end>{{rh.txn_amount}} </strong> 
+        </ion-item>
+        </ion-list>
+
+  </div>
+</ion-content>
+
+
+
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+  <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+  <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+  <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+  <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+  <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+  </ion-row>
+  </ion-footer>
+  

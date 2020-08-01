@@ -1,0 +1,452 @@
+<ion-header>
+    <ion-navbar color="orangebtn">
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-6 class="home-icon" float-left><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+<ion-content class="bg-style">
+
+    <ion-searchbar [(ngModel)]="terms" ></ion-searchbar>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count > 10" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==10" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==9" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==8" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==7" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==6" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==5" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==5" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+<div class="ionic-card">
+<div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+  <div *ngIf="hscode.leads_count==4" >
+  <ion-row >
+
+        <ion-col col-6 style="background: blue; color:white">
+         Sell Leads : {{hscode.sellleads}}
+        </ion-col>
+        <ion-col col-6 style="background: red; color:white">
+          Buy Leads : {{hscode.buyleads}}
+        </ion-col>
+    </ion-row>
+       <ion-row class="row-bg">
+        <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+        <ion-col col-12>
+          <ion-row>
+            <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+            <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+            <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+          </ion-row>
+        </ion-col>  
+      </ion-row>
+      <ion-row class="row-bg">
+              <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+              <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+      </ion-row>
+      <ion-row class="row-bg">
+          <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+  </ion-row>
+  <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+</div>  
+</div>
+</div>
+<div class="ionic-card">
+  <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+    <div *ngIf="hscode.leads_count==3" >
+    <ion-row >
+  
+          <ion-col col-6 style="background: blue; color:white">
+           Sell Leads : {{hscode.sellleads}}
+          </ion-col>
+          <ion-col col-6 style="background: red; color:white">
+            Buy Leads : {{hscode.buyleads}}
+          </ion-col>
+      </ion-row>
+         <ion-row class="row-bg">
+          <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+              <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+              <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+            </ion-row>
+          </ion-col>  
+        </ion-row>
+        <ion-row class="row-bg">
+                <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+        </ion-row>
+        <ion-row class="row-bg">
+            <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+    </ion-row>
+    <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+  </div>  
+  </div>
+  </div>
+<div class="ionic-card">
+  <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+    <div *ngIf="hscode.leads_count==2" >
+    <ion-row >
+  
+          <ion-col col-6 style="background: blue; color:white">
+           Sell Leads : {{hscode.sellleads}}
+          </ion-col>
+          <ion-col col-6 style="background: red; color:white">
+            Buy Leads : {{hscode.buyleads}}
+          </ion-col>
+      </ion-row>
+         <ion-row class="row-bg">
+          <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+          <ion-col col-12>
+            <ion-row>
+              <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+              <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+              <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+            </ion-row>
+          </ion-col>  
+        </ion-row>
+        <ion-row class="row-bg">
+                <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+        </ion-row>
+        <ion-row class="row-bg">
+            <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+    </ion-row>
+    <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+  </div>  
+  </div>
+  </div>
+  <div class="ionic-card">
+    <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+      <div *ngIf="hscode.leads_count==1" >
+      <ion-row >
+    
+            <ion-col col-6 style="background: blue; color:white">
+             Sell Leads : {{hscode.sellleads}}
+            </ion-col>
+            <ion-col col-6 style="background: red; color:white">
+              Buy Leads : {{hscode.buyleads}}
+            </ion-col>
+        </ion-row>
+           <ion-row class="row-bg">
+            <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+            <ion-col col-12>
+              <ion-row>
+                <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+              </ion-row>
+            </ion-col>  
+          </ion-row>
+          <ion-row class="row-bg">
+                  <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                  <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+          </ion-row>
+          <ion-row class="row-bg">
+              <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+      </ion-row>
+      <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+    </div>  
+    </div>
+    </div>
+    <div class="ionic-card">
+      <div *ngFor="let hscode of hsdetails | hsnsearch: terms ;  let i= index;" >
+        <div *ngIf="hscode.leads_count==0" >
+        <ion-row >
+      
+              <ion-col col-6 style="background: blue; color:white">
+               Sell Leads : {{hscode.sellleads}}
+              </ion-col>
+              <ion-col col-6 style="background: red; color:white">
+                Buy Leads : {{hscode.buyleads}}
+              </ion-col>
+          </ion-row>
+             <ion-row class="row-bg">
+              <ion-col col-12><h4> HS Code:{{hscode.hscode}} <br>{{hscode.english}}</h4></ion-col>
+              <ion-col col-12>
+                <ion-row>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs4(1)">HS4</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs5(i)"> HS5</button></ion-col>
+                  <ion-col col-3><button ion-button small round color="warning" (click)="bhs6(i)"> HS6</button></ion-col>
+                </ion-row>
+              </ion-col>  
+            </ion-row>
+            <ion-row class="row-bg">
+                    <ion-col class="hs-desc"><b>Import Policy </b> : <span style="color:red">{{hscode.imp_policy}} </span></ion-col>
+                    <ion-col class="hs-desc"><b>Export Policy </b> : <span style="color:red">{{hscode.exp_policy}} </span></ion-col>
+            </ion-row>
+            <ion-row class="row-bg">
+                <ion-col class="hs-desc"><p>The policy information mentioned above is as per last update available, to know more Please consult respective department</p><b>Duties </b> :Plese contact respective department of your counry</ion-col>
+        </ion-row>
+        <p style="color:white; background:green;border-radius:20px; font-size: 15px; margin-left: 5%; margin-right:5%" (click)="hscode_leads(i)" >Please Click Here to see Leads of this HS Code</p>
+      </div>  
+      </div>
+      </div>
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+  <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+  <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+  <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+  <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+  <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+  </ion-row>
+  </ion-footer>
+
+      
+  

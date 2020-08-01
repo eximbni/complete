@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="orangebtn"  class="padding-top:10px;" hideBackButton>
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-searchbar [(ngModel)]="terms" ></ion-searchbar>
+<ion-card class="list-card" (click)="carddetails()" *ngFor="let sell of sellleads; let i=index">
+  <ion-row>
+    <ion-col col-2><img class="thumb" src="../assets/icon/person.svg"/>   </ion-col>
+    <ion-col col-8 class="list-text">
+      <div>Posted By: {{sell.name}}</div>
+      <div>Business: {{sell.business_name}}</div>
+      </ion-col>
+    
+  </ion-row>
+</ion-card>
+
+</ion-content>
+
+<ion-footer class="ftr1">
+  <ion-row class="ftr-row1">
+    <ion-col class="ftr-col1" (click)="home()"><img src="../assets/franchise/profile/footerhome.png" class="ftr-icon1"><p class="name-footer1">Home</p></ion-col>
+     <ion-col class="ftr-col1" (click)="buylist()"><img src="../assets/franchise/profile/footerbuyleads.png" class="ftr-icon1"><p class="name-footer1">Buy Leads</p></ion-col>
+    <ion-col class="ftr-col1" (click)="selllist()"><img src="../assets/franchise/profile/footersellleads.png" class="ftr-icon1"><p class="name-footer1">Sell Leads</p></ion-col>
+    <ion-col class="ftr-col1" (click)="income()"><img src="../assets/franchise/profile/footerincome.png" class="ftr-icon1"><p class="name-footer1">Income</p></ion-col>
+    <ion-col class="ftr-col1" (click)="reports()"><img src="../assets/franchise/profile/footerreports.png" class="ftr-icon1"><p class="name-footer1">Reports</p></ion-col>
+  </ion-row>
+ </ion-footer>

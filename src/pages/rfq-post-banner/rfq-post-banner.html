@@ -1,0 +1,91 @@
+
+  <ion-header>
+      <ion-navbar color="orangebtn"  class="padding-top:10px;">
+          <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+          <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+        </ion-navbar>
+    </ion-header>
+  
+  <ion-content class="form-container" padding>
+   
+     <ion-grid>
+       <ion-list>
+            
+              <!-- lead type-->
+              
+              <!--categories-->
+              <div  style="margin-top: 2%">
+              <ng-multiselect-dropdown class="ngselect fs_select"
+              [placeholder]="'Select Category*'" 
+              [data]="categories" 
+              [(ngModel)]="selectedcategory"
+              [settings]="dropdownSettings"
+              (onSelect)="getchapterslist($event)"
+              (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
+            </div>
+  
+              <!--chapters-->
+              <div style="margin-top: 2%">
+                <ng-multiselect-dropdown class="ngselect fs_select"
+                [placeholder]="'Select Chapter*'" 
+                [data]="chapters" 
+                [(ngModel)]="selectedchapter"
+                [settings]="dropdownSettings1"
+                (onSelect)="gethsnlist($event)"
+                (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
+              </div>
+  
+             <!-- Country -->
+                     <div style="margin-top: 2%">
+                      <ng-multiselect-dropdown class="ngselect fs_select"
+                      [placeholder]="'Choose Country*'" 
+                      [data]="countries" 
+                      [(ngModel)]="selectedItems"
+                      [settings]="dropdownSettings5"
+                      (onSelect)="onselectcountry($event)"
+                      (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
+                    </div>
+                        <ion-item class="dropitm">
+                         <button ion-button block outline color="danger" (click)="fileUpload()">Upload Document*</button>
+                        </ion-item>
+                        <div>
+                          <img  [src]="DPhoto" class="text-form-item2" *ngIf="DPhoto">
+                      </div>              
+                        </ion-list>
+                      </ion-grid>
+                  
+    <div class="btn-div">
+      <button ion-button class="btton-small-md" round color="orangebtn" small (click)="rfqsend()">Submit</button>
+    </div>
+    
+    <p (click)="showcontactform()" red>Click here to Contact Admin</p>
+
+    <div *ngIf="contactadmin">
+      <ion-list>
+          <ion-label> <strong> Fill Below form to Contact Admin </strong> </ion-label>
+        <ion-item>
+          <ion-label>Subject:</ion-label>
+          <ion-input type="text" #subject></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-textarea placeholder="Write Something here" #message ></ion-textarea>
+        </ion-item>
+      
+      </ion-list>
+    
+      <button ion-button block (click)="addContact()">Submit</button>
+    
+    </div>
+
+      </ion-content>
+      <ion-footer class="ftr">
+        <ion-row class="ftr-row">
+        <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+        <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+        <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+        <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
+        <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+        </ion-row>
+        </ion-footer>
+        

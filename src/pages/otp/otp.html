@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+       
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+
+<ion-content class="otp-container" padding>
+    <ion-grid>
+        <ion-row  class="img-col">
+          <ion-col>
+          <!--img src="../assets/designs/otp/otpicon.svg" width="100px" -->
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+<div class="otp-maindiv">
+  <p>Enter the Verification code 
+   We just sent you on your mobile {{mobile}} <br>
+  </p>
+
+  <p class="otprow" text-center>
+    <ng-otp-input  (onInputChange)="onOtpChange($event)" [config]="{length:4,allowNumbersOnly:true,inputClass:cnfotp}"></ng-otp-input>
+  </p>
+  <!-- <div class="otp-field"><ng-otp-input [config]="{length:4}" placeholder="*" #otp></ng-otp-input>  </div> -->
+  <div class="otp-btn">  <button ion-button  round color="orangebtn" (click)="confirm()">Verify</button></div>
+</div>
+  <p>Please wait For <b style="color:white; background-color: red;">{{maxtime}} Seconds.</b> if didnt receive OTP system will automatically resend OTP</p>
+  <p style="text-align:center" *ngIf="maxtime<1"><a href="#" class="otp-resend">Even Now if you Didnt receive any OTP to your Mobile, there might be some problem in local Gateway <span style="background: yellow; color:#111">Plese check your Email given at  signup page for OTP. </span></a></p>
+   
+
+</ion-content>

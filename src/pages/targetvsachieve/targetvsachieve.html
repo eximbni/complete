@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Target Vs Achieve</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="month">
+        Month
+      </ion-segment-button>
+      <ion-segment-button value="quarter">
+        Quarter
+      </ion-segment-button>
+      <ion-segment-button value="year">
+        Year
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'month'">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Month</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Target</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Achievement</ion-col>
+        </ion-row>
+<!--         <div *ngIf='targetdata.month'> -->
+        <ion-row *ngFor="let mo of targetdata; let i = index;" >
+            
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ mo.month }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ mo.target }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ mo.achievement }}</ion-col>
+        </ion-row>
+    <!--   </div> -->
+<!--     <div *ngIf='!targetdata.quarter'>
+      <ion-row >
+        <ion-col col-11 style="background: rgb(236, 235, 235); color: #111;"> No Record Founds...</ion-col>
+      </ion-row>
+    </div>  --> 
+      </ion-grid>
+      <button ion-button small round (click)="monthreport()">Send Report</button>
+    </ion-list>
+    <ion-list *ngSwitchCase="'quarter'">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Quarter</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Target</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Achievement</ion-col>
+        </ion-row>
+      <div *ngIf='targetdata.quarter'>
+        <ion-row *ngFor="let qa of targetdata; let i = index;" >
+          <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ qa.month }}</ion-col>
+          <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ qa.target }}</ion-col>
+          <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ qa.achievement }}</ion-col>
+        </ion-row>
+       </div>
+       <div *ngIf='!targetdata.quarter'>
+        <ion-row >
+          <ion-col col-11 style="background: rgb(236, 235, 235); color: #111;"> No Record Founds...</ion-col>
+        </ion-row>
+      </div>  
+      </ion-grid>
+      <button ion-button small round (click)="qreport()">Send Report</button>
+    </ion-list>
+    <ion-list *ngSwitchCase="'year'">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Year</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Target</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff;"> Achievement</ion-col>
+        </ion-row>
+        <div *ngIf='targetdata.year'>
+          <ion-row *ngFor="let yr of targetdata; let i = index;" >
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ yr.month }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ yr.target }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ yr.achievement }}</ion-col>
+          </ion-row>
+        </div>
+        <div *ngIf='!targetdata.year'>
+          <ion-row >
+            <ion-col col-11 style="background: rgb(236, 235, 235); color: #111;"> No Record Founds... </ion-col>
+          </ion-row>
+        </div> 
+      </ion-grid>
+      <button ion-button small round (click)="yreport()">Send Report</button>
+    </ion-list>
+  </div>
+ 
+</ion-content>

@@ -1,0 +1,425 @@
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"
+      ><img src="../assets/imgs/logos.png" style="height:70px;"
+    /></ion-col>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="form-container" padding>
+  <button ion-button color="danger"(click)="getsearch()" round small>I Don't Know HSCODES</button>
+  <button ion-button color="danger" (click)="addhscode()" round small>Add HSCODE</button>
+  <ion-grid>
+    <ion-list>
+
+      <div *ngIf="impexpdiv">
+        <ion-row>
+          <ion-col col-4>
+            <ion-label stacked class="stack-label"> Phonecode *</ion-label>
+            <ng-multiselect-dropdown 
+            style="margin-top:5% !important ; height:46px !important;"
+
+            [placeholder]="'Code'"
+            [data]="countries"
+            [(ngModel)]="selectedPhonecode"
+            [settings]="dropdownSettings11"
+            (onSelect)="onselectPhonecode($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>            
+
+          </ion-col>
+          <ion-col col-8>
+            <ion-label  stacked  class="stack-label">Importer/Exporter Mobile No*</ion-label>
+            <ion-input type="number" #impexpmobile (change)="getImpExp()" class="form-control dropitm" placeholder="Importer/Exporter Mobile Number" ></ion-input>
+
+          </ion-col>
+<!--           <ion-col >
+             <p style="color:blue"> {{ txtmsg }} <br>{{ impexpname }} </p>
+          </ion-col>  -->
+          <ion-card class="cards-list-demo">
+            <ion-card-header>
+            <strong> Importer / Exporter Details : </strong>
+            </ion-card-header>
+        
+            <ion-list *ngIf="impexpname">
+             <ion-row>
+                <ion-col >
+                  <ion-label stacked class="stack-label"> Importer/Exporter Name  </ion-label>
+                </ion-col>
+                <ion-col >
+                  <ion-label> <strong style="color:blue"> {{ impexpname.name }} </strong> </ion-label>
+                </ion-col>                
+              </ion-row>
+
+              <ion-row>
+                <ion-col >
+                  <ion-label stacked class="stack-label"> Business Email Id </ion-label>
+                </ion-col>
+                <ion-col >
+                  <ion-label> : <strong style="color:blue"> {{ impexpname.email }} </strong> </ion-label>
+                </ion-col>                
+              </ion-row>
+
+              <ion-row>
+                <ion-col >
+                  <ion-label stacked class="stack-label"> Business Name </ion-label>
+                </ion-col>
+                <ion-col >
+                  <ion-label> : <strong style="color:blue"> {{ impexpname.business_name }} </strong> </ion-label>
+                </ion-col>                
+              </ion-row>
+
+              <ion-row>
+                <ion-col >
+                  <ion-label stacked class="stack-label"> Business Address </ion-label>
+                </ion-col>
+                <ion-col >
+                  <ion-label> : <strong style="color:blue"> {{ impexpname.business_address }} </strong> </ion-label>
+                </ion-col>                
+              </ion-row>
+              
+              <button text-center ion-button class="btton-small-md" round small color="danger" block (click)="impcart()"> Confirm Details </button>
+            
+            </ion-list>
+          
+          </ion-card>          
+          
+        </ion-row>
+
+      </div>
+
+
+    <div *ngIf="cartdiv">
+      <div *ngIf="div1">
+      <ion-label stacked class="stack-label">Lead Type *</ion-label>
+      <!-- lead type-->
+      <ng-multiselect-dropdown
+        class="ngselect fs_select"
+        [placeholder]="'Select'"
+        [data]="dropdownList"
+        [(ngModel)]="selectedItems1"
+        [settings]="dropdownSettings6"
+        (onSelect)="onItemSelect1($event)"
+        (onSelectAll)="onSelectAll($event)"
+      >
+      </ng-multiselect-dropdown>
+      <!--categories-->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Category*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="categories"
+          [(ngModel)]="selectedcategory"
+          [settings]="dropdownSettings"
+          (onSelect)="getchapterslist($event)"
+          (onSelectAll)="onSelectAll($event)"
+        ></ng-multiselect-dropdown>
+      </div>
+
+      <!--chapters-->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Chapter*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'select'"
+          [data]="chapters1"
+          [(ngModel)]="selectedchapter"
+          [settings]="dropdownSettings1"
+          (onSelect)="gethsnlist($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <!--hsncodes-->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label"> HS Code*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'select'"
+          [data]="hsdetails"
+          [(ngModel)]="selectedhsncodes"
+          [settings]="dropdownSettings2"
+          (onSelect)="productlist($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <ion-label stacked class="stack-label">Description*</ion-label>
+      <ion-item class="dropitm">
+        <ion-textarea #description [ngModel]="myDesc" placeholder="Please Enter Detailed Description" rows="5"> </ion-textarea>
+      </ion-item>
+
+      <!-- UOM -->
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Unit of Measure*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="uoms"
+          [(ngModel)]="selecteduom"
+          [settings]="dropdownSettings4"
+          (onSelect)="showuom($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <ion-label stacked class="stack-label">Quantity*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="number" #quantity [ngModel]="myQty" class="box-inpt" value="" placeholder="Numbers Only Ex:250"></ion-input>
+      </ion-item><br>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <button text-right ion-button color="danger" (click)="div2nav()" block round medium >NEXT</button>
+        </ion-col>
+      </ion-row>
+    </div>
+<!--Continents starts-->
+<div *ngIf="div2">
+  <h2 style="color: green;">Select your country where the lead has to be posted</h2>
+<ion-list>
+  <ion-label  stacked class="stack-label">Select Continent</ion-label>
+  <ion-item>
+    <ion-label>Select Continent</ion-label>
+    <ion-select [(ngModel)]="Continent" (ionChange)="getRegions($event)" multiple="true">
+      <ion-option *ngFor="let cont of continent;" value="{{cont.id}}">{{cont.gcontinent}}</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<!--Continent Ends-->
+<!--Regio0n Starts-->
+<!-- <div style="margin-top: 2%">
+  <ion-label stacked class="stack-label">Select Region*</ion-label>
+  <ng-multiselect-dropdown
+    class="ngselect fs_select"
+    [placeholder]="'Select Region'"
+    [data]="regions"
+    [(ngModel)]="regionalItems"
+    [settings]="dropdownSettings15"
+    (onSelect)="getCountries($event)"
+    (onSelectAll)="onSelectAll($event)">
+  </ng-multiselect-dropdown>
+</div>
+ -->
+
+ <ion-list>
+  <ion-label  stacked class="stack-label">Select Region</ion-label>
+  <ion-item>
+    <ion-label>Select Region</ion-label>
+    <ion-select [(ngModel)]="Region" (ionChange)="getCountries($event)" multiple="true">
+      <ion-option *ngFor="let reg of regions;" value="{{reg.continent}}">{{reg.continent}}</ion-option>
+      
+    </ion-select>
+  </ion-item>
+</ion-list> 
+<!--Region Ends here-->
+
+      <!-- Country -->
+      <div style="margin-top: 2%">
+        <ion-label  stacked class="stack-label">Select Country</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select Country'"
+          [data]="multicountries"
+          [(ngModel)]="selectedItems"
+          [settings]="dropdownSettings5"
+          (onSelect)="onselectcountry($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+
+      <!-- <ion-item>
+        <ion-label stacked class="stack-label">Indexed Product</ion-label>
+        <ion-checkbox color="secondary" [(ngModel)]="indexer" (ionChange)="indexed()" ></ion-checkbox>
+      </ion-item> 
+      <div *ngIf="pdiv">
+        <ion-label  stacked class="stack-label">Specify Index</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="text" #index class="box-inpt" placeholder="Ex: LME | LBME " value='none' ></ion-input>
+      </ion-item>
+      <ion-label  stacked class="stack-label">Price Discount*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="number" #discount class="box-inpt" placeholder="Percentage" value='0' ></ion-input>
+      </ion-item>
+      </div> -->
+      <p style="color: green;">Select Port of loading </p>
+      <div style="margin-top: 2%">
+          <ion-label stacked class="stack-label">Select Country*</ion-label>
+          <ng-multiselect-dropdown
+            class="ngselect fs_select"
+            [placeholder]="'Select'"
+            [data]="countries"
+            [(ngModel)]="lcountryItems"
+            [settings]="dropdownSettings8"
+            (onSelect)="onselectcountry8($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+      </div>
+      <ion-list>
+        <ion-label  stacked class="stack-label">Select Port Type</ion-label>
+        <ion-item>
+          <ion-label>Select Port Type</ion-label>
+          <ion-select [(ngModel)]="lport" (ionChange)="getlPort()">
+            <ion-option value="Air">Air</ion-option>
+            <ion-option value="Sea">Sea</ion-option>
+            <ion-option value="Land">Land</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Select Port*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="lports"
+          [(ngModel)]="lportsItems"
+          [settings]="dropdownSettings12"
+          (onSelect)="onselectcountry12($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+    </div>
+      <p style="color: green;">Select Destination Port</p>
+      <div style="margin-top: 2%">
+          <ion-label stacked class="stack-label">Select Country*</ion-label>
+          <ng-multiselect-dropdown
+            class="ngselect fs_select"
+            [placeholder]="'Select'"
+            [data]="countries"
+            [(ngModel)]="dcountryItems"
+            [settings]="dropdownSettings9"
+            (onSelect)="onselectcountry9($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+      </div>
+      <ion-list>
+        <ion-label  stacked class="stack-label">Select Port Type</ion-label>
+        <ion-item>
+          <ion-label>Select Port Type</ion-label>
+          <ion-select [(ngModel)]="dport" (ionChange)="getdPort()">
+            <ion-option value="Air">Air</ion-option>
+            <ion-option value="Sea">Sea</ion-option>
+            <ion-option value="Land">Land</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Select Port*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="dports"
+          [(ngModel)]="dportsItems"
+          [settings]="dropdownSettings13"
+          (onSelect)="onselectcountry13($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+    </div>
+    <ion-row>
+      <ion-col>
+        <button ion-button color="danger" (click)="div2pre()" block round medium>PREVIOUS</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="danger" (click)="div3nav()" block round medium text-right> NEXT</button>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div *ngIf="div3">
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Price Model*</ion-label>
+        <ng-multiselect-dropdown
+        class="ngselect fs_select"
+        [placeholder]="'Select'"
+        [data]="priceModel"
+        [(ngModel)]="selectedPriceModel"
+        [settings]="dropdownSettings6"
+        (onSelect)="onItemSelectPM($event)"
+        (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+      </div>
+      <ion-label *ngIf="odiv" stacked class="stack-label">Offer Price*</ion-label>
+      <ion-label *ngIf="tdiv" stacked class="stack-label">Target Price*</ion-label>
+      <ion-row>
+        <ion-col col-12>
+          <div style="margin-top: 2%">
+            <ion-label stacked class="stack-label">Select Currency*</ion-label>
+            <ng-multiselect-dropdown
+              class="ngselect fs_select"
+              [placeholder]="'Select Currency'"
+              [data]="currency"
+              [(ngModel)]="currencyItems"
+              [settings]="dropdownSettings14"
+              (onSelect)="onselectcountry14($event)"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+        </div>
+        </ion-col>
+        <ion-col col-12>
+          <ion-label stacked class="stack-label">Price</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="number" #price class="box-inpt" [ngModel]="MyPrice" placeholder="Price in Numbers Only Ex:250"></ion-input>
+      </ion-item>
+    </ion-col>
+    </ion-row>
+      <ion-label stacked class="stack-label">Expiry Date *</ion-label>
+      <ion-item  class="dropitm"> 
+        <ion-datetime displayFormat="MMM DD YYYY" min="{{cslot | date: 'yyyy-MM-dd'}}"  [ngModel]="MyDate" max="2099-10-31" #edate></ion-datetime>
+      </ion-item>
+
+      <ion-label stacked class="stack-label">International Quality Certifying Agency*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="text" #ia [ngModel]="MyAuth" class="box-inpt" placeholder="Name of the authority"></ion-input>
+      </ion-item>
+
+      <ion-label  stacked class="stack-label">Remarks / Quality Assessments *</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="text" #remarki [ngModel]="MyRemark" class="box-inpt" placeholder="Remarks / Quality Assessments"></ion-input>
+      </ion-item>  
+      
+      <ion-label  stacked class="stack-label">Special Instructions*</ion-label>
+      <ion-item class="dropitm">
+        <ion-input type="text" #si class="box-inpt" [ngModel] = "MyInst" placeholder="Any Special Instructions"></ion-input>
+      </ion-item>
+      <ion-label stacked class="stack-label">Business Address*</ion-label>
+      <ion-item class="dropitm">
+        <ion-textarea #business_address placeholder="Plese Write Your Complete Business Addres For Future Reference" rows="5" value="{{ businessaddress }}"> </ion-textarea>
+      </ion-item>
+      <h4>Upload Supporting Documents</h4>
+      <ion-item class="dropitm" style="background-color: green !important;">
+        <ion-row>
+          <ion-col col-3><button ion-button block outline color="light" (click)="Docu1()"> Doc1</button></ion-col>
+          <ion-col col-3><button ion-button block outline color="light" (click)="Docu2()"> Doc2 </button></ion-col>
+          <ion-col col-3><button ion-button block outline color="light" (click)="Docu3()"> Doc3 </button></ion-col >
+          <ion-col col-3 ><button ion-button block outline color="light" (click)="Docu4()"> Doc4 </button></ion-col >
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        {{Document1}} {{Document2}} {{Document3}} {{Document4}}
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="danger" block (click)="div3pre()" round medium>PREVIOUS</button>
+        </ion-col>
+        <ion-col>
+          <button text-center ion-button  round medium color="danger" block text-right (click)="rfqsend()"> LEAD PREVIEW </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+    </ion-list>
+    
+  </ion-grid>
+   
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiVision</p></ion-col>
+    <ion-col class="ftr-col-active" (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="danger"></ion-icon >
+      <p class="name-footer-active">Post Lead</p></ion-col>
+  </ion-row>
+</ion-footer>

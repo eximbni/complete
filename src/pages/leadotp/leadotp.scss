@@ -1,0 +1,41 @@
+page-leadotp {
+
+  
+    
+        .otp-maindiv{
+            text-align: center;
+            font-family: 'Source Sans Pro', sans-serif !important;
+            
+        }
+        
+        .otp-input{
+            font-size: 3.2em;
+            border-bottom: 1px solid #707070;
+        }
+        .text-input-md {
+            text-align: center;
+        }
+    
+        .otp-input[_ngcontent-c0] {
+            width: 2.5em;
+            font-size: 18px;
+            height: 2.5em;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 0px;
+            border-radius: 0;
+        border-bottom: 1px solid #EB3E16;
+        }
+        .otp-resend{
+            color: #FF0000;
+            text-decoration: none;
+        }
+        .otprow{
+            text-align: center;
+        }
+    
+        .img-col{
+            margin:auto;
+        }
+    }
+    

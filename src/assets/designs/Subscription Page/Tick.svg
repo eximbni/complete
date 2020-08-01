@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" viewBox="0 0 18 18">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="18" height="18" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Tick" clip-path="url(#clip-path)">
+    <path id="Checkbox" d="M7.666,14,1,7.027,2.582,5.373l5.084,5.2L16.818,1,18.4,2.655Z" transform="translate(-1 1)" fill="#6083c0"/>
+    <rect id="Rectangle_556" data-name="Rectangle 556" width="18" height="18" fill="none"/>
+  </g>
+</svg>

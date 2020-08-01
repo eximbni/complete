@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="45" viewBox="0 0 119 45">
+  <g id="Group_17853" data-name="Group 17853" transform="translate(-201 -660)">
+    <g id="Rectangle_1609" data-name="Rectangle 1609" transform="translate(201 660)" fill="none" stroke="#eb3e16" stroke-width="2">
+      <rect width="119" height="45" rx="22" stroke="none"/>
+      <rect x="1" y="1" width="117" height="43" rx="21" fill="none"/>
+    </g>
+    <text id="Email" transform="translate(212 692)" fill="#eb3e16" font-size="22" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="0" y="0">Approved</tspan></text>
+  </g>
+</svg>

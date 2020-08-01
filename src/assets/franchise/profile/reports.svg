@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="75.959" viewBox="0 0 58 75.959">
+  <g id="Group_17824" data-name="Group 17824" transform="translate(-164 -635.041)">
+    <text id="Reports" transform="translate(193 707)" fill="#373737" font-size="16" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="-28.148" y="0">Reports</tspan></text>
+    <g id="Group_17812" data-name="Group 17812" transform="translate(170.083 -62.999)">
+      <path id="Path_10031" data-name="Path 10031" d="M50.553,780.75q-8.651.03-17.3.057c-1.25,0-2.5-.037-3.751-.057" transform="translate(-17.118 -61.968)" fill="none" stroke="#3156bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_10032" data-name="Path 10032" d="M50.553,812.75q-8.651.03-17.3.057c-1.25,0-2.5-.037-3.751-.057" transform="translate(-17.118 -86.225)" fill="none" stroke="#3156bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_10033" data-name="Path 10033" d="M50.553,844.75q-8.651.03-17.3.057c-1.25,0-2.5-.037-3.751-.057" transform="translate(-17.118 -110.481)" fill="none" stroke="#3156bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_10034" data-name="Path 10034" d="M61.905,721.5l-6.534,7.43c-1.547-.637-2.544-1.858-3.872-2.591" transform="translate(-33.795 -17.056)" fill="none" stroke="#3156bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_10035" data-name="Path 10035" d="M8.51,699a2.241,2.241,0,0,0-1.593,2.42q.05,18.391.02,36.781c0,1.791.628,2.419,2.42,2.42h27.1c1.791,0,2.419-.628,2.42-2.42q0-18.391,0-36.781c0-1.791-.628-2.419-2.42-2.42H8.631" transform="translate(0 0)" fill="none" stroke="#3156bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the PackagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="orangebtn"  hideBackButton class="padding-top:10px;">
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+  <p class="msg">You are eligible to select {{count}} Chapters . Selected Chapters Cannot be changed.<br>
+  <span style="background: green; color:white">Click any where on the screen once your selection is completed</span>
+  </p>
+<div style="margin-bottom: 2%;">
+
+        <ng-multiselect-dropdown class="ngselect fs_select"
+        [placeholder]="'Select Chapters'" 
+        [data]="chapters" 
+        [(ngModel)]="selectedItems"
+        [settings]="dropdownSettings"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
+      </div>
+      <b>Selected Chapter HS Codes <span style="color:red" (click)="close()">Close</span></b>
+     <ion-row *ngIf="hsdiv">
+       <ion-col col-12 *ngFor="let hscodes of hsdetails">{{hscodes.MyColumn}}</ion-col>
+     </ion-row>
+      <div>
+        <ion-list radio-group>
+            <ion-list-header>
+              Payment Mode
+            </ion-list-header>
+          
+            <ion-item>
+              <ion-label>Monthly ({{monthly_cost}})</ion-label>
+              <ion-radio checked="anually" (ionSelect)="monthly()"></ion-radio>
+            </ion-item>
+          
+            <ion-item>
+              <ion-label>Anually ({{plan_cost}})</ion-label>
+              <ion-radio value="Monthly" (ionSelect)="anual()"></ion-radio>
+            </ion-item>
+           
+          </ion-list>
+      </div>
+      <!--
+      <p class="msg">First 2 Digits of HSCode represents Chapter Please select Carefully. Selected Chapters Cannot be changed. </p>
+<div style="margin-bottom: 2%;">
+        
+        <ng-multiselect-dropdown class="ngselect fs_select"
+        [placeholder]="'select HS Codes'" 
+        [data]="hsdetails" 
+        [(ngModel)]="selectedhscodes"
+        [settings]="dropdownSettings1"
+        (onSelect)="onhscodeselect($event)"
+        (onSelectAll)="onallhscodes($event)"></ng-multiselect-dropdown>
+      </div>
+    -->
+     <button ion-button block (click)="submit()" color="warning">Submit</button>
+     
+</ion-content>
+

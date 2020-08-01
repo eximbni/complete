@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="321" height="45" viewBox="0 0 321 45">
+  <g id="Chapters_drop_down_" data-name="Chapters drop down " transform="translate(-26 -115)">
+    <g id="Rectangle_1555" data-name="Rectangle 1555" transform="translate(26 115)" fill="#fff" stroke="#707070" stroke-width="0.25">
+      <rect width="321" height="45" rx="22.5" stroke="none"/>
+      <rect x="0.125" y="0.125" width="320.75" height="44.75" rx="22.375" fill="none"/>
+    </g>
+    <path id="Path_10" data-name="Path 10" d="M5.905,0l-1.7,1.7,7.458,7.639L4.208,16.975l1.7,1.7,9.336-9.336Z" transform="translate(328.479 127.792) rotate(90)" fill="#a5a5a5" opacity="0.5"/>
+    <text id="Chapters" transform="translate(45 146)" fill="#373737" font-size="20" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">Chapters</tspan></text>
+  </g>
+</svg>

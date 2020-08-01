@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Update Mobile Pin</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>4 Digit Login MPIN</ion-label>
+      <ion-input type="mobile" maxlength="4" #mpin></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>Confirm Login MPIN</ion-label>
+      <ion-input type="mobile" maxlength="4" #cmpin></ion-input>
+    </ion-item>
+  
+  </ion-list>
+  <button ion-button color="danger" small (click)="creatempin()">Update</button>
+
+  <h2> Choose a 4 digit pin which you can use for your future logins</h2>
+</ion-content>

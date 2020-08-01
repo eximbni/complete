@@ -1,0 +1,734 @@
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+     
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+</ion-header>
+<ion-content class="containers" padding>
+  <div>
+    <div class="contact_form">
+      <form #funnyDayaForm="ngForm">
+        <!--country-->
+
+        <ion-row>
+          <ion-col class="txt-font">
+            <div class="form-group" >
+              <ng-multiselect-dropdown
+                class="ngselect fs_select"
+                #country="ngModel"
+                required
+                class="form-control"
+                name="country"
+                ngModel
+                [placeholder]="'Country'"
+                [data]="countries"
+                [(ngModel)]="selectedItems"
+                [settings]="dropdownSettings"
+                (onSelect)="getstates($event)"
+             ></ng-multiselect-dropdown>
+
+              <div
+                *ngIf="country.errors && country.touched"
+                class="alert alert-danger"
+              >
+                <div [hidden]="!country.errors.required">
+                  Country is required*
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!--state-->
+        <ion-row>
+          <ion-col class="txt-font">
+            <div class="form-group">
+              <ng-multiselect-dropdown
+                class="ngselect fs_select"
+                #state="ngModel"
+                required
+                class="form-control"
+                name="state"
+                ngModel
+                [placeholder]="'State/Province/equivalant'"
+                [data]="states"
+                [(ngModel)]="selectedstate"
+                [settings]="dropdownSettings1"
+                (onSelect)="onselectstate($event)"
+              ></ng-multiselect-dropdown>
+
+              <div
+                *ngIf="state.errors && state.touched"
+                class="alert alert-danger"
+              >
+                <div [hidden]="!State.errors.required">
+                  State is required*
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+          <!--User type-->
+
+          <ion-row>
+            <ion-col class="txt-font">
+              <div class="form-group">
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  #usertype="ngModel"
+                  required
+                  class="form-control"
+                  name="usertype"
+                  ngModel
+                  [placeholder]="'User Type'"
+                  [data]="selectedusertypelist"
+                  [(ngModel)]="selectedusertype"
+                  [settings]="dropdownSettings2"
+                  (onSelect)="getusertype($event)"
+                >
+                </ng-multiselect-dropdown>
+  
+                <div
+                  *ngIf="usertype.errors && usertype.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!usertype.errors.required">
+                    User Type is required*
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+       <!--user other type-->
+       <ion-row *ngIf="otherinput" > 
+        <ion-col class="txt-font">
+          <div style="margin-top: 2%">
+           <ng-multiselect-dropdown
+            class="form-control"
+            [placeholder]="'Select From Following'"
+            name="Othertypes"
+            [data]="othertype"
+            [(ngModel)]="selectedothertype"
+            [settings]="dropdownSettings4"
+            (onSelect)="getothertype($event)"
+            (onSelectAll)="onSelectAll($event)">
+             </ng-multiselect-dropdown>
+          </div> 
+   
+          <div style="margin-top: 2%">
+            <ion-item>
+              <ion-label>I am dealing international ports </ion-label>
+              <ion-checkbox color="secondary"  (ionChange)="deals()" #internaational ></ion-checkbox>
+            </ion-item> 
+          </div>
+
+          <div style="margin-top: 2%">
+          
+            <ng-multiselect-dropdown
+            class="form-control"
+            name="Porttypes"
+            [placeholder]="'Services Provided'"
+            [data]="selectedporttypelist"
+            [(ngModel)]="selectedporttype"
+            [settings]="dropdownSettings3"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)"
+            >
+            </ng-multiselect-dropdown>
+          </div>
+
+
+          <div style="margin-top: 2%">
+            <ng-multiselect-dropdown
+              class="form-control"
+              [placeholder]="'Select Ports'"
+              [data]="ports"
+              [(ngModel)]="selectedport_codes"
+              name="portCodes"
+              [settings]="dropdownSettings10" 
+              (onSelect)="onselectport($event)"
+              (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+          </div>  
+          
+          <ion-item class="form-item">
+            <ion-input type="text" placeholder="License / Registration Number" #licenseno required name="name" ngModel ></ion-input>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+          <!-- Salutation type-->
+
+          <ion-row>
+            <ion-col class="txt-font">
+              <div class="form-group">
+                <ng-multiselect-dropdown
+                  class="ngselect fs_select"
+                  #salutation="ngModel"
+                  required
+                  class="form-control"
+                  name="salutation"
+                  ngModel
+                  [placeholder]="'Salutation'"
+                  [data]="selectedsalutationslist"
+                  [(ngModel)]="selectedsalutations"
+                  [settings]="dropdownSettings2"
+                  (onSelect)="getsalutation($event)"
+                >
+                </ng-multiselect-dropdown>
+  
+                <div
+                  *ngIf="salutation.errors && salutation.touched"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!salutation.errors.required">
+                    Salutation is required*
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        <!--full name (ngSubmit) ="display(funnyDayaForm.value)"-->
+        <ion-row>
+          <ion-col class="txt-font">
+            <div class="form-group">
+              <ion-item class="form-item">
+                <ion-input type="text" placeholder="Please Enter Your Full Name*" #fullname="ngModel" required  minlength="4"  class="form-control txt-font"  name="name" ngModel></ion-input>
+              </ion-item>
+              <div *ngIf="fullname.errors && (fullname.dirty || fullname.touched)" class="alert alert-danger">
+                <div [hidden]="!fullname.errors.required">
+                  Full Name is required*
+                </div>
+                <div [hidden]="!fullname.errors.minlength">
+                  Please Enter Atleast 4 Characters
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!--full name (ngSubmit) ="display(funnyDayaForm.value)"-->        
+          <!--Email-->
+          <ion-row>
+            <ion-col>
+              <div class="form-group">
+                <ion-item class="form-item">
+                  <ion-input type="email" placeholder="Please enter valid Email*"  #email="ngModel" required
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+\.[a-zA-Z0-9]{1,2}$"
+                    class="form-control"
+                    name="email"
+                    autocomplete="off"
+                    ngModel
+                    (ionChange)="chkemail()">
+                  </ion-input>
+                </ion-item>
+                <div
+                  *ngIf="email.errors && (email.dirty || email.touched)"
+                  class="alert alert-danger"
+                >
+                  <div [hidden]="!email.errors.required">
+                    Email is required*
+                  </div>
+                  <div [hidden]="!email.errors.pattern">
+                    Email format should be proper eg: miios@miios.com
+                  </div>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+
+        <!--password-->
+        <ion-row>
+          <ion-col class="txt-font">
+            <div class="form-group">
+              <ion-item class="form-item">
+                <ion-input type="password" #pwd="ngModel"
+                  placeholder="Please Enter 8 Digit Password*"
+                  required
+                  maxlength="15"
+                  minlength="8"
+                  class="form-control"
+                  name="lastname"
+                  ngModel>
+                </ion-input>
+              </ion-item>
+              <div *ngIf="pwd.errors && (pwd.dirty || pwd.touched)" class="alert alert-danger">
+                <div [hidden]="!pwd.errors.required">
+                  Password is required*
+                </div>
+                <div [hidden]="!pwd.errors.minlength">
+                  Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters
+                </div>
+                <div [hidden]="!pwd.errors.maxlength">
+                  Maximum 15 Characters Only
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!--password-->
+        <ion-row>
+          <ion-col class="txt-font">
+            <div class="form-group">
+              <ion-item class="form-item">
+                <ion-input
+                  type="password"
+                  #cpwd="ngModel"
+                  placeholder="Please Enter Confirm Password*"
+                  required
+                  maxlength="15"
+                  minlength="8"
+                  class="form-control"
+                  name="cpwd"
+                  ngModel
+                  (keyup) ="checkpass()"
+                >
+                </ion-input>
+              </ion-item>
+              <div style="color: #0558f1;" ><strong>{{ cnfpass }} </strong>  </div>
+              <div class="alert alert-danger" > <strong>{{ cnfpass1 }} </strong>  </div>
+
+            </div>
+          </ion-col>
+        </ion-row>
+
+
+        <!--Company Name-->
+        <ion-row>
+          <ion-col>
+            <div class="form-group">
+              <ion-item class="form-item">
+                <ion-input
+                  type="text"
+                  placeholder="Please Enter Your Business Name*"
+                  #company="ngModel"
+                  required
+                  minlength="4"
+                  class="form-control"
+                  name="company"
+                  ngModel
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                *ngIf="company.errors && (company.dirty || company.touched)"
+                class="alert alert-danger"
+              >
+                <div [hidden]="!company.errors.required">
+                  Company Name is required*
+                </div>
+                <div [hidden]="!company.errors.minlength">
+                  Please Enter Atleast 4 Characters
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <!--Address-->
+        <ion-row>
+          <ion-col>
+            <div class="form-group">
+              <ion-item class="form-item">
+                <ion-input
+                  type="text"
+                  placeholder="Please Enter Your Full Address*"
+                  #address="ngModel"
+                  required
+                  minlength="4"
+                  class="form-control"
+                  name="address"
+                  ngModel
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                *ngIf="address.errors && (address.dirty || address.touched)"
+                class="alert alert-danger"
+              >
+                <div [hidden]="!address.errors.required">
+                  Address is required*
+                </div>
+                <div [hidden]="!address.errors.minlength">
+                  Please Enter Atleast 4 Characters
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!--zip code-->
+        <ion-row>
+          <ion-col class="txt-font">
+            <div class="form-group">
+              <ion-item class="form-item">
+                <ion-input
+                  type="number"
+                  placeholder="Plese Ener your City Zip code"
+                  #zipcode="ngModel"
+                  minlength="4"
+                  class="form-control txt-font"
+                  name="zipcode"
+                  ngModel
+                >
+                </ion-input>
+              </ion-item>
+             <!--  <div
+                *ngIf="zipcode.errors && (zipcode.dirty || zipcode.touched)"
+                class="alert alert-danger"
+              >
+                <div [hidden]="!zipcode.errors.required">
+                  Zip code is required*
+                </div>
+                <div [hidden]="!zipcode.errors.minlength">
+                  Please Enter Atleast 4 Characters
+                </div>
+              </div> -->
+            </div>
+          </ion-col>
+        </ion-row>
+         
+        <!--mobile-->
+
+        <ion-row>
+          <ion-col col-4>
+            <ion-input type="text" value=" {{countrycode1}}" placeholder="Code" readonly></ion-input>
+            <ion-input type="hidden" value=" {{countrycode}}" placeholder="Code"></ion-input>
+          </ion-col>
+          <ion-col col-8>
+            <div class="form-group">
+              <ion-item class="form-item">
+                <!--ion-row>  
+           <ion-col> 
+             <input type="number" placeholder="Mobile No" #mobile="ngModel" required pattern="[0-9]*" maxlength="15" minlength="5" class="form-control" id="mobile" name="mobile" ngModel>
+          </ion-col>
+         </ion-row-->
+         <p style="color:green">All your Transactions will be linked to this Number</p>
+                <ion-input
+                  type="number"
+                  placeholder="Mobile To receive OTP*"
+                  #mobile="ngModel"
+                  required
+                  pattern="[0-9]*"
+                  maxlength="15"
+                  minlength="9"
+                  class="form-control"
+                  name="mobile"
+                  ngModel
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                *ngIf="mobile.errors && (mobile.dirty || mobile.touched)"
+                class="alert alert-danger"
+              >
+                <div [hidden]="!mobile.errors.pattern">
+                  Mobile number should be only numbers
+                </div>
+                <div [hidden]="!mobile.errors.maxlength">
+                  Please Enter Atleast 15 Digit Number
+                </div>
+                <div [hidden]="!mobile.errors.minlength">
+                  Please Enter Atleast 9 Digit Number
+                </div>
+                <div [hidden]="!mobile.errors.required">
+                  Mobile is required*
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+         <!--Refferal Code-->
+         <ion-item class="form-item">
+          <ion-input type="text" placeholder="Referral Code (Optional)" #sponcerid style="color:blue" (click)="getreferral()"></ion-input>
+        </ion-item>
+      </form>
+     <!--  <p> <b style="color:red">Prefferred Time for Communication*</b></p>
+      <ion-row>
+      <ion-col col6>
+        <ion-item style="border:1px solid grey"> 
+        <ion-label>10:00 AM</ion-label>
+        <ion-datetime displayFormat="h:mm A" #from_time (click)="getreferral()"></ion-datetime>
+      </ion-item>
+      </ion-col>
+      <ion-col col6>
+        <ion-item style="border:1px solid grey"> 
+        <ion-label>05:00 PM</ion-label>
+        <ion-datetime displayFormat="h:mm A" #to_time (click)="getreferral()"></ion-datetime>
+      </ion-item>
+      </ion-col>
+    </ion-row>
+         <p><b style="color:red"> Preferred Mode Of Communication*</b> </p>
+        <p><b><span style="color:green">** Where ever you find it is not relevent select NA</span></b></p>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>Facebook</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="facebook" (ionChange)="fb()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="fna" (ionChange)="fbna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+                  
+        </ion-row>
+        <ion-input *ngIf="fbinput" type="text" placeholder="Please Enter Your Facebook Link" #fblink></ion-input>
+        <ion-input type="hidden" placeholder="fb Link" #fblink></ion-input>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>Linkedin</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="linkdin" (ionChange)="li()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="lina" (ionChange)="lna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+         
+        </ion-row>
+        <ion-input *ngIf="liinput" type="text" placeholder="Please Enter Linkdin Profile URL*" #lilink></ion-input>
+        <ion-input type="hidden" placeholder="Please Enter Linkdin Profile URL" #lilink></ion-input>
+        
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>Twitter</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="twitter" (ionChange)="tw()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="twna" (ionChange)="tna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+              
+        </ion-row>
+        <ion-input *ngIf="twinput" type="text" placeholder="Please Enter Your Twiiter Link *" #twlink></ion-input>
+        <ion-input  type="hidden" placeholder="Twitter Link" #twlink></ion-input>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>WhatsApp</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="whatsapp" (ionChange)="wh()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="whna" (ionChange)="wna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+         
+        </ion-row>
+        <ion-input *ngIf="whinput" type="text" placeholder="Please Enter Your Whatsapp Number *" #whlink></ion-input>
+        <ion-input type="hidden" placeholder="Whatsapp Number" #whlink></ion-input>
+        
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>Wechat</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="vchat" (ionChange)="vc()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="vcna" (ionChange)="vna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+                  
+        </ion-row>
+        <ion-input *ngIf="vcinput" type="text" placeholder="Please Enter Your Wechat Number *" #vclink></ion-input>
+        <ion-input type="hidden" placeholder="Wechat Number" #vclink></ion-input>
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>Skype</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="skype" (ionChange)="sk()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="skna" (ionChange)="sna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+        
+        </ion-row>
+        <ion-input *ngIf="skinput" type="text" placeholder="Please Enter Your Skype ID *" #sklink></ion-input>
+        <ion-input type="hidden" placeholder="Skype ID" #sklink></ion-input>
+        
+         <p> <b style="color:red">Authorized Certification Details*</b></p>
+        
+         <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>IEC</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="iec" (ionChange)="ie()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="iecna" (ionChange)="iena()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+         
+        </ion-row>
+        <ion-input *ngIf="iecinput" type="text" placeholder="Please Enter Your IEC Code *" #ieccode></ion-input>
+        <ion-input type="hidden"  #ieccode></ion-input>
+        
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>GST</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="gst" (ionChange)="gs()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="gstna" (ionChange)="gsna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+         
+        </ion-row>
+        <ion-input *ngIf="gstinput" type="text" placeholder=" Please enter your GST Number *" #gstno></ion-input>
+        <ion-input type="hidden"  #gstno></ion-input>
+         
+        <ion-row>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label>Other</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="other" (ionChange)="ot()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-6>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="othna" (ionChange)="otna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+                 
+        </ion-row>
+        <ion-input *ngIf="otinput" type="text" placeholder="Please Specify *" #otherspecify></ion-input>
+        <ion-input *ngIf="otinput" type="text" placeholder="Please Enter Your Local Tax Number *" #otherno></ion-input>
+        <ion-input type="hidden"  #otherno></ion-input>
+        <ion-input type="hidden"  #otherspecify></ion-input>
+
+        <ion-item>
+          <ion-label >Tax Not Applicable For Our Country </ion-label>
+          <ion-checkbox color="secondary" [(ngModel)]="othertaxna" (ionChange)="othertna()"  ></ion-checkbox>
+        </ion-item>
+
+ -->
+         <p> <b style="color:red">Business Information*</b></p>
+        
+         <ion-row>
+          <ion-col col-7>
+            <ion-item>
+            <ion-label>Experience</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="experience" (ionChange)="ex()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-5>
+            <ion-item>
+            <ion-label> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="expna" (ionChange)="exna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+         
+        </ion-row> 
+        <ion-input *ngIf="exinput" type="mobile" placeholder="Please Enter Your Years of Experience" #expyears></ion-input>
+        <ion-input type="hidden"  #expyears></ion-input> 
+        
+        <ion-row>
+          <ion-col col-7>
+            <ion-item>
+            <ion-label>Star exporter</ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="starexporter" (ionChange)="st()"  ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+          <ion-col col-5>
+            <ion-item>
+            <ion-label style="padding: 0px;"> NA </ion-label>
+            <ion-checkbox color="secondary" [(ngModel)]="stana" (ionChange)="stna()" ></ion-checkbox>
+          </ion-item>          
+          </ion-col>
+            
+        </ion-row> 
+        <div *ngIf="stinput" > 
+          <ion-list radio-group >
+            <ion-item > 
+              <ion-label class='selected' style="color:#F48F0A">★</ion-label>
+              <ion-radio (click)="addRating(1)" value="1" ></ion-radio>
+            </ion-item>
+            <ion-item >
+              <ion-label class='selected' style="color:#F48F0A">★★</ion-label>
+              <ion-radio (click)="addRating(2)" value="2"></ion-radio>
+            </ion-item>
+            <ion-item >
+              <ion-label class='selected' style="color:#F48F0A">★★★</ion-label>
+              <ion-radio (click)="addRating(3)" value="3" ></ion-radio>
+            </ion-item>
+           
+            <ion-item >
+              <ion-label class='selected' style="color:#F48F0A">★★★★</ion-label>
+              <ion-radio (click)="addRating(4)" value="4" ></ion-radio>
+            </ion-item>
+            <ion-item >
+              <ion-label class='selected' style="color:#F48F0A">★★★★★</ion-label>
+              <ion-radio (click)="addRating(5)" value="5"></ion-radio>
+            </ion-item>
+
+          </ion-list>
+
+        </div>
+             <ion-input *ngIf="stinput" type="hidden" placeholder="No of Stars" #stars></ion-input>
+             <ion-input type="hidden"  #stars></ion-input> 
+         <hr>
+
+         <ion-item>
+          <ion-label >Subscribe for News Letters and Promotions </ion-label>
+          <ion-checkbox color="dark" [(ngModel)]="subscriben" (ionChange)="snews()" ></ion-checkbox>
+        </ion-item>
+
+
+      <ion-item>
+        <ion-label style="font-size: 14px;">Please Confirm that You Agree to Our T&C*</ion-label>
+        <ion-checkbox color="dark" value="terms" [(ngModel)]="termscondition" (ionChange)="tc()" ></ion-checkbox>
+      </ion-item>
+      <ion-input *ngIf="tcinput" type="hidden" #termsc></ion-input>
+        <ion-input type="hidden" value="terms" #termsc></ion-input> 
+      <ion-item>
+        <ion-label (click)="terms()" style="font-size: 14px; color: red;" center >Click Here to View T&C</ion-label>
+      </ion-item>
+
+      <div class="signupButton">
+        <button
+          ion-button
+          block
+          text-center
+          type="submit"
+          [disabled]="!(funnyDayaForm.form.valid)"
+          (click)="signup()"
+          round
+          block
+        >
+          Signup
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="signin-div">
+    Already a Member?
+    <span Style="color: red;" (click)="signin()">Sign in</span>
+  </div>
+</ion-content>

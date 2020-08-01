@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><ion-icon name="menu" color="dark" class="hamberg-icon" icon-start></ion-icon><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"
+      ><img src="../assets/imgs/logos.png" style="height:70px;"
+    /></ion-col>
+  </ion-navbar>
+  <div class="spacer" style="height:0.1em"></div>
+  <div>
+    <ion-item-divider text-center color="danger"
+      >My Purchase Leads</ion-item-divider
+    >
+  </div>
+  <div class="spacer" style="height:0.1em"></div>
+  <div class="lead-banner-h">
+    <ion-segment #segments mode="md" [(ngModel)]="page" color="white">
+      <ion-segment-button value="0" (click)="selectedTab(0)">
+        <div>
+          <img src="../assets/designs/leads/seller.svg" class="lead-type-img" />
+        </div>
+      </ion-segment-button>
+      <ion-segment-button value="1" (click)="selectedTab(1)">
+        <div>
+          <img src="../assets/designs/leads/buyer.svg" class="lead-type-img" />
+        </div>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+</ion-header>
+<ion-content class="bg-style">
+  <ion-grid>
+    <ion-slides #slider (ionSlideDidChange)="slideChanged()">
+      <ion-slide>
+        <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+        <div class="errmsg" style="color: red;" >{{sellerrmsg}}</div>
+         <ion-card  *ngFor="let selllead of sellleads | leadsearch: terms;  let i=index;">
+              <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
+                <ion-col col-6>ID: {{selllead.leadref_id}}</ion-col> 
+                <ion-col col-6>HSCode: {{selllead.hsn_id}}</ion-col>  
+              </ion-row>
+              
+              <ion-row>
+                <ion-col class="pro-name" col-6 style="border-right: 0.5px solid grey;" >{{selllead.description}}</ion-col>
+                <ion-col class="pro-name" col-6>Quantity: <br>{{selllead.quantity}} {{selllead.uom}}  </ion-col>
+                 
+              </ion-row>
+
+              <ion-row>
+                <ion-col class="date" col-6><span style="background: green; color:#fff">Posted:</span> {{selllead.posted_date | date:'dd-MM-yyy'}}</ion-col>
+                <ion-col class="date" col-6><span style="background: red; color:#fff"> Expires: </span> {{selllead.expiry_date | date:'dd-MM-yyyy'}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="date" col-6><span style="color:red" (click)="simport(i)">Click for Import Policy</span></ion-col>
+                <ion-col class="date" col-6><span style="color:red" (click)="sexport(i)">Click forExport Policy</span></ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col col-12><button ion-button round small color="palegreen"  block (click)="sellleaddetails(i)"> Show Lead Details</button></ion-col>
+            </ion-row>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-searchbar [(ngModel)]="terms"></ion-searchbar>
+       <div class="errmsg" style="color: red;">{{buyerrmsg}}</div>
+      
+          <ion-card *ngFor="let buylead of buyleads | leadsearch: terms ; let i=index;">
+            <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
+              <ion-col col-6>ID:{{buylead.leadref_id}}</ion-col> 
+              <ion-col col-6>HSCode: {{buylead.hsn_id}}</ion-col> 
+            </ion-row>
+            <ion-row>
+                <ion-col class="pro-name" col-6 style="border-right: 0.5px solid grey;">{{buylead.description}}</ion-col >
+                <ion-col class="pro-name" col-6> Quantity:<br>{{buylead.quantity}} {{buylead.uom}}</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col class="date" col-6 ><span style="background: green; color:#fff;">Posted</span>: {{buylead.posted_date | date:'dd-MM-yyyy'}}</ion-col >
+                <ion-col class="date" col-6><span style="background: red; color:#fff;">Expires</span>: {{buylead.expiry_date | date:'dd-MM-yyyy'}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="date" col-6><span style="color:red" (click)="bimport(i)">Click for Import Policy</span></ion-col>
+              <ion-col class="date" col-6><span style="color:red" (click)="bexport(i)">Click forExport Policy</span></ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col col-12><button ion-button round small  color="palegreen" (click)="buyleaddetails(i)" block > Show Details</button></ion-col>
+              </ion-row>
+            </ion-card>
+      </ion-slide>
+      </ion-slides>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"
+      ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col
+    >
+    <ion-col class="ftr-col-active" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="danger"></ion-icon>
+      <p class="name-footer-active">Leads</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="chatting()"
+      ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="webinar()"
+      ><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiosVision</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="quotes()"
+      ><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon >
+      <p class="name-footer">Post Lead</p></ion-col
+    >
+  </ion-row>
+</ion-footer>

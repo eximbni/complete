@@ -1,0 +1,104 @@
+page-inboxdetails {
+ 
+.chat-div{
+  position:fixed;
+  bottom: 0;
+  clear: both;
+  display: block;
+  border:1px solid red;
+
+}
+.txt-div{
+   margin: 1% 2%;
+}   .icn-sz{
+      font-size: 1em;
+      margin-top: 4% !important;
+  }
+  .sndicn-sz{
+      font-size: 2em;
+  }
+      .mobile{
+          width: 100%;
+          text-align: left;
+          padding: 1% 7%;
+          border-radius: 2em;
+          height: 4em;
+          font-size: 1.2em;
+      }
+        .dte{
+          text-align: right;
+        }
+            .ftr{
+                background-color: #ffffff;;
+                height:10%;
+                margin-bottom: 0%;
+              
+              }
+              .ftr-row{
+                background-color: #ffffff;;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+                margin-bottom: 0;
+                margin-top: 0;
+              }
+              .ftr-icon{
+                font-size: 25px;
+                margin-top: 10%;
+              }
+              .ftr-col{
+                background-color: #ffffff;;
+                padding: 0;
+                margin-top: 5px;
+                margin: 0;
+                height:10%;
+                text-align: center;
+                //border-right: 1px solid #e0dede;;
+              }
+              .name-footer{
+                margin-top: 5px;
+                margin-bottom: 0;
+                font-size: 12px;
+              }
+       
+      
+        .chat-footer{
+            height: auto;
+            background: #eb3e18;
+        }
+        .chat{
+            height: auto;
+            width:100%;
+         }
+        .chatreplybox{
+            height: auto;
+            width:100%;
+            text-align: left;
+        }
+        .chat-inputbox{
+            height: auto;
+                    }
+        .chatinput .text-input-md {
+            text-align: left;
+            color:white;
+            font-size: 1.6rem;
+        }
+        .chatsendcol{
+            margin: auto;
+            text-align: center;
+        }
+        .chatsend{
+text-align: center;
+margin: auto;
+font-size: 2em;
+        }
+        .chattextareadiv{
+            border:1px solid white;
+            border-radius: 13px;
+        }
+        .divider{
+            text-align: center;
+        }
+        }
+        
+

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="322" height="46" viewBox="0 0 322 46">
+  <g id="Group_17812" data-name="Group 17812" transform="translate(-27 -110)">
+    <g id="Rectangle_119" data-name="Rectangle 119" transform="translate(27 110)" fill="none" stroke="#a5a5a5" stroke-width="0.25">
+      <rect width="322" height="46" rx="23" stroke="none"/>
+      <rect x="0.125" y="0.125" width="321.75" height="45.75" rx="22.875" fill="none"/>
+    </g>
+    <text id="Search" transform="translate(74 141)" fill="#373737" font-size="20" font-family="SourceSansPro-Regular, Source Sans Pro"><tspan x="0" y="0">Search</tspan></text>
+  </g>
+</svg>

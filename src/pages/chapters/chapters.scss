@@ -1,0 +1,122 @@
+page-chapters {
+  
+  .bg-grid{
+    padding: 0px;
+    margin: 0px;
+  background-color: #fcfcfc;
+  color: black;
+  }
+  .row-desc{
+    font-size: 0.8em;
+    padding-left: 7%;
+  }
+  .ch_style{
+    background-color: #EB3E16;
+  }
+  
+  .searchbar-input {
+    border-radius: 30px !important;
+    box-shadow: none !important;
+    border: 1px solid #A5A5A5;
+    
+  }
+  
+  [col-11] {    /* font-size: 12px; */
+    padding: 10px 19px;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.2em;
+  }
+
+
+  .message-box-title1{
+    background:orange;
+    position: relative;
+    z-index: 99;
+    font-size: 13px;
+    color: rgba(255,255,255,0.9);
+    font-weight: bold;
+    height: unset;
+    line-height: 30px;
+  }
+
+  .message-box-title1:after {
+    left: 100%;
+    top: 50%;
+    z-index: 99;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-left-color: orange;
+    border-width: 10px;
+    margin-top: -10px;
+  }
+
+
+
+.text-centr{
+text-align: center;
+
+}
+
+.row-bg{
+  height: auto;text-align: left;;
+}
+}
+
+
+  
+.ftr{
+  background-color: #ffffff;;
+  height:10%;
+  margin-bottom: 0%;
+
+}
+.ftr-row{
+  background-color: #ffffff;;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.ftr-icon{
+  font-size: 25px;
+  margin-top: 10%;
+}
+.ftr-col{
+  background-color: #ffffff;;
+  padding: 0;
+  margin-top: 5px;
+  margin: 0;
+  height:10%;
+  text-align: center;
+  //border-right: 1px solid #e0dede;;
+}
+.name-footer{
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+.slide-container{
+  width: 100%;
+  margin:2%;
+  padding: 0%;
+}
+.slide-image{
+  width: 100%;
+  height:130px;
+}
+
+// Latest changes
+
+// .searchbar-md .searchbar-input {
+//   border: 1px solid #A5A5A5;
+  
+// }
+

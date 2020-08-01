@@ -1,0 +1,74 @@
+
+<ion-header>
+    <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+    <ion-searchbar [(ngModel)]="terms" ></ion-searchbar>
+    
+    <ng-multiselect-dropdown class="ngselect fs_select"
+    [placeholder]="'Chapter wise Buyers'" 
+    [data]="chapters" 
+    [(ngModel)]="selectedItems"
+    [settings]="dropdownSettings"
+    (onSelect)="onItemSelect($event)"
+    (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
+    <div padding>
+      <ion-segment [(ngModel)]="pet">
+        <ion-segment-button value="kittens" style="background: red; color:#ffffff; font-size: 12px;">
+          Exixting List
+        </ion-segment-button>
+        <ion-segment-button value="puppies" style="background: green; color:#ffffff; font-size: 12px;">
+          Who are online
+        </ion-segment-button>
+        <ion-segment-button value="buyleds" style="background: blue; color:#ffffff; font-size: 12px;">
+          Who Posted Leads.
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    
+    <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'kittens'">
+        <ion-item *ngFor="let buyer of buyerslist | buyersearch:terms ;let i=index;">
+          <ion-avatar item-start>
+            <img src="../assets/img/jhon.jpg" style="width:50px;height:50px">
+          </ion-avatar>
+          <p> {{buyer.name}}</p>
+          <p>{{buyer.business_name}} </p>
+        </ion-item>
+      </ion-list>
+    
+      <ion-list *ngSwitchCase="'puppies'">
+        <ion-item *ngFor="let obuyer of onlinebuyerslist | buyersearch:terms ;let i=index;">
+          <ion-avatar item-start>
+            <img src="../assets/img/jhon.jpg" style="width:50px;height:50px">
+          </ion-avatar>
+          <p> {{obuyer.name}}</p>
+          <p>{{obuyer.business_name}} </p>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'buyleds'">
+        <ion-item *ngFor="let lbuyer of leadpostbuyerslist | buyersearch:terms ;let i=index;">
+          <ion-avatar item-start>
+            <img src="../assets/img/jhon.jpg" style="width:50px;height:50px">
+          </ion-avatar>
+          <p> {{lbuyer.name}}</p>
+          <p>{{lbuyer.business_name}} </p>
+        </ion-item>
+      </ion-list>
+    </div>
+</ion-content>
+
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
+    <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+    </ion-row>
+ </ion-footer>

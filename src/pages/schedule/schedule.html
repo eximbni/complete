@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar color="orangebtn"  class="padding-top:10px;">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+    <ion-list>
+      <button ion-item line>
+        <ion-icon name="md-calendar" item-start></ion-icon>
+        <h3>10:00 - 11:00 AM</h3>
+        <p>Thursday, May 2019</p>
+        <p>Meeting description</p>
+      </button>
+  
+      <button ion-item line>
+          <ion-icon name="md-calendar" item-start></ion-icon>
+          <h3>11:00 - 12:00 AM</h3>
+          <p>Tuesday, May 2019</p>
+          <p>Meeting description</p>
+        </button>
+  
+    <button ion-item>
+      <ion-icon name="calendar" item-start></ion-icon>
+      <h3>10:30-11:00 AM</h3>
+      <p>Thursday May 2019</p>
+      <p>Description here</p>
+    </button>
+    </ion-list>
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon name="clipboard" class="ftr-icon"></ion-icon><p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatpg()"><ion-icon name="chatbubbles" class="ftr-icon"></ion-icon><p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon name="photos" class="ftr-icon"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
+    <ion-col class="ftr-col" (click)="quotes()"><ion-icon name="send" class="ftr-icon"></ion-icon><p class="name-footer">Post Lead</p></ion-col>
+    </ion-row>
+ </ion-footer>

@@ -1,0 +1,102 @@
+page-chat {
+  .label-ios
+  {
+    margin:0;
+    color:#252f6a;
+  }
+.header-grid{
+    padding: 0px;
+    margin:0px;
+   // background-color:orangered ;
+    height: 14%;
+}
+.item-sell{
+  padding-left: 2px;
+  background:#009814;
+  }
+  .searchbar-input {
+    border-radius: 30px !important;
+    box-shadow: none !important;
+    border: 1px solid #A5A5A5;
+  }
+  .segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+      border-color:#fff !important;
+  }
+  .segment-md .segment-button
+{
+    width: 50%;
+    height:2em;
+}
+.header-row{
+    text-align: center;
+}
+.dots{
+    height:15px;
+    width:15px;
+    color: white;
+}
+.notify{
+    font-size: 12px;
+}
+.left-col{
+    padding-left:5%;
+}
+.right-col{
+    padding-right: 5%;
+    text-align: right;
+}
+.center-col{
+    text-align: center;
+    font-size: 18px;
+}
+.grid-chat{width: 100%;
+  
+    z-index: 1;
+    border-top-left-radius: 8%;
+    border-top-right-radius: 8%;
+}
+
+.toolbar-title-md {
+  font-size: 1.9rem;
+  font-weight: 400;
+}
+.head-tab{
+  text-transform: none;
+  font-size: 1em;
+  color: #fff;
+}
+
+.groupicon{
+  width: 30px;
+  height: 30px;
+}
+.groupname{
+  font-size: 1.7rem;
+  padding-top: 3%
+}
+}
+
+  .fab[mini] {
+    width: 4em;
+    height: 4em;
+}
+.add-icon{
+  font-size:3em;
+}
+.fab ion-icon {
+  font-size:3em;
+}
+.random{
+  background-color: grey; 
+  border-radius: 50%; 
+  margin-top: 5px;
+  margin-left:8px;
+  margin-right:11px;
+  font-size: 45;
+}
+
+.item-md
+{
+  color:#252f6a;
+  font-weight: bold;
+}

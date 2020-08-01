@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "588722738007",
+    "firebase_url": "https://eximbni-2e24b.firebaseio.com",
+    "project_id": "eximbni-2e24b",
+    "storage_bucket": "eximbni-2e24b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588722738007:android:740d8a339806ae507b2412",
+        "android_client_info": {
+          "package_name": "com.miios.eximbni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588722738007-m7g39oq7srce9quj9ad4j2mp9nlq7j8l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAWKIl4YHo1plpE_qPbHJJMBuION26RNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588722738007-m7g39oq7srce9quj9ad4j2mp9nlq7j8l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

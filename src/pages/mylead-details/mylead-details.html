@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-navbar color="orangebtn" class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"><img src="../assets/imgs/logos.png" style="height:70px;"/></ion-col>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="back">
+  <h4 style="text-align: center; color: white; background: green;">Posted  Lead Details </h4>
+  
+  <div class="crd-style">
+    <ion-grid>
+      <ion-row>
+        <div class="white-bg">
+          <ion-row class="card-title">
+            <ion-col>Valid From: {{from}}</ion-col>
+            <ion-col>To: {{to}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Reference Id</ion-col>
+            <ion-col>: {{leadref_id}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Quantity</ion-col>
+            <ion-col>: {{quantity}} {{uom}}</ion-col>
+          </ion-row>
+        </div>
+        <ion-row class="description">
+          <ion-col>Lead Description</ion-col>
+        </ion-row>
+        <ion-row class="card-desc"> {{description}} </ion-row>
+      </ion-row>
+    </ion-grid>
+  </div>
+<!---my lead Documents -->
+<ion-item-divider color="danger">Lead Documents</ion-item-divider>
+  <ion-grid >
+    <div class="crd-style">
+      <div class="white-bg" >
+        <ion-row class="card-title" >
+          <ion-col col-6 *ngFor="let ldoc of leaddocuments; let i =index;" center ><a href="http://eximbin.com/api/uploads/{{ldoc.doc_path}}" download="download"> {{ldoc.doc_name}} 
+        </a></ion-col>
+        
+        </ion-row>
+      </div>
+    </div>
+  </ion-grid>
+  <!---my lead response -->
+  <ion-item-divider color="danger">Responses</ion-item-divider>
+
+  <ion-grid *ngFor="let res of leadresponses; let i =index;">
+    <hr />
+    <div class="crd-style">
+      <div class="white-bg">
+        <ion-row class="card-title">
+          <ion-col>Responded on </ion-col>
+          <ion-col>: {{res.reponse_date}}</ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>Country </ion-col>
+          <ion-col>: {{res.country}}</ion-col>
+        </ion-row>
+
+        <ion-row class="card-title">
+          <ion-col>Name</ion-col><ion-col>: {{res.name}}</ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>Business</ion-col><ion-col>: {{res.business_name}}</ion-col>
+        </ion-row>
+
+        <ion-row class="card-title">
+          <ion-col>Requirement</ion-col
+          ><ion-col>: {{res.response_quantity}} {{res.uom}} </ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>requirement Type</ion-col
+          ><ion-col>:{{res.req_type}}</ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>Description</ion-col>
+          <ion-col> : {{res.description}}</ion-col>
+        </ion-row>
+        <ion-row class="card-desc">
+          <ion-col></ion-col>
+          <ion-col>
+            <span>
+              <button ion-button small round outline (click)="chatpg(i)">
+                Chat
+              </button>
+            </span>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ftr" opacity="0.5">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"
+      ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
+      <p class="name-footer">Home</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Leads</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="chatting()"
+      ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Chat</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="webinar()"
+      ><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">MiiosVision</p></ion-col
+    >
+    <ion-col class="ftr-col" (click)="quotes()"
+      ><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon >
+      <p class="name-footer">Post Lead</p></ion-col
+    >
+  </ion-row>
+</ion-footer>

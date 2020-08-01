@@ -1,0 +1,63 @@
+
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+      <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  
+            <ion-row>
+              <ion-col class="txt-font">
+                <div class="form-group">
+                  <ng-multiselect-dropdown
+                    class="ngselect fs_select"
+                    #usertype="ngModel"
+                    required
+                    class="form-control"
+                    name="usertype"
+                    ngModel
+                    [placeholder]="'User Type'"
+                    [data]="selectedusertypelist"
+                    [(ngModel)]="selectedusertype"
+                    [settings]="dropdownSettings2"
+                    (onSelect)="onItemSelect($event)"
+                  >
+                  </ng-multiselect-dropdown>
+    
+                  <div
+                    *ngIf="usertype.errors && usertype.touched"
+                    class="alert alert-danger"
+                  >
+                    <div [hidden]="!usertype.errors.required">
+                      User Type is required*
+                    </div>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+         <!--user other type-->
+         
+  <!-- <ion-row>
+    <ion-col ><button style="background: red; font-size: 12px; height:10px; width:10px;"></button>  Existing List</ion-col>
+    <ion-col ><button style="background: green; font-size: 12px; height:10px; width:10px;"></button>  Online Users </ion-col>
+   <ion-col ><button style="background: blue; font-size: 12px; height:10px; width:10px;"></button>  Who Posted Leads. </ion-col>
+  </ion-row> -->
+   
+
+ <div #map id="map"></div>
+
+
+</ion-content>
+
+<ion-footer class="ftr">
+<ion-row class="ftr-row">
+  <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+  <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+  <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+  <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
+  <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+  </ion-row>
+</ion-footer>

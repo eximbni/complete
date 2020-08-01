@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="295" height="45" viewBox="0 0 295 45">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="295" height="45" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Continue_Button" data-name="Continue Button" transform="translate(-40 -687)">
+    <g id="Symbol_69_1" data-name="Symbol 69 – 1" transform="translate(40 687)" clip-path="url(#clip-path)">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="295" height="45" rx="22.5" fill="#009856"/>
+    </g>
+    <text id="CONTINUE" transform="translate(188.166 718)" fill="#fff" font-size="22" font-family="SegoeUI-Semibold, Segoe UI" font-weight="600"><tspan x="-45.348" y="0">Continue</tspan></text>
+  </g>
+</svg>

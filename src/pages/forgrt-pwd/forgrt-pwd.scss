@@ -1,0 +1,106 @@
+page-forgrt-pwd {
+    text-align: center;
+.container{
+   // background-image: Url("../assets/imgs/signin_back.jpg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
+   //background-position: bottom;
+   padding: 0px;
+   height: 100%;
+   // margin:0px;
+}
+.grid-container{
+    
+    text-align: center;
+}
+.img-bg{
+    max-width: 100%;
+    position: inherit;
+    border: 0;
+    padding: 3em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.row1{
+    position: relative;
+    top:10%;
+
+}
+.row2{
+    position: relative;
+    top:10%;
+}
+.row3{
+    position: relative;
+    top:10%;
+    text-align: center;
+    font-size: 1.9em;
+}
+.button-md-warning {
+    color: #fff;
+    background-color: #009814;
+    font-weight: 700;
+}
+
+.btn-inr1{
+    
+    font-size: 14px;
+    font-size: small;
+}
+.btn-inr2{
+    
+    font-size: 14px;
+    font-size: small;
+}
+.btn-inr3{
+    
+    font-size: 14px;
+    font-size: small;
+}
+h1{
+    margin-top: 2rem;
+    font-size: 17px;
+}
+.otp-input{
+    border-bottom:1px solid #E5E5E5;
+    text-align-last: center;
+    font-size: 1.6em;
+}
+.mob-input{
+    border-bottom: 2px solid #F7F7F7;
+    text-align-last: center;
+    font-size: 20px;
+    font-family: 'Source Sans Pro', sans-serif !important;
+
+}
+
+.btn-bg3{
+    margin-top:20px;
+    height: 80%;
+    padding: 0 15px;
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+.btn-bg1{
+    margin-top:20px;
+    height: 40%;
+}
+.btn-bg2{
+    margin-top:15px;
+    margin-bottom:15px;
+    height: 35px;
+
+}
+.text-style{
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.toolbar-title-md {
+    padding: 0 12px;
+    font-size: 1.6rem;
+    /* font-weight: 500; */
+    color: #424242;
+    font-family: 'Source Sans Pro', sans-serif !important;
+}
+}

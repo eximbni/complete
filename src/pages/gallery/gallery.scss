@@ -1,0 +1,43 @@
+page-gallery {
+    .web-title{
+        font-family: 'Source Sans Pro', sans-serif !important;
+       }
+      
+.subject{
+  display: -webkit-box;
+    margin: 0 0 4px 0;
+    max-height: 3.5rem;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    font-size: 1.7rem;
+    font-weight: 500;
+    line-height: 1.6rem;
+}
+.sub {
+  font-size: 1.7rem;
+}
+.chapter{
+  font-size: 1em;
+  color: gray;
+}
+.divlist{
+  height: auto;
+  width: 100%;
+}
+.vidcol{
+  height: auto;
+  width: 100%;
+}
+.viddetails{
+  height: auto;
+  width: 100%;
+}
+ .button-round-md{
+  border-radius: 50%;
+  padding: 0 1em;
+ 
+}
+}

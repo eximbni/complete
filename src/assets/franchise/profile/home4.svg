@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="41.494" viewBox="0 0 32 41.494">
+  <g id="Group_17842" data-name="Group 17842" transform="translate(-25 -758.506)">
+    <g id="Group_17832" data-name="Group 17832" transform="translate(423)">
+      <text id="Home" transform="translate(-382 797)" fill="#fff" font-size="12" font-family="SourceSansPro-Regular, Source Sans Pro"><tspan x="-15.114" y="0">Home</tspan></text>
+      <g id="Group_17769" data-name="Group 17769" transform="translate(-393 759)">
+        <path id="Path_10014" data-name="Path 10014" d="M254.656,333.013c0,3.635,0,8.994,0,12.629,0,.761-.076.839-.831.839q-7.72,0-15.439,0c-.75,0-.826-.078-.826-.844q0-5.425,0-10.851v-1.916" transform="translate(-235.679 -327.144)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_10015" data-name="Path 10015" d="M234.641,331.085l4.473-3.11c1.816-1.263,3.636-2.518,5.441-3.8a.753.753,0,0,1,1.009-.014q5.144,3.606,10.307,7.184" transform="translate(-234.641 -323.979)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1"/>
+        <path id="Path_10016" data-name="Path 10016" d="M252.7,348.478c0-.779.009-1.522,0-2.265-.019-1.323.032-2.654-.1-3.966a3.481,3.481,0,0,0-6.889-.039,32.767,32.767,0,0,0-.093,3.292c-.012.972,0,1.945,0,2.967" transform="translate(-238.546 -329.413)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

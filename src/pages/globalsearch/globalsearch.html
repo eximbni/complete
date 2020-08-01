@@ -1,0 +1,60 @@
+<ion-header>
+        <ion-navbar color="orangebtn"  class="padding-top:10px;">
+            <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+            <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+          </ion-navbar>
+      </ion-header>
+<ion-content class="bg-style" padding>
+    <ion-row>
+      <ion-col col-11>
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" placeholder="Product Name" #product></ion-input>
+          </ion-item>      
+        </ion-list>
+      </ion-col>
+      <ion-col col-1 style="font-size: 25px;" (click)="searchProduct()">
+       <ion-icon name="search" item-right color="danger" style="margin-top:10px"> </ion-icon>
+      </ion-col>
+     </ion-row>
+<div *ngIf="searchresult!=0">
+<ion-card *ngFor="let hscode of searchresult; let i=index">
+  <ion-card-header color="warning">
+    HSCODE:{{hscode.hscode}} <br>
+    HS4 : {{hscode.hs4}} <br>
+    HS5 :{{hscode.hs5}} <br>
+    HS6 : {{hscode.hs6}} <br>
+  </ion-card-header>
+  <ion-card-content>
+    DESCRIPTION:{{hscode.english}} 
+    <p style="background: rgb(248, 111, 111); color:#ffffff">Import Policy : {{hscode.imp_policy}}</p>
+    <p style="background: rgb(248, 111, 111); color:#ffffff">Export Policy : {{hscode.exp_policy}}</p>
+    <p style="background: green; color:#ffffff">  CHAPTER{{hscode.chapter_id}}</p>
+  </ion-card-content>
+  <ion-row>
+    <ion-col col-4><button ion-button round small	(click)="Maps(i)"> View Maps</button></ion-col>
+    <ion-col col-4><button ion-button round small	(click)="Leads(i)" color="warning">View Leads</button></ion-col>
+    <ion-col col-4><button ion-button round small	(click)="Post(i)">Post Lead</button></ion-col>
+  </ion-row>
+</ion-card>
+</div>
+<div *ngIf="searchresult==0" >
+  <p style="text-align: center; color:red"> No Records Found</p>
+  </div>
+  <ion-fab right bottom *ngIf="searchresult==0" >
+    <button ion-fab color="orange" (click)="addhscode()"><ion-icon name="add"></ion-icon></button>
+    
+  </ion-fab>
+</ion-content>
+<ion-footer class="ftr">
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+    <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
+    </ion-row>
+ </ion-footer>
+
+      
+  

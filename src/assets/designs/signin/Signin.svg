@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="295" height="45" viewBox="0 0 295 45">
+  <g id="Signin" transform="translate(-40 -528)">
+    <g id="Group_258" data-name="Group 258" transform="translate(0 24)">
+      <g id="Rectangle_110" data-name="Rectangle 110" transform="translate(40 504)" fill="#eb3e16" stroke="#707070" stroke-width="0.25">
+        <rect width="295" height="45" rx="22.5" stroke="none"/>
+        <rect x="0.125" y="0.125" width="294.75" height="44.75" rx="22.375" fill="none"/>
+      </g>
+      <text id="Create_an_Account" data-name="Create an Account" transform="translate(188 534.5)" fill="#fff" font-size="22" font-family="SourceSansPro-Semibold, Source Sans Pro" font-weight="600"><tspan x="-32.219" y="0">Sign In</tspan></text>
+    </g>
+  </g>
+</svg>

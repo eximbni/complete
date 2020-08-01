@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar color="orangebtn"  class="padding-top:10px;" (click)="leadspg()">
+        <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ></ion-col>
+        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
+      </ion-navbar>
+  </ion-header>
+
+<ion-content class="otp-container" padding>
+    <ion-grid>
+        <ion-row  class="img-col">
+          <ion-col>
+          <img src="../assets/designs/otp/otpicon.svg">
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+<div class="otp-maindiv">
+  <h2>Enter the Verification code</h2>
+  <p> We just sent you on your mobile <br> {{mobile}} </p>
+
+  <p class="otprow" text-center>
+    <ng-otp-input  (onInputChange)="onOtpChange($event)" [config]="{length:4,allowNumbersOnly:true,inputClass:cnfotp}"></ng-otp-input>
+  </p>
+  <!-- <div class="otp-field"><ng-otp-input [config]="{length:4}" placeholder="*" #otp></ng-otp-input>  </div> -->
+  <div class="otp-btn">  <button ion-button  round color="orangebtn" (click)="confirm()">Verify</button></div>
+</div>
+  
+  <p><a href="#" class="otp-resend" (click)="resend()">Resend OTP</a></p>
+   
+
+</ion-content>

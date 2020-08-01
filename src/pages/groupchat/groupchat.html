@@ -1,0 +1,39 @@
+
+<ion-header>
+  <ion-navbar color="orangebtn">
+    <ion-title  class="chattitle"(click)="chatuser()">{{chatroom}} <img src="../assets/imgs/teamwork.svg" class="groupicon"/></ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+      <!--div *ngFor="let msg of messages | async">
+    <div class="user-bubble">
+        <div class="talktext">
+          <p>{{ msg.message }}</p>
+          <span style="font-size: 0.6em;float: right;text-align: right;">{{ msg.username }}</span>
+        </div>
+      </div>
+      </div-->
+      <ion-list no-lines class="msgbubble" *ngFor="let msg of messages | async">
+          <div class="user-bubble" *ngIf="user_id != msg.username">
+              <span  style="font-size: 0.9em;float: right;text-align: right; color:#d80505">{{ msg.username }}</span>
+              <p>{{ msg.message }}</p>
+            <span  style="font-size: 0.9em;float: right;text-align: right;">{{ msg.time | date:'hh:mm a'}}</span>
+          </div>
+          <div class="user-bubble1" *ngIf="user_id == msg.username">
+              <span  style="font-size: 0.9em;float: right;text-align: right;color:#d80505">{{ msg.username }}</span>
+              <p>{{ msg.message }}</p>
+              <span  style="font-size: 0.9em;float: right;text-align: right;">{{ msg.time | date:'hh:mm a'}}</span>
+          </div>
+      </ion-list>
+    
+</ion-content>
+<ion-footer>
+    <ion-row> 
+      <div class="txt-div" col-9 > <textarea cols="20" [(ngModel)]="message" placeholder="Type Something here" class="mobile"></textarea></div>
+          <button ion-fab mini side="right edge" class="icn-sz" color="orangebtn" float-right (click)="sendMessage()">
+            <ion-icon name="send" class="sndicn-sz"></ion-icon>
+          </button>
+    </ion-row>
+</ion-footer>
