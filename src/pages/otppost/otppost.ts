@@ -173,16 +173,16 @@ confirm(){
 }
 ionViewDidLoad() {
   this.maxtime=180
-  this.skiptimer = setInterval(x => 
-    {
-        if(this.maxtime <= 1) {
-          //this.twobtn = true;
-          clearInterval(this.skiptimer);
-          this.resend();
-        }
-        this.maxtime -= 1;
+  // this.skiptimer = setInterval(x => 
+  //   {
+  //       if(this.maxtime <= 1) {
+  //         //this.twobtn = true;
+  //         clearInterval(this.skiptimer);
+  //         this.resend();
+  //       }
+  //       this.maxtime -= 1;
         
-    }, 1000);
+  //   }, 1000);
   this.leadref_id = this.navParams.get("leadref_id");
   console.log('leadref_id',this.leadref_id);
   this.impexpmob = this.navParams.get("impexpmobile");

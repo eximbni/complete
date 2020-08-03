@@ -342,7 +342,7 @@ export class HspostleadPage {
         subTitle: "* Fields are mandatory",
         buttons: ["OK"]
       });
-      alert.present();
+     // alert.present();
     }
   }
 

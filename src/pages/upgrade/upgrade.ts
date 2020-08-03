@@ -224,6 +224,10 @@ export class UpgradePage {
     console.log(this.selectedItems, "selected _items total");
   }
 
+  Back(){
+    this.navCtrl.push(CategoriesPage);
+  }
+
   ionViewDidLoad() {
     this.storage.get("userdetails").then(val => {
       this.userdetails = val;
