@@ -256,6 +256,9 @@ export class LeadsPage {
   webinar() {
     this.navCtrl.push(VideologinPage);
   }
+  Back(){
+    this.navCtrl.push(CategoriesPage);
+  }
   quotes() {
     this.navCtrl.push(RfqPage);
   }

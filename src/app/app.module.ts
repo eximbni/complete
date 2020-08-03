@@ -13,7 +13,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { NativeStorage } from '@ionic-native/native-storage';
+//import { NativeStorage } from '@ionic-native/native-storage';
 //
 
 import { MyApp } from './app.component';
@@ -423,7 +423,7 @@ import { OrderByPipe } from '../pipes/order-by/order-by';
     Device,
     SocialSharing,
     FileTransfer,
-    NativeStorage ,
+    // NativeStorage ,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

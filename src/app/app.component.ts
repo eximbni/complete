@@ -75,7 +75,7 @@ export class MyApp {
         console.log('user franchise', this.isfranchise);
         this.http.get(MyApp.url+"profile.php?user_id="+this.userdata[0].id).subscribe((edata)=>{
           this.userprofile = edata;
-  
+          console.log("user data", this.userprofile);
         
           this.franchise=this.userprofile[0].isfranchise;
           console.log('franchise',this.franchise);
@@ -84,7 +84,7 @@ export class MyApp {
           }else{
             this.franchisebtn = true;
           }
-          if(this.userdata[0].user_image==null){
+          if(this.userdata[0].user_image== 0){
             this.userimage = "../assets/imgs/user.png";
           }
           else{
@@ -103,6 +103,7 @@ export class MyApp {
         { title: 'Admin Notifications', component: NotificationPage },
         { title: 'My Postings', component: MyLeadsPage },
         { title: 'My Purchase', component: MypurchaseleadsPage },
+        { title: 'Upcoming Features', component: WorkshopsPage },
         { title: 'Buyers', component: BuyermapPage },
         { title: 'Gallery', component: GalleryPage },
         { title: 'RFQ', component: RequestquotationPage },
@@ -119,7 +120,8 @@ export class MyApp {
       ];
       this.fpages = [
         { title: 'Users List', component: FrlistPage },
-        { title: 'Request List', component: FreqlistPage }
+        { title: 'Request List', component: FreqlistPage },
+        { title: 'Logout', component: LogoutPage }
       ];
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

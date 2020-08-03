@@ -136,6 +136,10 @@ easeInOutQuart(time, from, distance, duration) {
   return -distance / 2 * ((time -= 2) * time * time * time - 2) + from;
 }
 
+
+Back(){
+  this.navCtrl.push(CategoriesPage);
+}
 // Animate scroll
 smoothScrollTo(endX){
   let startTime = new Date().getTime();
