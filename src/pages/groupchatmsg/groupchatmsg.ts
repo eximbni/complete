@@ -1,3 +1,4 @@
+import { GroupchatusersPage } from './../groupchatusers/groupchatusers';
 import { Component,ViewChild } from '@angular/core';
 import { NavController, NavParams, Content, MenuController, LoadingController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -25,6 +26,7 @@ export class GroupchatmsgPage {
  datenow:any;
   chatuser_id: any;
   sendername: any;
+  createdby:any;
   nativepath: any;
   msgimg: any;
   callnumber: any;
@@ -57,6 +59,8 @@ export class GroupchatmsgPage {
       private camera:Camera,private transfer: FileTransfer, public alertCtrl:AlertController, private file:File) {
 
     console.log("Chat Room name", this.chatroom = this.navParams.get('chatroom'));
+    this.createdby = this.navParams.get("chatroom_created")
+    console.log("Group created by", this.createdby);
     this.sendername = this.navParams.get("sendername");
     this. chatuser_id = this.navParams.get("chatuser_id");
     this.callnumber = this.navParams.get("callnumber");
@@ -68,7 +72,6 @@ export class GroupchatmsgPage {
     this.interval=setInterval(() => {
     this.http.get(MyApp.url+"getchatmessages.php?chatroom="+this.chatroom).subscribe((chatdata)=>{
       this.chatdata=chatdata;
-      console.log(this.chatdata);
     });
     this.updateScroll();
   },2000);
@@ -138,6 +141,13 @@ presentAlert(title, message) {
   alert.present();
 }
 
+groupusers(){
+  this.navCtrl.push(GroupchatusersPage,{
+    'chatroom_created' : this.navParams.get("chatroom_created"),
+    'chatroom':this.navParams.get("chatroom"),
+    'chatroom_id':this.navParams.get("chatroom_id"),
+  })
+}
 cancelSelection() {
   this.selectedVideo = null;
   this.uploadedVideo = null;
@@ -296,6 +306,13 @@ uploadAudio(){
 }
 
   ionViewDidLoad() {
+    
+    // http://eximbin.com/api/getGroupChatMembers.php?chatroom=Kalyan%20Group&groupchat_id=4
+
+    this.http.get(MyApp.url+"getGroupChatMembers.php?chatroom"+this.chatroom+"&groupchat_id").subscribe((yudata)=>{
+      console.log('groups',yudata );
+    });
+
     console.log('ionViewDidLoad ChatmsgPage');
     this.storage.get("userdetails").then((val)=>{
       this.userdetails=val;

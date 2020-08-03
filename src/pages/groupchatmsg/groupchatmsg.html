@@ -8,9 +8,10 @@
     <ion-col col-2>
      <img src="../assets/imgs/teamwork.svg" class="groupicon" style="width:70%; padding:10px 0;  color:#fff"/>
     </ion-col>
-    <ion-col col-8 style="padding:2em 0; font-size:1em">
+    <ion-col col-8 style="padding:2em 0; font-size:1em" (click)="groupusers()">
       <b>{{chatroom}}</b>
     </ion-col>
+    
     <ion-col col-1 (click)="callUser()">
       <ion-icon name="call" color="light" style="font-size: 1.5em; padding: 1em 7px; float: right;"></ion-icon>
     </ion-col>

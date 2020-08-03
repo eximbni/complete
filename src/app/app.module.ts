@@ -1,3 +1,5 @@
+import { ViewhistoryPage } from './../pages/viewhistory/viewhistory';
+import { EditleadPage } from './../pages/editlead/editlead';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -142,6 +144,7 @@ import { QuoterequestsPage } from '../pages/quoterequests/quoterequests';
 import { RequestquotationPage } from '../pages/requestquotation/requestquotation';
 import { FrrequestPage } from '../pages/frrequest/frrequest';
 import { OrderByPipe } from '../pipes/order-by/order-by';
+import { GroupchatusersPage } from'../pages/groupchatusers/groupchatusers';
 
 
 @NgModule({
@@ -273,7 +276,10 @@ import { OrderByPipe } from '../pipes/order-by/order-by';
     FranchisemapPage,
     QuoterequestsPage,
     RequestquotationPage,
-    FrrequestPage
+    FrrequestPage,
+    GroupchatusersPage,
+    EditleadPage,
+    ViewhistoryPage
   ],
   imports: [
     BrowserModule,
@@ -412,6 +418,9 @@ import { OrderByPipe } from '../pipes/order-by/order-by';
     QuoterequestsPage,
     RequestquotationPage,
     FrrequestPage,
+    GroupchatusersPage,
+    EditleadPage,
+    ViewhistoryPage
     ],
   providers: [
     StatusBar,
@@ -423,6 +432,7 @@ import { OrderByPipe } from '../pipes/order-by/order-by';
     Device,
     SocialSharing,
     FileTransfer,
+
     // NativeStorage ,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

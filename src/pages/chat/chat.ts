@@ -87,7 +87,11 @@ quotes(){
 this.navCtrl.push(RfqPage);
 }
 groupchatpg(i){
-  this.navCtrl.push(GroupchatmsgPage,{'chatroom':this.groupslist[i].chatroom});
+  this.navCtrl.push(GroupchatmsgPage,{
+  'chatroom':this.groupslist[i].chatroom,
+  'chatroom_id':this.groupslist[i].id,
+  'chatroom_created':this.groupslist[i].created_by
+});
 }
 chpaterchatpg(i){
   this.navCtrl.push(ChathsnusersPage,{

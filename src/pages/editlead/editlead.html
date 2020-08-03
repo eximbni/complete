@@ -1,0 +1,179 @@
+<!--
+  Generated template for the EditleadPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="orangebtn" class="padding-top:10px;" (click)="leadspg()" hideBackButton>
+    <ion-row>
+      <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png"  ></ion-col>
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <table border="1"  width="97%" cellpadding="2" cellspacing="2" style="border-color:grey; margin: 5px;">
+    <tr style="background: #f4f4f4;">
+      <td>Lead refID</td>
+      <td>:</td>
+      <td>{{leadref_id}}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>:</td>
+      <td>{{description}}</td>
+    </tr>
+    <tr style="background: #f4f4f4;">
+      <td>Price</td>
+      <td>:</td>
+      <td>{{currency}}-{{price_inusd}}</td>
+    </tr>
+    <tr>
+      <td>Loading Port</td>
+      <td>:</td>
+      <td>{{loading_port}}</td>
+    </tr>
+    <tr style="background: #f4f4f4;">
+      <td>Port Type</td>
+      <td>:</td>
+      <td>{{port_type}}</td>
+    </tr>
+    <tr>
+      <td>Destination Port</td>
+      <td>:</td>
+      <td>{{destination_port}}</td>
+    </tr>
+    <tr style="background: #f4f4f4;">
+      <td>Expiry Date</td>
+      <td>:</td>
+      <td>{{expiry_date}}</td>
+    </tr>
+    <tr>
+      <td>Quantity</td>
+      <td>:</td>
+      <td>{{quantity}}-{{uom}}</td>
+    </tr>
+    <tr style="background: #f4f4f4;">
+      <td>Inspection Authority</td>
+      <td>:</td>
+      <td>{{inspection_auth}}</td>
+    </tr>
+    <tr>
+      <td>Special Instructions</td>
+      <td>:</td>
+      <td>{{special_instruc}}</td>
+    </tr>
+  </table>
+  <h2 style="color: white; text-align: center; background: #e85d2a; padding: 5px;"> Update Lead</h2>
+  <p style="color: green;">Select Port of loading </p>
+  <div style="margin: 5px;">
+      <div style="margin-top: 2%">
+          <ion-label stacked class="stack-label">Select Country*</ion-label>
+          <ng-multiselect-dropdown
+            class="ngselect fs_select"
+            [placeholder]="'Select'"
+            [data]="countries"
+            [(ngModel)]="lcountryItems"
+            [settings]="dropdownSettings8"
+            (onSelect)="onselectcountry8($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+      </div>
+      <ion-list>
+        <ion-label  stacked class="stack-label">Select Port Type</ion-label>
+        <ion-item>
+          <ion-label>Select Port Type</ion-label>
+          <ion-select [(ngModel)]="lport" (ionChange)="getlPort()">
+            <ion-option value="Air">Air</ion-option>
+            <ion-option value="Sea">Sea</ion-option>
+            <ion-option value="Land">Land</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Select Port*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="lports"
+          [(ngModel)]="lportsItems"
+          [settings]="dropdownSettings12"
+          (onSelect)="onselectcountry12($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+    </div>
+      <p style="color: green;">Select Destination Port</p>
+      <div style="margin-top: 2%">
+          <ion-label stacked class="stack-label">Select Country*</ion-label>
+          <ng-multiselect-dropdown
+            class="ngselect fs_select"
+            [placeholder]="'Select'"
+            [data]="countries"
+            [(ngModel)]="dcountryItems"
+            [settings]="dropdownSettings9"
+            (onSelect)="onselectcountry9($event)"
+            (onSelectAll)="onSelectAll($event)">
+          </ng-multiselect-dropdown>
+      </div>
+      <ion-list>
+        <ion-label  stacked class="stack-label">Select Port Type</ion-label>
+        <ion-item>
+          <ion-label>Select Port Type</ion-label>
+          <ion-select [(ngModel)]="dport" (ionChange)="getdPort()">
+            <ion-option value="Air">Air</ion-option>
+            <ion-option value="Sea">Sea</ion-option>
+            <ion-option value="Land">Land</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      <div style="margin-top: 2%">
+        <ion-label stacked class="stack-label">Select Port*</ion-label>
+        <ng-multiselect-dropdown
+          class="ngselect fs_select"
+          [placeholder]="'Select'"
+          [data]="dports"
+          [(ngModel)]="dportsItems"
+          [settings]="dropdownSettings13"
+          (onSelect)="onselectcountry13($event)"
+          (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+    </div>
+    <ion-label stacked class="stack-label">Expiry Date </ion-label>
+    <ion-item  class="dropitm"> 
+      <ion-datetime displayFormat="MMM DD YYYY" min="{{cslot | date: 'yyyy-MM-dd'}}"  [ngModel]="uMyDate" max="2099-10-31" #edate></ion-datetime>
+    </ion-item>
+
+    <ion-label stacked class="stack-label">International Quality Certifying Agency</ion-label>
+    <ion-item class="dropitm">
+      <ion-input type="text" #uMyAuth  class="box-inpt" placeholder="Name of the authority"></ion-input>
+    </ion-item>
+
+    <ion-label  stacked class="stack-label">Remarks / Quality Assessments *</ion-label>
+    <ion-item class="dropitm">
+      <ion-input type="text" #uMyRemark  class="box-inpt" placeholder="Remarks / Quality Assessments"></ion-input>
+    </ion-item>  
+    
+    <ion-label  stacked class="stack-label">Special Instructions</ion-label>
+    <ion-item class="dropitm">
+      <ion-input type="text" #uMyInst class="box-inpt"  placeholder="Any Special Instructions"></ion-input>
+    </ion-item>
+    <ion-label  stacked class="stack-label">Quantity</ion-label>
+    <ion-item class="dropitm">
+      <ion-input type="mobile" #uqty class="box-inpt"  placeholder="New Quantity"></ion-input>
+    </ion-item>
+    <ion-label  stacked class="stack-label">Price in {{currency}}</ion-label>
+    <ion-item class="dropitm">
+      <ion-input type="mobile" #uprice class="box-inpt"  placeholder="New Price"></ion-input>
+    </ion-item>
+    <ion-label  stacked class="stack-label">New Description</ion-label>
+    <ion-item class="dropitm">
+      <ion-textarea  #udescription> New Description</ion-textarea> 
+    </ion-item>
+    <div style="text-align: center;">
+    <button ion-button btn-block color="danger" (click)="update()"  small round>Update</button>
+    </div>
+  </div>
+</ion-content>
