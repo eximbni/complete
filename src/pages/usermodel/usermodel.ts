@@ -13,6 +13,9 @@ import { PromotionrequestPage } from '../promotionrequest/promotionrequest';
 import { RequesttrackingPage } from '../requesttracking/requesttracking';
 import { FrlistPage } from '../frlist/frlist';
 import { SubscribersPage } from '../subscribers/subscribers';
+import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-board';
+import { FrincomePage } from '../frincome/frincome';
+import { FrreportsPage } from '../frreports/frreports';
 
 
 @Component({
@@ -25,6 +28,7 @@ export class UsermodelPage {
   user_id: any;
   paymentoptions: Object;
   frdata: any;
+  userdetails: any;
 
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,
     private http:HttpClient, public storage:Storage, ) {
@@ -77,6 +81,28 @@ export class UsermodelPage {
         'frdata':this.frdata
       });
     }
+    
+    Back() {
+      this.navCtrl.push(FranchiseDashBoardPage);
+    }
+
+    home() {
+      this.navCtrl.push(FranchiseDashBoardPage);
+    }
+    usermodule(){
+      this.navCtrl.push(UsermodelPage,{
+        'frdata':this.userdetails
+      });
+    }
+    accounts(){
+      this.navCtrl.push(FrincomePage);
+    }
+  
+    reports(){
+      this.navCtrl.push(FrreportsPage);
+    }
+
+
   ionViewDidLoad() {
     this.storage.get('userdetails').then((val)=>{
       this.userdata=val;

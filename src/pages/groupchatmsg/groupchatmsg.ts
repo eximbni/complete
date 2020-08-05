@@ -1,4 +1,3 @@
-import { GroupchatusersPage } from './../groupchatusers/groupchatusers';
 import { Component,ViewChild } from '@angular/core';
 import { NavController, NavParams, Content, MenuController, LoadingController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -10,7 +9,9 @@ import { File } from '@ionic-native/file';
 import { CallNumber } from '@ionic-native/call-number';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ChatPage } from '../chat/chat';
-
+import {Observable} from 'Rxjs/rx';
+import { Subscription } from "rxjs/Subscription";
+import { GroupchatusersPage } from '../groupchatusers/groupchatusers';
 
 @Component({
   selector: 'page-groupchatmsg',
@@ -26,7 +27,6 @@ export class GroupchatmsgPage {
  datenow:any;
   chatuser_id: any;
   sendername: any;
-  createdby:any;
   nativepath: any;
   msgimg: any;
   callnumber: any;
@@ -51,16 +51,20 @@ export class GroupchatmsgPage {
   business_name: any;
   chatuserdata: any;
   interval: any;
-  //items: Observable<any[]>;
+  items: Observable<any[]>;
+  observableVar: Subscription;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, 
     public navParams: NavParams,
      private storage:Storage, private http:HttpClient, 
       public loadingCtrl: LoadingController, private callNumber: CallNumber,
       private camera:Camera,private transfer: FileTransfer, public alertCtrl:AlertController, private file:File) {
-
+    //call Chat
+     //calling chat
+   this.observableVar = Observable.interval(1000).subscribe(()=>{
+    this.callChat();
+});
+    //Other Code
     console.log("Chat Room name", this.chatroom = this.navParams.get('chatroom'));
-    this.createdby = this.navParams.get("chatroom_created")
-    console.log("Group created by", this.createdby);
     this.sendername = this.navParams.get("sendername");
     this. chatuser_id = this.navParams.get("chatuser_id");
     this.callnumber = this.navParams.get("callnumber");
@@ -69,13 +73,18 @@ export class GroupchatmsgPage {
     console.log("caller -id:", this.caller_id)
     this.datenow = Date.now();
     this.username = this.navParams.get("username");
-    this.interval=setInterval(() => {
-    this.http.get(MyApp.url+"getchatmessages.php?chatroom="+this.chatroom).subscribe((chatdata)=>{
-      this.chatdata=chatdata;
-    });
-    this.updateScroll();
-  },2000);
+    
   
+  }
+
+  async callChat(){
+    
+      this.http.get(MyApp.url+"getchatmessages.php?chatroom="+this.chatroom).subscribe((chatdata)=>{
+        this.chatdata=chatdata;
+        console.log(this.chatdata);
+      });
+      this.updateScroll();
+    
   }
 
   async doRefresh(refresher) {
@@ -84,7 +93,7 @@ export class GroupchatmsgPage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-    }, 100);
+    }, 3000);
   }
 
 
@@ -94,7 +103,6 @@ objDiv.scrollTop = objDiv.scrollHeight;
   }
 
   BackPage(){
-    clearInterval(this.interval) ;
     this.navCtrl.push(ChatPage);
   }
   
@@ -141,13 +149,6 @@ presentAlert(title, message) {
   alert.present();
 }
 
-groupusers(){
-  this.navCtrl.push(GroupchatusersPage,{
-    'chatroom_created' : this.navParams.get("chatroom_created"),
-    'chatroom':this.navParams.get("chatroom"),
-    'chatroom_id':this.navParams.get("chatroom_id"),
-  })
-}
 cancelSelection() {
   this.selectedVideo = null;
   this.uploadedVideo = null;
@@ -304,15 +305,12 @@ uploadAudio(){
    
     this.navCtrl.push(ChapterchatPage,{'chatuser_id':this.chatuser_id,});
 }
-
+gropuUsers(){
+  this.navCtrl.push(GroupchatusersPage,{
+    'chatroom':this.chatroom
+  })
+}
   ionViewDidLoad() {
-    
-    // http://eximbin.com/api/getGroupChatMembers.php?chatroom=Kalyan%20Group&groupchat_id=4
-
-    this.http.get(MyApp.url+"getGroupChatMembers.php?chatroom"+this.chatroom+"&groupchat_id").subscribe((yudata)=>{
-      console.log('groups',yudata );
-    });
-
     console.log('ionViewDidLoad ChatmsgPage');
     this.storage.get("userdetails").then((val)=>{
       this.userdetails=val;
@@ -320,5 +318,8 @@ uploadAudio(){
     })
 
   }
+  ionViewDidLeave(){
+    this.observableVar.unsubscribe();
+ }
 
 }

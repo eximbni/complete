@@ -15,6 +15,7 @@ import { RfqPage } from "../rfq/rfq";
 import { BuyleaddetailsPage } from "../buyleaddetails/buyleaddetails";
 import { MyApp } from "../../app/app.component";
 import { VideologinPage } from "../videologin/videologin";
+import { UpgradePage } from "../upgrade/upgrade";
 
 
 @Component({
@@ -77,6 +78,8 @@ export class LeadsPage {
   bxp_policy: any;
   simp_policy: any;
   sexp_policy: any;
+  messagecount: object;
+  showcount: any;
 
   constructor(
     public navCtrl: NavController,
@@ -91,6 +94,10 @@ export class LeadsPage {
     console.log("userdetails", this.logindata);
     this.sellleads= this.navParams.get("Sellleads");
     this.buyleads= this.navParams.get("Buyleads");
+  }
+
+  Back(){
+    this.navCtrl.push(CategoriesPage);
   }
 
   simport(i){
@@ -152,7 +159,7 @@ export class LeadsPage {
     const confirm = this.alertCtrl.create({
       title: "Confirm to Proceed",
       message:
-        "This purchase will cost you 1 Credit. By accepting this purchase 1 Credit will be deducted from your balance credits",
+        "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
           text: "cancel",
@@ -190,6 +197,7 @@ export class LeadsPage {
                   buttons: ["OK"]
                 });
                 alert.present();
+                this.navCtrl.push(UpgradePage);
               }
             });
           }
@@ -235,6 +243,7 @@ export class LeadsPage {
                 });
               } else {
                 alert("You do not have sufficient funds to make this purchase. Please recharge your account to process further");
+                this.navCtrl.push(UpgradePage);
               }
             });
           }
@@ -255,9 +264,6 @@ export class LeadsPage {
   }
   webinar() {
     this.navCtrl.push(VideologinPage);
-  }
-  Back(){
-    this.navCtrl.push(CategoriesPage);
   }
   quotes() {
     this.navCtrl.push(RfqPage);
@@ -538,7 +544,13 @@ export class LeadsPage {
           this.credits = this.walletcredits[0].credits;
           console.log(this.walletcredits, "credits");
         });
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
     });
+    
     console.log("ionViewDidLoad LeadsPage");
     this.cslot=new Date();
     

@@ -101,6 +101,8 @@ export class HspostleadPage {
   hsncode: any;
   Edate: string;
   cslot: Date;
+  messagecount: Object;
+  showcount: any;
 
   constructor(
     public navCtrl: NavController,
@@ -523,6 +525,12 @@ productlist(hscode: any) {
       console.log("user id", this.user_id);
       console.log("mobile", this.mobile);
       console.log("referal_code", this.referal_code);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
 
     console.log("ionViewDidLoad RfqPage");

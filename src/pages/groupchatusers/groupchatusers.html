@@ -6,33 +6,42 @@
 -->
 
 <ion-header>
+  <ion-navbar>
   <ion-row style="background: green; color: #fff; height:4em; margin-top:-1em">
     
     <ion-col col-2>
      <img src="../assets/imgs/teamwork.svg" class="groupicon" style="width:70%; padding:10px 0;  color:#fff"/>
     </ion-col>
-    <ion-col col-8 style="padding:2em 0; font-size:1em">
+    <ion-col col-8 style="padding:2em 0; font-size:1em" (click)="groupusers()"> 
       <b>{{chatroom}}</b>
     </ion-col>
-    <ion-col *ngFor="let users of groupusers;" >
-      <ion-icon *ngIf="users.created_by  == user_id" style="color: #fff; margin-top:20px"  ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    <ion-col >
+      <ion-icon *ngIf="created_by  == user_id" style="color: #fff; margin-top:20px; font-size: 1.5em;"  ios="ios-add-circle" md="md-add-circle" (click)="AddUser()"></ion-icon>
     </ion-col>
   </ion-row>
+</ion-navbar>
 </ion-header>
 <ion-content>
-  
   <ion-list >
     <ion-item style="padding:0;" *ngFor="let users of groupusers;  let i=index;" >
       <ion-row style="margin:0">
         <ion-col  style="margin:0" col-1><img src="../assets/imgs/user.png" /></ion-col>
         <ion-col  style="margin:0" col-10 >  {{users.name}}</ion-col>
         <ion-col>
-          <ion-icon *ngIf="users.created_by  === users.user_id" (click)="delete(i)" style="color:red" ios="ios-trash" md="md-trash"></ion-icon>
-          <ion-icon *ngIf="users.created_by  != users.user_id"  style="color:red" ios="ios-trash" md="md-trash"></ion-icon>
+          <ion-icon *ngIf="created_by==user_id" (click)="delete(i)" style="color:red" ios="ios-trash" md="md-trash"></ion-icon>
         </ion-col>
       </ion-row>
 
        </ion-item> 
   </ion-list>
-
+  <div style="text-align: center;" *ngIf="userDiv">
+      <ion-item>
+        <ion-label>Select Users</ion-label>
+        <ion-select [(ngModel)]="users"  multiple="true">
+          <ion-option *ngFor="let user of userslist;" value="{{user.id}}">{{user.business_name}}</ion-option>
+          
+        </ion-select>
+      </ion-item>
+      <button ion-button small (click)="Creategroup()" round class="btn" color="danger">Add</button>
+  </div>
 </ion-content>

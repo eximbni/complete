@@ -45,6 +45,10 @@ subscription_id: any;
 chat: any;
 chatroomdata:any;
 leadref_id:any;
+  posted_id: any;
+  leaddocuments: Object;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http:HttpClient, public alertCtrl:AlertController,
   private storage:Storage) {
   }
@@ -125,10 +129,27 @@ alert.present();
     this.description = this.navParams.get("description");
     this.leadref_id = this.navParams.get("leadref_id");
 
-    this.http.get(MyApp.url+"myresponses.php?lead_id="+this.lead_id).subscribe((data)=>{
+    var url = this.http
+    .get(MyApp.url + "leaddetails.php?id=" + this.lead_id)
+    .subscribe(data => {
+      console.log(url);
+      this.details = data;
+      this.leadtype = this.details[0].lead_type;
+      this.lead_id = this.details[0].id;
+      this.posted_id = this.details[0].posted_by;
+      console.log(this.details, "leaddetails");
+      console.log("lead-type=", this.leadtype);
+      console.log("lead-id=", this.leadtype);
+ 
+    });
+
+
+
+
+/*     this.http.get(MyApp.url+"myresponses.php?lead_id="+this.lead_id).subscribe((data)=>{
       this.leadresponses = data;
       console.log("response data",data);
-    });
+    }); */
     this.storage.get('userdetails').then((val) => {
       this.userdetails = val;
      
@@ -140,6 +161,12 @@ alert.present();
         this.subscription_id = this.profiledata[0].subscription_id;
         console.log("my subscription pack id is=", this.subscription_id);
 
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
+
         this.http.get(MyApp.url + "mysubscription.php?subscription_id=" + this.subscription_id).subscribe((pdata) => {
           this.subscription = pdata;
           this.chat = this.subscription[0].chat;
@@ -147,6 +174,19 @@ alert.present();
           console.log("userprofile data", this.profiledata);
         });
       });
+
+       // console.log(MyApp.url+"users_responses.php?lead_id="+this.lead_id+"&user_id="+this.user_id);
+       this.http.get(MyApp.url+"myresponses.php?lead_id="+this.lead_id+"&user_id="+this.user_id).subscribe((data)=>{
+        this.leadresponses = data;
+        console.log("response data",data);
+      });
+
+      this.http.get(MyApp.url+"getlead_documents.php?lead_id="+this.lead_id+"&user_id="+this.user_id).subscribe((data)=>{
+        this.leaddocuments = data;
+        console.log("leaddocuments data",data);
+      });
+    
+
     });
     console.log('ionViewDidLoad MybuydetailsPage');
   }

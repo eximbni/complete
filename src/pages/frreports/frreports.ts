@@ -7,6 +7,7 @@ import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-b
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { MyApp } from '../../app/app.component';
+import { UsermodelPage } from '../usermodel/usermodel';
 
 /**
  * Generated class for the FrreportsPage page.
@@ -55,10 +56,26 @@ export class FrreportsPage {
     this.menuCtrl.toggle();
   }
 
-  home(){
+
+  home() {
     this.navCtrl.push(FranchiseDashBoardPage);
-    }
-   
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
+
+  reports(){
+    this.navCtrl.push(FrreportsPage);
+  }
+
+  Back(){
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }  
     selllist(){
       this.navCtrl.push(FrsellleadsPage);
     } 
@@ -70,9 +87,7 @@ export class FrreportsPage {
       this.navCtrl.push(FrincomePage);
     }
     
-    reports(){
-      this.navCtrl.push(FrreportsPage);
-    } 
+
     printpl(){
       this.http.get(`${MyApp.url+'profitloss.php'}`).subscribe(response => this.downLoadFile(response, "application/ms-excel"));
       const alert = this.alertCtrl.create({

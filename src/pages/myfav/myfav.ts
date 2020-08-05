@@ -8,6 +8,7 @@ import { ChatPage } from '../chat/chat';
 import { RfqPage } from '../rfq/rfq';
 import { CategoriesPage } from '../categories/categories';
 import { VideologinPage } from '../videologin/videologin';
+import { MyaccountPage } from '../myaccount/myaccount';
 
 /**
  * Generated class for the MyfavPage page.
@@ -25,6 +26,8 @@ export class MyfavPage {
   userdata: any;
   user_id: any;
   favdata: Object;
+  showcount: any;
+  messagecount: Object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController, 
     public storage: Storage, public http:HttpClient) {
@@ -48,6 +51,10 @@ export class MyfavPage {
       this.navCtrl.push(CategoriesPage);
     }
 
+    Back(){
+      this.navCtrl.push(MyaccountPage);
+    }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyfavPage');
     this.storage.get("userdetails").then((val)=>{
@@ -56,6 +63,11 @@ export class MyfavPage {
       this.http.get(MyApp.url+"getfavhscodes.php?user_id="+this.user_id).subscribe((data)=>{
         this.favdata =data;
         console.log("Fav Data:", this.favdata);
+      })
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
       })
     })
   }

@@ -23,6 +23,9 @@ export class HssearchPage {
   @ViewChild('product') product;
   userdata: any;
   country_id: any;
+  user_id: any;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController,public menuCtrl:MenuController,
      public navParams: NavParams, private http:HttpClient, public loadingCtrl: LoadingController, public storage:Storage) {
@@ -46,10 +49,14 @@ export class HssearchPage {
   toggleMenu() {
     this.menuCtrl.toggle();
   }
+  Back(){
+    this.navCtrl.push(RfqPage);
+  }
+  
   home(){
     this.navCtrl.push(CategoriesPage);
   }
-  
+
   leads(){
     this.navCtrl.push(LeadsPage);
   }
@@ -79,6 +86,12 @@ quotes(){
     this.storage.get("userdetails").then((val)=>{
       this.userdata=val;
       this.country_id = this.userdata[0].country_id;
+      this.user_id=this.userdata[0].id;
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
       console.log("country ID is: ", this.country_id);
     })
   }

@@ -4,7 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { FeedbackPage } from '../feedback/feedback';
 import { MyApp } from '../../app/app.component';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { CategoriesPage } from '../categories/categories';
+import { LeadsPage } from '../leads/leads';
+import { ChatPage } from '../chat/chat';
+import { WebinarPage } from '../webinar/webinar';
+import { RfqPage } from '../rfq/rfq';
+import { MyaccountPage } from '../myaccount/myaccount';
+import { Storage } from '@ionic/storage';
 //declare var google;
 
 
@@ -13,22 +19,46 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   templateUrl: 'settings.html',
 })
 export class SettingsPage {
-  @ViewChild("status")status;
+  
   languages:any;
   plugins:any;
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  userdata: any;
+  user_id: any;
+  messagecount: Object;
+  showcount: any;
  
   
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http: HttpClient,
-    public modalCtrl: ModalController, public platform: Platform, private socialSharing: SocialSharing) {
+    public modalCtrl: ModalController,private storage: Storage, public platform: Platform, private socialSharing: SocialSharing) {
      
     }
 
     toggleMenu() {
       this.menuCtrl.toggle();
     }
+
+    home() {
+      this.navCtrl.push(CategoriesPage);
+    }
+    leads() {
+      this.navCtrl.push(LeadsPage);
+    }
+    chatting() {
+      this.navCtrl.push(ChatPage);
+    }
+    webinar() {
+      this.navCtrl.push(WebinarPage);
+    }
+    quotes() {
+      this.navCtrl.push(RfqPage);
+    }
+    Back(){
+      this.navCtrl.push(MyaccountPage);
+    }
+  
 
     ShareApp(){
       var message="This is a nice app";
@@ -77,6 +107,20 @@ onSelectAll(items: any) {
       this.languages= data;
       console.log('languages',data);
     });
+
+
+    this.storage.get("userdetails").then((val)=>{
+      this.userdata= val;
+      this.user_id= this.userdata[0].id; 
+      
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
+
+
+    })
     //console.log(this.status.value);
     console.log('ionViewDidLoad SettingsPage');
 /*     function googleTranslateElementInit() {

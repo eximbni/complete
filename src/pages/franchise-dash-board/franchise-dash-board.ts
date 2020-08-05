@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { MyApp } from '../../app/app.component';
 import { UsermodelPage } from '../usermodel/usermodel';
 import { FrincomePage } from '../frincome/frincome';
+import { FrreportsPage } from '../frreports/frreports';
 
 /**
  * Generated class for the FranchiseDashBoardPage page.
@@ -38,16 +39,26 @@ export class FranchiseDashBoardPage {
     this.menuCtrl.toggle();
   }
   
+  home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
   usermodule(){
     this.navCtrl.push(UsermodelPage,{
-      'frdata':this.frdata
+      'frdata':this.userdetails
     });
   }
   accounts(){
     this.navCtrl.push(FrincomePage);
   }
 
+  reports(){
+    this.navCtrl.push(FrreportsPage);
+  }
 
+  Back() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+    
    ionViewDidLoad(){
     this.storage.get("userdetails").then((val)=>{
       this.userdetails =val;

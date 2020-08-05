@@ -154,6 +154,23 @@ export class EditleadPage {
   }
 
   update(){
+    if(this.uMyAuth.value==''){
+      this.uMyAuth.value=this.inspection_auth;
+    }
+    if(this.uMyInst.value==''){
+      this.uMyInst.value=this.special_instruc;
+    }
+    if(this.udescription.value==''){
+      this.udescription.value=this.description;
+    }
+    if(this.uprice.value==''){
+      this.uprice.value=this.price_inusd;
+    }
+    if(this.uqty.value == ''){
+      this.uqty.value = this.quantity;
+    }
+
+
     var link = MyApp.url+"updateleads.php";
     var Mydata = JSON.stringify({
     'id':this.id,
@@ -187,7 +204,8 @@ export class EditleadPage {
     this.http.post(link,Mydata).subscribe((data)=>{
       console.log(data);
       if(data==1){
-        alert("Lead Updated Sucessfull. Please wait untill it gets apporved by EximBNI.")
+        alert("Lead Updated Sucessfully. Please wait untill it gets apporved by EximBNI.");
+        this.navCtrl.push(MyLeadsPage);
       }
       else{
         alert("Something went wrong please try after sometime");

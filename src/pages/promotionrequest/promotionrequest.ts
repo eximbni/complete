@@ -1,8 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
 import { UsermodelPage } from '../usermodel/usermodel';
+import { Storage } from '@ionic/storage';
+import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-board';
+import { FrincomePage } from '../frincome/frincome';
+import { FrreportsPage } from '../frreports/frreports';
 
 
 @Component({
@@ -20,7 +24,11 @@ export class PromotionrequestPage {
   request_id: number;
   franchise_id: any;
   frdata: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpClient) {
+  userdetails: any;
+  country_id: any;
+  mobile: any; 
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController,private storage: Storage, private http:HttpClient) {
     this.frdata = this.navParams.get("frdata");
     console.log("Constructor data : ", this.frdata);
      this.franchise_id = this.frdata[0].id;
@@ -28,7 +36,31 @@ export class PromotionrequestPage {
      console.log("Constructor franchise_id : ", this.franchise_id);
   }
  
+  toggleMenu() {
 
+    this.menuCtrl.toggle();
+  }
+
+  home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
+
+  reports(){
+    this.navCtrl.push(FrreportsPage);
+  }
+  Back(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
   submit(){
     this.request_id=Math.floor(Math.random() * (999999 - 100000)) + 100000;
     var link = MyApp.url+"eventrequest.php";
@@ -58,6 +90,14 @@ export class PromotionrequestPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PromotionrequestPage');
     console.log("Constructor  : ", this.frdata);
+
+    this.storage.get("userdetails").then((val) => {
+      this.userdetails = val;
+      this.country_id = this.userdetails[0].country_id;
+      this.mobile = this.userdetails[0].mobile;
+      //this.country_id = 99;
+    });
+
   }
 
 }

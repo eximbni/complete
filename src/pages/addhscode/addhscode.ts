@@ -30,6 +30,8 @@ export class AddhscodePage {
   user_id: any;
   country_id: any;
   request_id: string;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
      private storage: Storage,private http: HttpClient, private menuCtrl:MenuController) {
   }
@@ -38,6 +40,7 @@ export class AddhscodePage {
   }
 
   addhscodesend(){
+    if(this.category.value !='' && this.chapter.value !='' && this.product.value != '' && this.details.value){
     this.request_id = "HSR"+this.country_id+this.user_id+this.category.value
     var link = MyApp.url+"addhscode.php";
     var Mydata = JSON.stringify({
@@ -55,6 +58,16 @@ export class AddhscodePage {
       alert("Your Request Submited Successfully. Your Request Id is :"+ this.request_id)
     });
   }
+  else{
+    alert("Plese fill all fields for our better understanding in helping you");
+  }
+  }
+
+  Back(){
+    this.navCtrl.push(RfqPage);
+  }
+  
+
   home(){
     this.navCtrl.push(CategoriesPage);
   }
@@ -79,6 +92,11 @@ this.navCtrl.push(RfqPage);
       this.userdetails = val;
       this.user_id = this.userdetails[0].id;
       this.country_id = this.userdetails[0].country_id
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
   }
 

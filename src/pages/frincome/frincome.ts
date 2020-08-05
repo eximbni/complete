@@ -7,6 +7,7 @@ import { FrreportsPage } from '../frreports/frreports';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
+import { UsermodelPage } from '../usermodel/usermodel';
 /**
  * Generated class for the FrincomePage page.
  *
@@ -50,11 +51,6 @@ export class FrincomePage {
     this.menuCtrl.toggle();
   }
  
-
-  home(){
-    this.navCtrl.push(FranchiseDashBoardPage);
-    }
-    
     selllist(){
       this.navCtrl.push(FrsellleadsPage);
     } 
@@ -65,10 +61,25 @@ export class FrincomePage {
     income(){
       this.navCtrl.push(FrincomePage);
     } 
+
+    home() {
+      this.navCtrl.push(FranchiseDashBoardPage);
+    }
+    usermodule(){
+      this.navCtrl.push(UsermodelPage,{
+        'frdata':this.frdata
+      });
+    }
+    accounts(){
+      this.navCtrl.push(FrincomePage);
+    }
+    Back(){
+      this.navCtrl.push(FranchiseDashBoardPage);
+    }  
     reports(){
       this.navCtrl.push(FrreportsPage);
     }
-
+    
 // Initialize slider
 ionViewDidEnter(){
   this.slideChanged();

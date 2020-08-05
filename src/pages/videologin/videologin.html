@@ -1,8 +1,14 @@
-<ion-content style="background-image: url('../assets/imgs/blurred.jpg');  background-repeat: no-repeat;background-attachment: fixed;background-position: center;" padding>
- <h1 style="color:rgb(243, 102, 21)">MiiVision</h1>
- <div class="login" style="margin-top:40%; padding:10%">
-  <ion-list>
 
+<ion-content style="background-color: #fe5200;">
+  <div style="background :#ffffff; border-radius:10px; margin:5%; height: 95%; position: absolute;" text-center>
+  <ion-row>
+    <ion-col col-2 ></ion-col>
+    <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png"  ></ion-col>
+    <ion-col col-2 ></ion-col>
+  </ion-row>
+  <h1 style="color:rgb(243, 102, 21)">MiiVision</h1>
+ <div class="login" style="padding: 10%; border: 1px solid #f9f9f9; margin: 20% 7% 0 6%; background: #ffffff; box-shadow: 1px 3px 5px #d2d2d2">
+  <ion-list>
     <ion-item>
       <ion-label fixed>Your Name</ion-label>
       <ion-input type="text" #name></ion-input>
@@ -21,5 +27,14 @@
   <button ion-button small (click)="login()" block round>Start</button>
  </div>
  <br>
- <h2 style="color:rgb(243, 102, 21)" (click)="gotoApp()">Proceed to Main App</h2>
+ <h2 style="color: #fff;
+ background: #408942;
+ border-radius: 5px;
+ font-size: 1.5em;
+ margin: 5px 18px;
+ padding: 10px;
+ position: absolute;
+ width: 88%;
+ bottom: 0;" (click)="gotoApp()">Proceed to Main App</h2>
+ </div>
 </ion-content>

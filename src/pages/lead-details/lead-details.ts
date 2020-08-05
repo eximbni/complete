@@ -40,6 +40,8 @@ export class LeadDetailsPage {
   public message  : string = 'Experience the easyness of imports and exports'+this.product+","+this.quantity+this.uom+" form "+this.countryname;
   public image    : string	= 'http://masteringionic2.com/perch/resources/mastering-ionic-2-cover-1-w320.png';
   public url      : string	= 'http://masteringionic2.com/products/product-detail/s/mastering-ionic-2-e-book';
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private http: HttpClient, private storage: Storage, public menuCtrl: MenuController,public alertCtrl:AlertController,
     public toastCtrl:ToastController) {
@@ -177,6 +179,12 @@ alert.present();
           console.log("userprofile data", this.profiledata);
         });
       });
+      
+ this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+  this.messagecount=count;
+  this.showcount = this.messagecount[0].unreadMsgs;
+  console.log('Message Count:', this.messagecount);
+})
     });
   }
 

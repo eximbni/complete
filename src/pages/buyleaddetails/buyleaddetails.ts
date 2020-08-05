@@ -31,6 +31,8 @@ export class BuyleaddetailsPage {
   subscription_id: any;
   chat: any;
   chatroomdata:any;
+  messagecount: any;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http:HttpClient, private storage:Storage,
     public alertCtrl:AlertController, public toastCtrl:ToastController, ) {}
   
@@ -135,6 +137,7 @@ alert.present();
       this.userdetails=val;
       this.user_id=this.userdetails[0].id;
       this.country_id=this.userdetails[0].country_id;
+
     
       console.log('countryiid',this.country_id);
       console.log('userdata',this.userdetails);
@@ -167,6 +170,11 @@ alert.present();
           console.log("userprofile data", this.profiledata);
         });
       });
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
 console.log('ionViewDidLoad LeadsPage');
   }

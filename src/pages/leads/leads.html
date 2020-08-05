@@ -1,14 +1,20 @@
+
 <ion-header>
   <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
     <ion-row>
-      <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
-      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png"  ></ion-col>
+      <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" > </ion-col>
+      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png" ></ion-col>
       <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
-    </ion-row>
-  </ion-navbar>
+      </ion-row>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content class="bg-style-leads">
   <div class="spacer" style="height:0.1em"></div>
   <div>
-    <ion-item-divider text-center color="danger"
+    <ion-item-divider text-center color="danger" style="color:#fff"
       >My Credit Balance {{credits}}</ion-item-divider
     >
   </div>
@@ -27,8 +33,7 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-</ion-header>
-<ion-content class="bg-style-leads">
+
   <ion-grid>
     <ion-slides #slider (ionSlideDidChange)="slideChanged()">
       <ion-slide>
@@ -199,7 +204,8 @@
     >
     <ion-col class="ftr-col" (click)="chatting()"
       ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
-      <p class="name-footer">Chat</p></ion-col
+      <ion-badge id="cart-badge">{{showcount}}</ion-badge>
+    <p class="name-footer">Chat</p></ion-col
     >
     <ion-col class="ftr-col" (click)="webinar()"
       ><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon>

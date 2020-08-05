@@ -32,6 +32,8 @@ export class EditprofilePage {
   user_id:any;
   userdata:any;
   username:any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,
     private camera :Camera, private transfer: FileTransfer, private http : HttpClient,
     private storage:Storage, public alertCtrl:AlertController) {
@@ -153,6 +155,13 @@ const alert = this.alertCtrl.create({
       this.user_id = this.userdetails[0].id;
       console.log(val);
       console.log(this.mobile);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
+      
      
     })
     console.log('ionViewDidLoad EditprofilePage');

@@ -204,6 +204,8 @@ export class RfqPage {
   loading_port:any;
   selecteRegional: any;
   multicountries: any;
+  showcount: any;
+  messagecount: Object;
 
   constructor(public navCtrl: NavController,public navParams: NavParams,
     private http: HttpClient, private storage: Storage, public alertCtrl: AlertController,
@@ -565,7 +567,7 @@ export class RfqPage {
       this.myQty = myQty;
     });
    
-    if(this.lead_type!='' && this.product_id!='' && this.selectedItems!='' && this.myQty!='' && this.uom_id!='' && this.edate!='' && this.myDesc!=''){
+    if(this.lead_type!=''){
     const confirm = this.alertCtrl.create({
       title: 'Confirm',
       message: 'Are you sure to continue with information given in this page ?',
@@ -1195,7 +1197,7 @@ div3pre(){
         this.impexpdiv = true;
         this.cartdiv = false;
       }
-      this.http.get(MyApp.url+"profile.php?user_id="+this.userid).subscribe((pdata)=>{
+      this.http.get(MyApp.url+"profile.php?user_id="+this.user_id).subscribe((pdata)=>{
         this.userprofile = pdata;
         this.usermobileno =this.userdata[0].mobile;
         //console.log('userprofile data',this.userprofile);
@@ -1205,7 +1207,12 @@ div3pre(){
         this.ports = portdata;
         console.log('port data',this.portdata);
       });
-
+      
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
       //console.log("user id=", this.userid);
      
     });

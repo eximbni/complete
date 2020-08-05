@@ -23,6 +23,8 @@ export class MychatPage {
   user_id:any;
   singleroomlist:any;
   chatroom:any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http:HttpClient,
     private storage:Storage) {
     this.anotheruser_id = navParams.get('id');}
@@ -128,6 +130,12 @@ smoothScrollTo(endX){
       this.userdetails = val;
       console.log("userdetails",val);
       this.user_id = this.userdetails[0].id;
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
             
     this.http.get(MyApp.url+"singlechatrooms.php?user_id="+this.user_id).subscribe((data)=>{
 this.singleroomlist = data;

@@ -42,6 +42,8 @@ export class MypurchasebuydetailsPage {
   toastCtrl: any;
   leaddocuments: Object;
   posted_id: any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http:HttpClient, private storage:Storage,
     public alertCtrl:AlertController) {}
   
@@ -99,7 +101,7 @@ console.log("chatroomdata data",data)
 if(data==1){
   const alert = this.alertCtrl.create({
     title: 'Success!',
-    subTitle: 'You just added to chat',
+    subTitle: 'ou have successfully added this user to the Chat option. You can now initiate chat conversation with this user',
     buttons: ['OK']
   });
 alert.present();
@@ -109,21 +111,21 @@ alert.present();
 }else if(data==2){
   const alert = this.alertCtrl.create({
     title: 'Oops!',
-    subTitle: 'Your are alreday added..!',
+    subTitle: 'This Chatroom already exists. Click OK to go to the Chat room!',
     buttons: ['OK']
   });
   alert.present();
 }else if(data==3){
   const alert = this.alertCtrl.create({
     title: 'Oops!',
-    subTitle: 'Your have insufficiant credits..!',
+    subTitle: 'We could not process your request. Please reach out to our customer service!',
     buttons: ['OK']
   });
   alert.present();
 }else{
 const alert = this.alertCtrl.create({
   title: 'Oops!',
-  subTitle: 'Your request for adding is not done!',
+  subTitle: 'We could not process your request. Please reach out to our customer service!',
   buttons: ['OK']
 });
 alert.present();
@@ -153,6 +155,8 @@ alert.present();
       console.log('userdata',this.userdata);
       console.log('countryiid',this.country_id);
       console.log('userdata',this.userdetails);
+
+      
     
            this.http.get(MyApp.url+"leaddetails.php?id="+this.b_id).subscribe((data) => {
            this.details= data;
@@ -162,7 +166,13 @@ alert.present();
               this.http.get(MyApp.url+"getlead_documents.php?lead_id="+this.b_id+"&user_id="+this.posted_id).subscribe((data)=>{
                 this.leaddocuments = data;
                 console.log("leaddocuments data",data);
-              });       
+              });     
+              
+              this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+                this.messagecount=count;
+                this.showcount = this.messagecount[0].unreadMsgs;
+                console.log('Message Count:', this.messagecount);
+              })
         
           });
 
@@ -189,11 +199,12 @@ alert.present();
           console.log("userprofile data", this.profiledata);
         });
       });
+      this.http.get(MyApp.url + "users_responses.php?lead_id=" + this.b_id+"&user_id="+this.user_id).subscribe((data)=>{
+        this.leadresponses = data;
+        console.log("response data",data);
+      });
     });
-    this.http.get(MyApp.url + "users_responses.php?lead_id=" + this.b_id+"&user_id="+this.user_id).subscribe((data)=>{
-      this.leadresponses = data;
-      console.log("response data",data);
-    });
+   
     console.log('ionViewDidLoad my purchased buy leads details Page');
   }
 

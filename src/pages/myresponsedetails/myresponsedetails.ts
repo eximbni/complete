@@ -38,6 +38,7 @@ toggleMenu() {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyresponsedetailsPage');
+    
   }
 
 }

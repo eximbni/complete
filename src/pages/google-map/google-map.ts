@@ -49,6 +49,8 @@ buyerslist:any;
   otherinput: boolean;
   usertype: any;
   user_type: any;
+  messagecount: Object;
+  showcount: any;
   
   constructor(public navCtrl: NavController,public navParams: NavParams, private http:HttpClient, private storage :Storage,
     public menuCtrl:MenuController) {
@@ -58,7 +60,10 @@ buyerslist:any;
     this.menuCtrl.toggle();
   }
 
-
+  Back(){
+    this.navCtrl.push(CategoriesPage);
+  }
+  
   home(){
     this.navCtrl.push(CategoriesPage);
   }
@@ -182,7 +187,12 @@ this.user_type =item;
       console.log('id',this.user_id); console.log('id',this.country_id);
       console.log('userdetails',val);
 
-   
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
+      
     var marker, i;
     let latLng = new google.maps.LatLng(this.userdetails[0].latitude,this.userdetails[0].longitude);  
     //let latLng = new google.maps.LatLng(48.8513735, 2.3861292);

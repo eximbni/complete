@@ -1,95 +1,190 @@
 <ion-header>
-        <ion-navbar color="orangebtn"  class="padding-top:10px;" (click)="leads()">
-          <ion-row>
-            <ion-col></ion-col>
-            <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png"  ></ion-col>
-            <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
-          </ion-row>
-          </ion-navbar>
-      </ion-header>
+  <ion-navbar color="orangebtn" class="padding-top:10px;">
+    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"><img src="../assets/imgs/logos.png" style="height:70px;"/></ion-col>
+  </ion-navbar>
+</ion-header>
 
 <ion-content class="back">
   <h4 style="text-align: center; color: white; background: green;">Posted Buy Lead Details </h4>
   
-  <div class="crd-style">
+  <div class="crd-style" *ngFor="let lead of details,let i=index">
     <ion-grid>
-      <ion-row>
+      <ion-row style="background: rgba(238, 3, 3, 0.911); color: white;">
+        <ion-col>
+          <span class="username" style="color:#ffffff">
+            Lead posted by : {{lead.name}}</span
+          ><br>
+          <span class="username" style="color:#ffffff">
+            Email Id : {{lead.email}}</span
+          >
+          <br>
+          <span class="username" style="color:#ffffff">
+            Lead posted from Country : {{lead.countryname}}</span
+          >
+        </ion-col>
         <div class="white-bg">
           <ion-row class="card-title">
-            <ion-col>From: {{from}}</ion-col>
-            <ion-col>To: {{to}}</ion-col>
+            <ion-col>Valid From: {{lead.posted_date}}</ion-col>
+            <ion-col>To: {{lead.expiry_date}}</ion-col>
           </ion-row>
           <ion-row class="card-title">
-            <ion-col>Reference Id </ion-col>
-            <ion-col>: {{leadref_id}}</ion-col>
+            <ion-col>Reference Id</ion-col>
+            <ion-col>: {{lead.leadref_id}}</ion-col>
           </ion-row>
           <ion-row class="card-title">
-            <ion-col>Quantity</ion-col>
-            <ion-col>: {{quantity}} {{uom}}</ion-col>
+            <ion-col>Hs Code </ion-col>
+            <ion-col>:{{lead.hsn_id}}</ion-col>
           </ion-row>
+          <ion-row class="card-title">
+            <ion-col>WCO Hs Code </ion-col>
+            <ion-col>:{{lead.hsn_id | slice:0:6}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Chapter </ion-col>
+            <ion-col>: {{lead.chapter_id}}</ion-col>
+          </ion-row>
+          <!--<ion-row class="card-title" style="color:#111">
+            <ion-col>Product:</ion-col>
+            <ion-col>{{lead.product}}</ion-col>
+          </ion-row> -->
+          <ion-row class="card-title">
+            <ion-col>Quantity </ion-col>
+            <ion-col>: {{lead.quantity}} {{lead.uom}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Lead Cost</ion-col>
+            <ion-col>: {{lead.lead_cost}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title" *ngIf="lead.price_inusd">
+            <ion-col>{{lead.price_option}} Price </ion-col>
+            <ion-col>: {{lead.price_inusd}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Index Percentage</ion-col>
+            <ion-col>: {{lead.index_per}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Special Instruction </ion-col>
+            <ion-col>: {{lead.special_instruc}}</ion-col>
+          </ion-row>  
+          <ion-row class="card-title">
+            <ion-col>Inspection Authority</ion-col>
+            <ion-col>: {{lead.inspection_auth}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Country </ion-col>
+            <ion-col>: {{lead.countryname}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Loading Port </ion-col>
+            <ion-col>: {{lead.loading_port}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Loading Port Type </ion-col>
+            <ion-col>: {{lead.port_type}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Destination Port </ion-col>
+            <ion-col>: {{lead.destination_port}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Destination Port Type </ion-col>
+            <ion-col>: {{lead.port_type}}</ion-col>
+          </ion-row>
+          <ion-row class="card-title">
+            <ion-col>Business</ion-col>
+            <ion-col>: {{lead.business_name}}</ion-col>
+          </ion-row>
+          
         </div>
-        <ion-row class="description">
-          <ion-col>Description</ion-col>
-        </ion-row>
-        <ion-row class="card-desc"> {{description}} </ion-row>
+        <div class="white-bg">
+          <ion-row class="description">
+            <ion-col>Lead Description</ion-col>
+          </ion-row>
+          <ion-row class="card-desc"> {{lead.description}} </ion-row>
+        </div>
       </ion-row>
     </ion-grid>
   </div>
-  <!---my lead response -->
-  <ion-item-divider>Responses</ion-item-divider>
 
-  <ion-grid *ngFor="let res of leadresponses; let i =index;">
-    <hr>
+
+<!---my lead Documents -->
+<ion-item-divider color="danger" style="color:white;">Lead Documents</ion-item-divider>
+  <ion-grid >
     <div class="crd-style">
-      <div class="white-bg">
-        <ion-row class="card-title">
-          <ion-col col-6 >{{res.reponse_date}}</ion-col>
-          <ion-col col-3 >{{res.country}}</ion-col>
-          <ion-col col-3 ><span><button ion-button small round outline (click)="chatpg(i)">Chat</button></span></ion-col>
+      <div class="white-bg" >
+        <ion-row class="card-title" >
+          <ion-col col-6 *ngFor="let ldoc of leaddocuments; let i =index;" center ><a href="http://eximbin.com/api/uploads/{{ldoc.doc_path}}" download="download"> {{ldoc.doc_name}} 
+        </a></ion-col>
+        
         </ion-row>
-        <ion-row class="card-title">
-          <ion-col>Name</ion-col>
-          <ion-col>: {{res.name}}</ion-col>
-        </ion-row>
-        <ion-row class="card-title">
-          <ion-col>Business</ion-col>
-          <ion-col>: {{res.business_name}}</ion-col>
-        </ion-row>
-
-        <ion-row class="card-title">
-          <ion-col>Response Quantity</ion-col>
-          <ion-col>: {{res.response_quantity}}</ion-col>
-        </ion-row>
-        <ion-row class="card-title">
-          <ion-col>cost per unit</ion-col>
-          <ion-col>:{{res.costperunit}}</ion-col>
-        </ion-row>
-        <ion-row class="card-title">
-          <ion-col>Total cost</ion-col>
-          <ion-col>:{{res.totalcost}}</ion-col>
-        </ion-row>
-        <ion-row class="description">
-          <ion-col>Description</ion-col>
-        </ion-row>
-        <ion-row class="card-desc"> {{res.description}} </ion-row>
       </div>
     </div>
   </ion-grid>
+  <!---my lead response -->
+  <ion-item-divider color="danger" style="color:white;">Responses</ion-item-divider>
 
+  <ion-grid *ngFor="let res of leadresponses; let i =index;">
+    <hr />
+    <div class="crd-style">
+      <div class="white-bg">
+        <ion-row class="card-title" style="background-color: green; color: white;">
+          <ion-col>Responded on </ion-col>
+          <ion-col>: {{res.response_date}}</ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>Country </ion-col>
+          <ion-col>: {{res.country}}</ion-col>
+        </ion-row>
+
+        <ion-row class="card-title">
+          <ion-col>Name</ion-col><ion-col>: {{res.name}}</ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>Business</ion-col><ion-col>: {{res.business_name}}</ion-col>
+        </ion-row>
+
+        <ion-row class="card-title">
+          <ion-col>Requirement</ion-col
+          ><ion-col>: {{res.response_quantity}} {{res.uom}} </ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>requirement Type</ion-col
+          ><ion-col>:{{res.req_type}}</ion-col>
+        </ion-row>
+        <ion-row class="card-title">
+          <ion-col>Description</ion-col>
+          <ion-col> : {{res.description}}</ion-col>
+        </ion-row>
+        <ion-row class="card-desc">
+          <ion-col></ion-col>
+          <ion-col>
+            <span>
+              <button ion-button small round outline (click)="chatpg(i)">
+                Chat
+              </button>
+            </span>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-grid>
 </ion-content>
 
-<ion-footer class="ftr">
+<ion-footer class="ftr" opacity="0.5">
   <ion-row class="ftr-row">
     <ion-col class="ftr-col" (click)="home()"
       ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
       <p class="name-footer">Home</p></ion-col
     >
-    <ion-col class="ftr-col-active" (click)="leads()"
-      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="danger"></ion-icon>
-      <p class="name-footer-active">Leads</p></ion-col
+    <ion-col class="ftr-col" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
+      <p class="name-footer">Leads</p></ion-col
     >
     <ion-col class="ftr-col" (click)="chatting()"
       ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <ion-badge id="cart-badge">{{showcount}}</ion-badge>
       <p class="name-footer">Chat</p></ion-col
     >
     <ion-col class="ftr-col" (click)="webinar()"

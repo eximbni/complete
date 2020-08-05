@@ -2,9 +2,15 @@
     <ion-header>
      <ion-toolbar color="danger">
       <br><br>
-   <ion-row class="prorow" *ngFor="let user of userprofile; let i=index;">
-     <ion-col col-4 menuClose (click)="profilepg()"><img [src]="userimage" class="pro-image" width="30%" height="30%" alt="User Image"> </ion-col>
-     <ion-col col-6><h2 class="name"> {{user.name}} </h2></ion-col>
+   <ion-row class="prorow" >
+     <ion-col col-2 menuClose (click)="profilepg()"><img *ngIf="user_image!='0'" 
+      [src]="user_image" class="pro-image" width="30%" height="30%" alt="User Image"> 
+      <span *ngIf="user_image == '0'">
+        <p style="background: #e85b2a; position: absolute; top:-1em; font-size: 2em; color:#fff; text-align: center; width: 50px; height: 50px; padding:7px; border-radius:50%;">{{business_name | slice:0:1}}</p>
+      </span>
+    </ion-col>
+    <ion-col></ion-col>
+     <ion-col col-7><h2 class="name"> {{user_name}} </h2></ion-col>
      <ion-col col-2 style="color:white; text-align:center"> <img src="../assets/designs/sidemenu/menu.png" menuClose class="menu-icon"/>Menu</ion-col>
    </ion-row>  
    

@@ -45,6 +45,8 @@ export class QuotationPage {
   leadposted_by:any;
   lead_id:any;
   leaddetails1:any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http: HttpClient, public alertCtrl:AlertController,
      private storage:Storage) {}
 
@@ -149,6 +151,11 @@ toggleMenu() {
        this.userdata = val;
        this.user_id=this.userdata[0].id;
        console.log("ud=ser_id",this.user_id)
+       this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
      })
     console.log('ionViewDidLoad QuotationPage');
   }

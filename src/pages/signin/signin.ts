@@ -140,6 +140,7 @@ toggleMenu() {
 
                 }
                 else{
+                  this.storage.set('userdetails',this.logindata);
                   this.navCtrl.push(CategoriesPage, { 
                     'userdetails': this.logindata,
                     'country_id': this.country_id,

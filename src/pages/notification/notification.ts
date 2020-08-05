@@ -8,6 +8,7 @@ import { LeadsPage } from '../leads/leads';
 import { RfqPage } from '../rfq/rfq';
 import { MyApp } from '../../app/app.component';
 import { VideologinPage } from '../videologin/videologin';
+import { MyaccountPage } from '../myaccount/myaccount';
 
 
 @Component({
@@ -23,6 +24,8 @@ export class NotificationPage {
   userdata: any;
   country_id: any;
   logindata: any;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController,public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController,
 
@@ -51,7 +54,7 @@ quotes(){
   this.navCtrl.push(RfqPage);
 }
 Back(){
-  this.navCtrl.push(CategoriesPage);
+  this.navCtrl.push(MyaccountPage);
 }
   
   ionViewDidLoad() {
@@ -63,6 +66,11 @@ Back(){
       console.log('userdata', this.userdata);
       console.log('countryiid', this.country_id);
 
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
 
     this.http.get(MyApp.url+"getusernotification.php?user_id=" + this.user_id).subscribe((data)=>{
       this.notifications = data;

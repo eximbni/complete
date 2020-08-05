@@ -38,6 +38,8 @@ export class ChatchapterusersPage {
   hsn_id:any;
   true='secondary';
   false='danger';
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http:HttpClient, private storage:Storage,
     public alertCtrl: AlertController, ) {  
       
@@ -136,6 +138,12 @@ else{
        
         console.log(" chapter wise list",data); 
       });  
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
       console.log('userid',this.userdetails,'userid',this.user_id);
       this.http.get(MyApp.url + "profile.php?user_id=" + this.user_id).subscribe((pdata) => {
         this.profiledata = pdata;

@@ -1,11 +1,14 @@
-
-  <ion-header>
-      <ion-navbar color="orangebtn"  class="padding-top:10px;" hideBackButton>
-          <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
-          <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
-        </ion-navbar>
+<ion-header>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+    <ion-row>
+      <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png" ></ion-col>
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
   
-
+<ion-content class="bg-style">
   <div padding>
     <ion-segment #segments mode="md" [(ngModel)]="page" color="white">
       <ion-segment-button value="0" (click)="selectedTab(0)">
@@ -22,11 +25,6 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-</ion-header>
-
-
-<ion-content class="bg-style">
-
   
 
   <ion-grid>
@@ -185,12 +183,12 @@
   </ion-grid>
  
 </ion-content>
+ 
 <ion-footer class="ftr">
-    <ion-row class="ftr-row">
-      <ion-col class="ftr-col" (click)="home()"><img src="../assets/franchise/profile/footerhome.png" class="ftr-icon1"><p class="name-footer1">Home</p></ion-col>
-       <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footerbuyleads.png" class="ftr-icon1"><p class="name-footer1">Buy Leads</p></ion-col>
-      <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footersellleads.png" class="ftr-icon1"><p class="name-footer1">Sell Leads</p></ion-col>
-      <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footerincome.png" class="ftr-icon1"><p class="name-footer1">Income</p></ion-col>
-      <ion-col class="ftr-col" ><img src="../assets/franchise/profile/footerreports.png" class="ftr-icon1"><p class="name-footer1">Reports</p></ion-col>
+  <ion-row class="ftr-row">
+    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col" (click)="usermodule()"><ion-icon ios="ios-people" md="md-people" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Users</p></ion-col>
+    <ion-col class="ftr-col-active" (click)="accounts()"><ion-icon ios="ios-cash" md="md-cash" class="ftr-icon" color="danger"></ion-icon><p class="name-footer-active">Account</p></ion-col>
+    <ion-col class="ftr-col" (click)="reports()"><ion-icon ios="ios-list-box" md="md-list-box" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Reports</p></ion-col>
     </ion-row>
-   </ion-footer>
+ </ion-footer>

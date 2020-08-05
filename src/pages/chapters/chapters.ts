@@ -25,6 +25,11 @@ export class ChaptersPage {
   cat_id:any;
   numbers:any;
   chapterdata :any;
+  messagecount: Object;
+  user_id: string;
+  showcount: any;
+  userdata: any;
+  country_id: any;
  
 
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,
@@ -38,6 +43,9 @@ this.http.get(MyApp.url+"getchapters.php?category_id="+this.cat_id).subscribe((d
     });
   }
  
+  Back(){
+    this.navCtrl.push(CategoriesPage);
+  }
 
   home(){
     this.navCtrl.push(CategoriesPage);
@@ -66,6 +74,21 @@ quotes(){
   }
  
 ionViewDidLoad(){
+  this.storage.get('userdetails').then((val) => {
+    this.userdata = val;
+    this.user_id = this.userdata[0].id;
+    this.country_id = this.userdata[0].country_id;
+    console.log('userdata', this.userdata);
+    console.log('countryiid', this.country_id);
+
+    this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+      this.messagecount=count;
+      this.showcount = this.messagecount[0].unreadMsgs;
+      console.log('Message Count:', this.messagecount);
+    })
+
+}); 
+
   console.log(this.chapterdetails,'hello');
 }
 }

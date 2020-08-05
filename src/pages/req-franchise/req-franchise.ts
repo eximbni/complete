@@ -86,6 +86,8 @@ export class ReqFranchisePage {
   message: string;
   emessage: string;
   smessage: string;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController,
     private storage: Storage,public loadingCtrl: LoadingController) {
@@ -528,6 +530,12 @@ export class ReqFranchisePage {
       this.userdetails = val;
       this.userid = this.userdetails[0].id;
       console.log('userid=', this.userid);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.userid).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
     this.continentrow = false;
     this.regionalrow = false;

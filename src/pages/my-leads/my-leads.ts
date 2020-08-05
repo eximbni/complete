@@ -1,32 +1,25 @@
-import { EditleadPage } from './../editlead/editlead';
-import { Component,ViewChild } from '@angular/core';
-import { NavController, NavParams, Slides, MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, Slides, MenuController, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { MyleadDetailsPage } from '../mylead-details/mylead-details';
 import { ChatPage } from '../chat/chat';
 import { HttpClient } from '@angular/common/http';
 import { CategoriesPage } from '../categories/categories';
 import { LeadsPage } from '../leads/leads';
 import { RfqPage } from '../rfq/rfq';
+import { MypurchasedetailsPage } from '../mypurchasedetails/mypurchasedetails';
+import { MypurchasebuydetailsPage } from '../mypurchasebuydetails/mypurchasebuydetails';
 import { MyApp } from '../../app/app.component';
-import { MybuydetailsPage } from '../mybuydetails/mybuydetails';
 import { VideologinPage } from '../videologin/videologin';
-
-/**
- * Generated class for the MyLeadsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { MyleadDetailsPage } from '../mylead-details/mylead-details';
+import { MybuydetailsPage } from '../mybuydetails/mybuydetails';
 
 @Component({
-  selector: 'page-my-leads',
-  templateUrl: 'my-leads.html',
-})
+  selector: "page-my-leads",
+  templateUrl: "my-leads.html"
+}) 
 export class MyLeadsPage {
-  @ViewChild('slider') slider: Slides;
-  @ViewChild("segments") segments;
+  @ViewChild('slider') slider  ;
+   @ViewChild("segments") segments ; 
   page: any;
   userid:any;u_id:any;
   lead: any;rows:any;
@@ -39,6 +32,11 @@ export class MyLeadsPage {
     toggleMenu() {
       this.menuCtrl.toggle();
     }
+   
+    Back(){
+      this.navCtrl.push(CategoriesPage);
+    }
+
   home(){
     this.navCtrl.push(CategoriesPage);
   }
@@ -137,10 +135,6 @@ easeInOutQuart(time, from, distance, duration) {
   return -distance / 2 * ((time -= 2) * time * time * time - 2) + from;
 }
 
-
-Back(){
-  this.navCtrl.push(CategoriesPage);
-}
 // Animate scroll
 smoothScrollTo(endX){
   let startTime = new Date().getTime();
@@ -156,52 +150,6 @@ smoothScrollTo(endX){
     }
     this.segments.nativeElement.scrollLeft = newX;
   }, 1000 / 60); // 60 fps
-}
-
-editblead(i){
-  this.navCtrl.push(EditleadPage,{
-    'categories_id': this.buyleads[i].categories_id,
-    'chapter_id': this.buyleads[i].chapter_id,
-    'id': this.buyleads[i].id,
-    'description': this.buyleads[i].description,
-    'currency': this.buyleads[i].currency,
-    'destination_port': this.buyleads[i].destination_port,
-    'expiry_date': this.buyleads[i].expiry_date,
-    'hsn_id': this.buyleads[i].hsn_id,
-    'inspection_auth': this.buyleads[i].inspection_auth,
-    'loading_port': this.buyleads[i].loading_port,
-    'port_type': this.buyleads[i].port_type,
-    'price_inusd': this.buyleads[i].price_inusd,
-    'price_option': this.buyleads[i].price_option,
-    'quantity': this.buyleads[i].quantity,
-    'special_instruc': this.buyleads[i].special_instruc,
-    'uom': this.buyleads[i].uom,
-    'leadref_id': this.buyleads[i].leadref_id,
-    'lead_type':this.buyleads[i].lead_type,
-  })
-}
-
-editslead(i){
-  this.navCtrl.push(EditleadPage,{
-    'categories_id': this.sellleads[i].categories_id,
-    'chapter_id': this.sellleads[i].chapter_id,
-    'id': this.sellleads[i].id,
-    'description': this.sellleads[i].description,
-    'currency': this.sellleads[i].currency,
-    'destination_port': this.sellleads[i].destination_port,
-    'expiry_date': this.sellleads[i].expiry_date,
-    'hsn_id': this.sellleads[i].hsn_id,
-    'inspection_auth': this.sellleads[i].inspection_auth,
-    'loading_port': this.sellleads[i].loading_port,
-    'port_type': this.sellleads[i].port_type,
-    'price_inusd': this.sellleads[i].price_inusd,
-    'price_option': this.sellleads[i].price_option,
-    'quantity': this.sellleads[i].quantity,
-    'special_instruc': this.sellleads[i].special_instruc,
-    'uom': this.sellleads[i].uom,
-    'leadref_id': this.sellleads[i].leadref_id,
-    'lead_type':this.sellleads[i].lead_type,
-  })
 }
 
   ionViewDidLoad() {

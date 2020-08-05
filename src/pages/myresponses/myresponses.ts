@@ -17,6 +17,8 @@ export class MyresponsesPage {
   myresponse:any;
   userdetails:any;
   user_id:any;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private http: HttpClient,
     private storage:Storage) {
@@ -44,6 +46,12 @@ toggleMenu() {
       this.userdetails=val;
       this.user_id=this.userdetails[0].id;
       console.log("userid=",this.user_id);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
    
     this.http.get(MyApp.url+"myresponses.php?user_id="+this.user_id).subscribe((data)=>{
       this.myresponse = data;

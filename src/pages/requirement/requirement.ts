@@ -40,6 +40,8 @@ export class RequirementPage {
   dropdownSettings = {};
   dropdownList = [];
   requirment_type: any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl: MenuController, private http: HttpClient,
     public alertCtrl: AlertController, private storage:Storage) {
     this.menuCtrl.enable(true, "sideMenu");
@@ -149,6 +151,11 @@ export class RequirementPage {
     this.storage.get("userdetails").then((val)=>{
       this.userdetails = val;
       this.user_id = this.userdetails[0].id;
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
     console.log('userdetails', this.userdetails);
     this.leaddetails = this.navParams.get('leaddetails');

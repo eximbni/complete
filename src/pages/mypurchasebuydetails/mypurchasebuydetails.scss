@@ -1,85 +1,89 @@
 page-mypurchasebuydetails {
-
-    .white-bg{
-        background : white;
-        color:#111;
-          
-           width: 100%;
-       }
- 
- .opt-btns{
+    .pro-img{
+        border-radius: 50%;
+        height: 8em;
+    }
+    .profile-div{
         text-align: center;
         width:100%;
- }
-/* 
-        .lead-btn{
-            width: 100%;
-            text-align: center;
-        }
-        .avt-imag{
-            border-radius: 50%;
-            margin: 0 auto;
-            height: 50%;
-            text-align: center;
-        }
-        .desc{
-            font-size: 1em;
-            width:100%;
-            color:white;
-        }
-        .pro-img{
-            border-radius: 50%;
-            height: 8em;
-        }
-        .profile-div{
-            text-align: center;
-            width:100%;
-        }
-        .username{
-            font-size: 1.3em;
-            width:100%;
-            text-align: center;
-            color:white;
-           }
+    }
+    .opt-btns{
+        text-align: center;
+        width:100%;
+    }
+    .head{
+        margin: 0px;
+        background: rgb(244, 242, 247);
+        background: linear-gradient(180deg, rgba(54,17,106,1) 0%, rgba(178,47,48,1) 100%);      
+    }
             .back{
                 margin: 0px;
-                background: rgb(54,17,106);
-                background: linear-gradient(180deg, rgba(54,17,106,1) 0%, rgba(178,47,48,1) 100%);      
+                background: rgb(241, 239, 243);
+                background: linear-gradient(180deg, rgb(247, 246, 248) 0%, rgb(241, 241, 241) 100%);      
                } 
-               .person-data{
-                font-size: 1.2em;
+               .username{
+                font-size: 1.3em;
                 width:100%;
                 text-align: center;
-                color:white;
+                color:#fff;
                }
-               .white-bg{
-                background-color: rgba(255,255,255,0.5);
-                background : white;
-                color:#111;
+               .black-bg{
+                background-color: rgb(255, 255, 255);
+                  
                    width: 100%;
                }
+               .white-bg{
+                background-color: rgba(255, 255, 255, 0.993);
+                  
+                   width: 100%;
+               }
+               .crd-style-response{
+                border: 1px solid rgba(248, 248, 248, 0.5);
+                 margin: 1px 4px 1px 4px;
+                border-radius: 6px;
+               }               
+            //    .crd-style-response{
+            //     border: 1px solid black;
+            //      margin: 1px 4px 1px 4px;
+            //     border-radius: 6px;
+            //    }
+               .responsedcountry{
+                float:left;
+                font-size: 1.5em;
+                width:100%;
+                padding-left: 2%;
+                text-align: left;
+                color:black;
+               }
+               .responsedate{
+                float:right;
+                font-size: 1.2em;
+                width:100%;
+                padding-right: 2%;
+                text-align: right;
+                color:black;
+               }
+               
                 .card-title{
                     font-size: 1.2em;
                     width:100%;
                     text-align: left;
-                    color:white;
+                    color:black;
                 }
                 .card-title1{
                     font-size: 1.7em;
                     width:100%;
-                    color:white;
+                    color:black;
                     text-align: center;
                 }
-              .item-md ion-avatar img {
-                        border-radius: 50%;
-                        width: 35%;
-                        text-align: center;
-                        margin: auto;
-                        height: 50%; 
-        }
-        .item-md, .toolbar-background-md{
-            background: transparent !important;
-        }
+                .card-desc{
+                    font-size: 1em;
+                    width:100%;
+                    color:black;
+    
+                }
+          
+        
         .toolbar-title-md
         {
             color: #fff;
@@ -96,22 +100,26 @@ page-mypurchasebuydetails {
         }
         .nav-title {
             font-size: 18px;
+        
             text-align: center;
         }
     
         .user-btn{
-            color:white;
+            color:black;
           
             background: transparent !important;
         }
         .description{
             font-size: 1.4em;
             width:100%;
-            color:white;
+            color:black;
             text-align: center;
         }
+        .content-md hr {
+            background-color:black;
+        }
         
-    .ftr{
+/*     .ftr{
         background-color: transparent !important;
         height:10%;
         margin-bottom: 0%;
@@ -142,22 +150,8 @@ page-mypurchasebuydetails {
       .name-footer{
         margin-top: 5px;
         margin-bottom: 0;
-        color:white !important;
+        color:black !important;
         font-size: 12px;
-      }
+      } */
       
-    //   .white-bg{
-    //     background : white;
-    //     color:#111;
-          
-    //        width: 100%;
-    //    }
- 
- .opt-btns{
-        text-align: center;
-        width:100%;
- }
-
-
- */
     }

@@ -59,6 +59,8 @@ export class LeadpreviewPage {
   destination_port_type: any;
   price_model: any;
   lead_ref_id: Object;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public http:HttpClient, 
     public toastCtrl: ToastController,private loadingCtrl : LoadingController) {
@@ -166,8 +168,16 @@ leadterms(){
         this.regdno = this.userdata[0].ieccode;
         this.regdno = this.userdata[0].gstno;
         this.mobile = this.userdata[0].mobile;
+        this.user_id = this.userdata[0].id;
         //this.business_address = this.userdata[0].business_address;
         this.available_time= this.userdata[0].from_time+"to"+this.userdata[0].to_time
+
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
+
   });
   }
 }

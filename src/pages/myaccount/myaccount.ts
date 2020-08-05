@@ -47,6 +47,8 @@ export class MyaccountPage {
   refcode: any;
   sponcercount: Object;
   scount: any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,public platform:Platform,
     private storage: Storage, private http:HttpClient, private alertCtrl:AlertController, private camera:Camera, private SocialSharing:SocialSharing, private transfer: FileTransfer, ) {}
     settings(){
@@ -96,6 +98,8 @@ export class MyaccountPage {
       alert("Image Modified Successfully");
     }
   })
+
+  
   
   });
   }
@@ -223,7 +227,11 @@ toggleMenu() {
       this.http.get(MyApp.url+"getuserchapters.php?user_id="+this.user_id).subscribe((data)=>{
         this.chapters = data;
         console.log('userdata',this.chapters);
-       
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
       });
       this.http.get(MyApp.url+"getsponcercount.php?ref_code="+this.refcode).subscribe((sdata)=>{
         this.sponcercount = sdata;

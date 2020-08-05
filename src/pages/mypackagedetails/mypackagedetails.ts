@@ -8,6 +8,7 @@ import { LeadsPage } from '../leads/leads';
 import { ChatPage } from '../chat/chat';
 import { RfqPage } from '../rfq/rfq';
 import { VideologinPage } from '../videologin/videologin';
+import { MyaccountPage } from '../myaccount/myaccount';
 
 /**
  * Generated class for the MypackagedetailsPage page.
@@ -24,12 +25,18 @@ export class MypackagedetailsPage {
   userdata: any;
   user_id: any;
   packs: Object;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, 
     public http: HttpClient, public menuCtrl: MenuController) {
   }
   toggleMenu() {
     this.menuCtrl.toggle();
+  }
+
+  Back(){
+    this.navCtrl.push(MyaccountPage);
   }
 
   home(){
@@ -57,6 +64,12 @@ export class MypackagedetailsPage {
       this.http.get(MyApp.url+"getuserprofile.php?user_id="+this.user_id).subscribe((data)=>{
         console.log(data);
         this.packs = data;
+
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
 
       })
     })

@@ -6,6 +6,8 @@ import { ChatPage } from '../chat/chat';
 import { RfqPage } from '../rfq/rfq';
 import { WebinarPage } from '../webinar/webinar';
 import { Storage } from '@ionic/storage';
+import { MyApp } from '../../app/app.component';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the GalleryPage page.
@@ -22,9 +24,11 @@ export class GalleryPage {
   userdetails: any;
   user_id: any;
   country_id: any;
+  messagecount: any;
+  showcount: any;
   
 
-  constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,private storage :Storage) {
+  constructor(public navCtrl: NavController,public menuCtrl:MenuController,private http: HttpClient,  public navParams: NavParams,private storage :Storage) {
    
   }
     
@@ -64,6 +68,13 @@ quotes(){
       this.country_id = this.userdetails[0].country_id;
       console.log('id',this.user_id); console.log('id',this.country_id);
       console.log('userdetails',val);
+      
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
+      
     });
    
    

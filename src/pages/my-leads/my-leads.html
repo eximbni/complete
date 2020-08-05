@@ -1,22 +1,21 @@
+
 <ion-header>
-  <ion-navbar
-    color="orangebtn"
-    class="padding-top:10px;"
-    (click)="leadspg()"
-    hideBackButton
-  >
-  <ion-row>
-    <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
-    <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png"  ></ion-col>
-    <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
-  </ion-row>
-  </ion-navbar>
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+    <ion-row>
+      <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
+      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png" ></ion-col>
+      <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
+      </ion-row>
+    </ion-navbar>
+</ion-header> 
+
+<ion-content class="bg-style">
   <div class="spacer" style="height:0.1em"></div>
-  <div>
-    <ion-item-divider text-center color="danger"
-      >My Posted Leads </ion-item-divider
-    >
+  <div><ion-item-divider text-center style="text-align: center; color: white; background: green;"> 
+    My Posted Leads  
+  </ion-item-divider>
   </div>
+   
   <div style="margin-top:2%">
     <ion-segment #segments mode="md" [(ngModel)]="page" color="white">
       <ion-segment-button value="0" (click)="selectedTab(0)">
@@ -31,8 +30,7 @@
       </ion-segment-button>
     </ion-segment>
   </div>
-</ion-header>
-<ion-content class="bg-style">
+
   <ion-grid>
     <ion-slides #slider (ionSlideDidChange)="slideChanged()">
       <ion-slide>
@@ -40,7 +38,7 @@
         <div class="errmsg" style="color: red;" >{{sellerrmsg}}</div>
         <ion-card  *ngFor="let selllead of sellleads | postingssearch: terms;  let i=index;" >
           <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
-            <ion-col col-6>ID: {{selllead.leadref_id }}</ion-col> 
+            <ion-col col-6>ID: {{selllead.leadref_id | slice:0:6}} XXXX</ion-col> 
             <ion-col col-6>HSCode: {{selllead.hsn_id}}</ion-col>  
           </ion-row>
           
@@ -60,17 +58,17 @@
           </ion-row>
   
           <ion-row>
-            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="editslead(i)"> Edit Lead</button></ion-col>
-            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="sellerp(i)"> Show Lead Details</button></ion-col>
+            <ion-col col-12><button ion-button round small color="palegreen"  block (click)="sellerp(i)"> Show Lead Details</button></ion-col>
           </ion-row>
   
          </ion-card>
       </ion-slide>
       <ion-slide>
-        <ion-searchbar [(ngModel)]="terms"></ion-searchbar><br /><div class="errmsg" style="color: red;">{{buyerrmsg}}</div>
+        <ion-searchbar [(ngModel)]="terms"></ion-searchbar><br />
+        <div class="errmsg" style="color: red;" >{{buyerrmsg}}</div>
         <ion-card  *ngFor="let buylead of buyleads | postingssearch: terms;  let i=index;">
           <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
-            <ion-col col-6>ID: {{buylead.leadref_id}}</ion-col> 
+            <ion-col col-6>ID: {{buylead.leadref_id | slice:0:6}} XXXX</ion-col> 
             <ion-col col-6>HSCode: {{buylead.hsn_id}}</ion-col>  
           </ion-row>
           
@@ -90,8 +88,7 @@
           </ion-row>
   
           <ion-row>
-            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="editblead(i)"> Edit Leads</button></ion-col>
-            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="buyersp(i)"> Show Lead Details</button></ion-col>
+            <ion-col col-12><button ion-button round small color="palegreen"  block (click)="buyersp(i)"> Show Lead Details</button></ion-col>
           </ion-row>
       </ion-card>
       </ion-slide>
@@ -105,12 +102,13 @@
       ><ion-icon name="home" color="light" class="ftr-icon"></ion-icon>
       <p class="name-footer">Home</p></ion-col
     >
-    <ion-col class="ftr-col" (click)="leads()"
-      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon>
-      <p class="name-footer">Leads</p></ion-col
+    <ion-col class="ftr-col-active" (click)="leads()"
+      ><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="danger"></ion-icon>
+      <p class="name-footer-active">Leads</p></ion-col
     >
     <ion-col class="ftr-col" (click)="chatting()"
       ><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon>
+      <ion-badge id="cart-badge">{{showcount}}</ion-badge>
       <p class="name-footer">Chat</p></ion-col
     >
     <ion-col class="ftr-col" (click)="webinar()"

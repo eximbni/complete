@@ -77,7 +77,9 @@ export class ItemCreatePage {
   quotes() {
     this.navCtrl.push(RfqPage);
   }
-
+  Back() {
+    this.navCtrl.push(ChatPage);
+  }
   create() {
     if (this.chat == 1) {
       const confirm = this.alertCtrl.create({

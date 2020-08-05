@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
 import { Storage } from '@ionic/storage';
+import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-board';
+import { UsermodelPage } from '../usermodel/usermodel';
+import { FrincomePage } from '../frincome/frincome';
+import { FrreportsPage } from '../frreports/frreports';
 
 @Component({
   selector: 'page-targetvsachieve',
@@ -22,10 +26,36 @@ export class TargetvsachievePage {
   mobile: any;
   userid: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpClient, public storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menuCtrl:MenuController, private http:HttpClient, public storage:Storage) {
 /*     this.frdata = this.navParams.get("frdata");
     this.franchise_id = this.frdata.id; */
     this.pet="month";
+  }
+  toggleMenu() {
+
+    this.menuCtrl.toggle();
+  }
+
+  Back() {
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+
+  home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
+
+  reports(){
+    this.navCtrl.push(FrreportsPage);
   }
 
 monthreport() {

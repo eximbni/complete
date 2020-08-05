@@ -162,7 +162,7 @@ export class MypurchasedetailsPage {
   }
   ionViewDidLoad() {
     this.s_id = this.navParams.get("sid");
-    console.log("ionViewDidLoad sellleaddetailsPage");
+    console.log("ionViewDidLoad Mypurchasse Details Page");
     console.log(this.s_id, "id here");
 
     var url = this.http
@@ -181,17 +181,11 @@ export class MypurchasedetailsPage {
           this.leaddocuments = data;
           console.log("leaddocuments data",data);
         });
-  
 
 
 
       });
-    this.http
-      .get(MyApp.url + "users_responses.php?lead_id=" + this.s_id+"&user_id="+this.user_id)
-      .subscribe(rdata => {
-        this.leadresponses = rdata;
-        console.log("response data", rdata);
-      });
+    
 
     this.storage.get("userdetails").then(val => {
       this.userdetails = val;
@@ -222,6 +216,12 @@ export class MypurchasedetailsPage {
               console.log("userprofile data", this.profiledata);
             });
         });
+        this.http
+      .get(MyApp.url + "users_responses.php?lead_id=" + this.s_id+"&user_id="+this.user_id)
+      .subscribe(rdata => {
+        this.leadresponses = rdata;
+        console.log("response data", rdata);
+      });
     });
   }
 }

@@ -25,6 +25,8 @@ export class CreditpointsPage {
   country_id: any;
   rechargedata: Object;
   rechargehistory: Object;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams, private storage: Storage, private http:HttpClient) {}
 toggleMenu() {
     this.menuCtrl.toggle();
@@ -56,7 +58,11 @@ toggleMenu() {
         this.credits=this.walletcredits[0].credits;
         this.rfqcredits=this.walletcredits[0].rfq_credits;
         console.log(this.rfqcredits,'credits');
-        
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
       });
       this.http.get(MyApp.url+"getrecharge.php?country_id="+this.country_id).subscribe((data)=>{
         this.rechargedata = data;

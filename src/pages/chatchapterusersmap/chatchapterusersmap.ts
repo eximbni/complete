@@ -141,6 +141,11 @@ export class ChatchapterusersmapPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatchapterusersmapPage');
     this.loadmap();
+    this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+      this.messagecount=count;
+      this.showcount = this.messagecount[0].unreadMsgs;
+      console.log('Message Count:', this.messagecount);
+    })
   }
 
 loadmap(){

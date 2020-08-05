@@ -23,6 +23,8 @@ export class InboxPage {
   notifications: Object;
   logindata: any;
   inboxdetails: Object;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController,public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController,
 
@@ -83,6 +85,11 @@ ionViewDidLoad() {
     console.log(this.inboxdetails,' inboxdetails');
   });
 
+  this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+    this.messagecount=count;
+    this.showcount = this.messagecount[0].unreadMsgs;
+    console.log('Message Count:', this.messagecount);
+  })
 
 
 });

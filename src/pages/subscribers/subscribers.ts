@@ -3,6 +3,10 @@ import {  NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
 import { Storage } from '@ionic/storage';
+import { FrreportsPage } from '../frreports/frreports';
+import { FrincomePage } from '../frincome/frincome';
+import { UsermodelPage } from '../usermodel/usermodel';
+import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-board';
 
 
 @Component({
@@ -28,6 +32,26 @@ export class SubscribersPage {
   toggleMenu() {
 
     this.menuCtrl.toggle();
+  }
+ 
+  Back() {
+    this.navCtrl.push(UsermodelPage);
+  }
+
+  home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
+
+  reports(){
+    this.navCtrl.push(FrreportsPage);
   }
 
   submit(){

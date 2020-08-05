@@ -46,6 +46,8 @@ export class HsnleadsPage {
   buycount: any;
   sellcount: any;
   hscode: any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController,
 
     private storage: Storage, public menuCtrl: MenuController) {
@@ -58,7 +60,7 @@ export class HsnleadsPage {
   sellleaddetails(i) {
     const confirm = this.alertCtrl.create({
       title: 'Confirm to Proceed',
-      message: 'Click agree to view lead details',
+      message: "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
           text: 'cancel',
@@ -105,7 +107,7 @@ export class HsnleadsPage {
   buyleaddetails(i) {
     const confirm = this.alertCtrl.create({
       title: 'Confirm to Proceed',
-      message: 'We charge one credit from your wallet to view lead details,',
+      message: "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
           text: 'cancel',
@@ -161,6 +163,7 @@ export class HsnleadsPage {
   quotes() {
     this.navCtrl.push(RfqPage);
   }
+
   remindBuyLeads(i) {
     let alert = this.alertCtrl.create();
     alert.setTitle('Select Reminder Date');
@@ -193,7 +196,74 @@ export class HsnleadsPage {
     alert.present();
   }
   
+/* 
 
+  remindBuyLeads(i) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Select Reminder Date');
+
+    alert.addInput({
+      type: 'date',
+      label: 'Remnder Date',
+      value: '',
+      name: 'remind_date'
+      
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: (data) => {
+        var link = MyApp.url + "leadremind.php";
+        var jdata = JSON.stringify({
+          user_id: this.user_id,
+          lead_id: this.buyleads[i].id,
+          remind_date:data.remind_date
+        });
+        console.log("buydadata remindmelater=", jdata);
+        this.http.post(link, jdata).subscribe(sdata => {
+          this.skipbuylead = sdata;
+          this.navCtrl.push(LeadsPage);
+        });
+      }
+    });
+    alert.present();
+  }
+   */
+  remindSellLeads(i) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Select Reminder Date');
+
+    alert.addInput({
+      type: 'date',
+      label: 'Remnder Date',
+      value: '',
+      name: 'remind_date'
+      
+    });
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: (data) => {
+        var link = MyApp.url + "leadremind.php";
+        var jdata = JSON.stringify({
+          user_id: this.user_id,
+          lead_id: this.sellleads[i].id,
+          remind_date:data.remind_date
+        });
+        console.log("selldata remindmelater =", jdata);
+        this.http.post(link, jdata).subscribe(sdata => {
+          this.skipbuylead = sdata;
+          this.navCtrl.push(LeadsPage);
+        });
+      }
+    });
+    alert.present();
+  }
+
+
+/* 
   remindSellLeads(i){
     const confirm = this.alertCtrl.create({
       title: 'Remind This Lead later?',
@@ -224,7 +294,7 @@ export class HsnleadsPage {
       ]
     });
     confirm.present();
-  }
+  } */
   
 skipbuyleads(i){
     const confirm = this.alertCtrl.create({
@@ -468,6 +538,12 @@ skipsellleads(i){
       this.country_id=this.userdetails[0].country_id;
       this.user_id=this.userdetails[0].id;  
       console.log("hsnid", this.hsn_id);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
 
       this.http.get(MyApp.url+"gethsnbuyleads.php?hsn_id="+this.hsn_id+"&user_id="+this.user_id+"&country_id="+this.country_id).subscribe((data) => {
        

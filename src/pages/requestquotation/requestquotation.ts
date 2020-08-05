@@ -147,6 +147,8 @@ export class RequestquotationPage {
   seller_id: any;
   selectedcountry_id: any;
   ref_id: string;
+  messagecount: Object;
+  showcount: any;
    constructor(public navCtrl: NavController,public navParams: NavParams,
     private http: HttpClient, private storage: Storage, public alertCtrl: AlertController,
     private camera: Camera, private transfer: FileTransfer, public menuCtrl: MenuController,public toastCtrl: ToastController ) { }
@@ -671,7 +673,13 @@ export class RequestquotationPage {
       console.log('user id', this.user_id);
       console.log('mobile', this.mobile);
       console.log('referal_code', this.referal_code);
-      console.log('user-county', this.user_country)
+      console.log('user-county', this.user_country);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
 
     console.log('ionViewDidLoad Request Quotation Page');

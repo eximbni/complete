@@ -3,6 +3,16 @@ page-rfq {
   {
     margin: 0 !important;
   }
+  .select-icon
+  {
+    right: 10px;
+  }
+  .select-md, .select-ios
+{
+  min-width: 100%;
+  float: left;
+  padding: 0;
+}
   .item-ios, .item-md  
  {
     margin: 2px 0;

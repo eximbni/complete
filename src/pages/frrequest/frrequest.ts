@@ -24,6 +24,8 @@ export class FrrequestPage {
   frdata: any;
   reqstatus: any;
   message: string;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
      private storage: Storage, public http: HttpClient, private menuCtrl: MenuController) {
@@ -92,7 +94,18 @@ Back(){
         }
       })
   })
+
+  this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+    this.messagecount=count;
+    this.showcount = this.messagecount[0].unreadMsgs;
+    console.log('Message Count:', this.messagecount);
+  })
+
+
+
 })
+
+
   }
 
 }

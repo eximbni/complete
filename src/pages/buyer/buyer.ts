@@ -35,6 +35,8 @@ buyerslist:any;
   onlinebuyerslist: any;
   leadpostbuyerslist: any;
   pet:any
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public navParams: NavParams, private http:HttpClient, private storage :Storage,
     public menuCtrl:MenuController) {
       this.pet="kittens";
@@ -60,6 +62,10 @@ quotes(){
   this.navCtrl.push(RfqPage);
 }
 
+Back(){
+  this.navCtrl.push(CategoriesPage);
+}
+
 ngOnInit() {
   this.storage.get("userdetails").then((val)=>{
     this.userdetails =val;
@@ -71,7 +77,8 @@ ngOnInit() {
     this.chapters = data;
       console.log( this.chapters,'chapters');
     });
-    console.log(this.chapters,'chapter names');
+
+   console.log(this.chapters,'chapter names');
   });
  
 
@@ -112,6 +119,11 @@ this.http.get(MyApp.url+"getleadpostbuyerslist.php?country_id="+this.country_id+
       this.country_id = this.userdetails[0].country_id;
       console.log('id',this.user_id); console.log('id',this.country_id);
       console.log('userdetails',val);
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
    
     console.log(BuyerPage);

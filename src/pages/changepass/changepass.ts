@@ -4,6 +4,12 @@ import { SigninPage } from '../signin/signin';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
 import { Storage } from '@ionic/storage';
+import { CategoriesPage } from '../categories/categories';
+import { LeadsPage } from '../leads/leads';
+import { ChatPage } from '../chat/chat';
+import { WebinarPage } from '../webinar/webinar';
+import { RfqPage } from '../rfq/rfq';
+import { MyaccountPage } from '../myaccount/myaccount';
 
 
 
@@ -23,6 +29,8 @@ export class ChangepassPage {
   userdata: any;
   user_id: any;
   mobileno_id: any;
+  messagecount: Object;
+  showcount: any;
   
   
   
@@ -84,12 +92,45 @@ export class ChangepassPage {
     alert.present();
   }
     }
+
+
+
+    home() {
+      this.navCtrl.push(CategoriesPage);
+    }
+    leads() {
+      this.navCtrl.push(LeadsPage);
+    }
+    chatting() {
+      this.navCtrl.push(ChatPage);
+    }
+    webinar() {
+      this.navCtrl.push(WebinarPage);
+    }
+    quotes() {
+      this.navCtrl.push(RfqPage);
+    }
+    Back(){
+      this.navCtrl.push(MyaccountPage);
+    }
+  
+
+
+
     ionViewDidLoad() {
       this.storage.get("userdetails").then((val)=>{
         this.userdata= val;
         this.user_id= this.userdata[0].id;
         this.mobileno_id= this.userdata[0].mobile;
             
+
+        this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+          this.messagecount=count;
+          this.showcount = this.messagecount[0].unreadMsgs;
+          console.log('Message Count:', this.messagecount);
+        })
+
+
       })
   
       console.log('ionViewDidLoad ForgrtPwdPage');

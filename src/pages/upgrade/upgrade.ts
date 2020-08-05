@@ -47,6 +47,8 @@ export class UpgradePage {
   chap_id: any;
   packhscode: any;
   mysubscription_id: any;
+  messagecount: Object;
+  showcount: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -233,6 +235,13 @@ export class UpgradePage {
       this.userdetails = val;
       this.user_id = this.userdetails[0].id;
       this.country_id = this.userdetails[0].country_id;
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
+      
       this.http
         .get(MyApp.url + "getsubscriptions.php?country_id=" + this.country_id)
         .subscribe(pdata => {

@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { HttpClient } from '@angular/common/http';
-
+import { Storage } from '@ionic/storage';
+import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-board';
+import { FrincomePage } from '../frincome/frincome';
+import { FrreportsPage } from '../frreports/frreports';
+import { UsermodelPage } from '../usermodel/usermodel';
 
 @Component({
   selector: 'page-coupons',
@@ -16,12 +20,45 @@ export class CouponsPage {
   expires: string;
   plan_name: number;
   franchise_id: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpClient) {
+  userdetails: any;
+  country_id: any;
+  mobile: any; 
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController,private storage: Storage, private http:HttpClient) {
     this.frdata = this.navParams.get("frdata");
     this.franchise_id = this.frdata[0].id;
     this.couponcount = this.frdata.coupons;
   }
-    gcoupon(){
+    
+  
+  toggleMenu() {
+
+    this.menuCtrl.toggle();
+  }
+
+  home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
+
+  reports(){
+    this.navCtrl.push(FrreportsPage);
+  }
+
+  Back() {
+     this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  
+  gcoupon(){
       this.cou=true;
       this.coupon_code=Math.floor(Math.random() * (999999 - 100000)) + 100000;
       this.plan_name = 299;
@@ -49,6 +86,13 @@ export class CouponsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CouponsPage');
+    this.storage.get("userdetails").then((val) => {
+      this.userdetails = val;
+      this.country_id = this.userdetails[0].country_id;
+      this.mobile = this.userdetails[0].mobile;
+      //this.country_id = 99;
+    });
+
 
   }
 

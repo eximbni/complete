@@ -4,6 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
 import { Storage } from '@ionic/storage';
 import { UsermodelPage } from "../usermodel/usermodel";
+import { FrincomePage } from '../frincome/frincome';
+import { FrreportsPage } from '../frreports/frreports';
+import { FranchiseDashBoardPage } from '../franchise-dash-board/franchise-dash-board';
 
 
 @Component({
@@ -32,7 +35,26 @@ export class ForecastingPage {
 
     this.menuCtrl.toggle();
   }
+  
+  home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
 
+  reports(){
+    this.navCtrl.push(FrreportsPage);
+  }
+  Back() {
+    this.navCtrl.push(UsermodelPage);
+  }
+  
   submit(){
   
     this.month = this.sdate.value.year+"-"+this.sdate.value.month+"-01";

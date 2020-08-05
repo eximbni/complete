@@ -44,6 +44,11 @@ export class MyleadDetailsPage {
   userdetails: any;
   leadref_id: any;
   leaddocuments: Object;
+  details: Object;
+  leadtype: any;
+  posted_id: any;
+  messagecount: Object;
+  showcount: any;
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
@@ -87,7 +92,7 @@ export class MyleadDetailsPage {
         if (rdata != 0) {
           const alert = this.alertCtrl.create({
             title: "Success!",
-            subTitle: "You just added to chat",
+            subTitle: "You have successfully added this user to the Chat option. You can now initiate chat conversation with this user",
             buttons: ["OK"]
           });
           alert.present();
@@ -98,7 +103,7 @@ export class MyleadDetailsPage {
         else {
           const alert = this.alertCtrl.create({
             title: "Oops!",
-            subTitle: "Your request for adding is not done!",
+            subTitle: "We could not process your request. Please reach out to our customer service!",
             buttons: ["OK"]
           });
           alert.present();
@@ -107,7 +112,7 @@ export class MyleadDetailsPage {
     } else {
       const alert = this.alertCtrl.create({
         title: "Sorry!",
-        subTitle: "You are not eligible to chat, please check your package",
+        subTitle: "We could not process your request. Please reach out to our customer service",
         buttons: ["OK"]
       });
       alert.present();
@@ -123,10 +128,36 @@ export class MyleadDetailsPage {
     this.description = this.navParams.get("description");
     this.leadref_id = this.navParams.get("leadref_id");
 
+    var url = this.http
+    .get(MyApp.url + "leaddetails.php?id=" + this.lead_id)
+    .subscribe(data => {
+      console.log(url);
+      this.details = data;
+      this.leadtype = this.details[0].lead_type;
+      this.lead_id = this.details[0].id;
+      this.posted_id = this.details[0].posted_by;
+      console.log(this.details, "leaddetails");
+      console.log("lead-type=", this.leadtype);
+      console.log("lead-id=", this.leadtype);
+
+      
+ 
+    });
+
+
+
     this.storage.get("userdetails").then(val => {
       this.userdetails = val;
 
       this.user_id = this.userdetails[0].id;
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
+
+
       console.log("userdata", this.userdetails);
       this.http
         .get(MyApp.url + "profile.php?user_id=" + this.user_id)
@@ -151,7 +182,7 @@ export class MyleadDetailsPage {
 
         });
        // console.log(MyApp.url+"users_responses.php?lead_id="+this.lead_id+"&user_id="+this.user_id);
-        this.http.get(MyApp.url+"users_responses.php?lead_id="+this.lead_id+"&user_id="+this.user_id).subscribe((data)=>{
+        this.http.get(MyApp.url+"myresponses.php?lead_id="+this.lead_id+"&user_id="+this.user_id).subscribe((data)=>{
           this.leadresponses = data;
           console.log("response data",data);
         });

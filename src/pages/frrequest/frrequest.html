@@ -1,17 +1,12 @@
-<!--
-  Generated template for the FrrequestPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar color="orangebtn"  class="padding-top:10px;" hideBackButton >
+  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
     <ion-row>
       <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" (click)="Back()"><ion-icon name="arrow-back" color="danger"></ion-icon></ion-col>
-      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png"  ></ion-col>
+      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png" ></ion-col>
       <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
-    </ion-row>
-  </ion-navbar>
+      </ion-row>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -34,12 +29,15 @@
   Plese mention your Request ID for us to identify you.
 </div>
 </ion-content>
+
+
+
 <ion-footer class="ftr">
   <ion-row class="ftr-row">
-    <ion-col class="ftr-col" (click)="home()"><ion-icon name="home" color="light" class="ftr-icon"></ion-icon><p class="name-footer">Home</p></ion-col>
+    <ion-col class="ftr-col-active" (click)="home()"><ion-icon name="home" color="danger" class="ftr-icon"></ion-icon><p class="name-footer-active">Home</p></ion-col>
     <ion-col class="ftr-col" (click)="leads()"><ion-icon ios="ios-albums" md="md-albums" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Leads</p></ion-col>
-    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Chat</p></ion-col>
-    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">Miivision</p></ion-col>
+    <ion-col class="ftr-col" (click)="chatting()"><ion-icon ios="ios-chatboxes" md="md-chatboxes" class="ftr-icon" color="light"></ion-icon><ion-badge id="cart-badge">{{showcount}}</ion-badge><p class="name-footer">Chat</p></ion-col>
+    <ion-col class="ftr-col" (click)="webinar()"><ion-icon ios="ios-videocam" md="md-videocam" class="ftr-icon" color="light"></ion-icon><p class="name-footer">MiiVision</p></ion-col>
     <ion-col class="ftr-col"  (click)="quotes()"><ion-icon ios="ios-send" md="md-send" class="ftr-icon" color="light"></ion-icon ><p class="name-footer">Post Lead</p></ion-col>
     </ion-row>
  </ion-footer>

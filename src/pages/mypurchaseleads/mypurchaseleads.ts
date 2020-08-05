@@ -68,6 +68,8 @@ export class MypurchaseleadsPage {
   bimp_policy: any;
   sexp_policy: any;
   simp_policy: any;
+  messagecount: Object;
+  showcount: any;
 
   constructor(public navCtrl: NavController,public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController,
 
@@ -103,6 +105,10 @@ export class MypurchaseleadsPage {
   }
   toggleMenu() {
     this.menuCtrl.toggle();
+  }
+  
+  Back() {
+    this.navCtrl.push(CategoriesPage);
   }
   
   simport(i){
@@ -238,6 +244,12 @@ export class MypurchaseleadsPage {
       this.country_id = this.userdata[0].country_id;
       console.log('userdata', this.userdata);
       console.log('countryiid', this.country_id);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
 
       this.http.get(MyApp.url+"purchasedbuyleads.php?user_id=" + this.user_id).subscribe((data) => {
         console.log("My Purchase buy leads",data);

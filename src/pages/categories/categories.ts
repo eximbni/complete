@@ -29,7 +29,7 @@ import { VideologinPage } from "../videologin/videologin";
 export class CategoriesPage {
   catdetails: any;
   cat_id: any;
-  status: any;
+  status: any;  
   logindata: any;
   userdetails: any;
   sellleads: any;

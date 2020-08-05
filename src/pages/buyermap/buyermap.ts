@@ -43,6 +43,8 @@ buyerslist:any;
   pet:any
   imgs: string;
   locations: any;
+  messagecount: Object;
+  showcount: any;
   
   constructor(public navCtrl: NavController,public navParams: NavParams, private http:HttpClient, private storage :Storage,
     public menuCtrl:MenuController) {
@@ -165,6 +167,11 @@ Back(){
       this.country_id = this.userdetails[0].country_id;
       console.log('id',this.user_id); console.log('id',this.country_id);
       console.log('userdetails',val);
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
 
     });
    

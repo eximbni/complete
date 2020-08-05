@@ -9,8 +9,10 @@ import { File } from '@ionic-native/file';
 import { CallNumber } from '@ionic-native/call-number';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { ChatPage } from '../chat/chat';
-
-
+/* import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs'; */
+import {Observable} from 'Rxjs/rx';
+import { Subscription } from "rxjs/Subscription";
 @Component({
   selector: 'page-chatmsg',
   templateUrl: 'chatmsg.html',
@@ -51,13 +53,19 @@ export class ChatmsgPage {
   chat_status: any;
   chatuserdata: any;
   interval: any;
-  //items: Observable<any[]>;
+  items: Observable<any[]>;
+  observableVar: Subscription;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, 
     public navParams: NavParams,
      private storage:Storage, private http:HttpClient, 
       public loadingCtrl: LoadingController, private callNumber: CallNumber,
       private camera:Camera,private transfer: FileTransfer, public alertCtrl:AlertController, private file:File) {
 
+   //calling chat
+   this.observableVar = Observable.interval(1000).subscribe(()=>{
+    this.callChat();
+});
+    //other work    
     this.chatroom = this.navParams.get('chatroom');
     this.sendername = this.navParams.get("sendername");
     this. chatuser_id = this.navParams.get("chatuser_id");
@@ -69,20 +77,22 @@ export class ChatmsgPage {
     console.log("caller -id:", this.caller_id);
     this.datenow = Date.now();
     this.username = this.navParams.get("username");
-    this.interval=setInterval(() => {
-    this.http.get(MyApp.url+"getchatmessages.php?chatroom="+this.chatroom).subscribe((chatdata)=>{
-      this.chatdata=chatdata;
-      console.log(this.chatdata);
-    });
-    this.http.get(MyApp.url+"getuserchat_status.php?user_id="+this.chatuser_id).subscribe((chatuserdata)=>{
-      this.chatuserdata=chatuserdata;
-      this.chat_status=this.chatuserdata[0].chat_status;
-      console.log("user_status:",this.chat_status);
-    })
-    this.updateScroll();
-  },20000000000);
-  
-  }
+    }
+
+    async callChat(){
+     
+        this.http.get(MyApp.url+"getchatmessages.php?chatroom="+this.chatroom).subscribe((chatdata)=>{
+          this.chatdata=chatdata;
+          console.log(this.chatdata);
+        });
+        this.http.get(MyApp.url+"getuserchat_status.php?user_id="+this.chatuser_id).subscribe((chatuserdata)=>{
+          this.chatuserdata=chatuserdata;
+          this.chat_status=this.chatuserdata[0].chat_status;
+          console.log("user_status:",this.chat_status);
+        })
+        this.updateScroll();
+   
+    }
 
   async doRefresh(refresher) {
     console.log('Begin async operation', refresher);
@@ -90,7 +100,7 @@ export class ChatmsgPage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-    }, 100);
+    }, 3000);
   }
 
 
@@ -310,6 +320,9 @@ uploadAudio(){
     })
 
   }
+  ionViewDidLeave(){
+    this.observableVar.unsubscribe();
+ }
   
 
 }

@@ -1,3 +1,4 @@
+import { SendquotePage } from './../pages/sendquote/sendquote';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController, AlertController, ToastController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -60,6 +61,9 @@ export class MyApp {
   keyboardHeight: any;
   platform: any;
   isFranchise: any;
+  user_image: any;
+  user_name: any;
+  business_name: any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private storage: Storage, public menuCtrl: MenuController, public http: HttpClient, public alertCtrl: AlertController,
     public toastCtrl: ToastController) {
       this.mainmenus = [ 
@@ -84,12 +88,7 @@ export class MyApp {
           }else{
             this.franchisebtn = true;
           }
-          if(this.userdata[0].user_image== 0){
-            this.userimage = "../assets/imgs/user.png";
-          }
-          else{
-            this.userimage = MyApp.url+'uploads/'+this.userdata[0].user_image;
-          }
+         
         });
         console.log('name=',this.username);
         console.log(val,'userdata');
@@ -103,7 +102,6 @@ export class MyApp {
         { title: 'Admin Notifications', component: NotificationPage },
         { title: 'My Postings', component: MyLeadsPage },
         { title: 'My Purchase', component: MypurchaseleadsPage },
-        { title: 'Upcoming Features', component: WorkshopsPage },
         { title: 'Buyers', component: BuyermapPage },
         { title: 'Gallery', component: GalleryPage },
         { title: 'RFQ', component: RequestquotationPage },
@@ -129,6 +127,20 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    // add user details code Here
+    this.storage.get('userdetails').then((val)=>{
+      this.userdata = val;
+      this.isFranchise = this.userdata[0].isfranchise;
+      this.user_image = this.userdata[0].user_image;
+      this.user_name = this.userdata[0].name
+      this.business_name = this.userdata[0].business_name;
+      console.log(val,'userdata');
+      console.log("user_image", this.user_image);
+      console.log("Name", this.user_name);
+      console.log("Business_name", this.business_name);
+    });
+
   }
   registerBackButton(){
     this.platform.registerBackButtonAction(() => {

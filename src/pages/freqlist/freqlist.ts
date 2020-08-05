@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { MyApp } from '../../app/app.component';
 import { FrbuyleadsPage } from '../frbuyleads/frbuyleads';
+import { UsermodelPage } from '../usermodel/usermodel';
 
 /**
  * Generated class for the FreqlistPage page.
@@ -34,9 +35,8 @@ export class FreqlistPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, private http: HttpClient, public menuCtrl:MenuController) { }
-  toggleMenu() {
-    this.menuCtrl.toggle();
-  }
+ 
+  
  
   carddetails(i) {
     this.navCtrl.push(FreqlistdetailsPage, {
@@ -51,8 +51,28 @@ export class FreqlistPage {
     }
     );
   }
+  toggleMenu() {
+
+    this.menuCtrl.toggle();
+  }
 
   home() {
+    this.navCtrl.push(FranchiseDashBoardPage);
+  }
+  usermodule(){
+    this.navCtrl.push(UsermodelPage,{
+      'frdata':this.userdetails
+    });
+  }
+  accounts(){
+    this.navCtrl.push(FrincomePage);
+  }
+
+  reports(){
+    this.navCtrl.push(FrreportsPage);
+  }
+  
+  Back() {
     this.navCtrl.push(FranchiseDashBoardPage);
   }
 
@@ -68,9 +88,7 @@ this.navCtrl.push(FrbuyleadsPage);
   income() {
     this.navCtrl.push(FrincomePage);
   }
-  reports() {
-    this.navCtrl.push(FrreportsPage);
-  }
+ 
 
   ionViewDidLoad() {
     this.storage.get("userdetails").then((val) => {

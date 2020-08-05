@@ -67,6 +67,8 @@ export class RfqPostBannerPage {
   @ViewChild("subject") subject;
   @ViewChild("message") message;
   feedbackdata: Object;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,
     private http: HttpClient, private storage: Storage, public alertCtrl: AlertController,
     private camera: Camera, private transfer: FileTransfer ) { }
@@ -284,7 +286,9 @@ this.navCtrl.push(MyaccountPage);
   quotes() {
     this.navCtrl.push(RfqPage);
   }
-
+  Back(){
+    this.navCtrl.push(MyaccountPage);
+  }
 
   /*Categories multiselect list*/
 
@@ -390,6 +394,12 @@ this.navCtrl.push(MyaccountPage);
       console.log('user id', this.user_id);
       console.log('mobile', this.mobile);
       console.log('referal_code', this.referal_code);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
     });
 
     console.log('ionViewDidLoad RfqPage');
