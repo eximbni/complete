@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar color="orangebtn" class="padding-top:10px;">
     <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
-    <ion-col col-6 float-left style="padding-top:15px;" class="home-icon"><img src="../assets/imgs/logos.png" style="height:70px;"/></ion-col>
+    <ion-col col-10 float-left style="padding-top:15px;" class="home-icon"><img src="../assets/imgs/logos.png" style="height:70px;"/></ion-col>
   </ion-navbar>
 </ion-header>
 
@@ -144,11 +144,22 @@
         <ion-row class="card-title">
           <ion-col>Business</ion-col><ion-col>: {{res.business_name}}</ion-col>
         </ion-row>
-
-        <ion-row class="card-title">
+        <ion-row>
+          <ion-col>Available Quantity:</ion-col>
+          <ion-col>{{res.response_quantity}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Cost Per Unit:</ion-col>
+          <ion-col>{{res.costperunit}} {{res.uom}}</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>Total Cost:</ion-col>
+          <ion-col>{{res.totalcost}}</ion-col>
+        </ion-row>
+        <!-- <ion-row class="card-title">
           <ion-col>Requirement</ion-col
           ><ion-col>: {{res.response_quantity}} {{res.uom}} </ion-col>
-        </ion-row>
+        </ion-row> -->
         <ion-row class="card-title">
           <ion-col>requirement Type</ion-col
           ><ion-col>:{{res.req_type}}</ion-col>

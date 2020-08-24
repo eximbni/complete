@@ -49,6 +49,8 @@ export class UpgradePage {
   mysubscription_id: any;
   messagecount: Object;
   showcount: any;
+  mysubscription_cost: any;
+  subscription_cost: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -78,13 +80,15 @@ export class UpgradePage {
   }
   free(i) {
     this.subscription_id = this.upgradeplans[i].id;
+    this.subscription_cost = this.upgradeplans[i].plan_cost;
+    this.subscription_cost = parseInt(this.subscription_cost);
     if (
-      this.mysubscription_id >= this.subscription_id
+      this.mysubscription_cost >= this.subscription_cost
     
     ) {
       const alert = this.alertCtrl.create({
         title: "Oops!",
-        subTitle: "You cannot upgrade to the same package OR to Lower One",
+        subTitle: "You are already in Better Package Please select Higher Packcage",
         buttons: ["OK"],
         cssClass: "buttoncss"
       });
@@ -122,7 +126,7 @@ export class UpgradePage {
   }
   upgrade(i) {
     if (
-      this.mysubscription_id == this.subscription_id &&
+      this.mysubscription_cost == this.subscription_cost &&
       this.selectedItems != "" &&
       this.selectedhscodes != ""
     ) {
@@ -243,7 +247,7 @@ export class UpgradePage {
       })
       
       this.http
-        .get(MyApp.url + "getsubscriptions.php?country_id=" + this.country_id)
+        .get(MyApp.url + "upgradepalns.php?country_id=" + this.country_id)
         .subscribe(pdata => {
           this.upgradeplans = pdata;
           console.log("subscription packs", this.upgradeplans);
@@ -253,6 +257,8 @@ export class UpgradePage {
         .subscribe(pakdata => {
           this.subscription = pakdata;
           this.mysubscription_id = this.subscription[0].id;
+          this.mysubscription_cost = this.subscription[0].plan_cost;
+          this.mysubscription_cost = parseInt(this.mysubscription_cost);
           console.log("my packid", this.mysubscription_id);
         });
       this.http

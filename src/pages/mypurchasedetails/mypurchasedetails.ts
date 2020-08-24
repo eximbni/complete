@@ -54,6 +54,8 @@ export class MypurchasedetailsPage {
   toastCtrl: any;
   leaddocuments: Object;
   posted_id: any;
+  messagecount: Object;
+  showcount: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -195,6 +197,12 @@ export class MypurchasedetailsPage {
       this.user_id = this.userdetails[0].id;
       console.log("userdata", this.userdetails);
       console.log("username", this.username);
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
       this.http
         .get(MyApp.url + "profile.php?user_id=" + this.user_id)
         .subscribe(pdata => {

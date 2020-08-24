@@ -30,6 +30,8 @@ export class FranchiseDashBoardPage {
   frdata: any;
   frtype: any;
   frname: any;
+  country: any;
+  franchisetype: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl: MenuController, 
     private storage:Storage, private http:HttpClient) {
     
@@ -69,6 +71,8 @@ export class FranchiseDashBoardPage {
     this.http.get(MyApp.url+"franchise_profile.php?user_id="+this.user_id).subscribe((fdata)=>{
       this.frdata = fdata;
       this.frtype = this.frdata[0].franchise_type;
+      this.country =this.frdata[0].country;
+      this.franchisetype =this.frdata[0].franchisetype;
       console.log("Franchise Informations:", this.frdata);
       this.storage.set("frdata",this.frdata);
     })

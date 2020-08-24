@@ -143,8 +143,8 @@ import { FranchisemapPage } from '../pages/franchisemap/franchisemap';
 import { QuoterequestsPage } from '../pages/quoterequests/quoterequests';
 import { RequestquotationPage } from '../pages/requestquotation/requestquotation';
 import { FrrequestPage } from '../pages/frrequest/frrequest';
-import { OrderByPipe } from '../pipes/order-by/order-by';
 import { GroupchatusersPage } from'../pages/groupchatusers/groupchatusers';
+import { TslidesPage } from '../pages/tslides/tslides';
 
 
 @NgModule({
@@ -214,7 +214,6 @@ import { GroupchatusersPage } from'../pages/groupchatusers/groupchatusers';
     LeadsearchPipe,
     PostingssearchPipe,
     ProductsearchPipe,
-    OrderByPipe, 
     LeadotpPage,
     OtppostPage,
     ChatchapterusersPage,
@@ -279,7 +278,8 @@ import { GroupchatusersPage } from'../pages/groupchatusers/groupchatusers';
     FrrequestPage,
     GroupchatusersPage,
     EditleadPage,
-    ViewhistoryPage
+    ViewhistoryPage,
+    TslidesPage,
   ],
   imports: [
     BrowserModule,
@@ -420,7 +420,8 @@ import { GroupchatusersPage } from'../pages/groupchatusers/groupchatusers';
     FrrequestPage,
     GroupchatusersPage,
     EditleadPage,
-    ViewhistoryPage
+    ViewhistoryPage,
+    TslidesPage,
     ],
   providers: [
     StatusBar,

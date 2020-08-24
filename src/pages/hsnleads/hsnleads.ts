@@ -48,6 +48,9 @@ export class HsnleadsPage {
   hscode: any;
   messagecount: Object;
   showcount: any;
+  buysellcredits: Object;
+  bcredits: any;
+  scredits: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient, public alertCtrl: AlertController,
 
     private storage: Storage, public menuCtrl: MenuController) {
@@ -60,10 +63,10 @@ export class HsnleadsPage {
   sellleaddetails(i) {
     const confirm = this.alertCtrl.create({
       title: 'Confirm to Proceed',
-      message: "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
+      message: "Buying this Leads will consume " + this.scredits + " credit from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
-          text: 'cancel',
+          text: 'Cancel',
           handler: () => {
             console.log('Disagree clicked');
           }
@@ -80,6 +83,7 @@ export class HsnleadsPage {
               'user_id': this.user_id,
               'chapter_id': this.sellleads[i].chapter_id,
               'lead_id':this.sell_id,
+              'credits' : this.scredits
             });
             console.log(jdata);
             this.http.post(link, jdata).subscribe((data) => {
@@ -107,7 +111,7 @@ export class HsnleadsPage {
   buyleaddetails(i) {
     const confirm = this.alertCtrl.create({
       title: 'Confirm to Proceed',
-      message: "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
+      message: "Buying this Leads will consume "+ this.bcredits +" credit from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
           text: 'cancel',
@@ -125,6 +129,7 @@ export class HsnleadsPage {
               'user_id': this.user_id,
               'chapter_id': this.buyleads[i].chapter_id,
               'lead_id':this.buy_id,
+              'credits' : this.scredits
             });
             console.log(jdata);
             this.http.post(link, jdata).subscribe((data) => {
@@ -531,7 +536,20 @@ skipsellleads(i){
     })
   }
   ionViewDidLoad() {
-   
+    this.storage.get("userdetails").then(val => {
+      this.userdata = val;
+      this.user_id = this.userdata[0].id;
+      this.country_id = this.userdata[0].country_id;
+    this.http.get(MyApp.url+"getBuySellCredit.php?country_id="+this.country_id).subscribe((creditscount)=>{
+      this.buysellcredits=creditscount;
+      this.bcredits = this.buysellcredits[0].buyCredit;
+      this.scredits = this.buysellcredits[0].sellCredit;
+      console.log("buy credits", this.bcredits);
+      console.log("sell credits", this.scredits);
+      console.log('Buy Sell Credits', this.buysellcredits[0]);
+    });
+    })
+
     this.hsn_id = this.navParams.get("hsncode");
     this.storage.get('userdetails').then((val) => {
       this.userdetails = val;

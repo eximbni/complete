@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform, Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { SigninPage } from '../signin/signin';
@@ -35,7 +35,7 @@ export class MpinPage {
   other_check: any;
   usertype: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private storage:Storage, public http: HttpClient, public platform:Platform) {
+    private storage:Storage, public http: HttpClient, public platform:Platform, private events:Events) {
       platform.registerBackButtonAction(() => {
       },1);
   }
@@ -57,10 +57,12 @@ export class MpinPage {
             alert("Your verification is under process. Please try after some time");
             this.navCtrl.push(SigninPage);  
           }else{
+           
             this.navCtrl.push(CategoriesPage);
           }
 
-        }else{          
+        }else{   
+          this.events.publish('user:signedIn', this.userdata);       
           this.navCtrl.push(CategoriesPage);
         }
         //this.navCtrl.push(CategoriesPage);

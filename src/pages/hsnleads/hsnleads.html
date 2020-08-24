@@ -1,9 +1,8 @@
 
 <ion-header>
-  <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
+  <ion-navbar color="orangebtn"  class="padding-top:10px;">
     <ion-row>
-      <ion-col col-2 float-left style="font-size: 3em ;padding-top:28px;;" > </ion-col>
-      <ion-col col-8 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png" ></ion-col>
+      <ion-col col-10 text-center style="padding-top:30px;" class="home-icon" ><img src="../assets/imgs/logos.png" ></ion-col>
       <ion-col col-2 style="font-size: 2.5em;padding-top: 31px;" (click)="menuCtrl.toggle()" color="dark" float-right><img src="../assets/imgs/menu.png" style="height:40px;" ><p class="name-footer" style="color:#111 !important">Menu</p></ion-col>
       </ion-row>
     </ion-navbar>
@@ -41,7 +40,7 @@
         <div class="errmsg">{{sellermsg}}</div>
          <ion-card  *ngFor="let selllead of sellleads | leadsearch: terms;  let i=index;">
           <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
-            <ion-col col-5>ID: {{selllead.leadref_id | slice:0:6}} XXXX</ion-col> 
+            <ion-col col-5>ID: {{selllead.leadref_id}}</ion-col> 
             <ion-col col-6>HSCode: {{selllead.hsn_id}}</ion-col> 
             <ion-col col-1 style="background: #fff;"> 
               <ion-icon *ngIf="selllead.hsstate==0" name="md-heart-outline" color="warning" item-end style="font-size:25px" (click)="mysfav(i)" > </ion-icon>

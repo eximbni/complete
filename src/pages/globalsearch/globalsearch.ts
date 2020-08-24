@@ -1,3 +1,4 @@
+import { IdontknowhscodePage } from './../idontknowhscode/idontknowhscode';
 import { Component, ViewChild } from '@angular/core';
 import {  NavController, NavParams, MenuController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
@@ -81,11 +82,11 @@ Leads(i){
 }
 Post(i){
   console.log(this.searchresult[i].id);
-  this.navCtrl.push(HspostleadPage,{
-    'hsnid': this.searchresult[i].hscode,
+  this.navCtrl.push(IdontknowhscodePage,{
+    'hsncode': this.searchresult[i].hscode,
     'chapter_id': this.searchresult[i].chapter_id,
     'hsndescription': this.searchresult[i].english,
-    'hsncode': this.searchresult[i].hscode,
+    //'hsncode': this.searchresult[i].hscode,
   })
 }
 

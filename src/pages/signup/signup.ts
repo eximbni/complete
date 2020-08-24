@@ -128,7 +128,7 @@ iecna:boolean=false;
 gstna:boolean=false;
 othna:boolean=false;
 expna:boolean=false;
-stana:boolean=false;
+stana:boolean=true;
 starclass=[];
 notax: boolean;
 salutationfullname: any;
@@ -539,7 +539,7 @@ tc(){
 
       console.log("Salutation : ",this.salutation);
       console.log("Fullname : ",this.fullname.value);
-      this.salutationfullname = this.salutation.id+this.fullname.value;
+      this.salutationfullname = this.salutation+this.fullname.value;
       console.log("Salutation Fullname : ",this.salutationfullname);
       console.log(this.pwd.value);
       console.log("countrycode : ",this.countrycode);
@@ -654,18 +654,6 @@ tc(){
         return false;
       }
     }
-       
-
-    if(this.stinput==false && this.stana==false){
-      alert("Please select atleast one option for Stars");
-      return false;
-    }else{
-      if(!this.stars.value){
-        alert("Please enter number of Stars");
-        return false;
-      }
-      console.log("Selected Stars ",this.stars.value);
-    }
     
     if(this.tcinput==false){
       console.log("Selected Stars ",this.stars.value);
@@ -706,7 +694,7 @@ tc(){
         'gstno':"none",
         'otherno':"none",
         'expyears':this.expyears.value,
-        'stars':this.stars.value,
+        'stars':0,
         'issubscribtion' : "none",
         'other_tax': "none",
         'isTaxnotpplicable':"none",
@@ -800,7 +788,7 @@ ngOnInit() {
     { id: 'air', name: 'Air' },
     { id: 'sea', name: 'Sea' },
     { id: 'land', name: 'Land' },
-    { id: 'others', name: 'Others' }  
+    { id: 'others', name: 'Agent' }  
   ];
   this.selectedporttype=[];
 
@@ -933,12 +921,10 @@ onselectport(items: any) {
 
 
 getusertype(utype){
-  this.usertype = utype.id;
-  console.log('usertype=',utype.id);
+  this.usertype = utype;
+  console.log('usertype=',utype);
   if(this.usertype == 'Other'){
-    //this.otherinput =true;
-    alert("This Option is not Enabled in the System For Faster Approval Please Chose any other Option");
-  this.selectedothertype = [];
+    this.otherinput =true;
 
   }else{
     this.otherinput =false;

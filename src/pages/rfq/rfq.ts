@@ -1,3 +1,4 @@
+import { UpgradePage } from './../upgrade/upgrade';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, MenuController, ToastController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
@@ -206,6 +207,9 @@ export class RfqPage {
   multicountries: any;
   showcount: any;
   messagecount: Object;
+  user_subscription_id: any;
+  plan_type: any;
+  selectedItems1: any[];
 
   constructor(public navCtrl: NavController,public navParams: NavParams,
     private http: HttpClient, private storage: Storage, public alertCtrl: AlertController,
@@ -298,7 +302,7 @@ export class RfqPage {
     }
 
     getlPort(){
-      console.log("Selected lcountry Country:",this.lcountry)
+    console.log("Selected lcountry Country:",this.lcountry)
       this.http.get(MyApp.url+"getleadport.php?country_id="+this.lcountry+"&port_type="+this.lport).subscribe((lportdata)=>{
         this.lports = lportdata;
         console.log('port data',lportdata);
@@ -587,7 +591,7 @@ export class RfqPage {
             /* var link = MyApp.url + "postleads.php"; */
             this.totaldata = JSON.stringify({
               'user_id': this.user_id,
-              'lead_type': this.lead_type.id,
+              'lead_type': this.lead_type.name,
               'category_id': this.category_id,
               'chapter_id': this.chapter_id,
               'hsncode_id': this.hsn_id,
@@ -628,7 +632,7 @@ export class RfqPage {
             this.navCtrl.push(LeadpreviewPage,{
               'pagedata':this.totaldata,
               'user_id': this.user_id,
-              'lead_type': this.lead_type.id,
+              'lead_type': this.lead_type.name,
               'category_id': this.category_id,
               'chapter_id': this.chapter_id,
               'hsncode_id': this.hsn_id,
@@ -723,8 +727,8 @@ export class RfqPage {
 
   ngOnInit() {
     this.dropdownList = [
-      { id: 'Sell', name: 'Sell' },
-      { id: 'Buy', name: 'Buy' },
+      { id: 'sell', name: 'Sell' },
+      { id: 'buy', name: 'Buy' },
     ];
     this.dropdownSettings6 = {
       singleSelection: true,
@@ -887,17 +891,105 @@ export class RfqPage {
   onItemSelect1(leadtype: any) {
     this.getimpexpname();
     this.lead_type = leadtype;
-    console.log(this.lead_type, leadtype, leadtype.name, 'lead type');
-    if(this.lead_type.name=="Sell"){
+    console.log(this.lead_type, 'lead type')
+    console.log(this.lead_type.name, 'lead type');
+    if(this.lead_type.name =="Sell"){
       this.odiv=true;
       this.tdiv=false;
+      console.log("Plan Type", this.plan_type);
+      if(this.plan_type == "Demo"){
+        this.http.get(MyApp.url+"mysellleads.php?u_id="+this.user_id).subscribe((data)=>{
+          if(data !=0){
+            const alert = this.alertCtrl.create({
+              title: "Oops!",
+              subTitle:
+                "You have Already Posted 1 Sell Lead, To post more sell Leads Upgrade your plan",
+              buttons: [
+                {
+                  text: "Cancel",
+                   handler: () => {
+                  console.log("Disagree clicked");
+                  this.selectedItems1 = []; 
+          }
+        },
+        {
+          text: "Agree",
+          handler: () => {
+              this.navCtrl.push(UpgradePage);
+                }
+              }
+              ]
+              
+            });
+            alert.present();
+            
+          }
+        });
+        
+      }
+      else if(this.plan_type == "Free"){
+
+        const alert = this.alertCtrl.create({
+          title: "Oops!",
+          subTitle:
+            "Free Users can post only Buy Lead, To Post Sell Lead, Upgrade your Plan",
+          buttons: [
+            {
+              text: "Cancel",
+               handler: () => {
+              console.log("Disagree clicked");
+              this.navCtrl.push(RfqPage);
+      }
+    },
+    {
+      text: "Agree",
+      handler: () => {
+          this.navCtrl.push(UpgradePage);
+            }
+          }
+          ]
+          
+        });
+        alert.present();
+
+      }
+      
+      
     }
     if(this.lead_type.name=="Buy"){
       this.tdiv=true;
       this.odiv=false;
+      console.log("Plan Type", this.plan_type);
+      if(this.plan_type == "Demo"){
+        this.http.get(MyApp.url+"mybuyleads.php?u_id="+this.user_id).subscribe((data)=>{
+          if(data !=0){
+            const alert = this.alertCtrl.create({
+              title: "Oops!",
+              subTitle:
+                "You have Already Posted 1 Buy Lead, to post more sell Leads Upgrade your plan",
+              buttons: [
+                {
+                  text: "Cancel",
+                   handler: () => {
+                  console.log("Disagree clicked");
+                  this.navCtrl.push(RfqPage);
+          }
+        },
+        {
+          text: "Agree",
+          handler: () => {
+              this.navCtrl.push(UpgradePage);
+                }
+              }
+              ]
+            });
+            alert.present();
+          }
+        });
+      }
+      
     }
-
-  }
+    }
 
   getImpExp() {
     this.getimpexpname();
@@ -1162,12 +1254,17 @@ div3pre(){
       this.referal_code = this.userdetails[0].referal_code;
       this.mobile = this.userdetails[0].mobile;
       this.user_country = this.userdetails[0].country_id;
+      this.user_subscription_id = this.userdetails[0].subscription_id;
+      this.plan_type = this.userdetails[0].plan_type;
       console.log('userdata', this.userdetails);
       console.log('user id', this.user_id);
       console.log('mobile', this.mobile);
       console.log('referal_code', this.referal_code);
-      console.log('user-county', this.user_country)
+      console.log('user-county', this.user_country);
+      console.log('user Plan Type', this.plan_type);
     });
+
+
 
     console.log('ionViewDidLoad RfqPage');
     this.http.get(MyApp.url + "getuoms.php").subscribe((uomdata) => {

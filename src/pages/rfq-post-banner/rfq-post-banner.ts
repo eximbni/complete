@@ -216,7 +216,8 @@ export class RfqPostBannerPage {
   }
 
   addContact(){
-    console.log("subject : ",this.subject.value);
+    if(this.subject.vale !='' && this.message.value !=''){
+      console.log("subject : ",this.subject.value);
     console.log("message : ",this.message.value);
     
     const confirm = this.alertCtrl.create({
@@ -233,7 +234,7 @@ export class RfqPostBannerPage {
         {
           text: 'Agree',
           handler: () => {
- /*           console.log('Agree clicked');
+         console.log('Agree clicked');
             var link = MyApp.url + "feedback.php";
             var jdata = JSON.stringify({
               user_id: this.user_id,
@@ -261,7 +262,7 @@ export class RfqPostBannerPage {
                 alert.present();
               }
             });
- */
+ 
 this.navCtrl.push(MyaccountPage);
 
           }
@@ -269,6 +270,11 @@ this.navCtrl.push(MyaccountPage);
        ]
     });  
     confirm.present();  
+    }  
+    else{
+      alert("Can't Send Empty Vlaues. Please Enter Message and then submit");
+    }
+    
   }
 
   home() {

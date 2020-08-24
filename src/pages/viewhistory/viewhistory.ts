@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
 
-/**
- * Generated class for the ViewhistoryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage()
 @Component({
   selector: 'page-viewhistory',
   templateUrl: 'viewhistory.html',

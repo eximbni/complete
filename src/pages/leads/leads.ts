@@ -80,6 +80,9 @@ export class LeadsPage {
   sexp_policy: any;
   messagecount: object;
   showcount: any;
+  buysellcredits: any;
+  bcredits: any;
+  scredits: any;
 
   constructor(
     public navCtrl: NavController,
@@ -159,10 +162,10 @@ export class LeadsPage {
     const confirm = this.alertCtrl.create({
       title: "Confirm to Proceed",
       message:
-        "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
+        "Buying this Leads will consume " + this.scredits + " credit from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
-          text: "cancel",
+          text: "Cancel",
           handler: () => {
             console.log("Disagree clicked");
           }
@@ -177,7 +180,8 @@ export class LeadsPage {
               user_id: this.user_id,
               chapter_id: this.sellleads[i].chapter_id,
               lead_id: this.sellleads[i].lead_id,
-              leadref_id: this.sellleads[i].leadref_id
+              leadref_id: this.sellleads[i].leadref_id,
+              credits : this.scredits
             });
             console.log("selljsondata=", jdata);
             this.http.post(link, jdata).subscribe(data => {
@@ -210,10 +214,10 @@ export class LeadsPage {
   buyleaddetails(i) {
     const confirm = this.alertCtrl.create({
       title: "Confirm to Proceed",
-      message: "Buying this Leads will consume one credt from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
+      message: "Buying this Leads will consume "+ this.bcredits +" credit from your wallet. Are you sure to buy this lead and you credits are " + this.credits,
       buttons: [
         {
-          text: "cancel",
+          text: "Cancel",
           handler: () => {
             console.log("Disagree clicked");
           }
@@ -227,7 +231,8 @@ export class LeadsPage {
               user_id: this.user_id,
               chapter_id: this.buyleads[i].chapter_id,
               lead_id: this.buyleads[i].id,
-              leadref_id: this.buyleads[i].leadref_id
+              leadref_id: this.buyleads[i].leadref_id,
+              credits : this.bcredits
             });
             console.log("buydadat=", jdata);
             this.http.post(link, jdata).subscribe(data => {
@@ -548,6 +553,15 @@ export class LeadsPage {
           this.messagecount=count;
           this.showcount = this.messagecount[0].unreadMsgs;
           console.log('Message Count:', this.messagecount);
+        })
+        
+        this.http.get(MyApp.url+"getBuySellCredit.php?country_id="+this.country_id).subscribe((creditscount)=>{
+          this.buysellcredits=creditscount;
+          this.bcredits = this.buysellcredits[0].buyCredit;
+          this.scredits = this.buysellcredits[0].sellCredit;
+          console.log("buy credits", this.bcredits);
+          console.log("sell credits", this.scredits);
+          console.log('Buy Sell Credits', this.buysellcredits[0]);
         })
     });
     

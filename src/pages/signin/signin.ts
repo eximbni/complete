@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, MenuController, AlertController, Platform, } from 'ionic-angular';
+import { NavController, NavParams, MenuController, AlertController, Platform, Events, } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SignupPage } from '../signup/signup';
 import { ForgrtPwdPage } from '../forgrt-pwd/forgrt-pwd';
@@ -36,7 +36,7 @@ export class SigninPage {
   user_type: string;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient,
     private storage: Storage, public alertCtrl: AlertController, public menuCtrl: MenuController,
-   private platform:Platform
+   private platform:Platform, private events:Events
   ) {
     this.menuCtrl.enable(false, "sideMenu");
   }
@@ -130,6 +130,7 @@ toggleMenu() {
                       alert.present();
                   }
                   else{
+                    
                     this.navCtrl.push(CategoriesPage, { 
                       'userdetails': this.logindata,
                       'country_id': this.country_id,
@@ -140,6 +141,7 @@ toggleMenu() {
 
                 }
                 else{
+                  this.events.publish('user:signedIn', this.logindata);
                   this.storage.set('userdetails',this.logindata);
                   this.navCtrl.push(CategoriesPage, { 
                     'userdetails': this.logindata,

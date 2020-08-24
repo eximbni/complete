@@ -38,7 +38,7 @@
         <div class="errmsg" style="color: red;" >{{sellerrmsg}}</div>
         <ion-card  *ngFor="let selllead of sellleads | postingssearch: terms;  let i=index;" >
           <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
-            <ion-col col-6>ID: {{selllead.leadref_id | slice:0:6}} XXXX</ion-col> 
+            <ion-col col-6>ID: {{selllead.leadref_id}} </ion-col> 
             <ion-col col-6>HSCode: {{selllead.hsn_id}}</ion-col>  
           </ion-row>
           
@@ -58,7 +58,8 @@
           </ion-row>
   
           <ion-row>
-            <ion-col col-12><button ion-button round small color="palegreen"  block (click)="sellerp(i)"> Show Lead Details</button></ion-col>
+            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="selledit(i)"> Edit Lead Details</button></ion-col>
+            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="sellerp(i)"> Show Lead Details</button></ion-col>
           </ion-row>
   
          </ion-card>
@@ -68,7 +69,7 @@
         <div class="errmsg" style="color: red;" >{{buyerrmsg}}</div>
         <ion-card  *ngFor="let buylead of buyleads | postingssearch: terms;  let i=index;">
           <ion-row style="background: #fff; color: rgb(243, 93, 93); border-bottom: 1px solid grey;">
-            <ion-col col-6>ID: {{buylead.leadref_id | slice:0:6}} XXXX</ion-col> 
+            <ion-col col-6>ID: {{buylead.leadref_id }}</ion-col> 
             <ion-col col-6>HSCode: {{buylead.hsn_id}}</ion-col>  
           </ion-row>
           
@@ -88,7 +89,8 @@
           </ion-row>
   
           <ion-row>
-            <ion-col col-12><button ion-button round small color="palegreen"  block (click)="buyersp(i)"> Show Lead Details</button></ion-col>
+            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="buyedit(i)"> Edit Lead Details</button></ion-col>
+            <ion-col col-6><button ion-button round small color="palegreen"  block (click)="buyersp(i)"> Show Lead Details</button></ion-col>
           </ion-row>
       </ion-card>
       </ion-slide>

@@ -1,6 +1,5 @@
-import { SendquotePage } from './../pages/sendquote/sendquote';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController, AlertController, ToastController } from 'ionic-angular';
+import { Nav, Platform, MenuController, AlertController, ToastController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
@@ -31,6 +30,7 @@ import { CategoriesPage } from '../pages/categories/categories';
 import { SigninPage } from '../pages/signin/signin';
 import { MpinPage } from '../pages/mpin/mpin';
 import { FrrequestPage } from '../pages/frrequest/frrequest';
+import { TslidesPage } from '../pages/tslides/tslides';
 @Component({
   templateUrl: 'app.html'
 })
@@ -41,8 +41,6 @@ export class MyApp {
   userdb = true;
   franchisebtn=false;
   frdb = false;
-  userdata: any;
-  username: any;
   isfranchise:any;
   userdetails:any;
   pages: Array<{ title: string, component: any }>;
@@ -51,8 +49,6 @@ export class MyApp {
   lastTimeBackPress: number;
   timePeriodToExit: number;
   userprofile:any;
-  userid:any;
-  userimage:string;
   franchise:any;
   mxe:any=0;
   submenus: Array<{title: string, component: any}>;
@@ -65,7 +61,19 @@ export class MyApp {
   user_name: any;
   business_name: any;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,private storage: Storage, public menuCtrl: MenuController, public http: HttpClient, public alertCtrl: AlertController,
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController, private events: Events) {
+      events.subscribe('user:signedIn', (userEventData) => {
+        console.log("Event Data:",userEventData);
+        this.user_image = userEventData[0].user_image;
+        this.user_name  = userEventData[0].name;
+        this.business_name = userEventData[0].business_name;
+        this.franchise = userEventData[0].isfranchise;
+        if(this.franchise == 1){
+          this.franchisebtn = true;
+        }else{
+          this.franchisebtn = false;
+        }
+       });
       this.mainmenus = [ 
         //main menu-list
    ];
@@ -73,26 +81,6 @@ export class MyApp {
        //child menu-list
    ]
    
-     
-      this.storage.get('userdetails').then((val)=>{
-        this.userdata = val;
-        console.log('user franchise', this.isfranchise);
-        this.http.get(MyApp.url+"profile.php?user_id="+this.userdata[0].id).subscribe((edata)=>{
-          this.userprofile = edata;
-          console.log("user data", this.userprofile);
-        
-          this.franchise=this.userprofile[0].isfranchise;
-          console.log('franchise',this.franchise);
-          if(this.franchise == 1){
-            this.franchisebtn = true;
-          }else{
-            this.franchisebtn = true;
-          }
-         
-        });
-        console.log('name=',this.username);
-        console.log(val,'userdata');
-      });
       this.menuCtrl.enable(true, "sideMenu");
   
       // used for an example of ngFor and navigation
@@ -126,19 +114,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-    });
-
-    // add user details code Here
-    this.storage.get('userdetails').then((val)=>{
-      this.userdata = val;
-      this.isFranchise = this.userdata[0].isfranchise;
-      this.user_image = this.userdata[0].user_image;
-      this.user_name = this.userdata[0].name
-      this.business_name = this.userdata[0].business_name;
-      console.log(val,'userdata');
-      console.log("user_image", this.user_image);
-      console.log("Name", this.user_name);
-      console.log("Business_name", this.business_name);
     });
 
   }
@@ -179,13 +154,7 @@ export class MyApp {
       this.nav.setRoot(frc.component);
     }
     franchisedb() {
-      this.storage.get('userdetails').then((val)=>{
-        this.userdata = val;
-        this.isfranchise=this.userdata[0].isfranchise;
-        console.log('isfranchise=',this.isfranchise);
-        console.log(val,'userdata');
-      
-      if(this.isfranchise==1){
+      if(this.franchise==1){
         this.userdb = false;
         this.frdb = true;
         this.nav.push(FranchiseDashBoardPage);
@@ -198,7 +167,6 @@ export class MyApp {
         alert.present();
         this.nav.push(ReqFranchisePage);
       }
-    });
     }
     userdashboard() {
       this.userdb = true;
@@ -222,11 +190,6 @@ export class MyApp {
     }
    
     ionViewDidLoad(){
-      this.storage.get('userdetails').then((val)=>{
-        this.userdata = val;
-        this.isFranchise = this.userdata[0].isfranchise;
-        console.log(val,'userdata');
-      });
       
     }
   }

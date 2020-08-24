@@ -12,6 +12,8 @@ import { MyApp } from '../../app/app.component';
 import { VideologinPage } from '../videologin/videologin';
 import { MyleadDetailsPage } from '../mylead-details/mylead-details';
 import { MybuydetailsPage } from '../mybuydetails/mybuydetails';
+import { EditleadPage } from '../editlead/editlead';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: "page-my-leads",
@@ -27,6 +29,8 @@ export class MyLeadsPage {
   buyleads:any; count:any;
   buyerrmsg:any;
   sellerrmsg:any;
+  messagecount: Object;
+  showcount: any;
   constructor(public navCtrl: NavController,public navParams: NavParams, private http: HttpClient,
     private storage: Storage, private menuCtrl:MenuController) {}
     toggleMenu() {
@@ -151,12 +155,62 @@ smoothScrollTo(endX){
     this.segments.nativeElement.scrollLeft = newX;
   }, 1000 / 60); // 60 fps
 }
+selledit(i){
+ this.navCtrl.push(EditleadPage,{
+'categories_id':this.sellleads[i].categories_id,
+'chapter_id': this.sellleads[i].chapter_id,
+'id' : this.sellleads[i].id,
+'description':this.sellleads[i].description,
+'currency':this.sellleads[i].currency,
+'destination_port':this.sellleads[i].destination_port,
+'expiry_date':this.sellleads[i].expiry_date,
+'hsn_id':this.sellleads[i].hsn_id,
+'inspection_auth':this.sellleads[i].inspection_auth,
+'loading_port':this.sellleads[i].loading_port,
+'port_type':this.sellleads[i].port_type,
+'price_inusd':this.sellleads[i].price_inusd,
+'price_option':this.sellleads[i].price_option,
+'quantity':this.sellleads[i].quantity,
+'special_instruc':this.sellleads[i].special_instruc,
+'uom':this.sellleads[i].uom,
+'leadref_id':this.sellleads[i].leadref_id,
+'lead_type':this.sellleads[i].lead_type
+ })
+}
+buyedit(i){
+this.navCtrl.push(EditleadPage,{
+  'categories_id':this.buyleads[i].categories_id,
+  'chapter_id': this.buyleads[i].chapter_id,
+  'id' : this.buyleads[i].id,
+  'description':this.buyleads[i].description,
+  'currency':this.buyleads[i].currency,
+  'destination_port':this.buyleads[i].destination_port,
+  'expiry_date':this.buyleads[i].expiry_date,
+  'hsn_id':this.buyleads[i].hsn_id,
+  'inspection_auth':this.buyleads[i].inspection_auth,
+  'loading_port':this.buyleads[i].loading_port,
+  'port_type':this.buyleads[i].port_type,
+  'price_inusd':this.buyleads[i].price_inusd,
+  'price_option':this.buyleads[i].price_option,
+  'quantity':this.buyleads[i].quantity,
+  'special_instruc':this.buyleads[i].special_instruc,
+  'uom':this.buyleads[i].uom,
+  'leadref_id':this.buyleads[i].leadref_id,
+  'lead_type':this.buyleads[i].lead_type
+})
+}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyLeadsPage');
    this.storage.get('user_id').then((user_id) => {
       this.userid = user_id;
       console.log(this.userid,'uni id');
+
+      this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.userid).subscribe((count)=>{
+        this.messagecount=count;
+        this.showcount = this.messagecount[0].unreadMsgs;
+        console.log('Message Count:', this.messagecount);
+      })
       this.http.get(MyApp.url+"mybuyleads.php?u_id="+this.userid).subscribe((data)=>{
      
      if(data==0){

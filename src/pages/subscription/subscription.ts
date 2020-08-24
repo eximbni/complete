@@ -107,6 +107,21 @@ export class SubscriptionPage {
       //console.log('userid', this.user_id);
       this.http.get(MyApp.url+"getsubscriptions.php?country_id="+this.country_id).subscribe((data) => {
         this.subscription = data;
+        this.navCtrl.push(PackagePage, {
+          'user_id': this.user_id,
+          'subscription_id': this.subscription[0].id,
+          'credits': this.subscription[0].credits,
+          'duration': this.subscription[0].plan_duration,
+          'plan_cost':this.subscription[0].plan_cost,
+          'monthly_cost':this.subscription[0].monthly_cost,
+          'country_id': this.country_id,
+          'chapters': this.subscription[0].chapters,
+          'hscodes':this.subscription[0].hscodes,
+          'state_id': this.state_id,
+          'plan_name':this.subscription[0].plan_name,
+          'coupons':this.subscription[0].coupons,
+        });
+
 
         console.log('subscription packs', this.subscription);
       });

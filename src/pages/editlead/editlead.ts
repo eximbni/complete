@@ -1,18 +1,10 @@
 import { MyLeadsPage } from './../my-leads/my-leads';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { NavController, NavParams, MenuController } from 'ionic-angular';
 import { MyApp } from '../../app/app.component';
 import { HttpClient } from '@angular/common/http';
 import { ViewhistoryPage } from '../viewhistory/viewhistory';
 
-/**
- * Generated class for the EditleadPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-editlead',
   templateUrl: 'editlead.html',
@@ -126,6 +118,7 @@ export class EditleadPage {
   @ViewChild("uprice") uprice;
   @ViewChild("udescription") udescription;
   @ViewChild("edate") edate;
+  load_port: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpClient, private menuCtrl : MenuController) {
     this.categories_id=this.navParams.get('categories_id');
     this.chapter_id=this.navParams.get('chapter_id');
@@ -136,7 +129,7 @@ export class EditleadPage {
     this.expiry_date=this.navParams.get('expiry_date');
     this.hsn_id=this.navParams.get('hsn_id');
     this.inspection_auth=this.navParams.get('inspection_auth');
-    this.loading_port=this.navParams.get('loading_port');
+    this.load_port=this.navParams.get('loading_port');
     this.port_type=this.navParams.get('port_type');
     this.price_inusd=this.navParams.get('price_inusd');
     this.price_option=this.navParams.get('price_option');
@@ -154,22 +147,7 @@ export class EditleadPage {
   }
 
   update(){
-    if(this.uMyAuth.value==''){
-      this.uMyAuth.value=this.inspection_auth;
-    }
-    if(this.uMyInst.value==''){
-      this.uMyInst.value=this.special_instruc;
-    }
-    if(this.udescription.value==''){
-      this.udescription.value=this.description;
-    }
-    if(this.uprice.value==''){
-      this.uprice.value=this.price_inusd;
-    }
-    if(this.uqty.value == ''){
-      this.uqty.value = this.quantity;
-    }
-
+    if(this.uMyAuth.value!='' ||this.uMyRemark.value!='' ||this.uMyInst.value!='' ||this.uqty.value!='' ||this.uprice.value!='' ||this.udescription.value!='' ){
 
     var link = MyApp.url+"updateleads.php";
     var Mydata = JSON.stringify({
@@ -179,7 +157,7 @@ export class EditleadPage {
     'destination_port':this.destination_port,
     'expiry_date':this.expiry_date,
     'inspection_auth':this.inspection_auth,
-    'loading_port':this.loading_port,
+    'loading_port':this.load_port,
     'port_type':this.port_type,
     'price_inusd':this.price_inusd,
     'price_option':this.price_option,
@@ -210,7 +188,12 @@ export class EditleadPage {
       else{
         alert("Something went wrong please try after sometime");
       }
-    })
+    });
+
+  }
+  else{
+    alert("You have not made any updates. Please update and resubmit");
+  }
   }
   ngOnInit() {
     this.dropdownList = [

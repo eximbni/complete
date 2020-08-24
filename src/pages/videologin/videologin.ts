@@ -1,9 +1,12 @@
+import { WebinarPage } from './../webinar/webinar';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Plugins } from '@capacitor/core';
 import 'capacitor-jitsi-meet';
 import { MyApp } from '../../app/app.component';
 import { HttpClient } from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+
 
 
 @Component({
@@ -14,7 +17,9 @@ export class VideologinPage {
   @ViewChild("name") name;
   @ViewChild("meeting_id") meeting_id;
   @ViewChild("password") password;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpClient) {
+  userdetails: any;
+  user_id: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpClient, private storage: Storage) {
     this.test();
   }
 
@@ -44,6 +49,9 @@ export class VideologinPage {
    //alert("Video Conference is comming soon to IOS Version.");
   //alert("I am in");
    var roomname= this.meeting_id.value;
+   if(! roomname){
+     alert("Please Enter Your Meeting ID and Password");
+   }
    console.log(roomname,'Room Name');
    var username = this.name.value;
    console.log(username, 'User Name');
@@ -75,7 +83,16 @@ export class VideologinPage {
   gotoApp(){
     this.navCtrl.pop();
   }
+  schedule(){
+    this.navCtrl.push(WebinarPage);
+  }
   ionViewDidLoad() {
+    this.storage.get("userdetails").then((val)=>{
+      this.userdetails =val;
+      this.user_id = this.userdetails[0].id;
+      console.log("Loged In User:" , this.user_id);
+      console.log('userdetails',val);
+      })
     console.log('ionViewDidLoad VideologinPage');
   }
 

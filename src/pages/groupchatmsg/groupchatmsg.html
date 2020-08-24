@@ -22,18 +22,22 @@
           {{ msg.message }}
           <br>
           <small>{{msg.business_name}}</small>
-          <img  *ngIf="msg.file_type=='image'"src="https://eximbni.com/api/uploads/{{msg.file_path}}" height="200" width="60%"/>
+          <img  *ngIf="msg.file_type=='image'"src="{{imgUrl}}/uploads/{{msg.file_path}}" height="200" width="60%"/>
           <span class="metadata"><!-- <span class="time">{{ msg.posted_time  | date:'h:mm'}}</span> --></span>
       </div>
       <div class="message sent" *ngIf="user_id == msg.posted_by">
           {{ msg.message }}
           <br>
           <small>{{msg.business_name}}</small>
-          <img  *ngIf="msg.file_type=='image'" src="https://eximbni.com/api/uploads/{{msg.file_path}}" height="200" width="100%"/>
+          <img  *ngIf="msg.file_type=='image'" src="{{imgUrl}}/uploads/{{msg.file_path}}" height="200" width="100%"/>
           <span class="metadata"><!-- <span class="time">{{ msg.posted_time | date:'h:mm'}}</span> --></span>
       </div>
   </ion-list>
   </div>
+  
+  
+</ion-content>
+<ion-footer>
   <div class="second">
     <div *ngIf="attachments" style="background-color: rgb(229, 230, 228); z-index:9999;">
 <b style="color:red" (click)="closeDiv()"><ion-icon name="close-circle" style="font-size: 1.5em;" color="red" float-right></ion-icon></b>
@@ -57,5 +61,4 @@
     </ion-row>
     
   </div>
-  
-</ion-content>
+</ion-footer>

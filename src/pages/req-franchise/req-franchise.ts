@@ -159,7 +159,7 @@ export class ReqFranchisePage {
       message: 'Are you sure  you want to submit this form',
       buttons: [
         {
-          text: 'cancel',
+          text: 'Cancel',
           handler: () => {
             console.log('cnacel clicked');
           }

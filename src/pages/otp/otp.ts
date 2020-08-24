@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, MenuController, ToastController, Platform } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ToastController, Platform, LoadingController, AlertController } from 'ionic-angular';
 import { SubscriptionPage } from '../subscription/subscription';
 import { HttpClient } from '@angular/common/http';
 import { MyApp } from '../../app/app.component';
@@ -26,8 +26,9 @@ export class OtpPage {
   country_code: any;
   usermobile: any;
   usertype: any;
+  packdetails: Object;
   constructor(public navCtrl: NavController, public platform: Platform, public navParams: NavParams,public menuCtrl : MenuController,
-    private http:HttpClient ,public toastCtrl: ToastController, public storage:Storage) {
+    private http:HttpClient ,public toastCtrl: ToastController, public storage:Storage, public loadingCtrl:LoadingController, public alertCtrl:AlertController) {
       platform.registerBackButtonAction(() => {
       },1);
       this.menuCtrl.enable(false, "sideMenu");
@@ -42,6 +43,7 @@ export class OtpPage {
       this.userdata = val;
       this.mobile = this.userdata[0].mobile;
       this.usertype = this.userdata[0].user_type;
+      this.user_id = this.userdata[0].id;
       console.log(this.mobile, "My Mobile number");
     });
    
@@ -98,11 +100,40 @@ export class OtpPage {
           this.navCtrl.push(EmailverificationPage);
 
         }else{
-          this.navCtrl.push(SubscriptionPage, {
-              'user_id':this.user_id,
-              'country_id':this.country_id,
-              'state_id':this.state_id,
-            });
+          const loader = this.loadingCtrl.create({
+            content: "Please wait creating welcome kit for you",
+          });
+          loader.present();
+              var link = MyApp.url+"usersubscription.php";
+              var Jdata = JSON.stringify({
+                'user_id': this.user_id,
+                'pack_id': 40,
+                'duration': 365,
+                'country_id': this.country_id,
+                'state_id': this.state_id,
+                'credits': 3,
+                'plan_name':'Demo',
+              });
+              console.log(Jdata);
+              this.http.post(link, Jdata).subscribe((cdata) => {
+                this.packdetails = cdata;
+                console.log(cdata, 'free package details');
+                if (cdata) {
+                  loader.dismiss();
+                  this.navCtrl.push(EmailverificationPage)
+                }
+                else {
+                  loader.dismiss();
+                  const alert = this.alertCtrl.create({
+                    title: 'Oops!',
+                    subTitle: 'Something  went wrong!',
+                    buttons: ['OK'],
+                    cssClass: 'buttoncss'
+                  });
+                  alert.present();
+                }
+          
+              });
 
         }
          

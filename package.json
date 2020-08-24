@@ -149,8 +149,6 @@
       "mx.ferreyra.callnumber": {},
       "cordova-plugin-nativestorage": {}
     },
-    "platforms": [
-      "browser"
-    ]
+    "platforms": []
   }
 }

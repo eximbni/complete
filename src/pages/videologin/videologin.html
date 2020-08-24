@@ -27,6 +27,9 @@
   <button ion-button small (click)="login()" block round>Start</button>
  </div>
  <br>
+<div *ngIf="user_id">
+ <button ion-button small (click)="schedule()" success round>Schedule Webinar</button>
+  </div>
  <h2 style="color: #fff;
  background: #408942;
  border-radius: 5px;

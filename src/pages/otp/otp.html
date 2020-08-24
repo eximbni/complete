@@ -1,12 +1,10 @@
-<ion-header>
-    <ion-navbar color="orangebtn" hideBackButton class="padding-top:10px;">
-       
-        <ion-col col-6 float-left style="padding-top:15px;" class="home-icon" ><img src="../assets/imgs/logos.png" style="height:70px;" ></ion-col>
-      </ion-navbar>
-  </ion-header>
 
-
-<ion-content class="otp-container" padding>
+  <ion-content  style="background-color: #fe5200;">
+    <div style="background :#ffffff; border-radius:10px; margin:5%; height: 95%; position: absolute; color: #252f6a;" text-center>
+      <br><br>
+    <div class="logo-div"><img src="../assets/imgs/logos.png" width="60%" class="logo-image"/></div>
+    <br>
+    <br>
     <ion-grid>
         <ion-row  class="img-col">
           <ion-col>
@@ -28,6 +26,6 @@
 </div>
   <p>Please wait For <b style="color:white; background-color: red;">{{maxtime}} Seconds.</b> if didnt receive OTP system will automatically resend OTP</p>
   <p style="text-align:center" *ngIf="maxtime<1"><a href="#" class="otp-resend">Even Now if you Didnt receive any OTP to your Mobile, there might be some problem in local Gateway <span style="background: yellow; color:#111">Plese check your Email given at  signup page for OTP. </span></a></p>
-   
+   </div>
 
 </ion-content>

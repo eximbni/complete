@@ -4,16 +4,26 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar hideBackButton>
-    <ion-title></ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-An email verification link has been sent to your registered email address.<br>
-Open your email and click the link to activate your account. 
+<ion-content  style="background-color: #fe5200;">
+  <div style="background :#ffffff; border-radius:10px; margin:5%; height: 95%; position: absolute; color: #252f6a;" text-center>
+    <br><br>
+  <div class="logo-div"><img src="../assets/imgs/logos.png" width="60%" class="logo-image"/></div>
+  <br>
+  <br>
+  <br>
+  <h3  padding>An email verification link has been sent to your registered email address.</h3>
+<h5 padding>
+Open your email and click the link to activate your account. <br>
 It may go to your spam folder also. Please check spam folder.
+</h5>
 <br>
-<button ion-button (click)="emailchk()" block >Submit</button>
+
+<ion-row>
+  <ion-col col-2></ion-col>
+  <ion-col col-8><button ion-button (click)="emailchk()" block >Submit</button></ion-col>
+  <ion-col col-2></ion-col>
+</ion-row>
+
+</div>
 </ion-content>

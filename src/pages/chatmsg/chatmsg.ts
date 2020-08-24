@@ -55,12 +55,13 @@ export class ChatmsgPage {
   interval: any;
   items: Observable<any[]>;
   observableVar: Subscription;
+  imgUrl: string;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, 
     public navParams: NavParams,
      private storage:Storage, private http:HttpClient, 
       public loadingCtrl: LoadingController, private callNumber: CallNumber,
       private camera:Camera,private transfer: FileTransfer, public alertCtrl:AlertController, private file:File) {
-
+        this.imgUrl= MyApp.url;
    //calling chat
    this.observableVar = Observable.interval(1000).subscribe(()=>{
     this.callChat();

@@ -24,7 +24,7 @@
         (onSelect)="onItemSelect($event)"
         (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
       </div>
-      <b>Selected Chapter HS Codes <span style="color:red" (click)="close()">Close</span></b>
+     <!--  <b>Selected Chapter HS Codes <span style="color:red" (click)="close()">Close</span></b>
      <ion-row *ngIf="hsdiv">
        <ion-col col-12 *ngFor="let hscodes of hsdetails">{{hscodes.MyColumn}}</ion-col>
      </ion-row>
@@ -46,7 +46,7 @@
            
           </ion-list>
       </div>
-      <!--
+      
       <p class="msg">First 2 Digits of HSCode represents Chapter Please select Carefully. Selected Chapters Cannot be changed. </p>
 <div style="margin-bottom: 2%;">
         
@@ -58,7 +58,7 @@
         (onSelect)="onhscodeselect($event)"
         (onSelectAll)="onallhscodes($event)"></ng-multiselect-dropdown>
       </div>
-    -->
+    --> 
      <button ion-button block (click)="submit()" color="warning">Submit</button>
      
 </ion-content>
