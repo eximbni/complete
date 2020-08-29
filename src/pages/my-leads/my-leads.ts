@@ -31,8 +31,16 @@ export class MyLeadsPage {
   sellerrmsg:any;
   messagecount: Object;
   showcount: any;
+  policy: Object;
+  bxp_policy: any;
+  country_id: string;
+  bimp_policy: any;
+  sexp_policy: any;
+  simp_policy: any;
+  user_country: any;
+  userdetails: any;
   constructor(public navCtrl: NavController,public navParams: NavParams, private http: HttpClient,
-    private storage: Storage, private menuCtrl:MenuController) {}
+    private storage: Storage, private menuCtrl:MenuController, public alertCtrl: AlertController) {}
     toggleMenu() {
       this.menuCtrl.toggle();
     }
@@ -55,6 +63,62 @@ export class MyLeadsPage {
   }
   quotes(){
     this.navCtrl.push(RfqPage);
+  }
+
+  simport(i){
+    console.log("User Country", this.user_country);
+    this.http.get(MyApp.url+"gethscodepolicybycountries.php?country_id="+this.user_country+"&hscodes="+this.sellleads[i].hsn_id).subscribe((data)=>{
+      this.policy = data;
+      console.log("policy", this.policy);
+      this.simp_policy = this.policy[0].exp_policy;
+    
+    const alert = this.alertCtrl.create({
+      title: 'Import Policy',
+      subTitle: this.simp_policy,
+      buttons: ['OK']
+    });
+    alert.present();
+  })
+  }
+  sexport(i){
+    this.http.get(MyApp.url+"gethscodepolicybycountries.php?country_id="+this.user_country+"&hscodes="+this.sellleads[i].hsn_id).subscribe((data)=>{
+      this.policy = data;
+      this.sexp_policy = this.policy[0].exp_policy;
+    
+    const alert = this.alertCtrl.create({
+      title: 'Export Policy',
+      subTitle: this.sexp_policy,
+      buttons: ['OK']
+    });
+    alert.present();
+  })
+  }
+
+  bimport(i){
+    this.http.get(MyApp.url+"gethscodepolicybycountries.php?country_id="+this.user_country+"&hscodes="+this.buyleads[i].hsn_id).subscribe((data)=>{
+      this.policy = data;
+      this.bimp_policy = this.policy[0].imp_policy;
+    
+    const alert = this.alertCtrl.create({
+      title: 'Import Policy',
+      subTitle: this.bimp_policy,
+      buttons: ['OK']
+    });
+    alert.present();
+  })
+  }
+  bexport(i){
+    this.http.get(MyApp.url+"gethscodepolicybycountries.php?country_id="+this.user_country+"&hscodes="+this.buyleads[i].hsn_id).subscribe((data)=>{
+      this.policy = data;
+      this.bxp_policy = this.policy[0].exp_policy;
+    
+    const alert = this.alertCtrl.create({
+      title: 'Export Policy',
+      subTitle: this.bxp_policy,
+      buttons: ['OK']
+    });
+    alert.present();
+  })
   }
   sellerp(i){
     this.navCtrl.push(MyleadDetailsPage, {
@@ -202,6 +266,14 @@ this.navCtrl.push(EditleadPage,{
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyLeadsPage');
+
+    this.storage.get('userdetails').then((val) => {
+      this.userdetails = val;
+      this.user_country = this.userdetails[0].country_id;
+      
+      console.log('user-county', this.user_country)
+    });
+
    this.storage.get('user_id').then((user_id) => {
       this.userid = user_id;
       console.log(this.userid,'uni id');

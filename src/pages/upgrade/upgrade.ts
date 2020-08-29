@@ -51,6 +51,8 @@ export class UpgradePage {
   showcount: any;
   mysubscription_cost: any;
   subscription_cost: any;
+  state_id: any;
+  subscription_duration: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -100,8 +102,10 @@ export class UpgradePage {
     this.pack_id = this.upgradeplans[i].chapters;
     this.packhscode = this.upgradeplans[i].hscodes;
     this.subscription_id = this.upgradeplans[i].id;
+    this.subscription_duration = this.upgradeplans[i].plan_duration;
     console.log("show chapters pack id", this.pack_id);
     console.log("show chapters pack id", this.subscription_id);
+    console.log("Duration", this.upgradeplans[i].plan_duration);
     this.http.get(MyApp.url + "chapters.php").subscribe(data => {
       this.chapters = data;
       this.ChapList = this.chapters;
@@ -145,7 +149,10 @@ export class UpgradePage {
         chapter_id: this.selectedItems,
         hscodes: this.selectedhscodes,
         pack_id: this.subscription_id,
-        credits: this.credits
+        credits: this.credits,
+        country_id :this.country_id,
+        state_id: this.state_id,
+        duration:this.subscription_duration
       });
       console.log(Jdata);
       this.http.post(link, Jdata).subscribe(cdata => {
@@ -239,6 +246,9 @@ export class UpgradePage {
       this.userdetails = val;
       this.user_id = this.userdetails[0].id;
       this.country_id = this.userdetails[0].country_id;
+      this.state_id = this.userdetails[0].state_id;
+
+      console.log("user details", this.userdetails);
 
       this.http.get(MyApp.url+"getunreadmessagecount.php?user_id="+this.user_id).subscribe((count)=>{
         this.messagecount=count;

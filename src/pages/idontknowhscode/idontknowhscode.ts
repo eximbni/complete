@@ -1,3 +1,4 @@
+import { UpgradePage } from './../upgrade/upgrade';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, MenuController, ToastController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
@@ -206,6 +207,8 @@ export class IdontknowhscodePage {
   messagecount: Object;
   hsndescription: any;
   hsncode: any;
+  selectedItems1: any[];
+  plan_type: any;
    constructor(public navCtrl: NavController,public navParams: NavParams,
     private http: HttpClient, private storage: Storage, public alertCtrl: AlertController,
     private camera: Camera, private transfer: FileTransfer, public menuCtrl: MenuController,public toastCtrl: ToastController ) {
@@ -552,7 +555,7 @@ export class IdontknowhscodePage {
                 'region':this.Region,
                 'loading_country':this.lcountry,
                 'loading_port_type':this.lport,
-                'loading_port':this.loading_port.port,
+                'loading_port':this.loading_port,
                 'destination_country':this.dcountry,
                 'destination_port_type':this.dport,
                 'destination_port':this.destination_port,
@@ -593,7 +596,7 @@ export class IdontknowhscodePage {
                 'region':this.Region,
                 'loading_country':this.lcountry,
                 'loading_port_type':this.lport,
-                'loading_port':this.loading_port.port,
+                'loading_port':this.loading_port,
                 'destination_country':this.dcountry,
                 'destination_port_type':this.dport,
                 'destination_port':this.destination_port,
@@ -841,10 +844,96 @@ export class IdontknowhscodePage {
       if(this.lead_type.name=="Sell"){
         this.odiv=true;
         this.tdiv=false;
+        console.log("Plan Type", this.plan_type);
+      if(this.plan_type == "Demo"){
+        this.http.get(MyApp.url+"mysellleads.php?u_id="+this.user_id).subscribe((data)=>{
+          if(data !=0){
+            const alert = this.alertCtrl.create({
+              title: "Oops!",
+              subTitle:
+                "You have Already Posted 1 Sell Lead, To post more sell Leads Upgrade your plan",
+              buttons: [
+                {
+                  text: "Cancel",
+                   handler: () => {
+                  console.log("Disagree clicked");
+                  this.selectedItems1 = []; 
+          }
+        },
+        {
+          text: "Agree",
+          handler: () => {
+              this.navCtrl.push(UpgradePage);
+                }
+              }
+              ]
+              
+            });
+            alert.present();
+            
+          }
+        });
+        
       }
+      else if(this.plan_type == "Free"){
+
+        const alert = this.alertCtrl.create({
+          title: "Oops!",
+          subTitle:
+            "Free Users can post only Buy Lead, To Post Sell Lead, Upgrade your Plan",
+          buttons: [
+            {
+              text: "Cancel",
+               handler: () => {
+              console.log("Disagree clicked");
+              this.navCtrl.push(RfqPage);
+      }
+    },
+    {
+      text: "Agree",
+      handler: () => {
+          this.navCtrl.push(UpgradePage);
+            }
+          }
+          ]
+          
+        });
+        alert.present();
+
+      }
+      }
+
       if(this.lead_type.name=="Buy"){
         this.tdiv=true;
         this.odiv=false;
+        console.log("Plan Type", this.plan_type);
+      if(this.plan_type == "Demo"){
+        this.http.get(MyApp.url+"mybuyleads.php?u_id="+this.user_id).subscribe((data)=>{
+          if(data !=0){
+            const alert = this.alertCtrl.create({
+              title: "Oops!",
+              subTitle:
+                "You have Already Posted 1 Buy Lead, to post more sell Leads Upgrade your plan",
+              buttons: [
+                {
+                  text: "Cancel",
+                   handler: () => {
+                  console.log("Disagree clicked");
+                  this.navCtrl.push(RfqPage);
+          }
+        },
+        {
+          text: "Agree",
+          handler: () => {
+              this.navCtrl.push(UpgradePage);
+                }
+              }
+              ]
+            });
+            alert.present();
+          }
+        });
+      }
       }
   
     }
@@ -1112,6 +1201,7 @@ export class IdontknowhscodePage {
         this.referal_code = this.userdetails[0].referal_code;
         this.mobile = this.userdetails[0].mobile;
         this.user_country = this.userdetails[0].country_id;
+        this.plan_type = this.userdetails[0].plan_type;
         console.log('userdata', this.userdetails);
         console.log('user id', this.user_id);
         console.log('mobile', this.mobile);

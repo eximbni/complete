@@ -604,7 +604,7 @@ export class RfqPage {
               'region':this.Region,
               'loading_country':this.lcountry,
               'loading_port_type':this.lport,
-              'loading_port':this.loading_port.port,
+              'loading_port':this.loading_port,
               'destination_country':this.dcountry,
               'destination_port_type':this.dport,
               'destination_port':this.destination_port,
@@ -645,7 +645,7 @@ export class RfqPage {
               'region':this.Region,
               'loading_country':this.lcountry,
               'loading_port_type':this.lport,
-              'loading_port':this.loading_port.port,
+              'loading_port':this.loading_port,
               'destination_country':this.dcountry,
               'destination_port_type':this.dport,
               'destination_port':this.destination_port,
@@ -871,7 +871,7 @@ export class RfqPage {
   onselectcountry12(port: any) {
     //console.log(port, 'loading port ');
     this.loading_port = port;
-    //console.log(this.loading_port, 'lcountry port ');
+    console.log(this.loading_port, 'lcountry port ');
 
   }
 

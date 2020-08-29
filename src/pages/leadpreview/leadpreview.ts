@@ -75,7 +75,7 @@ export class LeadpreviewPage {
     this.uomname = this.navParams.get("uom")
     this.quantity = this.navParams.get("quantity");
     this.price_option = this.navParams.get("price_option")
-    this.price_model = this.price_option.id;
+    this.price_model = this.price_option;
      
     this.price = this.navParams.get("price_inusd");
     this.special_istructions =this.navParams.get("special_instruc");

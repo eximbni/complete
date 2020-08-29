@@ -537,9 +537,9 @@ tc(){
       console.log('licenseno : ',this.licenseno.value); 
 
 
-      console.log("Salutation : ",this.salutation);
+      console.log("Salutation : ",this.salutation.name);
       console.log("Fullname : ",this.fullname.value);
-      this.salutationfullname = this.salutation+this.fullname.value;
+      this.salutationfullname = this.salutation.name+this.fullname.value;
       console.log("Salutation Fullname : ",this.salutationfullname);
       console.log(this.pwd.value);
       console.log("countrycode : ",this.countrycode);
@@ -805,10 +805,10 @@ ngOnInit() {
 
 
   this.selectedsalutationslist = [
-    { id: 'Mr.', name: 'Mr.' },
-    { id: 'Mrs.', name: 'Mrs.' },
-    { id: 'Miss', name: 'Miss' },
-    { id: 'M/S.', name: 'M/S.' }
+    { id: 'mr.', name: 'Mr.' },
+    { id: 'mrs.', name: 'Mrs.' },
+    { id: 'miss', name: 'Miss' },
+    { id: 'm/S.', name: 'M/S.' }
   ];
   this.dropdownSettings2= {
     singleSelection: true,

@@ -173,7 +173,7 @@ export class EditleadPage {
     'uprice':this.uprice.value,
     'udescription':this.udescription.value,
     'uloading_country':this.lcountry,
-    'uloading_port':this.loading_port.port,
+    'uloading_port':this.loading_port,
     'udestination_country':this.dcountry,
     'udestination_port':this.destination_port,
 
