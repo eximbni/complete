@@ -680,7 +680,7 @@ tc(){
         'address':this.address.value,
         'zipcode':this.zipcode.value,
         'sponcerid':this.sponcerid.value,
-        'user_type': this.usertype,
+        'user_type': this.usertype.name,
         'lat':this.lat,
         'long':this.long,
         'device_id':this.deviceid,

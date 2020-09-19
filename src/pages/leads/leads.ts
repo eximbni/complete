@@ -296,7 +296,7 @@ export class LeadsPage {
         var link = MyApp.url + "leadremind.php";
         var jdata = JSON.stringify({
           user_id: this.user_id,
-          lead_id: this.buyleads[i].id,
+          lead_id: this.buyleads[i].lead_id,
           remind_date:data.remind_date
         });
         console.log("buydadata remindmelater=", jdata);
@@ -330,7 +330,7 @@ export class LeadsPage {
         var link = MyApp.url + "leadremind.php";
         var jdata = JSON.stringify({
           user_id: this.user_id,
-          lead_id: this.sellleads[i].id,
+          lead_id: this.sellleads[i].lead_id,
           remind_date:data.remind_date
         });
         console.log("selldata remindmelater =", jdata);
@@ -361,7 +361,7 @@ export class LeadsPage {
             var link = MyApp.url + "skipleads.php";
             var jdata = JSON.stringify({
               user_id: this.user_id,
-              lead_id: this.buyleads[i].id
+              lead_id: this.buyleads[i].lead_id
             });
             console.log("buydadata skip=", jdata);
             this.http.post(link, jdata).subscribe(sdata => {
@@ -376,7 +376,7 @@ export class LeadsPage {
   }
   skipsellleads(i) {
     const confirm = this.alertCtrl.create({
-      title: "Use this lightsaber?",
+      title: "Skip This Lead?",
       message: "Skipped leads will not visible any more do you want to skip?",
       buttons: [
         {
@@ -391,7 +391,7 @@ export class LeadsPage {
             var link = MyApp.url + "skipleads.php";
             var jdata = JSON.stringify({
               user_id: this.user_id,
-              lead_id: this.sellleads[i].id
+              lead_id: this.sellleads[i].lead_id
             });
             console.log("selljson skip=", jdata);
             this.http.post(link, jdata).subscribe(sdata => {
