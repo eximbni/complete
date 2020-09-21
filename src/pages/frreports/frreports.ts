@@ -49,6 +49,7 @@ export class FrreportsPage {
   frbannerincometotal:any;
   frleadsincometotal:any;
   frsubscriptionincometotal:any;
+  franchise_details: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http:HttpClient, private storage:Storage,public menuCtrl:MenuController,
     public alertCtrl:AlertController) {
   }
@@ -175,28 +176,86 @@ smoothScrollTo(endX){
   }, 1000 / 60); // 60 fps
 }
   ionViewDidLoad() {  
-    this.storage.get("userdetails").then((val)=>{
-      this.userdetails = val;
-      this.franchise_id = this.userdetails[0].franchise_id;
-      console.log('userdetails',this.userdetails,'user_id',this.franchise_id);
-      this.http.get(MyApp.url+"getfrincome.php?franchise_id="+this.franchise_id).subscribe((data)=>{
+    this.storage.get('frdata').then((frval)=>{
+      this.franchise_details =frval;
+      this.franchise_id = this.franchise_details[0].id;
+      //console.log("Fracnhisne inforamtion", this.franchise_details)
+      
+      this.http.get(MyApp.url+"getfrincome.php?fr_id="+this.franchise_id).subscribe((data)=>{
         this.frincometotal=data;
+       if(this.frincometotal == null){
+         this.frincometotal = 0;
+       }
+       else{
+        this.frincometotal=data;
+       }
         console.log('fr total  income', this.frincometotal);
       })
-      this.http.get(MyApp.url+"getfrbannersincome.php?franchise_id="+this.franchise_id).subscribe((bannerdata)=>{
+      this.http.get(MyApp.url+"getfrbannersincome.php?fr_id="+this.franchise_id).subscribe((bannerdata)=>{
         this.frbannerincometotal=bannerdata;
+        
+        if(this.frbannerincometotal == null){
+          this.frbannerincometotal = 0;
+        }
+        else
+        {
+          this.frbannerincometotal = bannerdata;
+        }
+
         console.log('fr total  bannerincome', this.frbannerincometotal);
       })
-      this.http.get(MyApp.url+"getfrleadsincome.php?franchise_id="+this.franchise_id).subscribe((leadsdata)=>{
+      this.http.get(MyApp.url+"getfrleadsincome.php?fr_id="+this.franchise_id).subscribe((leadsdata)=>{
+       
         this.frleadsincometotal=leadsdata;
+
+        if(this.frleadsincometotal == null){
+          this.frleadsincometotal = 0;
+        }
+        else
+        {
+          this.frleadsincometotal = leadsdata;
+        }
+
         console.log('fr total lead income', this.frleadsincometotal);
       })
-      this.http.get(MyApp.url+"getfrsubscriptionincome.php?franchise_id="+this.franchise_id).subscribe((subscriptiondata)=>{
+      
+      this.http.get(MyApp.url+"getfrsubscriptionincome.php?fr_id="+this.franchise_id).subscribe((subscriptiondata)=>{
         this.frsubscriptionincometotal=subscriptiondata;
+
+        if(this.frsubscriptionincometotal == null){
+          this.frsubscriptionincometotal = 0;
+        }
+        else
+        {
+          this.frsubscriptionincometotal = subscriptiondata;
+        }
         console.log('fr totalsub income', this.frsubscriptionincometotal);
       })
 
+      this.grosstotal = this.frsubscriptionincometotal +  this.frincometotal + this.frleadsincometotal + this.frbannerincometotal;
     })
+    // this.storage.get("userdetails").then((val)=>{
+    //   this.userdetails = val;
+    //   this.franchise_id = this.userdetails[0].franchise_id;
+    //   console.log('userdetails',this.userdetails,'user_id',this.franchise_id);
+    //   this.http.get(MyApp.url+"getfrincome.php?franchise_id="+this.franchise_id).subscribe((data)=>{
+    //     this.frincometotal=data;
+    //     console.log('fr total  income', this.frincometotal);
+    //   })
+    //   this.http.get(MyApp.url+"getfrbannersincome.php?franchise_id="+this.franchise_id).subscribe((bannerdata)=>{
+    //     this.frbannerincometotal=bannerdata;
+    //     console.log('fr total  bannerincome', this.frbannerincometotal);
+    //   })
+    //   this.http.get(MyApp.url+"getfrleadsincome.php?franchise_id="+this.franchise_id).subscribe((leadsdata)=>{
+    //     this.frleadsincometotal=leadsdata;
+    //     console.log('fr total lead income', this.frleadsincometotal);
+    //   })
+    //   this.http.get(MyApp.url+"getfrsubscriptionincome.php?franchise_id="+this.franchise_id).subscribe((subscriptiondata)=>{
+    //     this.frsubscriptionincometotal=subscriptiondata;
+    //     console.log('fr totalsub income', this.frsubscriptionincometotal);
+    //   })
+
+    // })
   }
 
 }

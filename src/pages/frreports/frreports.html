@@ -28,14 +28,14 @@
      
         <ion-slide>
           <ion-card>
-           <table style="text-align: left; width:100%">
-             <tr><td>Leads</td> <td *ngFor="let incm of frleadsincometotal;">:{{incm.total}}</td></tr>
-             <tr><td>Franchise</td> <td *ngFor="let incm of frincometotal;">:{{incm.total}}</td></tr>
-             <tr><td>Banners</td>  <td *ngFor="let incm of frbannerincometotal;">:{{incm.total}}</td></tr>
-             <tr><td>Subscribe</td> <td *ngFor="let incm of frsubscriptionincometotal;">:{{incm.total}}</td></tr>
-             <tr><td><h4>Gross Total</h4></td><td>{{this.grosstotal}}</td></tr>
-             <tr><td><h4>Expenditure</h4></td><td>{{thisexpenditure}}</td></tr>
-             <tr><td><h3> Net Total</h3></td><td>{{this.nettotal}}</td></tr>
+           <table width="100%" cellpading="2" cellspacing="2">
+             <tr><td>Leads</td> <td>:</td><td>{{this.frleadsincometotal}}</td></tr>
+             <tr><td>Franchise</td> <td>:</td><td>{{this.frincometotal}}</td></tr>
+             <tr><td>Banners</td>  <td>:</td><td>{{this.frbannerincometotal}}</td></tr>
+             <tr><td>Subscribe</td> <td>:</td><td>{{this.frsubscriptionincometotal}}</td></tr>
+             <tr><td>Gross Total</td><td>:</td><td>{{this.grosstotal}}</td></tr>
+             <tr><td>Expenditure</td><td>:</td><td>{{this.expenditure}}</td></tr>
+             <tr><td>Net Total</td><td>:</td><td>{{this.nettotal}}</td></tr>
            </table>
            <div>Status: <button ion-button small>Pending</button> <button ion-button small>Approved</button></div>
           </ion-card> 
