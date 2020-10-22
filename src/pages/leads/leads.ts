@@ -361,7 +361,7 @@ export class LeadsPage {
             var link = MyApp.url + "skipleads.php";
             var jdata = JSON.stringify({
               user_id: this.user_id,
-              lead_id: this.buyleads[i].lead_id
+              lead_id: this.buyleads[i].id
             });
             console.log("buydadata skip=", jdata);
             this.http.post(link, jdata).subscribe(sdata => {

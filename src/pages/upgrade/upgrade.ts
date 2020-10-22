@@ -15,13 +15,30 @@ import { HttpClient } from "@angular/common/http";
 import { Storage } from "@ionic/storage";
 import { MyApp } from "../../app/app.component";
 import { MyaccountPage } from "../myaccount/myaccount";
-
-
+import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
+ 
 @Component({
   selector: "page-upgrade",
   templateUrl: "upgrade.html"
 })
 export class UpgradePage {
+  options : InAppBrowserOptions = {
+    location : 'yes',//Or 'no' 
+    hidden : 'no', //Or  'yes'
+    clearcache : 'yes',
+    clearsessioncache : 'yes',
+    zoom : 'yes',//Android only ,shows browser zoom controls 
+    hardwareback : 'yes',
+    mediaPlaybackRequiresUserAction : 'no',
+    shouldPauseOnSuspend : 'no', //Android only 
+    closebuttoncaption : 'Close', //iOS only
+    disallowoverscroll : 'no', //iOS only 
+    toolbar : 'yes', //iOS only 
+    enableViewportScale : 'no', //iOS only 
+    allowInlineMediaPlayback : 'no',//iOS only 
+    presentationstyle : 'pagesheet',//iOS only 
+    fullscreen : 'yes',//Windows only    
+};
   showchapters = false;
   userdetails: any;
   user_id: any;
@@ -53,13 +70,15 @@ export class UpgradePage {
   subscription_cost: any;
   state_id: any;
   subscription_duration: any;
+  eventurl: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     private http: HttpClient,
     private storage: Storage,
-    public menuCtrl: MenuController
+    public menuCtrl: MenuController,
+    private iab: InAppBrowser
   ) {}
 
   toggleMenu() {
@@ -155,23 +174,34 @@ export class UpgradePage {
         duration:this.subscription_duration
       });
       console.log(Jdata);
-      this.http.post(link, Jdata).subscribe(cdata => {
-        this.packdetails = cdata;
-        console.log(cdata, "free package details");
-        if (cdata) {
-          this.navCtrl.push(CategoriesPage, {
-            userid: this.user_id
+
+      const browser = this.iab.create('https://eximbni.com/payumoney/index.php?amount=299','_self', this.options);
+      browser.on('loadstop').subscribe(event => {
+        this.eventurl = event
+        if(this.eventurl=='https://eximbni.com/payumoney/response.php'){
+          this.http.post(link, Jdata).subscribe(cdata => {
+            this.packdetails = cdata;
+            console.log(cdata, "free package details");
+            if (cdata) {
+              this.navCtrl.push(CategoriesPage, {
+                userid: this.user_id
+              });
+            } else {
+              const alert = this.alertCtrl.create({
+                title: "Oops!",
+                subTitle: "Some thing went wrong!",
+                buttons: ["OK"],
+                cssClass: "buttoncss"
+              });
+              alert.present();
+            }
           });
-        } else {
-          const alert = this.alertCtrl.create({
-            title: "Oops!",
-            subTitle: "Some thing went wrong!",
-            buttons: ["OK"],
-            cssClass: "buttoncss"
-          });
-          alert.present();
+          browser.close();
         }
-      });
+        
+     });
+
+      
     }
   }
 

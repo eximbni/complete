@@ -19,6 +19,8 @@ export class VideologinPage {
   @ViewChild("password") password;
   userdetails: any;
   user_id: any;
+  jitsiurl: any;
+  url: this;
   constructor(public navCtrl: NavController, public navParams: NavParams,private http:HttpClient, private storage: Storage) {
     this.test();
   }
@@ -58,7 +60,8 @@ export class VideologinPage {
   const { Jitsi } = Plugins;
   const options = {
     interfaceConfigOverwrite: {  
-      DEFAULT_REMOTE_DISPLAY_NAME: 'MiiVision User',
+      DEFAULT_REMOTE_DISPLAY_NAME: username,
+      DEFAULT_LOCAL_DISPLAY_NAME: username,
     },
     userInfo: {
       email: 'user@eximbni.com',
@@ -67,10 +70,11 @@ export class VideologinPage {
   }
    await Jitsi.joinConference({
      roomName: roomname, // room identifier for the conference
-     url: 'https://meet.jit.si', // endpoint of the Jitsi Meet video bridge
-     startWithAudioMuted: false, // start with audio muted
+     url: this.url, // endpoint of the Jitsi Meet video bridge
+     startWithAudioMuted: true, // start with audio muted
      startWithVideoMuted: false,
-     name:username // start with video muted
+     DEFAULT_LOCAL_DISPLAY_NAME:username,
+     name:username // start with video muted  
      }, options);
   
   window.addEventListener('onConferenceJoined', () => {
@@ -87,6 +91,11 @@ export class VideologinPage {
     this.navCtrl.push(WebinarPage);
   }
   ionViewDidLoad() {
+    this.http.get(MyApp.url+"get_jitsi_url.php").subscribe((jidata)=>{
+      this.jitsiurl = jidata;
+      this.url = this.jitsiurl[0].url;
+       console.log("JITSI URL:", this.url);
+    })
     this.storage.get("userdetails").then((val)=>{
       this.userdetails =val;
       this.user_id = this.userdetails[0].id;

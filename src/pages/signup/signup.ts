@@ -807,7 +807,7 @@ ngOnInit() {
   this.selectedsalutationslist = [
     { id: 'mr.', name: 'Mr.' },
     { id: 'mrs.', name: 'Mrs.' },
-    { id: 'miss', name: 'Miss' },
+    { id: 'miss.', name: 'Miss.' },
     { id: 'm/S.', name: 'M/S.' }
   ];
   this.dropdownSettings2= {

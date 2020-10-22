@@ -35,7 +35,7 @@ import { TslidesPage } from '../pages/tslides/tslides';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  public static url = 'https://eximbin.com/api/';
+  public static url = 'https://eximbni.com/api/';
   @ViewChild(Nav) nav: Nav;
   rootPage:any = MpinPage;
   userdb = true;

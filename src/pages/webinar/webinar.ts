@@ -9,6 +9,7 @@ import { MyApp } from '../../app/app.component';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { VideologinPage } from '../videologin/videologin';
 
 
 @Component({
@@ -218,7 +219,7 @@ chatting(){
 this.navCtrl.push(ChatPage);
 }
 webinar(){
-this.navCtrl.push(WebinarPage);
+this.navCtrl.push(VideologinPage);
 }
 quotes(){
 this.navCtrl.push(RfqPage);

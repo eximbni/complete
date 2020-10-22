@@ -15,6 +15,7 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { NgOtpInputModule } from  'ng-otp-input';
 import { IonicStorageModule } from '@ionic/storage';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 //import { NativeStorage } from '@ionic-native/native-storage';
 //
 
@@ -433,7 +434,7 @@ import { TslidesPage } from '../pages/tslides/tslides';
     Device,
     SocialSharing,
     FileTransfer,
-
+    InAppBrowser,
     // NativeStorage ,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

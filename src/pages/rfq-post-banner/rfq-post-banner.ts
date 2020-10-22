@@ -180,7 +180,7 @@ export class RfqPostBannerPage {
                       'chapter_id': this.chapter_id,
                       'country': this.selectedItems,
                       'user_country': this.countryname,
-                      'banner_image':this.banner_image
+                      'banner_image':this.DPhoto
                     });
                     console.log('json updata', totaldata);
                     this.http.post(link, totaldata).subscribe((data) => {

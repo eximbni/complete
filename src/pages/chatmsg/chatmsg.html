@@ -30,12 +30,12 @@
       <ion-list no-lines  *ngFor="let msg of chatdata" style="padding-right: 2.5%; padding-left: 2.5%;"> 
         <div class="message received" *ngIf="user_id != msg.posted_by">
             {{ msg.message }}
-            <img  *ngIf="msg.file_type=='image'"src="{{imgUrl}}/uploads/{{msg.file_path}}" height="200" width="60%"/>
+            <img  *ngIf="msg.file_type=='image'"src="{{msg.file_path}}" height="200" width="60%"/>
             <span class="metadata"><!-- <span class="time">{{ msg.posted_time  | date:'h:mm'}}</span> --></span>
         </div>
         <div class="message sent" *ngIf="user_id == msg.posted_by">
             {{ msg.message }}
-            <img  *ngIf="msg.file_type=='image'" src="{{imgUrl}}/uploads/{{msg.file_path}}" height="200" width="100%"/>
+            <img  *ngIf="msg.file_type=='image'" src="{{msg.file_path}}" height="200" width="100%"/>
             <span class="metadata"><!-- <span class="time">{{ msg.posted_time | date:'h:mm'}}</span> --></span>
         </div>
     </ion-list>

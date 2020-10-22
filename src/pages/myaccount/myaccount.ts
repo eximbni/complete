@@ -49,6 +49,7 @@ export class MyaccountPage {
   scount: any;
   messagecount: Object;
   showcount: any;
+  user_image: Object;
   constructor(public navCtrl: NavController,public menuCtrl:MenuController, public navParams: NavParams,public platform:Platform,
     private storage: Storage, private http:HttpClient, private alertCtrl:AlertController, private camera:Camera, private SocialSharing:SocialSharing, private transfer: FileTransfer, ) {}
     settings(){
@@ -74,34 +75,15 @@ export class MyaccountPage {
   // imageData is either a base64 encoded string or a file URI
   // If it's base64:
   this.DPhoto = 'data:image/jpeg;base64,' + imageData;
-  const fileTransfer: FileTransferObject = this.transfer.create();
-  var random = Math.floor(Math.random()*100);
-  this.DPhoto= 'user'+random+'.jpg';
-  let options3: FileUploadOptions = {
-    fileKey: 'file',
-    fileName: this.DPhoto,
-    headers: {}
-  
-  }
-  
-  fileTransfer.upload(  this.DPhoto, MyApp.url+'uploads.php', options3)
-  .then((data) => {
-    console.log(data);
-  // success
-  alert("success");
-  }, (err) => {
-  // error
-  alert("error"+JSON.stringify(err));
-  });
+   });
+
   this.http.get(MyApp.url+"userimage.php?user_id="+this.user_id+"&user_image="+this.DPhoto).subscribe((data)=>{
-    if(data==1){
+    if(data!=0){
       alert("Image Modified Successfully");
+      this.user_image = data;
     }
   })
 
-  
-  
-  });
   }
 
   /*start  edit profile*/
