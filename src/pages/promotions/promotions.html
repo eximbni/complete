@@ -10,21 +10,49 @@
 
 
 
-<ion-content padding>
+<ion-content>
  
   <ion-card *ngFor="let event of events;">
     <ion-card-header color="light" style="background: green;">
       {{event.event_name}}  <span float-right >ID:{{event.request_id}}</span>
     </ion-card-header>
     <ion-card-content class="txt">
-      Date :  <b class="dtl">{{event.event_date}}</b><br>
-      Guests : <b class="dtl">{{event.guest}}</b><br>
-      Participents :<b class="dtl">{{event.participents}}</b> <br>
-      status :<b class="dtl"><span *ngIf="event.status==0">Pending for Apporval</span> <span *ngIf="event.status==1">Approved</span></b> <br>
-      Budget Proposed:<b class="dtl"> {{event.budget}}</b><br>
-      Apporoved Budget : <b class="dtl">{{event.approved_budget}}</b><br>
-      Venue :<b class="dtl"> {{event.venue}}</b><br>
-    </ion-card-content>
+    <ion-row>
+      <ion-col col-5>Date</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b>{{event.event_date}}</b></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Guests</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b>{{event.guest}}</b></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Participents</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b>{{event.participents}}</b></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>status</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b><span *ngIf="event.status==0">Pending for Apporval</span> <span *ngIf="event.status==1">Approved</span></b></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Budget Proposed</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b>{{event.budget}}</b></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Apporoved Budget</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b>{{event.approved_budget}}</b></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-5>Venue</ion-col>
+      <ion-col>:</ion-col>
+      <ion-col><b>{{event.venue}}</b></ion-col>
+    </ion-row>
+  </ion-card-content>
   </ion-card>
 </ion-content>
 

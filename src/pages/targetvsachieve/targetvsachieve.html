@@ -11,7 +11,7 @@
 
 <ion-content >
  
-  <div padding>
+  <div>
     <ion-segment [(ngModel)]="pet">
       <ion-segment-button value="month">
         Month
@@ -29,16 +29,16 @@
     <ion-list *ngSwitchCase="'month'">
       <ion-grid>
         <ion-row>
-          <ion-col col-4 style="background: orangered; color: #fff;"> Month</ion-col>
-          <ion-col col-4 style="background: orangered; color: #fff;"> Target</ion-col>
-          <ion-col col-4 style="background: orangered; color: #fff;"> Achievement</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff; width: 33% !important; max-width: 33%  !important"> Month</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff; width: 33% !important; max-width: 33%  !important"> Target</ion-col>
+          <ion-col col-4 style="background: orangered; color: #fff; width: 33%  !important; max-width: 33%  !important"> Achievement</ion-col>
         </ion-row>
-<!--         <div *ngIf='targetdata.month'> -->
+<!--         <div *ngIf='targetdata.month'> --> ;
         <ion-row *ngFor="let mo of targetdata; let i = index;" >
             
-            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ mo.month }}</ion-col>
-            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ mo.target }}</ion-col>
-            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;"> {{ mo.achievement }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111; width: 33% !important; max-width: 33%  !important"> {{ mo.month }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;width: 33% !important; max-width: 33%  !important"> {{ mo.target }}</ion-col>
+            <ion-col col-4 style="background: rgb(236, 235, 235); color: #111;width: 33% !important; max-width: 33%  !important"> {{ mo.achievement }}</ion-col>
         </ion-row>
     <!--   </div> -->
 <!--     <div *ngIf='!targetdata.quarter'>

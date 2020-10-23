@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import {
   NavController,
   NavParams,
@@ -40,6 +40,7 @@ export class UpgradePage {
     fullscreen : 'yes',//Windows only    
 };
   showchapters = false;
+  Plans=true;
   userdetails: any;
   user_id: any;
   country_id: any;
@@ -71,6 +72,9 @@ export class UpgradePage {
   state_id: any;
   subscription_duration: any;
   eventurl: any;
+  spromo=false;
+  paymentMethod: string;
+  @ViewChild('promo') promo;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -100,6 +104,7 @@ export class UpgradePage {
     this.navCtrl.push(RfqPage);
   }
   free(i) {
+    this.Plans=false;
     this.subscription_id = this.upgradeplans[i].id;
     this.subscription_cost = this.upgradeplans[i].plan_cost;
     this.subscription_cost = parseInt(this.subscription_cost);
@@ -118,6 +123,7 @@ export class UpgradePage {
     }
     else{
     this.showchapters = true;
+    this.Plans=false
     this.pack_id = this.upgradeplans[i].chapters;
     this.packhscode = this.upgradeplans[i].hscodes;
     this.subscription_id = this.upgradeplans[i].id;
@@ -147,6 +153,14 @@ export class UpgradePage {
     };
   }
   }
+  ShowPromocode(){
+    // alert('hi')
+     this.spromo=true;
+     this.paymentMethod='PromoCode'
+   }
+   OnlinePayment(){
+    this.paymentMethod='online'
+   }
   upgrade(i) {
     if (
       this.mysubscription_cost == this.subscription_cost &&
@@ -174,11 +188,8 @@ export class UpgradePage {
         duration:this.subscription_duration
       });
       console.log(Jdata);
-
-      const browser = this.iab.create('https://eximbni.com/payumoney/index.php?amount=299','_self', this.options);
-      browser.on('loadstop').subscribe(event => {
-        this.eventurl = event
-        if(this.eventurl=='https://eximbni.com/payumoney/response.php'){
+      if(this.paymentMethod=="PromoCode"){
+        if(this.promo.value=="FIRSTRECHARGE"){
           this.http.post(link, Jdata).subscribe(cdata => {
             this.packdetails = cdata;
             console.log(cdata, "free package details");
@@ -196,12 +207,44 @@ export class UpgradePage {
               alert.present();
             }
           });
-          browser.close();
+        }
+        else{
+          const alert = this.alertCtrl.create({
+            title: "Oops!",
+            subTitle: "Code You Entered is Not valid!",
+            buttons: ["OK"],
+            cssClass: "buttoncss"
+          });
+          alert.present();
         }
         
-     });
-
-      
+      }
+      else{
+        const browser = this.iab.create('https://eximbni.com/payumoney/index.php?amount=299','_self', this.options);
+        browser.on('loadstop').subscribe(event => {
+          this.eventurl = event
+          if(this.eventurl=='https://eximbni.com/payumoney/response.php'){
+            this.http.post(link, Jdata).subscribe(cdata => {
+              this.packdetails = cdata;
+              console.log(cdata, "free package details");
+              if (cdata) {
+                this.navCtrl.push(CategoriesPage, {
+                  userid: this.user_id
+                });
+              } else {
+                const alert = this.alertCtrl.create({
+                  title: "Oops!",
+                  subTitle: "Some thing went wrong!",
+                  buttons: ["OK"],
+                  cssClass: "buttoncss"
+                });
+                alert.present();
+              }
+            });
+            browser.close();
+          }
+        });
+      }
     }
   }
 

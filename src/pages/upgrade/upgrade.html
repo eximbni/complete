@@ -11,7 +11,7 @@
   
   
   <ion-content class="container"> 
-    <ion-row>
+    <ion-row *ngIf="Plans">
     <ion-col style="padding: 0;">
       <table border="1"  style="color:#252f6a; font-weight: bold;" width="100%">
         <tr>
@@ -145,8 +145,8 @@
           </tr>
       </table>
   </ion-col>
-  </ion-row>
-    
+
+   </ion-row> 
   
   <div *ngIf="showchapters">
    <p style="color:red;"> 
@@ -158,16 +158,24 @@
   [settings]="dropdownSettings"
   (onSelect)="onItemSelect($event)"
   (onSelectAll)="onSelectAll($event)"></ng-multiselect-dropdown>
-  <!-- <div style="margin-bottom: 2%;">
-    <p style="color:red;">  You Can Select Unlimited HS Codes of Your selected Chapters.</p>
-      <ng-multiselect-dropdown class="ngselect fs_select"
-      [placeholder]="'Select HS Codes'" 
-      [data]="hsdetails" 
-      [(ngModel)]="selectedhscodes"
-      [settings]="dropdownSettings1"
-      (onSelect)="onhscodeselect($event)"
-      (onSelectAll)="onallhscodes($event)"></ng-multiselect-dropdown>
-    </div> -->
+  <ion-list radio-group>
+    <ion-list-header>
+      Payment Mode
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label>I Have a Promo Code</ion-label>
+      <ion-radio  value="go" (click)="ShowPromocode()"></ion-radio>
+    </ion-item>
+    <div *ngIf="spromo">
+      <h3>Use <span style="color:green">FIRSTRECHARGE</span> as Promo Code</h3>
+    <ion-input  #promo placeholder="Please Enter Promo Code"></ion-input>
+    </div>
+    <ion-item>
+      <ion-label>Online</ion-label>
+      <ion-radio value="rust" (click)="OnlinePayment()"></ion-radio>
+    </ion-item>
+  </ion-list>
   <div class="upgrade-btn"><button ion-button small round color="orangebtn"   (click)="upgrade()">Upgrade</button></div>
 </div>
   </ion-content>

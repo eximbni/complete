@@ -209,11 +209,31 @@ uploadImage(){
     // imageData is either a base64 encoded string or a file URI
     // If it's base64:
     this.Image = 'data:image/jpeg;base64,' + imageData;
-   
+    const fileTransfer: FileTransferObject = this.transfer.create();
+    var random = Math.floor(Math.random() * 100);
+    this.file_path = this.user_id+'ChatImage' + random + '.jpg' ;
+    let options3: FileUploadOptions = {
+      fileKey: 'file',
+      fileName: this.file_path,
+      headers: {}
+
+    }
+    const loader = this.loadingCtrl.create({
+      content: "Data Submitting, Please wait...",
+    });
+    loader.present();
+    fileTransfer.upload(this.Image, MyApp.url+'uploads.php', options3)
+      .then((data) => {
+        console.log(data);
+        this.sendMessage();
+        loader.dismiss();
+        // success
+        alert("Document successfully added to system")
+      }, (err) => {
+        // error
+        console.log("error" + JSON.stringify(err));
+      });
   });
-  if (this.Image){
-    this.sendMessage();
-  }
 }
 uploadFile(){
   this.file_type="file";
@@ -269,7 +289,7 @@ uploadAudio(){
     'chatroom':this.chatroom,
     'message' : this.inputmsg.value,
     'other_id':this.chatuser_id,
-    'file_path':this.Image,
+    'file_path':this.file_path,
     'file_type':this.file_type
    });
    console.log("chat data=",Mydata);

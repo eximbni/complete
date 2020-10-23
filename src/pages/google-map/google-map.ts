@@ -140,7 +140,7 @@ this.user_type =item;
   var marker, i;
 
   for (i = 0; i < this.locations.length; i++) {  
-    if(this.locations[i].user_type== this.user_type){
+    if(this.locations[i].user_type== this.user_type.id){
       if(this.locations[i].user_type=='Buyer'){
         this.imgs = "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
       }else{

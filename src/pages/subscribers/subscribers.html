@@ -14,30 +14,30 @@
   <ion-grid>
     <ion-slides #slider (ionSlideDidChange)="slideChanged()">
       <ion-slide> 
-          <ion-label float="right"> Search Subscribers  Datewise</ion-label>
+          <ion-label float="right" class="search-txt"> Search Subscribers  Datewise</ion-label>
         <!--  <ion-select float="right" #filter>
             <ion-option>Most Active</ion-option>
             <ion-option>Least Active</ion-option>
           </ion-select> -->
-          <ion-card>
-            <ion-item style="border:1px solid grey"> 
+          <div>
+            <ion-item> 
               <ion-label>From Date *</ion-label>
               <ion-datetime displayFormat="MMM DD YYYY"  #sdate></ion-datetime>
             </ion-item>            
-            <ion-item style="border:1px solid grey"> 
+            <ion-item> 
               <ion-label>To Date *</ion-label>
               <ion-datetime displayFormat="MMM DD YYYY"  #edate></ion-datetime>
             </ion-item>   
               <ion-row> 
-                <button ion-button block (click)="submit()">Search</button>
+                <button ion-button block medium (click)="submit()" style="background: #e85d2a;">Search</button>
               </ion-row>
 
-        </ion-card>
+        </div>
 
         <ion-card class="list-card"  *ngFor="let request of userslist; let i = index;">
 
           <ion-row>
-            <ion-col class="list-text">
+            <ion-col class="list-text" style="padding:0">
                 <ion-grid>
                     <ion-row>
                       <ion-col col-5>
