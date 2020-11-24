@@ -16,6 +16,7 @@ import { Storage } from "@ionic/storage";
 import { MyApp } from "../../app/app.component";
 import { MyaccountPage } from "../myaccount/myaccount";
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
  
 @Component({
   selector: "page-upgrade",
@@ -82,7 +83,8 @@ export class UpgradePage {
     private http: HttpClient,
     private storage: Storage,
     public menuCtrl: MenuController,
-    private iab: InAppBrowser
+    private iab: InAppBrowser,
+    private payPal: PayPal 
   ) {}
 
   toggleMenu() {
@@ -103,6 +105,9 @@ export class UpgradePage {
   quotes() {
     this.navCtrl.push(RfqPage);
   }
+
+  
+
   free(i) {
     this.Plans=false;
     this.subscription_id = this.upgradeplans[i].id;
@@ -161,6 +166,9 @@ export class UpgradePage {
    OnlinePayment(){
     this.paymentMethod='online'
    }
+
+
+
   upgrade(i) {
     if (
       this.mysubscription_cost == this.subscription_cost &&
@@ -221,28 +229,10 @@ export class UpgradePage {
       }
       else{
         const browser = this.iab.create('https://eximbni.com/payumoney/index.php?amount=299','_self', this.options);
-        browser.on('loadstop').subscribe(event => {
+        let stopSub = browser.on('loadstop').subscribe(event => {
           this.eventurl = event
-          if(this.eventurl=='https://eximbni.com/payumoney/response.php'){
-            this.http.post(link, Jdata).subscribe(cdata => {
-              this.packdetails = cdata;
-              console.log(cdata, "free package details");
-              if (cdata) {
-                this.navCtrl.push(CategoriesPage, {
-                  userid: this.user_id
-                });
-              } else {
-                const alert = this.alertCtrl.create({
-                  title: "Oops!",
-                  subTitle: "Some thing went wrong!",
-                  buttons: ["OK"],
-                  cssClass: "buttoncss"
-                });
-                alert.present();
-              }
-            });
-            browser.close();
-          }
+          console.log("Pay U Response", this.eventurl); 
+          browser.close();
         });
       }
     }
